@@ -3,12 +3,14 @@ NOTE: For use by March 2026 US Realm Connectathon participants for internal use 
 */
 library CMS122FHIRDiabetesAssessGT9Pct version '1.1.000'
 
-using QICore version '6.0.0-derived'
+using USQualityCore version '0.1.0-cibuild'
+using USCore version '6.1.0-derived'
+using FHIR version '4.0.1'
 
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
 
-include QICoreCommon version '5.1.000' called QICoreCommon
+include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 include SupplementalDataElements version '6.1.000' called SDE
 include Status version '2.1.000' called Status
 include AdvancedIllnessandFrailty version '2.1.000' called AIFrailLTCF

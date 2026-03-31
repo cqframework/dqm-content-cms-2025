@@ -11,6 +11,8 @@ include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
 include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
 include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
+//include fhir.guides.astp."us-quality-core".USQualityCoreCommon version '1.0.0' called USQualityCore
+//include hl7.fhir.us."us-quality-core".USQualityCoreCommon version '2.0.0' called USQualityCore
 
 include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 include SupplementalDataElements version '6.1.000' called SDE

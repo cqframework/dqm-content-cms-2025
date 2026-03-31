@@ -3,12 +3,16 @@ NOTE: For use by March 2026 US Realm Connectathon participants for internal use 
 */
 library CMS165FHIRControllingHighBP version '1.1.000'
 
-using QICore version '6.0.0-derived'
+using USQualityCore version '0.1.0-cibuild'
+using USCore version '6.1.0-derived'
+using FHIR version '4.0.1'
 
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
+include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
+include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
 
-include QICoreCommon version '5.1.000' called QICoreCommon
+include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 include SupplementalDataElements version '6.1.000' called SDE
 include Status version '2.1.000' called Status
 include AdultOutpatientEncounters version '5.1.000' called AdultOutpatientEncounters
@@ -45,9 +49,7 @@ define "Initial Population":
     and exists AdultOutpatientEncounters."Qualifying Encounters"
 
 define "Essential Hypertension Diagnosis":
-  ( ( [ConditionProblemsHealthConcerns: "Essential Hypertension"]
-      union [ConditionEncounterDiagnosis: "Essential Hypertension"]
-  ).verified ( ) ) Hypertension
+  ( ( [Condition: "Essential Hypertension"] ).verified ( ) ) Hypertension
     where Hypertension.prevalenceInterval ( ) overlaps Interval[start of "Measurement Period", start of "Measurement Period" + 6 months )
 
 define "Denominator":
@@ -63,14 +65,10 @@ define "Denominator Exclusions":
     or PalliativeCare."Has Palliative Care in the Measurement Period"
 
 define "Pregnancy or Renal Diagnosis":
-  ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
-      union [ConditionEncounterDiagnosis: "Pregnancy"]
-      union [ConditionProblemsHealthConcerns: "End Stage Renal Disease"]
-      union [ConditionEncounterDiagnosis: "End Stage Renal Disease"]
-      union [ConditionProblemsHealthConcerns: "Kidney Transplant Recipient"]
-      union [ConditionEncounterDiagnosis: "Kidney Transplant Recipient"]
-      union [ConditionProblemsHealthConcerns: "Chronic Kidney Disease, Stage 5"]
-      union [ConditionEncounterDiagnosis: "Chronic Kidney Disease, Stage 5"]
+  ( ( [Condition: "Pregnancy"]
+      union [Condition: "End Stage Renal Disease"]
+      union [Condition: "Kidney Transplant Recipient"]
+      union [Condition: "Chronic Kidney Disease, Stage 5"]
   ).verified ( ) ) PregnancyESRDDiagnosis
     where PregnancyESRDDiagnosis.prevalenceInterval ( ) overlaps "Measurement Period"
 
@@ -115,21 +113,21 @@ define "Lowest Diastolic Reading on Most Recent Blood Pressure Day":
   )
 
 define "Qualifying Blood Pressure Reading":
-  ( ( ( [USCoreBloodPressureProfile] ).isObservationBP ( ) ) BloodPressure
+  ( ( ( [USCore.BloodPressureProfile] ).isObservationBP ( ) ) BloodPressure
       without ( ( [Encounter: "Encounter Inpatient"]
           union [Encounter: "Emergency Department Evaluation and Management Visit"]
       ).isEncounterPerformed ( ) ) DisqualifyingEncounter
         such that BloodPressure.effective.latest ( ) during day of DisqualifyingEncounter.period
       where BloodPressure.effective.latest ( ) during day of "Measurement Period"
   )
-    union ( ( ( [USCoreBloodPressureProfile] ).isObservationBP ( ) ) BloodPressure
+    union ( ( ( [USCore.BloodPressureProfile] ).isObservationBP ( ) ) BloodPressure
         where ( not ( ( BloodPressure.encounter.getEncounter ( ) ).class.code in { 'EMER', 'IMP', 'ACUTE', 'NONAC', 'PRENC', 'SS' } ) )
           and BloodPressure.effective.latest ( ) during day of "Measurement Period"
     )
 
 define fluent function getEncounter(reference Reference):
   singleton from ( [Encounter] E
-      where E.id = reference.reference.getId ( )
+    where reference.references(E)
   )
 
 define "Most Recent Blood Pressure Day":

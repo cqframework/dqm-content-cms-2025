@@ -3,12 +3,16 @@ NOTE: For use by March 2026 US Realm Connectathon participants for internal use 
 */
 library CMS130FHIRColorectalCancerScrn version '1.1.000'
 
-using QICore version '6.0.0-derived'
+using USQualityCore version '0.1.0-cibuild'
+using USCore version '6.1.0-derived'
+using FHIR version '4.0.1'
 
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
+include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
+include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
 
-include QICoreCommon version '5.1.000' called QICoreCommon
+include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 include SupplementalDataElements version '6.1.000' called SDE
 include Status version '2.1.000' called Status
 include AdultOutpatientEncounters version '5.1.000' called AdultOutpatientEncounters
@@ -71,9 +75,7 @@ define "Fecal Occult Blood Test Performed":
       and FecalOccultResult.effective.latest ( ) during day of "Measurement Period"
 
 define "Malignant Neoplasm":
-  ( ( [ConditionProblemsHealthConcerns: "Malignant Neoplasm of Colon"]
-      union [ConditionEncounterDiagnosis: "Malignant Neoplasm of Colon"]
-  ).verified ( ) ) ColorectalCancer
+  ( ( [Condition: "Malignant Neoplasm of Colon"] ).verified ( ) ) ColorectalCancer
     where ColorectalCancer.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
 
 define "Total Colectomy Performed":
