@@ -18,6 +18,7 @@ For the purposes of this discussion, we will be focusing on the following 5 meas
 | CMS165: Controlling High Blood Pressure | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS165FHIRControllingHighBP.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS165FHIRControllingHighBP.cql)* |
 | CMS986: Global Malnutrition Score | | |
 | CMS1206: Excessive Radiation: Outpatient Quality Reporting | | |
+| CMS1264: ECATREHQR | | |
 | NHSN Glycemic Control | | |
 
 Note: Measures marked with an asterisk are still in progress

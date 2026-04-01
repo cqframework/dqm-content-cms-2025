@@ -1,0 +1,15 @@
+{
+  "resourceType": "Practitioner",
+  "id": "7d88bbf0-6913-40dc-b8bc-b6d9f0e8c2bf",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-practitioner" ]
+  },
+  "identifier": [ {
+    "system": "http://hl7.org/fhir/sid/us-npi",
+    "value": "9999999896"
+  } ],
+  "name": [ {
+    "family": "Evil",
+    "prefix": [ "Dr" ]
+  } ]
+}

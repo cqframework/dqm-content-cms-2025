@@ -1,0 +1,36 @@
+{
+  "resourceType": "Library",
+  "id": "CMS1264FHIRECATREHQR",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary", "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library" ]
+  },
+  "language": "en",
+  "url": "https://madie.cms.gov/Library/CMS1264FHIRECATREHQR",
+  "identifier": [ {
+    "use": "official",
+    "system": "https://madie.cms.gov/login",
+    "value": "CMS1264FHIRECATREHQR"
+  } ],
+  "version": "1.1.000",
+  "name": "CMS1264FHIRECATREHQR",
+  "title": "CMS1264FHIRECATREHQR",
+  "status": "active",
+  "experimental": false,
+  "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "logic-library"
+    } ]
+  },
+  "date": "2025-08-25T19:25:31+00:00",
+  "publisher": "Centers for Medicare & Medicaid Services (CMS)",
+  "description": "CMS1264FHIRECATREHQR",
+  "topic": [ {
+    "text": "FHIR"
+  }, {
+    "text": "CQL"
+  } ],
+  "content": [ {
+    "id": "ig-loader-CMS1264FHIRECATREHQR.cql"
+  } ]
+}
