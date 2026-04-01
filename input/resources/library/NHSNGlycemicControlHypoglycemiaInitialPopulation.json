@@ -1,0 +1,36 @@
+{
+  "resourceType": "Library",
+  "id": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary", "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library" ]
+  },
+  "language": "en",
+  "url": "https://madie.cms.gov/Library/NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "identifier": [ {
+    "use": "official",
+    "system": "https://madie.cms.gov/login",
+    "value": "NHSNGlycemicControlHypoglycemiaInitialPopulation"
+  } ],
+  "version": "1.1.000",
+  "name": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "title": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "status": "active",
+  "experimental": false,
+  "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "logic-library"
+    } ]
+  },
+  "date": "2025-08-21T20:27:13+00:00",
+  "publisher": "Centers for Disease Control and Prevention (CDC)",
+  "description": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "topic": [ {
+    "text": "FHIR"
+  }, {
+    "text": "CQL"
+  } ],
+  "content": [ {
+    "id": "ig-loader-NHSNGlycemicControlHypoglycemiaInitialPopulation.cql"
+  } ]
+}

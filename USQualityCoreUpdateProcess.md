@@ -18,6 +18,7 @@ For the purposes of this discussion, we will be focusing on the following 5 meas
 | CMS165: Controlling High Blood Pressure | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS165FHIRControllingHighBP.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS165FHIRControllingHighBP.cql)* |
 | CMS986: Global Malnutrition Score | | |
 | CMS1206: Excessive Radiation: Outpatient Quality Reporting | | |
+| NHSN Glycemic Control | | |
 
 Note: Measures marked with an asterisk are still in progress
 
@@ -95,6 +96,7 @@ Once the models have been updated, we need to update the shared library referenc
 | FHIRHelpers | 4.4.000 | hl7.fhir.uv.cql.FHIRHelpers version 4.0.1 |
 | FHIRCommon | - | hl7.fhir.uv.cql.FHIRCommon version 2.0.0 |
 | Hospice | 6.18.000 | 7.1.000 |
+| NHSNHelpers | 0.1.000 | 1.1.000 |
 | PalliativeCare | 1.18.000 | 2.1.000 |
 | QICoreCommon | 4.0.000 | (refactored into FHIRCommon, USCoreCommon, and USQualityCoreCommon) |
 | Status | 1.15.000 | 2.1.000 |

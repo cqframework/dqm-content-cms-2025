@@ -1,0 +1,675 @@
+{
+  "resourceType": "Measure",
+  "id": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablemeasure", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cql-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/elm-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm" ]
+  },
+  "extension": [ {
+    "id": "supplementalDataGuidance",
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance",
+    "extension": [ {
+      "url": "guidance",
+      "valueString": "<p>Supplemental Data</p>"
+    }, {
+      "url": "usage",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+          "code": "supplemental-data",
+          "display": "Supplemental Data"
+        } ],
+        "text": "Supplemental Data Guidance"
+      }
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Blood glucose"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Blood-glucose data refers to data from random, periprandial, or fasting tests; from capillary, serum, plasma, interstitial fluid, or whole-blood sources; using central laboratory device (CLD) or point-of-care (POC) testing. Data from continuous glucose monitoring (CGM) systems can only be captured if they are integrated into the EHR and exposed in the corresponding FHIR resources. Post-glucose administration tests are excluded. Events are based on the day/time the laboratory test was collected (drawn). If day/time collected is not available, the day/time the lab was ordered is used.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Emergency department (ED)/Observation (Obs) encounter"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Any patient visit to an ED or observation location. One (1) patient visit equals one (1) encounter. ED/Observation encounters are considered outpatient locations.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Hypoglycemic medication"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "All currently and previously commercially available oral or injectable hypoglycemic medications in the United States.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Inpatient encounter"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Includes all encounters in inpatient locations.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Mild hypoglycemia event"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Blood glucose 54.0 mg/dL to 69.9 mg/dL as identified on CLD or prescription POC device with no subsequent repeat test for blood glucose with a result \\> 80 mg/dL within 5 minutes of the start of the initial low blood glucose test.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Moderate hypoglycemia event"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Blood glucose 40.0 mg/dL to 53.9 mg/dL as identified on CLD or prescription POC device with no subsequent repeat test for blood glucose with a result \\> 80 mg/dL within 5 minutes of the start of the initial low blood glucose test.\n"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm",
+    "extension": [ {
+      "url": "term",
+      "valueString": "Severe hypoglycemia event"
+    }, {
+      "url": "definition",
+      "valueMarkdown": "Blood glucose \\< 40.0 mg/dL as identified on CLD or prescription POC device with no subsequent repeat test for blood glucose with a result \\> 80 mg/dL within 5 minutes of the start of the initial low blood glucose test.\n"
+    } ]
+  } ],
+  "url": "https://madie.cms.gov/Measure/NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "identifier": [ {
+    "use": "usual",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "short-name",
+        "display": "Short Name"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/shortName",
+    "value": "NHSNHypoglycemia"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "version-independent",
+        "display": "Version Independent"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:0d555fb6-f654-418c-a2b3-2dd0c3f0e7b4"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "version-specific",
+        "display": "Version Specific"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:dc9459ed-48ca-45f3-923e-3352d9547461"
+  } ],
+  "version": "1.1.000",
+  "name": "NHSNGlycemicControlHypoglycemiaInitialPopulation",
+  "title": "NHSN Glycemic Control Hypoglycemia Initial Population\n",
+  "status": "active",
+  "experimental": false,
+  "date": "2026-01-16T18:18:14+00:00",
+  "publisher": "Centers for Disease Control and Prevention (CDC)",
+  "contact": [ {
+    "telecom": [ {
+      "system": "url",
+      "value": "www.cdc.gov/hiv/"
+    } ]
+  } ],
+  "description": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period.\n",
+  "useContext": [ {
+    "code": {
+      "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code": "venue",
+      "display": "Venue"
+    },
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes",
+        "code": "eh",
+        "display": "EH"
+      } ]
+    }
+  } ],
+  "purpose": "The primary objective of the NHSN Glycemic Control module is to measure and benchmark medication-related hypoglycemia and hyperglycemia events within a facility. NHSN uses line-level data on medications and blood glucose reported by facilities to provide analytic reports to inform quality-improvement efforts for glycemic control and track patient safety events. As NHSN collects additional data, an additional objective will be to allow inter-facility benchmarking and evaluate national-level trends of medication-related hypoglycemia over time.\n",
+  "usage": "All participating inpatient facilities reporting data to the NHSN Glycemic Control module must be able to report data electronically in adherence to HL7 FHIR US Core FHIR R4.0.1 data standards and specifications and NHSN instructions for reporting dQMs, including the HL7 NHSN dQM Reporting Implementation Guide (https://build.fhir.org/ig/HL7/nhsn-dqm/).\n",
+  "copyright": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.\n",
+  "effectivePeriod": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "author": [ {
+    "name": "Lantana Consulting Group",
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.lantanagroup.com/"
+    } ]
+  } ],
+  "relatedArtifact": [ {
+    "type": "citation",
+    "citation": "American Diabetes Association. Economic costs of diabetes in the U.S. in 2012. Diabetes Care 2013;36:1033--46.\n"
+  }, {
+    "type": "citation",
+    "citation": "Bates, D. W., Levine, D. M., Salmasian, H., et al. (2023). The safety of inpatient health care. New England Journal of Medicine, 388(12), 142--153.\n"
+  }, {
+    "type": "citation",
+    "citation": "Classen, D. C., Resar, R., Griffin, F., et al. (2011). 'Global trigger tool' shows that adverse events in hospitals may be ten times greater than previously measured. Health Affairs, 30(4), 581--589.\n"
+  }, {
+    "type": "citation",
+    "citation": "Cook, C. B., Kongable, G. L., Potter, D. J., et al. (2009). Inpatient glucose control: A glycemic survey of 126 U.S. hospitals. Journal of Hospital Medicine, 4(E7), E7--E14.\n"
+  }, {
+    "type": "citation",
+    "citation": "Curkendall, S. M., Natoli, J. L., Alexander, C. M., et al. (2009). Economic and clinical impact of inpatient diabetic hypoglycemia. Endocrine Practice, 15(3), 302--312.\n"
+  }, {
+    "type": "citation",
+    "citation": "Egi, M., Bellomo, R., Stachowski, E., et al. (2010). Hypoglycemia and outcome in critically ill patients. Mayo Clinic Proceedings, 85(3), 217--224.\n"
+  }, {
+    "type": "citation",
+    "citation": "Finfer, S., Liu, B., Chittock, D. R., et al. (2012). Hypoglycemia and risk of death in critically ill patients. New England Journal of Medicine, 367, 1108--1118.\n"
+  }, {
+    "type": "citation",
+    "citation": "Gates, P. J., Meyerson, S. A., Baysari, M. T., et al. (2018). Preventable adverse drug events among inpatients: A systematic review. Pediatrics, 142, e20180805.\n"
+  }, {
+    "type": "citation",
+    "citation": "Hulkower RD, Pollack RM, Zonszein J. Understanding hypoglycemia in hospitalized patients. Diabetes Manag (Lond) 2014;4:165-76.\n"
+  }, {
+    "type": "citation",
+    "citation": "Maynard, G., et al. (2014). How sweet is it? The use of benchmarking to optimize inpatient glycemic control. Diabetes Spectrum, 27, 212--217.\n"
+  }, {
+    "type": "citation",
+    "citation": "Moghissi ES, Korytkowski MT, DiNardo M. American Association of Clinical Endocrinologists and American Diabetes Association consensus statement on inpatient glycemic control. Endocr Pract 2009;15:353-69.\n"
+  }, {
+    "type": "citation",
+    "citation": "Society of Hospital Medicine. Glycemic Control for Hospitalists. Optimizing Care, Preventing Hypoglycemia. Available at: https://www.hospitalmedicine.org/clinical-topics/glycemic-control.\n"
+  }, {
+    "type": "citation",
+    "citation": "Spector, W. D., Limcangco, R., Furukawa, M. F., Encinosa, W. E. (2017). The marginal costs of adverse drug events associated with exposures to anticoagulants and hypoglycemic agents during hospitalization. Medical Care, 55(8), 856--863.\n"
+  }, {
+    "type": "citation",
+    "citation": "Turchin, A., Matheny, M. E., Shubina, M., et al. (2009). Hypoglycemia and clinical outcomes in patients with diabetes hospitalized in the general ward. Diabetes Care, 32(7), 1153--1157.\n"
+  }, {
+    "type": "citation",
+    "citation": "Umpierrez, G. E., Isaacs, S. D., Bazargan, N., et al. (2002). Hyperglycemia: An independent marker of in-hospital mortality in patients with undiagnosed diabetes. Journal of Clinical Endocrinology \\& Metabolism, 87(3), 978--982.\n"
+  }, {
+    "type": "citation",
+    "citation": "Wexler, D. J., et al. (2007). Prevalence of hyper- and hypoglycemia among inpatients with diabetes: A national survey of 44 U.S. hospitals. Diabetes Care, 30(2), 367--369.\n"
+  } ],
+  "library": [ "https://madie.cms.gov/Library/NHSNGlycemicControlHypoglycemiaInitialPopulation" ],
+  "disclaimer": "Disclaimer This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nThis measure and specifications are subject to further revisions.\n",
+  "rationale": "The NHSN Glycemic Control module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood glucose data for inpatients. These data support calculation of inpatient medication-related hypoglycemia events by the NHSN application, which are then returned as reports to the facility.\n",
+  "clinicalRecommendationStatement": "Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (Wexler et al., 2007; Curkendall et al., 2009; Cook et al., 2009; Turchin et al., 2009; Egi et al., 2010). The prevalence of inpatient hypoglycemia varies with patient, hospital unit, timing of episodes, and glycemic threshold. Severe hypoglycemia (\\<40 mg/dL) occurs in 2%--5% of hospitalized patients with diabetes mellitus (DM), while hypoglycemia \\<70 mg/dL has been reported in up to 10% of all patients in the intensive care unit (Finfer et al., 2012). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemia events are common causes of adverse drug events (ADEs) that occur in inpatient settings (Bates et al., 2023; Spector et al., 2017). Rates of severe hypoglycemia vary across hospitals, suggesting opportunities for improvement in glycemic-control quality of care (Hulkower et al., 2014; ADA, 2013; Cook et al., 2009).\n\nInpatient hyperglycemia can increase morbidity, prolong hospital stays, and increase the risk of mortality (Maynard et al., 2014; SHM, n.d.; Umpierrez et al., 2002; Kyi et al., 2019; Pratiwi et al., 2021). The prevalence of inpatient hyperglycemia varies depending upon glycemic threshold and setting, but blood glucose \\>140 mg/dL likely occurs in approximately one-eighth to one-quarter of hospitalized patients (Pratiwi et al., 2021; Seisa et al., 2022; Barmanray et al., 2024). Tracking patient blood-glucose levels and implementing appropriate interventions may reduce complications associated with both hyperglycemia and hypoglycemia (ADA, 2013; Cook et al., 2009; Korytkowski et al., 2022; Moghissi et al., 2009).\n",
+  "group": [ {
+    "id": "Group_1",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+          "code": "cohort",
+          "display": "Cohort"
+        } ]
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
+      "valueCode": "Encounter"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-type",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-type",
+          "code": "process",
+          "display": "Process"
+        } ]
+      }
+    } ],
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "description": "All inpatient encounters, as well as ED and OBS encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period.\n",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Initial Population"
+      }
+    } ]
+  } ],
+  "supplementalData": [ {
+    "id": "sde-encounter-locations",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Encounter Locations\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Encounter Locations"
+    }
+  }, {
+    "id": "sde-location",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Location\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Location"
+    }
+  }, {
+    "id": "sde-medication",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Medication\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Medication"
+    }
+  }, {
+    "id": "sde-blood-glucose-observation",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Blood Glucose Observation\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Blood Glucose Observation"
+    }
+  }, {
+    "id": "sde-chief-complaint",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Chief Complaint\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Chief Complaint"
+    }
+  }, {
+    "id": "sde-condition",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Condition\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Condition"
+    }
+  }, {
+    "id": "sde-coverage",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Coverage\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Coverage"
+    }
+  }, {
+    "id": "sde-initial-population-encounters",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Initial Population Encounters\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Initial Population Encounters"
+    }
+  }, {
+    "id": "sde-medication-administration",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Medication Administration\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Medication Administration"
+    }
+  }, {
+    "id": "sde-medication-request",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Medication Request\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Medication Request"
+    }
+  }, {
+    "id": "sde-minimal-patient",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Minimal Patient\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Minimal Patient"
+    }
+  }, {
+    "id": "sde-service-request",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Service Request\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Service Request"
+    }
+  }, {
+    "id": "sde-ethnicity",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Ethnicity\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Ethnicity"
+    }
+  }, {
+    "id": "sde-payer",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Payer\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Payer"
+    }
+  }, {
+    "id": "sde-race",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Race\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Race"
+    }
+  }, {
+    "id": "sde-sex",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "individual"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "subject-list"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "summary"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType",
+      "valueCode": "data-collection"
+    } ],
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Sex\n",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Sex"
+    }
+  } ]
+}

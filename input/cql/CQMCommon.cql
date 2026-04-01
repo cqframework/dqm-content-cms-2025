@@ -472,7 +472,7 @@ define function "GetMedicationCode"(request MedicationRequest):
 /*
 @description: Returns the medication code for the given MedicationRequest
 */
-define fluent function getMedicationCode(request MedicationRequest):
+define fluent function getMedicationCode(request Choice<MedicationAdministration, MedicationRequest>):
   if request.medication is FHIR.CodeableConcept then
   	  request.medication as FHIR.CodeableConcept
   	else

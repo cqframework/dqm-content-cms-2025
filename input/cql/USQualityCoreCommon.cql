@@ -13,12 +13,32 @@ using USQualityCore version '0.1.0-cibuild'
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1'
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0'
 
+codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "TaskCodeSystem": 'http://hl7.org/fhir/CodeSystem/task-code' 
+
+// Encounter Class Codes
+code "ambulatory": 'AMB' from ActCode display 'ambulatory'
+code "emergency": 'EMER' from ActCode display 'emergency'
+code "field": 'FLD' from ActCode display 'field'
+code "home health": 'HH' from ActCode display 'home health'
+code "inpatient encounter": 'IMP' from ActCode display 'inpatient encounter'
+code "inpatient acute": 'ACUTE' from ActCode display 'inpatient acute'
+code "inpatient non-acute": 'NONAC' from ActCode display 'inpatient non-acute'
+code "observation encounter": 'OBSENC' from ActCode display 'observation encounter'
+code "pre-admission": 'PRENC' from ActCode display 'pre-admission'
+code "short stay": 'SS' from ActCode display 'short stay'
+code "virtual": 'VR' from ActCode display 'Virtual'
 
 //Task codes
 code "Fulfill": 'fulfill' from "TaskCodeSystem" display 'Fulfill'
 
 context Patient
+
+/*
+@description: Returns the id of the given uri (i.e. everything after the last slash)
+*/
+define fluent function getId(uri String):
+  Last(Split(uri, '/'))
 
 /*
 @description: Returns the System.ValueSet instance with the url and version (if present) of the given canonical reference
