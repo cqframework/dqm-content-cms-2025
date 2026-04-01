@@ -2398,7 +2398,9 @@
         <element name="performer" elementType="FHIR.Reference"/>
         <element name="performerType" elementType="FHIR.CodeableConcept"/>
         <element name="recorder" elementType="FHIR.Reference"/>
-        <element name="reasonCode" elementType="FHIR.CodeableConcept"/>
+        <element name="reasonCode">
+            <elementTypeSpecifier xsi:type="ListTypeSpecifier" elementType="FHIR.CodeableConcept"/>
+        </element>
         <element name="reasonReference">
             <elementTypeSpecifier xsi:type="ListTypeSpecifier" elementType="FHIR.Reference"/>
         </element>
