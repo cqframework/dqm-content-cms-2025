@@ -66,7 +66,7 @@ define "Encounter With Pharyngitis or Tonsillitis With Antibiotic":
   from
     "Encounter With Antibiotic Ordered Within Three Days" VisitWithAntibiotic,
     "Pharyngitis or Tonsillitis" AcutePharyngitisTonsillitis
-    where AcutePharyngitisTonsillitis.prevalenceInterval ( ) starts during day of VisitWithAntibiotic.period
+    where AcutePharyngitisTonsillitis.onset.toInterval ( ) starts during day of VisitWithAntibiotic.period
     return VisitWithAntibiotic
 
 define "Pharyngitis or Tonsillitis":

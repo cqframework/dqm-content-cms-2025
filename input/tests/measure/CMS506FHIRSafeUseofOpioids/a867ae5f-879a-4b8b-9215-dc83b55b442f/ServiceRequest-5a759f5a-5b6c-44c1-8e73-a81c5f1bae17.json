@@ -1,0 +1,21 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "5a759f5a-5b6c-44c1-8e73-a81c5f1bae17",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "103735009",
+      "display": "Palliative care (regime/therapy)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/a867ae5f-879a-4b8b-9215-dc83b55b442f"
+  },
+  "authoredOn": "2026-01-03T08:05:00.000+00:00"
+}

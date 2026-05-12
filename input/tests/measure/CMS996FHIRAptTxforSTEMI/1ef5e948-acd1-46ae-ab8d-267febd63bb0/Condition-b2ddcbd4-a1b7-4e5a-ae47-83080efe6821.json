@@ -1,0 +1,36 @@
+{
+  "resourceType": "Condition",
+  "id": "b2ddcbd4-a1b7-4e5a-ae47-83080efe6821",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-problems-health-concerns" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active",
+      "display": "active",
+      "userSelected": true
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "problem-list-item",
+      "display": "Problem List Item",
+      "userSelected": true
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2020-09",
+      "code": "401303003",
+      "display": "Acute ST segment elevation myocardial infarction (disorder)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/1ef5e948-acd1-46ae-ab8d-267febd63bb0"
+  },
+  "onsetDateTime": "2026-10-09T08:30:00.000Z"
+}

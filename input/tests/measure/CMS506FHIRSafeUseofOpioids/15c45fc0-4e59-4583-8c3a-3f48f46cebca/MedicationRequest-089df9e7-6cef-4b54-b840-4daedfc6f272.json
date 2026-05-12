@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "089df9e7-6cef-4b54-b840-4daedfc6f272",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "completed",
+  "intent": "order",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+      "code": "community",
+      "display": "Community",
+      "userSelected": true
+    } ]
+  } ],
+  "doNotPerform": false,
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "637540",
+      "display": "aspirin 325 MG / oxycodone hydrochloride 4.5 MG / oxycodone terephthalate 0.38 MG Oral Tablet",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/15c45fc0-4e59-4583-8c3a-3f48f46cebca"
+  },
+  "authoredOn": "2025-11-03T08:00:00.000+00:00",
+  "requester": {
+    "reference": "Practitioner/37a95fd5-012f-45e9-ac7f-eab2045e515a"
+  }
+}

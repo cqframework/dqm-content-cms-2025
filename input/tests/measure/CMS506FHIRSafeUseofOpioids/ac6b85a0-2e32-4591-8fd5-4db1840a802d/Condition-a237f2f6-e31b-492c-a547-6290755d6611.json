@@ -1,0 +1,44 @@
+{
+  "resourceType": "Condition",
+  "id": "a237f2f6-e31b-492c-a547-6290755d6611",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-problems-health-concerns" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active",
+      "display": "active",
+      "userSelected": true
+    } ]
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed",
+      "display": "Confirmed",
+      "userSelected": true
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "problem-list-item",
+      "display": "Problem List Item"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "417517009",
+      "display": "Sickle cell-hemoglobin C disease with crisis (disorder)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/ac6b85a0-2e32-4591-8fd5-4db1840a802d"
+  },
+  "onsetPeriod": {
+    "start": "2026-05-05T00:00:00.000Z"
+  }
+}

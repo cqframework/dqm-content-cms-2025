@@ -1,0 +1,77 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "7fd32742-4b47-45e1-ae6e-03639705a987",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "f38e3f0b-b13f-4a3d-af98-4bd959d3e0ca-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "7f26eb5a-f877-458b-b960-5de7ffa5b4d0"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#f38e3f0b-b13f-4a3d-af98-4bd959d3e0ca-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Matching Commensal excluded: S. epidermidis from 2 cultures but only 2 days antibiotics"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/1c5074aa-6318-4407-b2b1-005e562097a2"
+  }, {
+    "reference": "Patient/7f26eb5a-f877-458b-b960-5de7ffa5b4d0"
+  }, {
+    "reference": "Location/a7af3147-4d5d-421a-81a4-5f81bd0767f6"
+  }, {
+    "reference": "Encounter/cacd3e5a-e0f1-4358-9783-808813339978"
+  }, {
+    "reference": "Coverage/39ba4601-da0f-4e53-a3bf-a72851024e1b"
+  }, {
+    "reference": "Specimen/558410b4-deae-469f-96cd-44f077d36238"
+  }, {
+    "reference": "Observation/ab0c2911-19e0-4504-b499-43185ca70c5f"
+  }, {
+    "reference": "Specimen/63207267-1117-4232-b5b6-6c2611a119ed"
+  }, {
+    "reference": "Observation/6ad2b8fe-311e-487d-a34a-31299901860e"
+  }, {
+    "reference": "Practitioner/548783a7-e950-4e59-8bff-9bbe7e39750c"
+  }, {
+    "reference": "Device/d03f344b-6b05-4e27-8eac-29e81f8e104d"
+  }, {
+    "reference": "MedicationAdministration/207ed95e-1102-4ae0-84b9-5864632ac27c"
+  } ]
+}

@@ -1,0 +1,37 @@
+{
+  "resourceType": "Procedure",
+  "id": "74f0ad96-3e2a-4d74-a7d2-f19822c760b7",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedurenotdone" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-10-09T09:36:00.000+00:00"
+  } ],
+  "status": "not-done",
+  "statusReason": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "443390004",
+      "display": "Declined (qualifier value)",
+      "userSelected": true
+    } ]
+  },
+  "code": {
+    "coding": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "code": "0270346",
+      "display": "Dilation of Coronary Artery, One Artery, Bifurcation, with Drug-eluting Intraluminal Device, Percutaneous Approach",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/7edab122-3af3-4172-9231-7c1470ecc1e0"
+  },
+  "_performedDateTime": {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueCode": "not-performed"
+    } ]
+  }
+}

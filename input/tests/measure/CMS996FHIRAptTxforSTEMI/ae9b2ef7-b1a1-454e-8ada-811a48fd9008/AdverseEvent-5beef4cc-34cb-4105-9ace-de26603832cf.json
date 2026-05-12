@@ -1,0 +1,19 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "5beef4cc-34cb-4105-9ace-de26603832cf",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-adverseevent" ]
+  },
+  "actuality": "actual",
+  "event": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "1300134005",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/ae9b2ef7-b1a1-454e-8ada-811a48fd9008"
+  },
+  "date": "2026-12-09T11:00:00.000Z"
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Condition",
+  "id": "8d57ca7d-25ce-43d1-99a9-e37817648711",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-encounter-diagnosis" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active"
+    } ]
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed"
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "encounter-diagnosis",
+      "display": "Encounter Diagnosis"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "195080001"
+    }, {
+      "system": "http://hl7.org/fhir/sid/icd-9-cm",
+      "code": "427.31"
+    }, {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "code": "I48.0"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/f0de258a-3358-4f1d-a91d-e1c57a2cb61a"
+  },
+  "encounter": {
+    "reference": "Encounter/4227e805-a121-4fd6-a22b-7576b09a72bf"
+  },
+  "onsetDateTime": "2026-02-10T08:15:00.000Z"
+}

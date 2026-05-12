@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "2ffb2f21-aec2-4cbd-86a1-dd6637bdda41",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "completed",
+  "intent": "order",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+      "code": "discharge",
+      "display": "Discharge",
+      "userSelected": true
+    } ]
+  } ],
+  "doNotPerform": false,
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "2103192",
+      "display": "sufentanil 0.03 MG Sublingual Tablet",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/ac6b85a0-2e32-4591-8fd5-4db1840a802d"
+  },
+  "authoredOn": "2026-05-04T11:59:00.000Z",
+  "requester": {
+    "reference": "Practitioner/92a9cdd3-59f3-4e92-85d9-da18b7aa30ad"
+  }
+}

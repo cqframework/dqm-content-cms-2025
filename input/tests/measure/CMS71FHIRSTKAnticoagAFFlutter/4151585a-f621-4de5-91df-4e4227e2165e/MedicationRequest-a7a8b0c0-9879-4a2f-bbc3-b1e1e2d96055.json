@@ -1,0 +1,22 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "a7a8b0c0-9879-4a2f-bbc3-b1e1e2d96055",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "1006608"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/4151585a-f621-4de5-91df-4e4227e2165e"
+  },
+  "authoredOn": "2026-10-10T09:30:00.000Z",
+  "requester": {
+    "reference": "Practitioner/example"
+  }
+}

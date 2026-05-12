@@ -1,0 +1,60 @@
+{
+  "resourceType": "Claim",
+  "id": "5cb39420-b7a9-46d7-906c-34f4c2fbb337",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-claim" ]
+  },
+  "status": "active",
+  "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+      "code": "institutional"
+    } ]
+  },
+  "use": "claim",
+  "patient": {
+    "reference": "Patient/e0423a32-d2c0-437a-bb6e-aef7977a1e2c"
+  },
+  "created": "2026-05-01",
+  "provider": {
+    "reference": "Practitioner/b32cde3d-4bfa-4410-8ba9-b796f8fb1925"
+  },
+  "priority": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+      "code": "normal"
+    } ]
+  },
+  "diagnosis": [ {
+    "sequence": 1,
+    "diagnosisReference": {
+      "reference": "Condition/86f614b8-357e-4548-b0db-8fa10bb11700"
+    },
+    "type": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/ex-diagnosistype",
+        "code": "principal"
+      } ]
+    } ]
+  } ],
+  "insurance": [ {
+    "sequence": 1,
+    "focal": true,
+    "coverage": {
+      "reference": "Coverage/bc8e6be2-1550-46fc-adeb-a6b7bb9dbaa4"
+    }
+  } ],
+  "item": [ {
+    "sequence": 2,
+    "diagnosisSequence": [ 1 ],
+    "productOrService": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/ex-USCLS",
+        "code": "99555"
+      } ]
+    },
+    "encounter": [ {
+      "reference": "Encounter/812c550e-5db5-406a-98cd-727941c62714"
+    } ]
+  } ]
+}

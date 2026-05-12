@@ -1,0 +1,38 @@
+{
+  "resourceType": "Encounter",
+  "id": "11e450df-5e61-46b7-89ca-8620772e24ed",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency",
+    "userSelected": true
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "32485007",
+      "display": "Hospital admission (procedure)",
+      "userSelected": true
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/31cd9edb-02a8-4208-956a-baac147ed8d8"
+  },
+  "period": {
+    "start": "2026-10-08T05:00:00.000+00:00"
+  },
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "428371000124100",
+        "display": "Discharge to healthcare facility for hospice care (procedure)",
+        "userSelected": true
+      } ]
+    }
+  }
+}

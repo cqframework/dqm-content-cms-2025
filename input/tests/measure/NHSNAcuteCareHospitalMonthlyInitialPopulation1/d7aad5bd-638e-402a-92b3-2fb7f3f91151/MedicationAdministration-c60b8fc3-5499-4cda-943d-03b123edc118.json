@@ -1,0 +1,115 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "c60b8fc3-5499-4cda-943d-03b123edc118",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationadministration" ]
+  },
+  "instantiates": [ "http://example.org/fhir/PlanDefinition/insulin-protocol" ],
+  "partOf": [ {
+    "reference": "Procedure/proc-90aac3bf"
+  } ],
+  "status": "completed",
+  "statusReason": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "373066001",
+      "display": "Yes"
+    } ]
+  } ],
+  "category": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medication-admin-category",
+      "code": "inpatient",
+      "display": "Inpatient"
+    } ]
+  },
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "310488",
+      "display": "Glipizide 10 MG Oral Tablet"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/d7aad5bd-638e-402a-92b3-2fb7f3f91151"
+  },
+  "context": {
+    "reference": "Encounter/7ba9f7ab-2933-4fcc-9522-9281d2701077"
+  },
+  "supportingInformation": [ {
+    "reference": "Observation/obs-90aac3bf"
+  } ],
+  "effectivePeriod": {
+    "start": "2025-01-09T08:00:00.000Z",
+    "end": "2025-01-09T08:05:00.000Z"
+  },
+  "performer": [ {
+    "function": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function",
+        "code": "performer",
+        "display": "Performer"
+      } ]
+    },
+    "actor": {
+      "reference": "Practitioner/b274967b-3d35-4acc-8362-520772638ff7"
+    }
+  } ],
+  "reasonCode": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "44054006",
+      "display": "Diabetes mellitus type 2"
+    } ]
+  } ],
+  "reasonReference": [ {
+    "reference": "Condition/cond-90aac3bf"
+  } ],
+  "request": {
+    "reference": "MedicationRequest/req-90aac3bf"
+  },
+  "device": [ {
+    "reference": "Device/b72031df-6080-4412-9703-f8a1639faa44"
+  } ],
+  "note": [ {
+    "authorString": "Nurse Admin",
+    "time": "2025-01-09T08:00:00.000Z",
+    "text": "Patient tolerated medication well"
+  } ],
+  "dosage": {
+    "text": "10 units subcutaneously",
+    "site": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "368209003",
+        "display": "Right upper arm structure"
+      } ]
+    },
+    "route": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "34206005",
+        "display": "Subcutaneous route"
+      } ]
+    },
+    "method": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "422145002",
+        "display": "Inject"
+      } ]
+    },
+    "dose": {
+      "value": 10,
+      "unit": "U",
+      "system": "http://unitsofmeasure.org",
+      "code": "U"
+    },
+    "rateQuantity": {
+      "value": 1,
+      "unit": "mL/hour",
+      "system": "http://unitsofmeasure.org",
+      "code": "mL/h"
+    }
+  }
+}

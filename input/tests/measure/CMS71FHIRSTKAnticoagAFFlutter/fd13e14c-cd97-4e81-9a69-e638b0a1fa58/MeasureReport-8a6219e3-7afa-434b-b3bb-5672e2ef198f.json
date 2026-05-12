@@ -1,0 +1,113 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "8a6219e3-7afa-434b-b3bb-5672e2ef198f",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "aa28d4bc-f97f-4aeb-8582-9914b6dfb04c-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "fd13e14c-cd97-4e81-9a69-e638b0a1fa58"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#aa28d4bc-f97f-4aeb-8582-9914b6dfb04c-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "ED visit with Principal Dx = Ischemic Stroke. Inpatient encounter Principal DX=AFIB \n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/fd13e14c-cd97-4e81-9a69-e638b0a1fa58"
+  }, {
+    "reference": "Encounter/e14c7d6b-c664-4d7d-9cca-365102a320b0"
+  }, {
+    "reference": "Encounter/2840bcdb-eb55-4a4c-97e6-f1c7117aac28"
+  }, {
+    "reference": "Encounter/23b1d014-1944-4708-8cf9-e9adc614c955"
+  }, {
+    "reference": "Claim/fdba24bf-d443-4509-a509-3585bb04023a"
+  }, {
+    "reference": "Coverage/56d0a9ab-6d98-4d19-b0e9-54157ce78112"
+  }, {
+    "reference": "Condition/6ee56cae-0d94-42ed-b767-122f74621ecc"
+  }, {
+    "reference": "Condition/5a8b36b0-70ef-4d1f-b6b8-1d3f0ef7f4f9"
+  }, {
+    "reference": "Organization/d2634fb5-8b6c-4872-8a2a-bf06625e5e40"
+  }, {
+    "reference": "Practitioner/ebdbe743-21aa-40e0-9e6a-e4c7683c70dc"
+  } ]
+}

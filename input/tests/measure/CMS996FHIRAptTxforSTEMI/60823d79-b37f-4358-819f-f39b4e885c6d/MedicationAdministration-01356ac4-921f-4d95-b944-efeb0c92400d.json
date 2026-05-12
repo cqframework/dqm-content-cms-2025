@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "01356ac4-921f-4d95-b944-efeb0c92400d",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationadministrationnotdone" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-10-11T09:00:00.000Z"
+  } ],
+  "status": "not-done",
+  "statusReason": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "443390004",
+      "display": "Refused"
+    } ]
+  } ],
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "1804799",
+      "display": "alteplase 100 MG Injection",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/60823d79-b37f-4358-819f-f39b4e885c6d"
+  },
+  "effectivePeriod": {
+    "start": "2026-10-11T09:00:00.000Z"
+  }
+}

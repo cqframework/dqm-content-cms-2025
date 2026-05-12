@@ -1,0 +1,21 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "efb99c51-c31a-4be1-89e9-96b365bf605a",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "305381007",
+      "display": "Admission to palliative care department (procedure)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/552a6dbe-5e55-4388-b7c0-234c5d712e0a"
+  },
+  "authoredOn": "2026-02-03T10:00:00.000+00:00"
+}

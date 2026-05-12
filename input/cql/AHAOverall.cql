@@ -9,6 +9,8 @@ using FHIR version '4.0.1'
 
 include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
 include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
+include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
+include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
 
 include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 
@@ -197,7 +199,7 @@ define fluent function isMedicationNotRequestedOrderedDuringHeartFailureOutpatie
 /*
 @description: Returns true if the given Condition overlaps the heart failure outpatient encounter with history of moderate or severe LVSD at any point
 */
-define fluent function overlapsHeartFailureOutpatientEncounter(Condition Condition):
+define fluent function overlapsHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )
@@ -207,7 +209,7 @@ define fluent function overlapsHeartFailureOutpatientEncounter(Condition Conditi
 @overloaded
 @description: Returns true if the given Condition overlaps after the day of the heart failure outpatient encounter with history of moderate or severe LVSD
 */
-define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition Condition):
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )

@@ -1,0 +1,21 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "c356584a-5f3c-4037-bf8c-95bb462517bb",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-adverseevent" ]
+  },
+  "actuality": "actual",
+  "event": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2020-09",
+      "code": "293572000",
+      "display": "Urokinase adverse reaction (disorder)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/5230ea22-66f1-4132-9acf-0e810f578472"
+  },
+  "recordedDate": "2026-10-08T08:00:00.000Z"
+}

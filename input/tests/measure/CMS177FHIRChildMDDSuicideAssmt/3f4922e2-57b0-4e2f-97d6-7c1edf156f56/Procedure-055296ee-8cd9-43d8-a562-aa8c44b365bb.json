@@ -1,0 +1,22 @@
+{
+  "resourceType": "Procedure",
+  "id": "055296ee-8cd9-43d8-a562-aa8c44b365bb",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-07-12T11:45:00.000+00:00"
+  } ],
+  "status": "completed",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "225337009"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/3f4922e2-57b0-4e2f-97d6-7c1edf156f56"
+  },
+  "performedDateTime": "2026-07-12T11:45:00.000+00:00"
+}

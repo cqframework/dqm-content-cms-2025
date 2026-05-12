@@ -25,6 +25,11 @@ code "confirmed": 'confirmed' from ConditionVerificationStatusCodes display 'con
 code "unconfirmed": 'unconfirmed' from ConditionVerificationStatusCodes display 'unconfirmed'
 code "provisional": 'provisional' from ConditionVerificationStatusCodes display 'provisional'
 code "differential": 'differential' from ConditionVerificationStatusCodes display 'differential'
+code "entered-in-error": 'entered-in-error' from ConditionVerificationStatusCodes display 'entered-in-error'
+code "refuted": 'refuted' from ConditionVerificationStatusCodes display 'refuted'
+code "inactive": 'inactive' from ConditionVerificationStatusCodes display 'inactive'
+code "resolved": 'resolved' from ConditionVerificationStatusCodes display 'resolved'
+code "remission": 'remission' from ConditionVerificationStatusCodes display 'remission'
 
 context Patient
 

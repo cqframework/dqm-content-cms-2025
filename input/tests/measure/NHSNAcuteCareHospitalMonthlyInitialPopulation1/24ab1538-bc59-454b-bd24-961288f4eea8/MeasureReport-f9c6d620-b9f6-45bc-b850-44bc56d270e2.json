@@ -1,0 +1,71 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "f9c6d620-b9f6-45bc-b850-44bc56d270e2",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "b447ae38-9e48-42a6-be11-b9e0d1f4be94-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "24ab1538-bc59-454b-bd24-961288f4eea8"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#b447ae38-9e48-42a6-be11-b9e0d1f4be94-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Blood culture contamination: 1 of 2 paired sets positive for S. epidermidis"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/e0d5f692-e820-4bbe-ab32-2ea4ad050615"
+  }, {
+    "reference": "Patient/24ab1538-bc59-454b-bd24-961288f4eea8"
+  }, {
+    "reference": "Location/68a05a70-e02c-4380-9842-89bf161cf146"
+  }, {
+    "reference": "Encounter/615c08d8-7f95-4d90-be63-bcff9e4f47a7"
+  }, {
+    "reference": "Coverage/a20f077d-ccc8-4d3b-8b63-e6f0e43f2442"
+  }, {
+    "reference": "Specimen/f92b72f0-e359-47f7-ab70-d889c66f5558"
+  }, {
+    "reference": "Observation/cdf3a87f-da3c-43ce-8c52-96b0eda93565"
+  }, {
+    "reference": "Specimen/9915d516-6084-43b1-87bd-44c1d7e7cf35"
+  }, {
+    "reference": "Observation/d80ac1e5-c631-4e65-8605-d28aa99669cf"
+  } ]
+}

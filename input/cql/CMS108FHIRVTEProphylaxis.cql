@@ -1,7 +1,7 @@
 /*
 NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
 */
-library CMS108FHIRVTEProphylaxis version '1.0.000'
+library CMS108FHIRVTEProphylaxis version '1.1.000'
 
 using USQualityCore version '0.1.0-cibuild'
 using USCore version '6.1.0-derived'
@@ -406,7 +406,7 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,
-          authoredOn: DeviceNotApplied.recorded()
+          authoredOn: DeviceNotApplied.performed
         }
     )
 

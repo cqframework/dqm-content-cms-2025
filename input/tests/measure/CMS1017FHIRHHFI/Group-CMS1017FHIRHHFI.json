@@ -1,0 +1,337 @@
+{
+  "resourceType": "Group",
+  "id": "CMS1017FHIRHHFI",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/CMS1017FHIRHHFI"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/02d5c5f5-9487-42af-bb5e-dfc3aaeb70eb",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0653f9dc-8461-484e-a901-f17709f04776",
+      "display": "RVOpioidActive DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0884b17b-baa4-47c0-a2b6-5849230dcf43",
+      "display": "2Enc2FallsWithInjury NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0dfafc1a-cf94-4ca1-becf-c1b843896810",
+      "display": "Enc1ExclEnc2NumerFallDoc NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/113d43da-4cad-4907-804e-63afb7652b27",
+      "display": "ModerateInjuryPOAandModInjNPOA NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1ac96e3e-856c-417a-9c68-0df860ce73c8",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1b700def-98b0-418c-b0a7-80ecb275597f",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1e2ddc95-76d4-4be7-8273-2b35371a727b",
+      "display": "RVOsteoporosisPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/21d7f7e1-3977-4227-8792-2e316460326f",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/25c753a7-b6b4-4335-bd7c-05b68b0324a4",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/28684639-1aa3-429c-9cac-4e8217995b13",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3279a237-292f-47b1-9039-ba46b57e765a",
+      "display": "FallNPOANoInjury NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/365ed821-88d1-4459-9d32-dd4fa6426335",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/38d7ec48-dc28-4875-8f24-451ecd3dab5a",
+      "display": "InjuryNPOANoFall NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3c34a5af-1ef1-4b86-a41f-ac1d44e96ca0",
+      "display": "DenomMOFailsLT12HrIPStayWithFall OBSERVFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3ee27450-2fd5-4930-bfbb-e718074e4087",
+      "display": "DenomMeasObsPassDueTo1DayAnd1MinLOS OBSERVPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/404570c9-b21f-4fa2-be5d-6d02c910fea6",
+      "display": "Enc1FallPOAEnc2FallNPOAAndInjuryNPOA DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4402a9b9-3d48-4472-a000-579b7baa88fa",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4d82afdc-16a1-4f82-849f-10ed8bf9d9a0",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/55931284-058b-4776-882c-720caddd3366",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/559b63eb-fb48-45f5-bf6c-4f7c2901007d",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/55b18e1a-c949-4d85-b1c5-caa91fc6ac4b",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/56d5fe48-53b2-4599-870c-58bfc4ba0145",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/58079a8d-2808-4029-b1fb-67ab4a841aa9",
+      "display": "2Enc2FallsWithNullPOAInjury NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5829147b-0a83-464b-bc92-cebb96b4ae38",
+      "display": "Enc1FallPOAEnc2FallNPOAAndInjuryNPOA IPPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5926d62e-8eb9-4742-9bdf-efdcbd08ab7b",
+      "display": "2Enc2FallsWithInjuryNullPOAFalls NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5d7d44f5-aa75-4889-89d6-e7586ac5de4a",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5ff2713d-ca89-42ae-91bb-cba3e1d9a487",
+      "display": "1stEncExcluded2ndEncNumHit NUMEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/632475eb-a20a-43d6-baa7-f377ef8c5324",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6442de45-b65d-4bda-8143-0e9c28d19485",
+      "display": "FallAdvEventNoDates NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/65163106-0b19-4548-a994-f44b35e162e0",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/66ee842d-d852-42dd-928e-7f9bff5c52cd",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6916a60d-ffa4-4d2c-8d96-73a31aa18854",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/735a7993-89b8-4b21-87c2-d5f57df0f5a8",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/76c1dbbc-10c3-43af-acd3-41cf5d4838eb",
+      "display": "FallDxPOAByIndicatorW DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/77178177-d553-4bf3-8c92-65382bfbee73",
+      "display": "PtAgeNot18EncounterStart IPPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/7c4f1e55-2462-45e5-9062-5cf8d04b40e2",
+      "display": "2Encounters1FallWithInjury NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8045dee0-645e-497b-a5e8-ad659cdcf8c6",
+      "display": "2EncounterOneWithMultipleFalls NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/814eb904-2889-4c31-9dfe-5b682eb473a4",
+      "display": "Enc1FallPOAEnc2FallNPOAAndInjuryNPOA IPPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8552c09f-c2db-4069-9d15-41efafe4711a",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8b607dee-4e17-492d-9949-0c69c10587e3",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8b63d691-46a8-4ce6-8dee-60aea7f34f82",
+      "display": "IPStartsGTOneHrFromObservationEnd NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/951a2d40-7274-4820-bfa5-51d28cfd91ab",
+      "display": "FallPOAisW DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/966cc666-8f6e-4d6e-93a9-0c4b6345e966",
+      "display": "FallNullPOAInjuryNullPOA NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/972573e8-bd51-4b77-a954-39babec1a055",
+      "display": "MajorInjuryPOAandNPOA DENEXFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9897529f-07ba-42c6-a7b2-5d856a925a6a",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a0c41f8f-c8d9-4ae5-a07d-e87b16ae1367",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a2630a47-3cd8-470c-9fe2-8f4e1066a2d0",
+      "display": "FallPOA2ndFallWithInjuryDuringEnc NUMEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a2b51ea0-5a72-4bda-abe5-dd393bfa0545",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c04e2f24-703c-4999-a9b7-ca1d65aac5b5",
+      "display": "DenomMeasObsFailsLT1day OBSERVFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c9413f99-840f-449d-b4ab-427fb7de6aa0",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ca728a1a-9a25-46b6-80bc-bfffae233f6c",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d305cce9-ad3c-4259-9f9d-6026974fa847",
+      "display": "EncounterFallandModInjuryNPOA NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d62aa527-2547-48a1-aece-d649b05c7d6e",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e287cd76-85bd-4f51-9c41-f19551e83c14",
+      "display": "RVPrincipalDiagnosis DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e3212bfa-f3a9-4323-8993-9ef74c2f8d89",
+      "display": "FallNullPOAModerateInjuryNullPOA NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e6383b7c-aa91-42f7-8dc8-693a8c7dcaf3",
+      "display": "MajorInjuryPOAandModInjNPOA NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e6d91b78-a66f-4fcc-a9a7-edb3d862803e",
+      "display": "InjuryDiagHasNoIndicator NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ea6b3f44-c6cd-4417-ae60-e97564bf24f9",
+      "display": "DenomObsPassDueTo1DayPlus23Hrs59M OBSERVPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f18417e1-5990-40b7-b927-5b50015380a2",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f4708272-e5d3-4b6a-9431-a3cd2eb6809f",
+      "display": "RVDeliriumDxPOA DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f771a339-74f0-4651-90f3-1c820edea547",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f90151aa-9bd6-4c0c-bed8-5d43fe7fb8bb",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/fbbd3f4a-3e8e-40b9-ac83-0e80b2c129ec",
+      "display": "Patient Example"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/fd4ea84b-cd39-4d03-9641-9ca8d10bbe67",
+      "display": "2Encounters1Num1Exclusion NUMEXPass"
+    }
+  } ]
+}

@@ -1,0 +1,30 @@
+{
+  "resourceType": "Encounter",
+  "id": "f50a9c34-7be2-42ca-bf39-f571dd738e61",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency"
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "4525004"
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/2d694619-fb6d-43e5-8f56-4eb95752c7a7"
+  },
+  "period": {
+    "start": "2026-09-30T07:59:00.000Z",
+    "end": "2026-09-30T08:00:00.000Z"
+  },
+  "length": {
+    "value": 0,
+    "unit": "days"
+  }
+}

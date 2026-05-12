@@ -1,0 +1,107 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "4232354f-3af2-41f8-8779-868cadd081f5",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "516a323a-bccc-4bc7-8f9f-454a5ffc798c-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "d5991213-5237-4eb3-a6e9-61404f836d3b"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#516a323a-bccc-4bc7-8f9f-454a5ffc798c-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Principal diagnosis not in value set\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/d5991213-5237-4eb3-a6e9-61404f836d3b"
+  }, {
+    "reference": "Encounter/74a4f4e5-e330-4170-945f-d625ef425ca7"
+  }, {
+    "reference": "Coverage/30b7bc40-ba6f-4abe-b91f-fb81f3ea9447"
+  }, {
+    "reference": "Condition/9a098daf-d0ce-4e59-9991-0e222af22539"
+  }, {
+    "reference": "Claim/5e838ab1-2210-4c2d-b2eb-5a95817fd66b"
+  }, {
+    "reference": "Organization/b6622449-55f8-4ff8-a6e4-95e7b4ce54fa"
+  }, {
+    "reference": "Practitioner/c08c6bc4-233e-4af1-812d-85c0458e2396"
+  } ]
+}

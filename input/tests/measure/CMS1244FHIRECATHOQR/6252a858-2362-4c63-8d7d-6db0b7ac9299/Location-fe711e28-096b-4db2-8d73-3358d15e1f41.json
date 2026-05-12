@@ -1,0 +1,22 @@
+{
+  "resourceType": "Location",
+  "id": "fe711e28-096b-4db2-8d73-3358d15e1f41",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-location" ]
+  },
+  "identifier": [ {
+    "use": "usual",
+    "system": "http://exampleoflocation.com",
+    "value": "B1-S.F2"
+  } ],
+  "name": "Medical Surgical East, first floor",
+  "type": [ {
+    "coding": [ {
+      "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
+      "version": "2022",
+      "code": "1108-0",
+      "display": "Emergency Department",
+      "userSelected": true
+    } ]
+  } ]
+}

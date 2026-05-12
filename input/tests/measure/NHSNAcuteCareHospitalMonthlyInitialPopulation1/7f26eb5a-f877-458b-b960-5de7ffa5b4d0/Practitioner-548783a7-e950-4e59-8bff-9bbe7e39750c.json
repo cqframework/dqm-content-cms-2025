@@ -1,0 +1,15 @@
+{
+  "resourceType": "Practitioner",
+  "id": "548783a7-e950-4e59-8bff-9bbe7e39750c",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-practitioner" ]
+  },
+  "identifier": [ {
+    "system": "http://hl7.org/fhir/sid/us-npi",
+    "value": "1234567893"
+  } ],
+  "name": [ {
+    "family": "Nurse",
+    "given": [ "Admin" ]
+  } ]
+}

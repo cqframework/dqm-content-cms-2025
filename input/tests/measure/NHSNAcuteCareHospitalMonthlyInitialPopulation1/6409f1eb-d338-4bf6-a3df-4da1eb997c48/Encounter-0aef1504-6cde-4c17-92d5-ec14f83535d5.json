@@ -1,0 +1,124 @@
+{
+  "resourceType": "Encounter",
+  "id": "0aef1504-6cde-4c17-92d5-ec14f83535d5",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "identifier": [ {
+    "system": "https://madie.cms.gov/encounter-id",
+    "value": "efbbe8ad-068e-46ce-8ff8-cecfb929b88b"
+  } ],
+  "status": "finished",
+  "statusHistory": [ {
+    "status": "arrived",
+    "period": {
+      "start": "2025-01-18T16:00:00.000Z",
+      "end": "2025-01-18T16:00:00.000Z"
+    }
+  } ],
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency"
+  },
+  "classHistory": [ {
+    "class": {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "code": "EMER",
+      "display": "emergency"
+    },
+    "period": {
+      "start": "2025-01-18T16:00:00.000Z",
+      "end": "2025-01-18T22:00:00.000Z"
+    }
+  } ],
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "4525004",
+      "display": "Emergency department visit"
+    } ]
+  } ],
+  "serviceType": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "394802001",
+      "display": "General medicine"
+    } ]
+  },
+  "priority": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-ActPriority",
+      "code": "R",
+      "display": "routine"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/6409f1eb-d338-4bf6-a3df-4da1eb997c48"
+  },
+  "period": {
+    "start": "2025-01-18T16:00:00.000Z",
+    "end": "2025-01-18T22:00:00.000Z"
+  },
+  "length": {
+    "value": 5,
+    "unit": "days",
+    "system": "http://unitsofmeasure.org",
+    "code": "d"
+  },
+  "reasonCode": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "44054006",
+      "display": "Diabetes mellitus type 2"
+    } ]
+  } ],
+  "reasonReference": [ {
+    "reference": "Condition/cond-efbbe8ad"
+  } ],
+  "diagnosis": [ {
+    "condition": {
+      "reference": "Condition/diag-efbbe8ad"
+    },
+    "use": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+        "code": "AD",
+        "display": "Admission diagnosis"
+      } ]
+    },
+    "rank": 1
+  } ],
+  "account": [ {
+    "reference": "Account/acct-efbbe8ad"
+  } ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+        "code": "home",
+        "display": "Home"
+      } ]
+    }
+  },
+  "location": [ {
+    "location": {
+      "reference": "Location/8e45e949-a48a-4bed-bc74-27d745f53370"
+    },
+    "status": "active",
+    "physicalType": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+        "code": "ro",
+        "display": "Room"
+      } ]
+    },
+    "period": {
+      "start": "2025-01-18T16:00:00.000Z",
+      "end": "2025-01-18T22:00:00.000Z"
+    }
+  } ],
+  "partOf": {
+    "reference": "Encounter/parent-efbbe8ad"
+  }
+}

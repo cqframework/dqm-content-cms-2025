@@ -1,0 +1,33 @@
+{
+  "resourceType": "Encounter",
+  "id": "b7b90853-3156-4c6a-b03a-752a5a1f500e",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency",
+    "userSelected": true
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2020-09",
+      "code": "4525004",
+      "display": "Emergency department patient visit (procedure)",
+      "userSelected": true
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/9f17f3e9-55eb-4c67-a4e0-1cc85961330d"
+  },
+  "period": {
+    "start": "2026-10-09T08:05:00.000Z",
+    "end": "2026-10-10T07:15:00.000Z"
+  },
+  "reasonReference": [ {
+    "reference": "Condition/4c17f478-08e1-48c2-a793-2870a2b1ff36"
+  } ]
+}

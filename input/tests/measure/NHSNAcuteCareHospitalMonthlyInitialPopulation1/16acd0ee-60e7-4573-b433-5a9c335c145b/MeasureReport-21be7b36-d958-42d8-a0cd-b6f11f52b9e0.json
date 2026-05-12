@@ -1,0 +1,73 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "21be7b36-d958-42d8-a0cd-b6f11f52b9e0",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "aa579327-8308-4cec-969b-13127ff136d6-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "16acd0ee-60e7-4573-b433-5a9c335c145b"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#aa579327-8308-4cec-969b-13127ff136d6-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Footnote**: ED insulin 30 min before admission, severe hypo after"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/5d9f5789-aaf6-42a5-957d-cdb99700a45c"
+  }, {
+    "reference": "Patient/16acd0ee-60e7-4573-b433-5a9c335c145b"
+  }, {
+    "reference": "Location/ff7839ed-a73f-4ca7-8527-d25868ddf523"
+  }, {
+    "reference": "Encounter/7255d9b2-268e-4900-b93e-93f8a094d8a9"
+  }, {
+    "reference": "Coverage/651e98f1-26fa-48b0-b99f-74791b7031bb"
+  }, {
+    "reference": "Practitioner/e48379ff-52bf-44ae-a9bc-d0978c6c3385"
+  }, {
+    "reference": "Device/d2095ede-c604-46f7-83b7-61c91467b07a"
+  }, {
+    "reference": "MedicationAdministration/7af76567-69ba-48fc-9b7e-e2ffb81421d2"
+  }, {
+    "reference": "Specimen/ed321bf9-6d20-4813-af6e-117f021db163"
+  }, {
+    "reference": "Observation/8abc15bd-9e25-4f94-b4a3-95313984bdce"
+  } ]
+}

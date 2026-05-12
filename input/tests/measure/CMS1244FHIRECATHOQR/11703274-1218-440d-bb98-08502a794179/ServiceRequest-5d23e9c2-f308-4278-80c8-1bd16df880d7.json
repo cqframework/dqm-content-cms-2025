@@ -1,0 +1,22 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "5d23e9c2-f308-4278-80c8-1bd16df880d7",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "183452005",
+      "display": "Emergency hospital admission (procedure)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/11703274-1218-440d-bb98-08502a794179"
+  },
+  "authoredOn": "2026-05-01T01:00:00.000+00:00"
+}

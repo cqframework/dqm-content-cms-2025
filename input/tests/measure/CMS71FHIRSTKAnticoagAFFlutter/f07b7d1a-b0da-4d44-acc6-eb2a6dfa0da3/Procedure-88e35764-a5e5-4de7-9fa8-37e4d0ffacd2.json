@@ -1,0 +1,28 @@
+{
+  "resourceType": "Procedure",
+  "id": "88e35764-a5e5-4de7-9fa8-37e4d0ffacd2",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-11-19T13:35:00.000Z"
+  } ],
+  "status": "completed",
+  "code": {
+    "coding": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "code": "02560ZZ"
+    }, {
+      "system": "http://snomed.info/sct",
+      "code": "175095005"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/f07b7d1a-b0da-4d44-acc6-eb2a6dfa0da3"
+  },
+  "performedPeriod": {
+    "start": "2026-11-20T06:00:00.000Z",
+    "end": "2026-11-20T07:15:00.000Z"
+  }
+}

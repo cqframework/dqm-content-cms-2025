@@ -15,6 +15,14 @@ include hl7.fhir.uv.cql.FHIRCommon version '2.0.0'
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "TaskCodeSystem": 'http://hl7.org/fhir/CodeSystem/task-code' 
+codesystem "AllergyIntoleranceClinicalStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'
+codesystem "AllergyIntoleranceVerificationStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'
+
+// Allergy/Intolerance Verification Status Codes - Consider value sets for these
+code "allergy-unconfirmed": 'unconfirmed' from AllergyIntoleranceVerificationStatusCodes display 'Unconfirmed'
+code "allergy-confirmed": 'confirmed' from AllergyIntoleranceVerificationStatusCodes display 'Confirmed'
+code "allergy-refuted": 'refuted' from AllergyIntoleranceVerificationStatusCodes display 'Refuted'
+code "allergy-active": 'active' from AllergyIntoleranceClinicalStatusCodes display 'Active'
 
 // Encounter Class Codes
 code "ambulatory": 'AMB' from ActCode display 'ambulatory'

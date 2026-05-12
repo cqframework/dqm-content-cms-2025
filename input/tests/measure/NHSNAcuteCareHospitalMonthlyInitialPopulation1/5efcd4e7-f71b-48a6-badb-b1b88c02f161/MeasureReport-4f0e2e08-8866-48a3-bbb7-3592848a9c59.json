@@ -1,0 +1,83 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "4f0e2e08-8866-48a3-bbb7-3592848a9c59",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "d20e16ee-a94a-4726-99ad-efad526e2199-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "5efcd4e7-f71b-48a6-badb-b1b88c02f161"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#d20e16ee-a94a-4726-99ad-efad526e2199-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Two severe hypoglycemia events (36 mg/dL and 28 mg/dL) during same encounter"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/057bd323-5071-4a2a-a81f-d0a0085504e6"
+  }, {
+    "reference": "Patient/5efcd4e7-f71b-48a6-badb-b1b88c02f161"
+  }, {
+    "reference": "Location/b3238a3c-e463-43c0-9324-58486cb4422f"
+  }, {
+    "reference": "Encounter/23835de6-2bc5-430c-bc10-e8caf6b0f394"
+  }, {
+    "reference": "Coverage/1094ace5-9e56-4755-9596-27b9639a8cfb"
+  }, {
+    "reference": "Practitioner/caa2945d-612c-4ceb-b176-067f69861738"
+  }, {
+    "reference": "Device/6b3848bc-71c0-42fd-8146-b756d94a5cbd"
+  }, {
+    "reference": "MedicationAdministration/3d9767e1-5826-40f1-8ea7-9b633ec9e4fe"
+  }, {
+    "reference": "Specimen/fd9810e3-cba6-44b6-ab1a-829e9d6d776f"
+  }, {
+    "reference": "Observation/276b6be8-bc8b-4783-8d20-02acc2faf00a"
+  }, {
+    "reference": "Practitioner/75f7a90c-353b-4e26-86ad-1c36f295aed5"
+  }, {
+    "reference": "Device/231f1a69-5a10-4a78-8fae-aa7a3476bdd8"
+  }, {
+    "reference": "MedicationAdministration/9e9afdc2-f762-4592-99d5-844732c17ab2"
+  }, {
+    "reference": "Specimen/071383c2-a3ee-494d-8571-27dc35a20143"
+  }, {
+    "reference": "Observation/41ccdb1f-158f-4ae6-95db-f473fbc475ca"
+  } ]
+}

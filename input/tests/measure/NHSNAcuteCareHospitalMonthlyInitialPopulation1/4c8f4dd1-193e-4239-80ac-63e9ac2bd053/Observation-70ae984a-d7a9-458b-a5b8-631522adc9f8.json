@@ -1,0 +1,115 @@
+{
+  "resourceType": "Observation",
+  "id": "70ae984a-d7a9-458b-a5b8-631522adc9f8",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-observation-lab" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/observation-bodyPosition",
+    "valueCodeableConcept": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "33586001",
+        "display": "Sitting position"
+      } ]
+    }
+  } ],
+  "partOf": [ {
+    "reference": "Procedure/proc-c2a3bd28"
+  } ],
+  "status": "final",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+      "code": "laboratory",
+      "display": "Laboratory"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://loinc.org",
+      "code": "2339-0",
+      "display": "Glucose [Mass/volume] in Blood"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/4c8f4dd1-193e-4239-80ac-63e9ac2bd053"
+  },
+  "encounter": {
+    "reference": "Encounter/1d7b49dc-db02-4ebd-821f-f110fcd46d1a"
+  },
+  "effectiveDateTime": "2025-01-15T12:00:00.000Z",
+  "issued": "2025-01-15T12:00:00.000Z",
+  "valueQuantity": {
+    "value": 32,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "interpretation": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+      "code": "N",
+      "display": "Normal"
+    } ]
+  } ],
+  "bodySite": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "368209003",
+      "display": "Right upper arm structure"
+    } ]
+  },
+  "method": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "129300006",
+      "display": "Measurement - action"
+    } ]
+  },
+  "specimen": {
+    "reference": "Specimen/2cab9138-780d-435c-a978-f762539f6928"
+  },
+  "referenceRange": [ {
+    "low": {
+      "value": 70,
+      "unit": "mg/dL",
+      "system": "http://unitsofmeasure.org",
+      "code": "mg/dL"
+    },
+    "high": {
+      "value": 140,
+      "unit": "mg/dL",
+      "system": "http://unitsofmeasure.org",
+      "code": "mg/dL"
+    },
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+        "code": "normal",
+        "display": "Normal Range"
+      } ]
+    }
+  } ],
+  "hasMember": [ {
+    "reference": "Observation/member-c2a3bd28"
+  } ],
+  "derivedFrom": [ {
+    "reference": "Observation/derived-c2a3bd28"
+  } ],
+  "component": [ {
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "8480-6",
+        "display": "Systolic blood pressure"
+      } ]
+    },
+    "valueQuantity": {
+      "value": 120,
+      "unit": "mmHg",
+      "system": "http://unitsofmeasure.org",
+      "code": "mm[Hg]"
+    }
+  } ]
+}

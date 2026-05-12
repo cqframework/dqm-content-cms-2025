@@ -1,0 +1,124 @@
+{
+  "resourceType": "Encounter",
+  "id": "7ba9f7ab-2933-4fcc-9522-9281d2701077",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "identifier": [ {
+    "system": "https://madie.cms.gov/encounter-id",
+    "value": "76588483-cfec-409d-b7b5-599a8cc6908d"
+  } ],
+  "status": "finished",
+  "statusHistory": [ {
+    "status": "arrived",
+    "period": {
+      "start": "2025-01-08T10:00:00.000Z",
+      "end": "2025-01-08T10:00:00.000Z"
+    }
+  } ],
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "classHistory": [ {
+    "class": {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "code": "IMP",
+      "display": "inpatient encounter"
+    },
+    "period": {
+      "start": "2025-01-08T10:00:00.000Z",
+      "end": "2025-01-14T14:00:00.000Z"
+    }
+  } ],
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "183452005",
+      "display": "Emergency hospital admission"
+    } ]
+  } ],
+  "serviceType": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "394802001",
+      "display": "General medicine"
+    } ]
+  },
+  "priority": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-ActPriority",
+      "code": "R",
+      "display": "routine"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/d7aad5bd-638e-402a-92b3-2fb7f3f91151"
+  },
+  "period": {
+    "start": "2025-01-08T10:00:00.000Z",
+    "end": "2025-01-14T14:00:00.000Z"
+  },
+  "length": {
+    "value": 5,
+    "unit": "days",
+    "system": "http://unitsofmeasure.org",
+    "code": "d"
+  },
+  "reasonCode": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "44054006",
+      "display": "Diabetes mellitus type 2"
+    } ]
+  } ],
+  "reasonReference": [ {
+    "reference": "Condition/cond-76588483"
+  } ],
+  "diagnosis": [ {
+    "condition": {
+      "reference": "Condition/diag-76588483"
+    },
+    "use": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+        "code": "AD",
+        "display": "Admission diagnosis"
+      } ]
+    },
+    "rank": 1
+  } ],
+  "account": [ {
+    "reference": "Account/acct-76588483"
+  } ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+        "code": "home",
+        "display": "Home"
+      } ]
+    }
+  },
+  "location": [ {
+    "location": {
+      "reference": "Location/95e9b931-1f0c-47f2-937d-4bf39be22a5f"
+    },
+    "status": "active",
+    "physicalType": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+        "code": "ro",
+        "display": "Room"
+      } ]
+    },
+    "period": {
+      "start": "2025-01-08T10:00:00.000Z",
+      "end": "2025-01-14T14:00:00.000Z"
+    }
+  } ],
+  "partOf": {
+    "reference": "Encounter/parent-76588483"
+  }
+}

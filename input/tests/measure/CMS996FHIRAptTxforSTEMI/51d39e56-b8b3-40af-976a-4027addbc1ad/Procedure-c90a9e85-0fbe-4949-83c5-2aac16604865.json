@@ -1,0 +1,31 @@
+{
+  "resourceType": "Procedure",
+  "id": "c90a9e85-0fbe-4949-83c5-2aac16604865",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-10-01T08:00:00.000Z"
+  } ],
+  "status": "completed",
+  "category": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "387713003",
+      "display": "Surgical procedure",
+      "userSelected": true
+    } ]
+  },
+  "code": {
+    "coding": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "code": "02100J3",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/51d39e56-b8b3-40af-976a-4027addbc1ad"
+  },
+  "performedDateTime": "2026-10-01T08:00:00.000Z"
+}

@@ -1,0 +1,62 @@
+{
+  "resourceType": "Group",
+  "id": "CMSFHIR844HybridHospitalWideMortality",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/CMSFHIR844HybridHospitalWideMortality"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/443783af-53ae-46ed-a129-690aa58433d8",
+      "display": "PerformedInObsPriorToAdmit HematocritPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/569ebc6b-4bc4-4b1e-9e40-c3942190d446",
+      "display": "ObsIPEncountersWithLabsDuringObsAndInpt AllLabsPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/56d14d39-e1d9-4bfa-8c97-0578669f75a8",
+      "display": "1MinBeforeInpatientEncStart BicarbonateFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6f22a06f-7186-4db1-9310-4f907dc49ff3",
+      "display": "1MinBeforeAnd1MinAfterEndOfInpatient WhiteBloodCellFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/73b803bf-207c-411d-8db3-01908e5d9dda",
+      "display": "OneHourAfterAdmission WhiteBloodCellPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/af1b9448-3e7a-4b7f-8934-15bb63258b75",
+      "display": "MultipleEncounters BicarbonatePass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/bd0c87d4-b1d8-470b-beba-df7f7b9af87e",
+      "display": "1MinBeforeObservationAdmit HematocritFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c25ff376-c6dd-4f49-8d4a-953a70341e4f",
+      "display": "NoResult SodiumFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/dbb82192-d268-4e50-be41-8e371d33bacd",
+      "display": "CreatinineBeforeAndAfterStartOfEnc CreatinineFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/dbc046b4-83e5-41d8-8e5a-e3b9a5022a79",
+      "display": "1MinBeforeStartOfAdmission PlateletsFail"
+    }
+  } ]
+}

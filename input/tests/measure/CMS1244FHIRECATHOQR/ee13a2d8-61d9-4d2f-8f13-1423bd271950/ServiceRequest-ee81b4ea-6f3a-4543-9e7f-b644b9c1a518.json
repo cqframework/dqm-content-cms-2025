@@ -1,0 +1,22 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "ee81b4ea-6f3a-4543-9e7f-b644b9c1a518",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "revoked",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "19951005",
+      "display": "Hospital admission, emergency, from emergency room, medical nature (procedure)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/ee13a2d8-61d9-4d2f-8f13-1423bd271950"
+  },
+  "authoredOn": "2026-05-01T19:58:00.000+00:00"
+}

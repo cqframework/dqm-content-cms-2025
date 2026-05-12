@@ -1,0 +1,75 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "51440a32-e472-44ba-ad92-71c146103991",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "13a4675c-d1aa-49a7-b47f-c785289dd07c-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "55f7d07e-a8ec-4abf-9bb3-b9b3f81d38d5"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#13a4675c-d1aa-49a7-b47f-c785289dd07c-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "ICU patient with DKA on insulin drip, severe hypoglycemia (25 mg/dL)"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/1543c5c9-c405-42f9-a2d8-3d6e18b469de"
+  }, {
+    "reference": "Patient/55f7d07e-a8ec-4abf-9bb3-b9b3f81d38d5"
+  }, {
+    "reference": "Location/e30112ab-8ed5-48dc-b818-6b7a20dce101"
+  }, {
+    "reference": "Encounter/301b2248-09a4-483f-9bd3-f5de0aff7ab9"
+  }, {
+    "reference": "Coverage/19ab1fb6-bbb8-4b80-a8e4-8770cb60523f"
+  }, {
+    "reference": "Condition/32fd8f89-b9a5-48c9-81a8-e0d086104127"
+  }, {
+    "reference": "Practitioner/ccad2bd1-d50d-4e02-a002-b417c9d8f3c2"
+  }, {
+    "reference": "Device/1605106c-4a91-4248-b9e2-3aa48dddf2fd"
+  }, {
+    "reference": "MedicationAdministration/7a8b4aa2-e7e0-41e4-9937-f0ded41ae70b"
+  }, {
+    "reference": "Specimen/35b5d326-b0d5-47fb-92b9-afd5e7b05560"
+  }, {
+    "reference": "Observation/30e1c5f1-9df6-48ab-9e51-2f4b2e7d051e"
+  } ]
+}

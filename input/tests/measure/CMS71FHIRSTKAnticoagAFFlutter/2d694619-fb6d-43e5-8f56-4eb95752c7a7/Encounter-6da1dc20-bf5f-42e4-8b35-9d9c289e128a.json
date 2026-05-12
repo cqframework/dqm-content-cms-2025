@@ -1,0 +1,30 @@
+{
+  "resourceType": "Encounter",
+  "id": "6da1dc20-bf5f-42e4-8b35-9d9c289e128a",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "OBSENC",
+    "display": "observation encounter"
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "448951000124107"
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/2d694619-fb6d-43e5-8f56-4eb95752c7a7"
+  },
+  "period": {
+    "start": "2026-09-30T09:00:00.000Z",
+    "end": "2026-09-30T09:01:00.000Z"
+  },
+  "length": {
+    "value": 0,
+    "unit": "days"
+  }
+}

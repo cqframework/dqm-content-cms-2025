@@ -1,0 +1,111 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "d801e177-6bdb-4142-9526-722781db177a",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "eeaca93b-d3cd-41e6-a39c-7cc857cb8e7f-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "acdea97f-8a2e-4aa3-b51f-768c5ad5ead8"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#eeaca93b-d3cd-41e6-a39c-7cc857cb8e7f-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "No discharge status indicated. Testing DENEX logic (intentional fail) with disposition to ICD\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/acdea97f-8a2e-4aa3-b51f-768c5ad5ead8"
+  }, {
+    "reference": "Encounter/670b0880-ffd5-428b-bd9d-238626a21cad"
+  }, {
+    "reference": "Encounter/d5cc7e6c-ddc7-48c8-93e3-80531a9f3763"
+  }, {
+    "reference": "Claim/8a93a7c4-348d-408a-adae-c62dddc2d9ef"
+  }, {
+    "reference": "Coverage/78fcf102-0931-4346-94bf-d2e4a66b950d"
+  }, {
+    "reference": "Procedure/db3fd397-7ea1-4124-985c-76ff51e4676f"
+  }, {
+    "reference": "Condition/ef49f8cf-2229-4af7-9bfd-7f4dfef57ccc"
+  }, {
+    "reference": "Organization/a2723ce8-9353-42ab-988e-95b4284a8a39"
+  }, {
+    "reference": "Practitioner/64e7829b-db89-4cb0-a866-2f447795b912"
+  } ]
+}

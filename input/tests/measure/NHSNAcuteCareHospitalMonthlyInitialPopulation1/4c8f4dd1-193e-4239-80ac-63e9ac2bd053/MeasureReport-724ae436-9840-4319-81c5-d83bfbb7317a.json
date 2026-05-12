@@ -1,0 +1,67 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "724ae436-9840-4319-81c5-d83bfbb7317a",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "950c9bec-e244-45f6-ace6-97ebd1838753-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "4c8f4dd1-193e-4239-80ac-63e9ac2bd053"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#950c9bec-e244-45f6-ace6-97ebd1838753-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Pre-admission hypoglycemia (32 mg/dL) - glucose before encounter start"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/544b6b59-9219-4916-9255-39a316058dae"
+  }, {
+    "reference": "Patient/4c8f4dd1-193e-4239-80ac-63e9ac2bd053"
+  }, {
+    "reference": "Location/ced97639-08d3-494f-802c-4a847dbc2a3f"
+  }, {
+    "reference": "Encounter/1d7b49dc-db02-4ebd-821f-f110fcd46d1a"
+  }, {
+    "reference": "Coverage/5c60aca6-2a4d-4cd3-bd61-2d3f913713ac"
+  }, {
+    "reference": "Specimen/2cab9138-780d-435c-a978-f762539f6928"
+  }, {
+    "reference": "Observation/70ae984a-d7a9-458b-a5b8-631522adc9f8"
+  } ]
+}

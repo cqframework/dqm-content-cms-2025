@@ -1,0 +1,107 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "721d0433-b907-4af7-88b2-391208634dc8",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "c35b6868-b7ae-42a4-b496-7bc3971f444c-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "2c1e6f23-20a1-44c3-8c2a-0bec67c3d2f5"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#c35b6868-b7ae-42a4-b496-7bc3971f444c-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Principal diagnosis = ischemic stroke, age GT 18\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/2c1e6f23-20a1-44c3-8c2a-0bec67c3d2f5"
+  }, {
+    "reference": "Encounter/4b934362-a242-4a99-9c33-b170a1fef5ce"
+  }, {
+    "reference": "Claim/201467e0-c830-4590-a99d-5e02ea887204"
+  }, {
+    "reference": "Coverage/f9dc9752-8932-4090-96ce-8e6312dcb9a5"
+  }, {
+    "reference": "Condition/6ac49630-d810-4ab4-b4e7-a27cd0ecca56"
+  }, {
+    "reference": "Organization/3dd073b9-b933-4a59-b8fd-828e70fd2f36"
+  }, {
+    "reference": "Practitioner/d9b66378-f6c3-4187-8168-9c0ac322964d"
+  } ]
+}

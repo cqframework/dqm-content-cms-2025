@@ -1,0 +1,15 @@
+{
+  "resourceType": "Practitioner",
+  "id": "1c5074aa-6318-4407-b2b1-005e562097a2",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-practitioner" ]
+  },
+  "identifier": [ {
+    "system": "http://hl7.org/fhir/sid/us-npi",
+    "value": "1234567893"
+  } ],
+  "name": [ {
+    "family": "GeneralPractitioner",
+    "given": [ "Dr" ]
+  } ]
+}

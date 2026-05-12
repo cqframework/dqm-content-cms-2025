@@ -1,0 +1,44 @@
+{
+  "resourceType": "Condition",
+  "id": "b05ad8ac-30f2-41b9-9db4-bdd587081ad6",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-problems-health-concerns" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active",
+      "display": "active",
+      "userSelected": true
+    } ]
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed",
+      "display": "Confirmed",
+      "userSelected": true
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "problem-list-item",
+      "display": "Problem List Item"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "1255013006",
+      "display": "Combined opioid with non-opioid substance dependence (disorder)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/e24d8c71-61dc-4e0d-bfc1-a5ebc186706d"
+  },
+  "onsetPeriod": {
+    "start": "2026-01-01T10:00:00.000Z"
+  }
+}

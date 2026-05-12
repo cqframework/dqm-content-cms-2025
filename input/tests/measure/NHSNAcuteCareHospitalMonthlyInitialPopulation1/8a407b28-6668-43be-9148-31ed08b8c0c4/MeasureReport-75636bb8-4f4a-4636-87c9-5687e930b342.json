@@ -1,0 +1,71 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "75636bb8-4f4a-4636-87c9-5687e930b342",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "8657293e-99d5-4006-b109-244c562449a3-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "8a407b28-6668-43be-9148-31ed08b8c0c4"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#8657293e-99d5-4006-b109-244c562449a3-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "HOB excluded: Same E. coli organism on day 2 (COB) and day 5"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/180fffe9-9268-4ab5-a973-5fa40c4a1757"
+  }, {
+    "reference": "Patient/8a407b28-6668-43be-9148-31ed08b8c0c4"
+  }, {
+    "reference": "Location/a56b8ec6-671e-4b4e-a1bb-bdb7776ba26a"
+  }, {
+    "reference": "Encounter/0650c48b-27fd-4265-86ad-088981ff4d0d"
+  }, {
+    "reference": "Coverage/03895688-e948-4324-8380-03bc4b6b0562"
+  }, {
+    "reference": "Specimen/457197b5-cecb-479b-8bcf-ce4f1ce0eb27"
+  }, {
+    "reference": "Observation/e24b66c9-9b56-44ef-a720-ce3ad15d9624"
+  }, {
+    "reference": "Specimen/eef5cd79-406d-43b3-b397-ad491d8d99a2"
+  }, {
+    "reference": "Observation/a8841816-429d-4f1e-a9ad-609f649de480"
+  } ]
+}

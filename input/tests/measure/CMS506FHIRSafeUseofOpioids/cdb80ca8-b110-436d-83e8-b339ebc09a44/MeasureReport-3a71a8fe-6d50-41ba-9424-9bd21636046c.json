@@ -1,0 +1,97 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "3a71a8fe-6d50-41ba-9424-9bd21636046c",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "b7f1701b-0a3b-4137-9ceb-28d0925f9785-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "cdb80ca8-b110-436d-83e8-b339ebc09a44"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#b7f1701b-0a3b-4137-9ceb-28d0925f9785-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Enc 1st day of MP, pt has dx of sickle cell disease with onset last day of previous year, has opioid at discharge\n\nSDE detailed included"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS506FHIRSafeUseofOpioids",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/cdb80ca8-b110-436d-83e8-b339ebc09a44"
+  }, {
+    "reference": "Encounter/a11fa20a-82af-4e04-b7e4-2e8875dd045d"
+  }, {
+    "reference": "MedicationRequest/fb531902-b867-4edb-81fc-befc45a66756"
+  }, {
+    "reference": "Practitioner/175628cb-4137-4b76-adfd-2ad640085da7"
+  }, {
+    "reference": "Condition/16ee3fd4-f032-4226-9820-cf4abb37bf71"
+  }, {
+    "reference": "Coverage/d7011474-e04b-4dff-a6ca-3411e931e2e1"
+  }, {
+    "reference": "Organization/4705d210-0dd4-4b8e-97e7-87941f99cded"
+  } ]
+}

@@ -1,0 +1,77 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "ab39e948-0969-4f65-95e4-66dd419234f9",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "aca81b0c-326d-4502-9194-da1cfc80d0b3-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "36e30d76-0d86-4b72-ba89-4ebaacf48b31"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#aca81b0c-326d-4502-9194-da1cfc80d0b3-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Footnote*: Initial BG 35, repeat BG 95 within 5 min (erroneous reading)"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/3054ae75-ef31-4cae-bdf9-97ede4559a25"
+  }, {
+    "reference": "Patient/36e30d76-0d86-4b72-ba89-4ebaacf48b31"
+  }, {
+    "reference": "Location/cdb8223f-d92a-47be-b4ab-2e058ca1c686"
+  }, {
+    "reference": "Encounter/721f518c-cf37-434c-92e2-a39f1c4e81e6"
+  }, {
+    "reference": "Coverage/00a9e3bd-678a-4c63-a797-7f7d9371744d"
+  }, {
+    "reference": "Practitioner/3aba32c2-6c93-44c7-b581-ed68f5257ee2"
+  }, {
+    "reference": "Device/417239f0-50e4-4acd-af71-4405961c8ccc"
+  }, {
+    "reference": "MedicationAdministration/7f51de91-e7d0-44bd-9de5-246306245710"
+  }, {
+    "reference": "Specimen/ec2ab94b-a8a2-4878-a3e2-84f3934cdff7"
+  }, {
+    "reference": "Observation/447274e0-3394-4d86-b6cf-5a40457ff72a"
+  }, {
+    "reference": "Specimen/b612208d-9904-4048-80c8-ec1cb55b05a5"
+  }, {
+    "reference": "Observation/4de0b56c-2dc0-4fd6-899b-882879c9c90f"
+  } ]
+}

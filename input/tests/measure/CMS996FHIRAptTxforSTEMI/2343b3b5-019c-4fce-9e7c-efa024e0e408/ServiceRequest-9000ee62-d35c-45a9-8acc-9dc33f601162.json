@@ -1,0 +1,21 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "9000ee62-d35c-45a9-8acc-9dc33f601162",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "385763009",
+      "display": "Hospice care (regime/therapy)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/2343b3b5-019c-4fce-9e7c-efa024e0e408"
+  },
+  "authoredOn": "2026-10-01T12:00:00.000Z"
+}

@@ -1,0 +1,19 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "1df4066f-4682-4a99-866f-39a2b474c86f",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "133918004"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/e8df70c5-74a8-4a26-871c-0301bcf9fd45"
+  },
+  "authoredOn": "2026-10-01T11:30:00.000Z"
+}

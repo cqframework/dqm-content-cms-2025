@@ -1,0 +1,14 @@
+{
+  "resourceType": "Coverage",
+  "id": "9a0ff867-435c-4917-9908-649805fe02ef",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-coverage" ]
+  },
+  "status": "active",
+  "beneficiary": {
+    "reference": "Patient/451b6853-3734-4c1c-b37e-5904629e0350"
+  },
+  "payor": [ {
+    "reference": "Organization/34342d6d-fe9e-4f4c-994e-004b6330fd49"
+  } ]
+}

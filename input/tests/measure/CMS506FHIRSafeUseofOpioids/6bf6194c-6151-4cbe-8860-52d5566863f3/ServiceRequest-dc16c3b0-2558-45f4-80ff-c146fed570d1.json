@@ -1,0 +1,21 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "dc16c3b0-2558-45f4-80ff-c146fed570d1",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "306237005",
+      "display": "Referral to palliative care service (procedure)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/6bf6194c-6151-4cbe-8860-52d5566863f3"
+  },
+  "authoredOn": "2026-12-28T05:00:00.000+00:00"
+}

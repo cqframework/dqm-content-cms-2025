@@ -1,0 +1,109 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "4eacacd6-3c30-47dc-9a8c-ff2e92e4c31a",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "9460274c-657a-403e-ad95-40e795fc96eb-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "85774da1-da62-45f3-9bf8-12223f13d82a"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#9460274c-657a-403e-ad95-40e795fc96eb-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Afib as a condition, starts at start of OccurA\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/85774da1-da62-45f3-9bf8-12223f13d82a"
+  }, {
+    "reference": "Condition/0eb40df8-2ed5-4c3c-8536-073dc8e2be57"
+  }, {
+    "reference": "Encounter/1c9ed802-e849-4850-b2e0-fb1c6ccde4c8"
+  }, {
+    "reference": "Claim/467a1c46-402d-48b4-9806-62acb27b7adb"
+  }, {
+    "reference": "Coverage/d6e05bad-59f8-4e9f-9667-77019d648c86"
+  }, {
+    "reference": "Condition/9da70e7d-95fc-415b-806e-581fec17bede"
+  }, {
+    "reference": "Organization/08b6f0da-05b6-4349-bbd1-3e9b26356db8"
+  }, {
+    "reference": "Practitioner/a262a806-ba8c-4651-874a-9277d0c36c52"
+  } ]
+}

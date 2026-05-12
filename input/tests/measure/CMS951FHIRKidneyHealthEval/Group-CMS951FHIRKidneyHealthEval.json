@@ -1,0 +1,287 @@
+{
+  "resourceType": "Group",
+  "id": "CMS951FHIRKidneyHealthEval",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/CMS951FHIRKidneyHealthEval"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/0085aa08-74cc-47f3-bf08-2aadd6263ee3",
+      "display": "WithCKDStage5WithConfirmedVerificationStatus DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/023b65d6-0b68-4b1f-b276-f500e4b77ed2",
+      "display": "PalliativeCareAssessment DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0ce4362d-60f0-41af-8d47-c61f76d025a4",
+      "display": "DiabetesDxLastDayOfPriorYear DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1127bc95-bf52-4921-b02a-de0902780191",
+      "display": "PerformHospAmb DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1d012d11-4b38-4bdc-bd27-e7d8bcc88c89",
+      "display": "EdgeAge75Jan1 NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1e8e8baf-0c27-42b2-93ad-5426418552c7",
+      "display": "HospEncoLastDayOfMP DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/277e15ec-f1a0-4a6e-a8d9-856c0a4fa4f0",
+      "display": "DiabetesDxAfterMP DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/2a7112e7-5937-4288-9271-cdc2d7e5eaa4",
+      "display": "DischargeHomeHosp DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3f860c8e-e5fc-4843-ac4e-acb8e63471f3",
+      "display": "DischargeFacilityHosp DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3ffdeac6-20b1-4af9-9da4-36ac2d234001",
+      "display": "SDEAll SDE"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/40e0c576-25c4-41fc-854a-116db99f1a65",
+      "display": "OrderPalliativeHospCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4354fbec-b63a-46ce-8465-ec82710ea1c6",
+      "display": "PerformPalliativeHospCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/51e9e9aa-edcc-46f4-8472-24f377014ad4",
+      "display": "WithCKDStage5WithRefutedVerificationStatus DENEXFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/52988c36-5e85-4818-9baa-983a3e27281a",
+      "display": "OfficeVisitEGFRAndUACR NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/53abb201-a2ef-4966-9102-8fab192aa008",
+      "display": "NoActiveDiabetesDx IPPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/54c38c8f-1e1b-41a7-a2fe-9ee285a923bc",
+      "display": "AgeLessThan18EncoDiabetes DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/55c5c208-190b-4f90-bdbb-0c02332df772",
+      "display": "EncounterPerfHospCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/56063388-7942-4a1d-8568-2d805d31ad30",
+      "display": "DiabetesOverlapsMPWithConfirmedVerificationStatus DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5aa9e5eb-adeb-4779-a4d3-5b731411e141",
+      "display": "SingleUACRLab NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/61c9b47c-2223-4e45-b83b-eee21f031cad",
+      "display": "PerformHospCareMinDataSet DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/77620fcb-7a0a-4015-89cc-c32bd8681c13",
+      "display": "OrderHospCareAmb DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/7921acb6-7c9a-4c78-bdf1-a8e1ec2c7023",
+      "display": "ESRDDxFirstDayOfMP DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/7e7c41ee-7704-419c-937b-72d10c76f99a",
+      "display": "AnnualWelllnessEGFRAndUACR NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/80cbaf27-f12e-47b7-a875-59b068294036",
+      "display": "DiabetesDxFirstDayOfMP IPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8ca88661-f12a-4b24-98e8-93183e8e2472",
+      "display": "Age20 DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8cfb2747-a46d-4348-9e21-5ef3417e524a",
+      "display": "KidneyPanelPerformedNoValue NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8e10675e-b991-4327-9514-6feb9d385b7f",
+      "display": "HomeServiceEGFRAndUACR NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/94f26954-f280-4596-8bd3-e77ca79c1f41",
+      "display": "EstimatedGlomerularWithOverlappingUCandUALabs NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/95ee3081-b973-4bd2-8b86-5b46bd664905",
+      "display": "OutpatientEGFRAndUACR NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9821f4e3-39db-4f45-8da3-eed161841bd2",
+      "display": "OfficeVisitEGFRAndUACR NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9f3b1077-d99c-4714-a88d-8aecc667fe57",
+      "display": "AnnualWelllnessEGFRWithUAlbuminAndUCreatine NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a2cf34eb-1f20-426f-bfce-53599a178b71",
+      "display": "DiabetesEncoOver75 DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a7284289-8784-48d9-a342-7d851085efb7",
+      "display": "DiabetesOverlapsMP DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a9536c98-3157-4443-bfe1-ef4e585360be",
+      "display": "EdgeAge75Jan1 DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ac7a62b6-a440-4d4c-849d-0ce05743109c",
+      "display": "EdgeAge18Jan1 NUMERPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ae52c591-1a71-4090-aeeb-2dd758f63ce4",
+      "display": "MutlipeEncounterDiagnosis DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b1e68658-d64f-4ca4-a4ee-89c64e4536fa",
+      "display": "HospiceCareDiagnosis DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b49e5ec9-8a2d-4ed4-acae-9e13e21d67f2",
+      "display": "WithCKDStage5 DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b6ac3dd1-ff55-4152-be9a-153cad2ba2a2",
+      "display": "EncounterPerfPalliativeCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b998e967-eb53-426b-a3a9-8226939efdb6",
+      "display": "EndStageRenalHospiceAllVisits DenExPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c13a82b6-fb44-4fc7-befd-d762b9fafa97",
+      "display": "WithCKDStage5WithConfirmedVerificationStatus DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d237bdfc-567a-4b8a-b3df-a7282cda354b",
+      "display": "DiabetesOverlapsMPWithRefutedVerificationStatus IPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d4340928-bbc6-4c24-8888-9f12e5cbefad",
+      "display": "SingleUACRLab NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d4a593b2-d485-4bfa-a8b1-a401bdbf8d23",
+      "display": "DischargeHomeHospDayBeforeMP DENEXFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d7e37bcf-d13b-4415-82ac-a51b5c83151c",
+      "display": "DiagnosisPalliativeCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e4ad8ac6-e4c4-4e9f-acbb-4e345c8a84ad",
+      "display": "PreventativeCareVisitAfterMP DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ebbf9c22-fb8c-498b-a261-11d177d10e45",
+      "display": "NoEncounter IPPFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ebd7d1d0-a663-47da-8802-9088ad9d80a0",
+      "display": "DiagnosisPalliativeCare DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ed17f9e5-1200-49e3-a4fc-1c188d8932dc",
+      "display": "AnnualWellnessVisitDuringMP DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ef8cde66-ab81-4a37-8cc2-6b390182b7ac",
+      "display": "OfficeVisitB4MP DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f2b74f6e-1b67-49ca-b9b1-bb6752287935",
+      "display": "EncounterOutofMP DENOMFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f4d1182a-1c06-4c62-a0be-1f994c4343b3",
+      "display": "EdgeAge18Jan1 DENOMPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f8c48a84-406c-44b7-b79e-b7a5f9d15b31",
+      "display": "SingleUACRLab NUMERFail"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/fa02a22e-e0c5-49ef-8955-2e581ca12ca5",
+      "display": "EndStageRenal DENEXPass"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ff43a29d-e740-44ba-9452-63d1ba2b0709",
+      "display": "EndStageRenalHospice DENEXPass"
+    }
+  } ]
+}

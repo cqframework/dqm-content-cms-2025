@@ -1,0 +1,115 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "dbab6deb-f1a1-4292-98ff-93661eeda6d1",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationadministration" ]
+  },
+  "instantiates": [ "http://example.org/fhir/PlanDefinition/insulin-protocol" ],
+  "partOf": [ {
+    "reference": "Procedure/proc-72a1a09d"
+  } ],
+  "status": "completed",
+  "statusReason": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "373066001",
+      "display": "Yes"
+    } ]
+  } ],
+  "category": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medication-admin-category",
+      "code": "inpatient",
+      "display": "Inpatient"
+    } ]
+  },
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "311034",
+      "display": "Insulin regular, human 100 UNT/ML Injectable Solution"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/c1b0ea0e-73e8-4b74-bbae-4cf2504fa9e4"
+  },
+  "context": {
+    "reference": "Encounter/cbe3aef5-f61d-4bd8-9f11-f8cdd666d7c2"
+  },
+  "supportingInformation": [ {
+    "reference": "Observation/obs-72a1a09d"
+  } ],
+  "effectivePeriod": {
+    "start": "2025-01-07T08:00:00.000Z",
+    "end": "2025-01-07T08:10:00.000Z"
+  },
+  "performer": [ {
+    "function": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function",
+        "code": "performer",
+        "display": "Performer"
+      } ]
+    },
+    "actor": {
+      "reference": "Practitioner/db7e055e-7dd3-4810-ad2a-04de0b8a47f7"
+    }
+  } ],
+  "reasonCode": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "44054006",
+      "display": "Diabetes mellitus type 2"
+    } ]
+  } ],
+  "reasonReference": [ {
+    "reference": "Condition/cond-72a1a09d"
+  } ],
+  "request": {
+    "reference": "MedicationRequest/req-72a1a09d"
+  },
+  "device": [ {
+    "reference": "Device/210f4ab2-5230-46e4-9314-275373c13577"
+  } ],
+  "note": [ {
+    "authorString": "Nurse Admin",
+    "time": "2025-01-07T08:00:00.000Z",
+    "text": "Patient tolerated medication well"
+  } ],
+  "dosage": {
+    "text": "10 units subcutaneously",
+    "site": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "368209003",
+        "display": "Right upper arm structure"
+      } ]
+    },
+    "route": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "34206005",
+        "display": "Subcutaneous route"
+      } ]
+    },
+    "method": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "422145002",
+        "display": "Inject"
+      } ]
+    },
+    "dose": {
+      "value": 10,
+      "unit": "U",
+      "system": "http://unitsofmeasure.org",
+      "code": "U"
+    },
+    "rateQuantity": {
+      "value": 1,
+      "unit": "mL/hour",
+      "system": "http://unitsofmeasure.org",
+      "code": "mL/h"
+    }
+  }
+}

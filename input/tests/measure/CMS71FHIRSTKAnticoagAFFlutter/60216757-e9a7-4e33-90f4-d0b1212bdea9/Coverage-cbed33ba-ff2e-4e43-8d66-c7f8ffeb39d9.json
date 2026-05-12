@@ -1,0 +1,21 @@
+{
+  "resourceType": "Coverage",
+  "id": "cbed33ba-ff2e-4e43-8d66-c7f8ffeb39d9",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-coverage" ]
+  },
+  "status": "active",
+  "subscriberId": "523435",
+  "beneficiary": {
+    "reference": "Patient/60216757-e9a7-4e33-90f4-d0b1212bdea9"
+  },
+  "relationship": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/subscriber-relationship",
+      "code": "self"
+    } ]
+  },
+  "payor": [ {
+    "reference": "Organization/b347d6dc-01fb-4d86-9613-76e1a285e911"
+  } ]
+}

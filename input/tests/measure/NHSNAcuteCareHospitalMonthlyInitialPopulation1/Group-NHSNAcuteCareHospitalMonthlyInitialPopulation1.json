@@ -1,0 +1,147 @@
+{
+  "resourceType": "Group",
+  "id": "NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/025529dc-5384-4544-acb2-c2b6f7c9a23c",
+      "display": "2of2Positive HOBContamination"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0353da56-ca21-45d3-8f96-8954167143ae",
+      "display": "SevereHypoDay1 Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/09431e3b-b1d9-491a-b6a3-76b3868e6213",
+      "display": "Day5Candida HOBPositive"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/16acd0ee-60e7-4573-b433-5a9c335c145b",
+      "display": "EDAddWithin1Hour Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/19feaae6-8985-4444-9182-d3c785698710",
+      "display": "HypoWithResolution Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/1c06a652-f116-4307-80b7-342c16d20de1",
+      "display": "ModerateHypoMetric2 Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/24ab1538-bc59-454b-bd24-961288f4eea8",
+      "display": "1of2Positive HOBContamination"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/2ce50e7f-4e04-4d5b-9d9a-2243958c2a92",
+      "display": "Positive HOBMatchingCommensal"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/2ea03a1a-cefe-4eac-9e34-7bf434b30d2b",
+      "display": "NoRiskFactors HOBMeasurable"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/36e30d76-0d86-4b72-ba89-4ebaacf48b31",
+      "display": "RepeatBGExclusion Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3e86234e-4999-4e8e-a4a2-420d1343b079",
+      "display": "SameSpeciesDiffCodes HOBExcluded"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4974042e-fff4-4a3d-905e-548c6593ce40",
+      "display": "GlucoseAtThreshold Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4c8f4dd1-193e-4239-80ac-63e9ac2bd053",
+      "display": "PreAdmissionHypo Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4d192f80-7649-4afd-a842-528ef60fc904",
+      "display": "NonMatchingCOB HOBPositive"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/55f7d07e-a8ec-4abf-9bb3-b9b3f81d38d5",
+      "display": "ICUHypoglycemia Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5efcd4e7-f71b-48a6-badb-b1b88c02f161",
+      "display": "MultipleHypoEvents Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6409f1eb-d338-4bf6-a3df-4da1eb997c48",
+      "display": "OutpatientEncounter Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/70306180-c713-4fa4-9c39-ae3b15e15d22",
+      "display": "Day4SAureus HOBPositive"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/7f26eb5a-f877-458b-b960-5de7ffa5b4d0",
+      "display": "InsufficientAbx HOBMatchingCommensal"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8a407b28-6668-43be-9148-31ed08b8c0c4",
+      "display": "MatchingCOB HOBExcluded"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8ffa77ff-8591-442d-84b1-6c6cb86fd09e",
+      "display": "HypoWithoutMedication Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/98561005-400a-4b9d-8902-f04605b6b168",
+      "display": "MildHypoMetric2 Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a1ec5d8e-4926-456a-8523-786a93f2348b",
+      "display": "DenominatorOnlyNoHypo Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/bf9e53b4-e10c-4a11-a9be-8d5b944c1d51",
+      "display": "HighRisk HOBNonMeasure"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c1b0ea0e-73e8-4b74-bbae-4cf2504fa9e4",
+      "display": "ModerateHypoExcluded Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d7aad5bd-638e-402a-92b3-2fb7f3f91151",
+      "display": "SevereHypoWithOralAgent Hypoglycemia"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ec296057-82c9-41b2-9e32-8ec2ea4f3687",
+      "display": "SevereHypoWithInsulin Hypoglycemia"
+    }
+  } ]
+}

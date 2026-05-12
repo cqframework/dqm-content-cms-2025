@@ -1,0 +1,50 @@
+{
+  "resourceType": "Encounter",
+  "id": "8e86e12f-d19c-43ae-b775-9d0a99696fdd",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency"
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "4525004",
+      "display": "Emergency department patient visit (procedure)",
+      "userSelected": true
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/8aa551b0-bb5a-435d-909c-9503d7c984d6"
+  },
+  "period": {
+    "start": "2026-08-15T04:20:00.000+00:00",
+    "end": "2026-08-15T12:21:00.000+00:00"
+  },
+  "diagnosis": [ {
+    "condition": {
+      "reference": "Condition/behavioral-health-diagnosis-without-substance-use-disorders-9d16"
+    },
+    "use": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+        "code": "billing"
+      } ]
+    },
+    "rank": 1
+  } ],
+  "location": [ {
+    "location": {
+      "reference": "Location/73e67d61-4ed9-449b-a5ed-de68733c1c4f"
+    },
+    "period": {
+      "start": "2026-08-15T04:20:00.000+00:00",
+      "end": "2026-08-15T12:21:00.000+00:00"
+    }
+  } ]
+}

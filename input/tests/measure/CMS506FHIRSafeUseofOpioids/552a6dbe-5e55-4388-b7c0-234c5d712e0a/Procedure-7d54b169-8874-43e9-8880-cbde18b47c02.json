@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "7d54b169-8874-43e9-8880-cbde18b47c02",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-03-30T08:00:00.000+00:00"
+  } ],
+  "status": "completed",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "103735009",
+      "display": "Palliative care (regime/therapy)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/552a6dbe-5e55-4388-b7c0-234c5d712e0a"
+  },
+  "performedDateTime": "2026-03-30T08:00:00.000+00:00"
+}

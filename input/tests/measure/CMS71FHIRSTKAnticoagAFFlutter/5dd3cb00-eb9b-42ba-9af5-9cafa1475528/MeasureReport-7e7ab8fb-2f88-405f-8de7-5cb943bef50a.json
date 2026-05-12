@@ -1,0 +1,109 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "7e7ab8fb-2f88-405f-8de7-5cb943bef50a",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "6e9a5e0d-7b21-4943-a318-7302488a9185-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "5dd3cb00-eb9b-42ba-9af5-9cafa1475528"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#6e9a5e0d-7b21-4943-a318-7302488a9185-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Procedure performed Atrial Ablation starts at same time as OccA start time\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/5dd3cb00-eb9b-42ba-9af5-9cafa1475528"
+  }, {
+    "reference": "Claim/d9c6070f-d52a-44d2-ac09-9acd46e88eaa"
+  }, {
+    "reference": "Encounter/f76ac491-2e3c-46a1-ae82-73fe154c5098"
+  }, {
+    "reference": "Coverage/735c1a26-1d34-420b-80bf-a450301f82e4"
+  }, {
+    "reference": "Procedure/28737520-6c98-46be-a3e7-92168445c624"
+  }, {
+    "reference": "Condition/88e451be-60b0-467c-b86f-eb3edadce8b0"
+  }, {
+    "reference": "Organization/73d2c6f1-d41c-40d1-b69c-347d90876efb"
+  }, {
+    "reference": "Practitioner/6149135f-0fc1-4bc0-9f90-d202fd9bbc19"
+  } ]
+}

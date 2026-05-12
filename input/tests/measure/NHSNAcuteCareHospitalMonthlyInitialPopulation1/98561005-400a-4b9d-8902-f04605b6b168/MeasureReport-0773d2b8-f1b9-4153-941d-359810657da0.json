@@ -1,0 +1,73 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "0773d2b8-f1b9-4153-941d-359810657da0",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "338a1a78-3d34-4427-828a-f80d645c052c-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "98561005-400a-4b9d-8902-f04605b6b168"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#338a1a78-3d34-4427-828a-f80d645c052c-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Footnote***: Mild hypoglycemia (62 mg/dL) in 54-70 range"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/5cc38eb4-cdf2-40e5-9957-ba935aa09ec6"
+  }, {
+    "reference": "Patient/98561005-400a-4b9d-8902-f04605b6b168"
+  }, {
+    "reference": "Location/92ebd35a-7714-4b14-90f2-6692a37ce9bb"
+  }, {
+    "reference": "Encounter/038f4312-dd29-4eec-93f1-6aa6625d9d55"
+  }, {
+    "reference": "Coverage/88e5113e-31a4-4eaa-a34d-55332dd01156"
+  }, {
+    "reference": "Practitioner/b5c51fcd-7539-468c-abb2-6598f0f91d13"
+  }, {
+    "reference": "Device/5b385d8c-b95f-49b9-844a-368852af8567"
+  }, {
+    "reference": "MedicationAdministration/d2f13b60-743e-4ff9-8f4b-f3b90ad682c9"
+  }, {
+    "reference": "Specimen/39cf7960-7231-4ff6-ba7d-7bf80b4d9d2a"
+  }, {
+    "reference": "Observation/d4ad2ba0-152b-4ffd-8f65-ae2575091ca9"
+  } ]
+}

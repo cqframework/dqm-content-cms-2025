@@ -1,0 +1,111 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "71b26a14-7533-4479-82e3-7bc54d9ce0db",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "48470396-4368-48a2-958b-7de70167ceda-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "56ae006d-ab1b-428d-8614-2ccd5d962650"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#48470396-4368-48a2-958b-7de70167ceda-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Patient DC on Anticoagulant has a History of Atrial Ablation as confirmed"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/56ae006d-ab1b-428d-8614-2ccd5d962650"
+  }, {
+    "reference": "Condition/1de12c25-2b3b-45c9-acf7-f13f2d5cfe8e"
+  }, {
+    "reference": "Encounter/b060e0e1-c28a-42a2-a7c2-7e49df0ba942"
+  }, {
+    "reference": "MedicationRequest/4f6949b8-a954-4d2c-b002-7e1db5e7dc1d"
+  }, {
+    "reference": "Coverage/00ef98ae-327c-4958-b6a9-c72ea3c83286"
+  }, {
+    "reference": "Condition/83058de3-5432-4ada-9247-15431d80f932"
+  }, {
+    "reference": "Claim/5e363f4c-a24c-4fc9-aba5-d058707154ea"
+  }, {
+    "reference": "Organization/c5a4e498-ee42-4dcb-b2cc-a590e5e6046d"
+  }, {
+    "reference": "Practitioner/262e22ed-e518-4354-a5df-c152ac60a970"
+  } ]
+}

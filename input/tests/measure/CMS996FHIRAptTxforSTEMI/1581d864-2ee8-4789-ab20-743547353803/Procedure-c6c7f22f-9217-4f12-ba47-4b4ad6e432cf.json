@@ -1,0 +1,25 @@
+{
+  "resourceType": "Procedure",
+  "id": "c6c7f22f-9217-4f12-ba47-4b4ad6e432cf",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-10-09T09:34:00.000Z"
+  } ],
+  "status": "completed",
+  "code": {
+    "coding": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2021",
+      "code": "0270346",
+      "display": "Dilation of Coronary Artery, One Artery, Bifurcation, with Drug-eluting Intraluminal Device, Percutaneous Approach",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/1581d864-2ee8-4789-ab20-743547353803"
+  },
+  "performedDateTime": "2026-10-09T09:34:00.000Z"
+}

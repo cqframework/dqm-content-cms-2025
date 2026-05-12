@@ -1,0 +1,71 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "1684ea45-5f2b-4d52-ada8-8efdcc7288dc",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "ff74a08a-2738-42cf-96c8-a9ddf734200f-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "bf9e53b4-e10c-4a11-a9be-8d5b944c1d51"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#ff74a08a-2738-42cf-96c8-a9ddf734200f-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Non-Measure HOB: E. coli bacteremia in patient with AML and neutropenia"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/529f69bb-5756-4625-ad08-e5669e5f1746"
+  }, {
+    "reference": "Patient/bf9e53b4-e10c-4a11-a9be-8d5b944c1d51"
+  }, {
+    "reference": "Location/2ecdf389-df17-4eb8-9bcd-787cdbcdee87"
+  }, {
+    "reference": "Encounter/ef0f1230-3df4-4f1d-97c8-68e449fbc3d0"
+  }, {
+    "reference": "Coverage/141a2fa5-96f3-4c20-9bde-9357b188cc07"
+  }, {
+    "reference": "Condition/444ef1a1-e73d-41ff-8760-d355a1da855a"
+  }, {
+    "reference": "Condition/70e9c725-8d66-465c-b303-53297e9e7c2e"
+  }, {
+    "reference": "Specimen/dbbbd5a0-e028-4046-99a5-b2eb7c45a82d"
+  }, {
+    "reference": "Observation/f5cf2c1b-84d2-4cc0-8f4f-275cb5ac83e2"
+  } ]
+}

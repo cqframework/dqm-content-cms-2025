@@ -1,0 +1,30 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "6daadf4a-4633-442c-a5ba-3db695701d40",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+      "code": "community",
+      "display": "Community",
+      "userSelected": true
+    } ]
+  } ],
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "308351"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/3b8d6a18-b4a3-4369-b33c-6a6daa6b5b4c"
+  },
+  "authoredOn": "2026-11-24T08:15:00.000Z",
+  "requester": {
+    "reference": "Practitioner/example"
+  }
+}

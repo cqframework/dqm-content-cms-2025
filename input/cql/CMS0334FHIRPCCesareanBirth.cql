@@ -1,7 +1,7 @@
 /*
 NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
 */
-library CMS0334FHIRPCCesareanBirth version '1.0.000'
+library CMS0334FHIRPCCesareanBirth version '1.1.000'
 
 using USQualityCore version '0.1.0-cibuild'
 using USCore version '6.1.0-derived'

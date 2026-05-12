@@ -1,0 +1,67 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "46c6e04d-46fb-43bf-8e31-a9c615a68829",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "39b7751d-61e0-41c8-91e9-e46d44e8baea-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "09431e3b-b1d9-491a-b6a3-76b3868e6213"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#39b7751d-61e0-41c8-91e9-e46d44e8baea-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "HOB positive event: Candida albicans (fungemia) on hospital day 5"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
+  "period": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Practitioner/28a413ea-3b28-4167-9196-60a4a46a3f8d"
+  }, {
+    "reference": "Patient/09431e3b-b1d9-491a-b6a3-76b3868e6213"
+  }, {
+    "reference": "Location/2e347d65-2187-419a-aac1-78865a0d040e"
+  }, {
+    "reference": "Encounter/4b5b5b48-7187-4d4a-8723-188b7cbaaec2"
+  }, {
+    "reference": "Coverage/38088614-bda1-415b-89bd-a86e1e42fd0d"
+  }, {
+    "reference": "Specimen/ef7dafc8-bfd1-43a2-8149-37b776551a3b"
+  }, {
+    "reference": "Observation/1cf880bb-cc23-44af-b10e-2dfc26986227"
+  } ]
+}

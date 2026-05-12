@@ -1,0 +1,107 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "c3adbee2-c7a4-4794-8eec-0af62705b489",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "884042ba-8b9d-4460-acf6-a47957fc4a87-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "0fc5a0c1-02c0-4427-87d8-2e58f4be7b07"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#884042ba-8b9d-4460-acf6-a47957fc4a87-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Principal diagnosis = ischemic stroke, patient turns 18 one day after OccurA starts\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/0fc5a0c1-02c0-4427-87d8-2e58f4be7b07"
+  }, {
+    "reference": "Encounter/b320b7de-0f1c-42b6-a404-2c8cef1d5e5e"
+  }, {
+    "reference": "Claim/b6339611-2e5d-42e5-9989-62963bf25aac"
+  }, {
+    "reference": "Coverage/21150ddc-ff54-436c-a8d8-ea9c1e27ce29"
+  }, {
+    "reference": "Condition/5f47a034-b616-42c3-b5d8-cec3ed44f937"
+  }, {
+    "reference": "Organization/b607fd11-61d2-4794-9ba4-dd32a844ce77"
+  }, {
+    "reference": "Practitioner/ce060f58-cb05-4d21-8b4b-e7457b3bb092"
+  } ]
+}

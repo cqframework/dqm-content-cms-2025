@@ -1,0 +1,32 @@
+{
+  "resourceType": "Procedure",
+  "id": "a2eb547a-3c76-4fa3-ad07-5ab9f5f44d2c",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-10-01T13:15:00.000Z"
+  } ],
+  "status": "completed",
+  "category": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "387713003",
+      "display": "Surgical procedure",
+      "userSelected": true
+    } ]
+  },
+  "code": {
+    "coding": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "code": "0B110F4",
+      "display": "Bypass Trachea to Cutaneous with Tracheostomy Device, Open Approach",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/baa3f56c-d4df-4922-96a1-603c234b6db4"
+  },
+  "performedDateTime": "2026-10-01T13:15:00.000Z"
+}

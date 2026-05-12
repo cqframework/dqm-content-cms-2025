@@ -1,0 +1,123 @@
+{
+  "resourceType": "Patient",
+  "id": "3e86234e-4999-4e8e-a4a2-420d1343b079",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-patient" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+    "extension": [ {
+      "url": "ombCategory",
+      "valueCoding": {
+        "system": "urn:oid:2.16.840.1.113883.6.238",
+        "code": "2028-9",
+        "display": "Asian",
+        "userSelected": true
+      }
+    }, {
+      "url": "text",
+      "valueString": "Asian"
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+    "extension": [ {
+      "url": "ombCategory",
+      "valueCoding": {
+        "system": "urn:oid:2.16.840.1.113883.6.238",
+        "code": "2186-5",
+        "display": "Not Hispanic or Latino",
+        "userSelected": true
+      }
+    }, {
+      "url": "text",
+      "valueString": "Not Hispanic or Latino"
+    } ]
+  } ],
+  "identifier": [ {
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+        "code": "MR"
+      } ]
+    },
+    "system": "https://madie.cms.gov/",
+    "value": "3e86234e-4999-4e8e-a4a2-420d1343b079"
+  } ],
+  "active": true,
+  "name": [ {
+    "family": "HOBExcluded",
+    "given": [ "SameSpeciesDiffCodes" ]
+  } ],
+  "telecom": [ {
+    "system": "phone",
+    "value": "555-123-4567",
+    "use": "home"
+  }, {
+    "system": "email",
+    "value": "patient@example.com",
+    "use": "home"
+  } ],
+  "gender": "male",
+  "birthDate": "1972-11-30",
+  "address": [ {
+    "use": "home",
+    "type": "physical",
+    "line": [ "123 Main Street" ],
+    "city": "Boston",
+    "state": "MA",
+    "postalCode": "02101",
+    "country": "USA"
+  } ],
+  "maritalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+      "code": "M",
+      "display": "Married"
+    } ]
+  },
+  "multipleBirthInteger": 2,
+  "photo": [ {
+    "contentType": "image/png",
+    "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+  } ],
+  "contact": [ {
+    "relationship": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+        "code": "N",
+        "display": "Next-of-Kin"
+      } ]
+    } ],
+    "name": {
+      "family": "Contact",
+      "given": [ "Emergency" ]
+    },
+    "telecom": [ {
+      "system": "phone",
+      "value": "555-987-6543",
+      "use": "home"
+    } ]
+  } ],
+  "communication": [ {
+    "language": {
+      "coding": [ {
+        "system": "urn:ietf:bcp:47",
+        "code": "en",
+        "display": "English"
+      } ]
+    },
+    "preferred": true
+  } ],
+  "generalPractitioner": [ {
+    "reference": "Practitioner/1df638a3-4b3f-4d26-9342-4704228662d9"
+  } ],
+  "managingOrganization": {
+    "reference": "Organization/managing-org-001"
+  },
+  "link": [ {
+    "other": {
+      "reference": "Patient/3e86234e-4999-4e8e-a4a2-420d1343b079"
+    },
+    "type": "seealso"
+  } ]
+}

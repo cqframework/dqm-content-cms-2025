@@ -1,0 +1,17 @@
+{
+  "resourceType": "Device",
+  "id": "417239f0-50e4-4acd-af71-4405961c8ccc",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-device" ]
+  },
+  "type": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "468063009",
+      "display": "Infusion pump"
+    } ]
+  },
+  "patient": {
+    "reference": "Patient/36e30d76-0d86-4b72-ba89-4ebaacf48b31"
+  }
+}

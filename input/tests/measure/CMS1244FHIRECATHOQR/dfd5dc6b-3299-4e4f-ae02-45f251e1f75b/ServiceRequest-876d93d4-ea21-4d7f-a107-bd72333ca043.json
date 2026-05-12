@@ -1,0 +1,21 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "876d93d4-ea21-4d7f-a107-bd72333ca043",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "5751000175101",
+      "display": "Patient bed assigned (finding)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/dfd5dc6b-3299-4e4f-ae02-45f251e1f75b"
+  },
+  "authoredOn": "2026-05-01T02:00:00.000+00:00"
+}

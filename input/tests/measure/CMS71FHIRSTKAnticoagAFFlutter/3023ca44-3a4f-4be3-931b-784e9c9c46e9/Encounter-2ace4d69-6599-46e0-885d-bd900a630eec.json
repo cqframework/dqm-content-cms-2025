@@ -1,0 +1,42 @@
+{
+  "resourceType": "Encounter",
+  "id": "2ace4d69-6599-46e0-885d-bd900a630eec",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "32485007"
+    } ]
+  } ],
+  "subject": {
+    "reference": "Patient/3023ca44-3a4f-4be3-931b-784e9c9c46e9"
+  },
+  "period": {
+    "start": "2026-09-30T09:06:00.000Z",
+    "end": "2026-10-12T00:15:00.000Z"
+  },
+  "length": {
+    "value": 12,
+    "unit": "days"
+  },
+  "reasonReference": [ {
+    "reference": "Condition/7eefe016-43a6-4d06-baa9-5b2415c9cb25"
+  } ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [ {
+        "system": "http://snomed.info/sct",
+        "code": "10161009",
+        "display": "Discharge To Home Or Police Custody"
+      } ]
+    }
+  }
+}

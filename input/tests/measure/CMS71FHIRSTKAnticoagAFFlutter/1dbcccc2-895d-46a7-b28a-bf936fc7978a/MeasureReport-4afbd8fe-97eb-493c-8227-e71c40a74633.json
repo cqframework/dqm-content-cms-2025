@@ -1,0 +1,109 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "4afbd8fe-97eb-493c-8227-e71c40a74633",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "926b05d3-546f-4f33-8f1a-5e6dbfab6e75-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "1dbcccc2-895d-46a7-b28a-bf936fc7978a"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#926b05d3-546f-4f33-8f1a-5e6dbfab6e75-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Procedure performed Atrial Ablation starts at the start of the encounter using our relevant period\n"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS71FHIRSTKAnticoagAFFlutter",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/1dbcccc2-895d-46a7-b28a-bf936fc7978a"
+  }, {
+    "reference": "Encounter/f319fb65-fbfc-411c-81f9-0b34b8245b79"
+  }, {
+    "reference": "Coverage/9092e3cd-15b8-432b-a77c-f6906d378f68"
+  }, {
+    "reference": "Procedure/25efc17c-089e-4835-b3b6-5171fa936eb2"
+  }, {
+    "reference": "Condition/3ac66989-490c-4c34-8683-2d253bc80df8"
+  }, {
+    "reference": "Claim/1acf692a-307c-4408-b8c3-91ac69f44656"
+  }, {
+    "reference": "Organization/e4cdca2d-a8e6-4ee1-b29d-c6d9fc884928"
+  }, {
+    "reference": "Practitioner/7f826d9c-123b-498f-b154-242ae74429bf"
+  } ]
+}

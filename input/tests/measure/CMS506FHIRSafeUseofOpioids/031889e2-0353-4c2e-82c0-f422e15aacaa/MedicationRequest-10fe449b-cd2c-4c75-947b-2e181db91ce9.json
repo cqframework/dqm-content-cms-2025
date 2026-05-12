@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "10fe449b-cd2c-4c75-947b-2e181db91ce9",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "original-order",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+      "code": "discharge",
+      "display": "Discharge",
+      "userSelected": true
+    } ]
+  } ],
+  "doNotPerform": false,
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "1298088",
+      "display": "flurazepam hydrochloride 15 MG Oral Capsule",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/031889e2-0353-4c2e-82c0-f422e15aacaa"
+  },
+  "authoredOn": "2026-01-03T00:05:00.000+00:00",
+  "requester": {
+    "reference": "Practitioner/80f52276-d0ed-4b8a-aa9b-75d81713ba64"
+  }
+}

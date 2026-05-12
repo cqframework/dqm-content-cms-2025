@@ -1,0 +1,109 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "aa7b52ae-e5e6-49c5-a6d2-a154a328b9e6",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "80aa83d6-2814-440e-99e6-cd6487bf2bbd-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "daf80212-b06f-4f0c-8e23-9a005a9e9bcb"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#80aa83d6-2814-440e-99e6-cd6487bf2bbd-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Patient has diagnosis exception of tPA at another facility within 24 hours of emergency department visit."
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS996FHIRAptTxforSTEMI",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 1
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/daf80212-b06f-4f0c-8e23-9a005a9e9bcb"
+  }, {
+    "reference": "Encounter/bd1449a4-c7cf-43f0-8790-462fefd7d965"
+  }, {
+    "reference": "Condition/07875915-d668-4094-96eb-6f538abd71f9"
+  }, {
+    "reference": "Condition/b379c6cc-dc8f-412e-acca-24d847628c2b"
+  }, {
+    "reference": "Condition/f4f711ad-f027-40d6-ae3c-347bf2d2f0e8"
+  }, {
+    "reference": "Coverage/0d6c762d-4c53-4c7c-bfc5-1d1e5708b83a"
+  }, {
+    "reference": "Organization/ac6af8cd-ec99-43dd-82a0-9c7fc5b6f9a5"
+  }, {
+    "reference": "Practitioner/aa31db15-1823-463b-a01b-29d65dbe1e95"
+  } ]
+}

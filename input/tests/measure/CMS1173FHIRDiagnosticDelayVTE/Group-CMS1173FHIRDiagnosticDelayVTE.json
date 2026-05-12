@@ -1,0 +1,337 @@
+{
+  "resourceType": "Group",
+  "id": "CMS1173FHIRDiagnosticDelayVTE",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/CMS1173FHIRDiagnosticDelayVTE"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/00829185-d673-4377-91f6-8ef11945ef08",
+      "display": "Sarah Dovetestpatient51"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0170a407-20f1-4d94-8a33-bb861e4c7697",
+      "display": "Tom Dovetestpatient21"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/08473857-1c97-48cf-8ac3-4d70823cac80",
+      "display": "Sarah Dovetestpatient9"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0acae6f0-e619-416a-98a9-3075c019a2b0",
+      "display": "Sarah Dovetestpatient11"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/0f9df40c-6f85-49cb-bb90-43a6246ac36a",
+      "display": "Sarah Dovetestpatient22"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/28ac4ec3-5e02-4834-a778-0c1180d118df",
+      "display": "Sarah Dovetestpatient1"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/2a342927-ec88-48d7-8ed2-f5a4eeeabacf",
+      "display": "Sarah Dovetestpatient44"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/33e8f298-ea35-46d2-b1b4-e36f74ef0656",
+      "display": "Sarah Dovetestpatient18"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/366c0866-e2cb-4a7e-a3f4-3aaaa7ce7e6a",
+      "display": "Sarah Dovetestpatient45"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3739ae38-6a2c-4197-bda6-e493c9df60e3",
+      "display": "Sarah Dovetestpatient41"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/3ae13373-5b1a-425b-b5db-7fe7ad03ed4a",
+      "display": "Sarah Dovetestpatient52"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/404fce97-6dc2-4f88-9a23-2a158dd6cf51",
+      "display": "Tom Dovetestpatient13"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/40518296-e99e-49d4-bad4-f2642f690f44",
+      "display": "Sarah Dovetestpatient43"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/43b86425-1ea2-43d5-b4d6-fb6d2c5c3ec1",
+      "display": "Sarah Dovetestpatient30"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/47e1aa2d-d7e6-412f-adcf-499556a3b964",
+      "display": "Sarah Dovetestpatient32"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/4d2c483a-5020-4cf8-92ad-5b03dcfe4090",
+      "display": "Tom Dovetestpatient64"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/51d9e817-1222-4048-b79d-be846ab4b48b",
+      "display": "Tammy Dovetestpatient40"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/52640335-0fcf-4b29-8711-3e60fa0b795b",
+      "display": "Tom Dovetestpatient12"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/52aac38f-8225-4a76-9ead-75a5d9e59133",
+      "display": "Tom Dovetestpatient60"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/5d812504-d8f7-4896-afd7-47c644eab47d",
+      "display": "Tom Dovetestpatient63"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6338004a-79a2-44e2-bbab-01757f5d4255",
+      "display": "Tom Dovetestpatient58"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/66de10d2-27b8-429e-9f42-1baa36c146e4",
+      "display": "Sony Dovepatient8"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6aada3b3-23fe-42fe-a01e-e0398e64461e",
+      "display": "Sarah Dovetestpatient53"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/6df8ca8a-cc8a-448f-8d37-6710be1bae7f",
+      "display": "Tony Dovetestpatient57"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/72a0ce6d-cfb0-4cc1-a558-de429743db8d",
+      "display": "Sarah Dovetestpatient56"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/74418ec7-63de-4779-a59b-00946db9289e",
+      "display": "Sarah Dovetestpatient38"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8abac9e3-7e92-48c4-854c-4e9e98cf8f80",
+      "display": "Sarah Dovetestpatient14"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8c1e3699-383f-4f17-94af-830d5a8af82b",
+      "display": "Sarah Dovetestpatient49"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8c634b17-4a98-4829-bf96-d8972ace13b2",
+      "display": "Tom Dovetestpatient65"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/8e599e9d-397f-46e6-be1c-dceb2e8ae4ef",
+      "display": "Tom Dovetestpatient2"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/958a8884-0ecc-4955-9d85-3a0637cc3513",
+      "display": "Sarah Dovetestpatient7"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/95df04ca-45f8-4ae8-818c-579beab1ff7c",
+      "display": "Sarah Dovetestpatient55"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/977bf457-d20e-4a81-bd4e-3f1fe48bd898",
+      "display": "Sonni Dovetestpatient46"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9b320087-ff72-49d0-915a-ea51e31a6958",
+      "display": "Tom Dovetestpatient62"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9c81fa03-9b46-455e-9cf7-d77d650a7b92",
+      "display": "Molly Dovetestpatient29"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9de7a897-b0f0-4211-aeb7-9240c5828427",
+      "display": "Sarah Dovetestpatient39"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9f2ec6f0-b623-4a28-8012-b1aa1c4e3e18",
+      "display": "Sarah Dovetestpatient5"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/a788d38f-a86a-4dc0-8f79-a22a31709495",
+      "display": "Sarah Dovetestpatient20"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b452cab7-9e94-46a7-bfbd-757bbabe48f3",
+      "display": "Lan Dovetestpatient6"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b454bad8-f479-47fc-af11-1f9cb6fccea5",
+      "display": "Sarah Dovetestpatient17"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b486fbcd-6122-4238-812d-ed538bdf8bfc",
+      "display": "Shirhy Dovetestpatient10"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/b5a06f19-e1a3-4643-acae-98ab4334e08c",
+      "display": "Sarah Dovetestpatient37"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c1fe7157-3ff7-4bb8-bf05-69c28a111600",
+      "display": "Sarah Dovetestpatient15"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/c9d1abe0-f4e2-4837-8614-7c6f81e308dd",
+      "display": "Sarah Dovetestpatient48"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ca961cfb-a923-4ace-a62b-76521493586d",
+      "display": "Tom Dovetestpatient59"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/cb4f0532-5dd7-42f9-83a5-a45747bf9fdc",
+      "display": "Jenny Dovetestpatient28"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/cfa235c3-3b8b-4cbb-a78f-5c4fd2af04df",
+      "display": "Mackenzie Dovetestpatient50"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d1e00565-85ef-4b47-b241-d4cbf05cdad3",
+      "display": "Sarah Dovetestpatient23"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d48f4307-df8d-4533-88bb-923c458d7501",
+      "display": "Sarah Dovetestpatient19"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/d9b5275a-a62b-4bb2-b64b-4f7562910e84",
+      "display": "Sarah Dovetestpatient31"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/daeb8000-bb34-48e7-a458-6c9a01c3a143",
+      "display": "Tom Dovetestpatient4"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/dec3b692-1735-4de3-8609-492d7208abfc",
+      "display": "Sarah Dovetestpatient33"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e23e06b9-b684-4e7b-8e24-c8a86e143d6f",
+      "display": "Sarah Dovetestpatient26"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e2e50ebd-691f-4bf6-8f22-812a05abb608",
+      "display": "Tarah Dovetestpatient27"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e6e92b90-d9fa-4774-bec0-6700ed567dae",
+      "display": "Sarah Dovetestpatient16"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e70ab50d-19ec-488c-bcbd-356471469a8e",
+      "display": "Sarah Dovetestpatient34"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e7c5cce7-09dd-443d-8c1c-bde45e10c82e",
+      "display": "Tom Dovetestpatient61"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/e7e70ee6-834a-471f-a10d-62dd96df214d",
+      "display": "Sarah Dovetestpatient42"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/efdaaeef-185d-40ae-b758-41bf0170a838",
+      "display": "Sarah Dovetestpatient36"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f15fd7ef-5c1a-4202-8d65-5afa27f1c35f",
+      "display": "Macys Dovetestpatient24"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f17f0643-8f16-435e-a0f7-2f7fc010c924",
+      "display": "Sarah Dovetestpatient35"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f3cea901-c841-424e-bcd8-dbf794b48abf",
+      "display": "Sarah Dovetestpatient54"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/f654a226-f4a3-44ad-9763-90fe13f82ff6",
+      "display": "Sarah Dovetestpatient25"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/fb95f47d-a7a0-4fe2-a29a-bdca9fc1be59",
+      "display": "Trienna Dovetestpatient47"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/fcf71d81-6341-486a-aca4-236516cad3cd",
+      "display": "Sarah Dovetestpatient3"
+    }
+  } ]
+}

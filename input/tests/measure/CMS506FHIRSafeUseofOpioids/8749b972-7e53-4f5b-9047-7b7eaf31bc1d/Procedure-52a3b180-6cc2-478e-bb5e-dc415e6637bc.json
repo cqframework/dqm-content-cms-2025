@@ -1,0 +1,24 @@
+{
+  "resourceType": "Procedure",
+  "id": "52a3b180-6cc2-478e-bb5e-dc415e6637bc",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+  },
+  "extension": [ {
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "valueDateTime": "2026-01-02T00:10:00.000+00:00"
+  } ],
+  "status": "completed",
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "792902005",
+      "display": "Drug addiction therapy using buprenorphine and naloxone (regime/therapy)",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/8749b972-7e53-4f5b-9047-7b7eaf31bc1d"
+  },
+  "performedDateTime": "2026-01-02T00:10:00.000+00:00"
+}

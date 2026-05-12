@@ -1,0 +1,33 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "f0f75bde-2757-402d-8e03-0a12641f2dbf",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+      "code": "community",
+      "display": "Community",
+      "userSelected": true
+    } ]
+  } ],
+  "doNotPerform": false,
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "1298091",
+      "display": "flurazepam hydrochloride 30 MG Oral Capsule",
+      "userSelected": true
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/3dfa6b2c-e7e1-46a4-a2cc-54602538c44e"
+  },
+  "authoredOn": "2025-12-31T09:00:00.000Z",
+  "requester": {
+    "reference": "Practitioner/f3ecbdf1-2af2-42a7-81be-91c348ad995b"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "e7700f97-e11e-4f92-b220-e7921332bc9d",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "0a4574eb-9ffd-4c93-b90e-366d86d369c5-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "fad30843-c5e2-454d-a441-4f93e6595795"
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#0a4574eb-9ffd-4c93-b90e-366d86d369c5-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "Patient is over 18 years old and has an encounter during the MP and STEMI starts during and ends during Encounter. Patient has an observation for pregnancy during Encounter period"
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/CMS996FHIRAptTxforSTEMI",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "count": 1
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "count": 0
+    }, {
+      "id": "DenominatorException_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "count": 0
+    } ],
+    "measureScore": {
+      "value": 0.0
+    }
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/fad30843-c5e2-454d-a441-4f93e6595795"
+  }, {
+    "reference": "Encounter/62015b6f-1d3f-43b7-a638-cd4426f37491"
+  }, {
+    "reference": "Condition/3c376557-d724-48af-a9cc-f46ed73d6932"
+  }, {
+    "reference": "Observation/9f5f9bdd-a7b0-4c93-a52e-a6919ea0e504"
+  }, {
+    "reference": "Coverage/5c421476-a773-41ca-ab0f-129273d43b25"
+  }, {
+    "reference": "Organization/5cd425f3-6523-4b9e-ae78-b0d968ad8f37"
+  }, {
+    "reference": "Practitioner/15f74f89-4647-4687-8f2c-56baaa4d514c"
+  } ]
+}

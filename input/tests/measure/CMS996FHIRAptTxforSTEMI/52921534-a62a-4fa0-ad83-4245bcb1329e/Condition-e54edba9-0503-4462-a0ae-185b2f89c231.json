@@ -1,0 +1,44 @@
+{
+  "resourceType": "Condition",
+  "id": "e54edba9-0503-4462-a0ae-185b2f89c231",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-encounter-diagnosis" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active"
+    } ]
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed"
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "encounter-diagnosis",
+      "display": "Encounter Diagnosis"
+    } ]
+  } ],
+  "severity": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "24484000",
+      "display": "Severe (severity modifier)"
+    } ]
+  },
+  "code": {
+    "coding": [ {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "code": "Z92.82",
+      "display": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/52921534-a62a-4fa0-ad83-4245bcb1329e"
+  },
+  "onsetDateTime": "2026-11-10T08:30:00.000+00:00"
+}

@@ -88,8 +88,8 @@ define "Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient":
 
 define "Has Diagnosis of Allergy or Intolerance to ACEI or ARB":
   exists ( (
-    ["Condition": "Allergy to ACE Inhibitor or ARB"]
-      union ["Condition": "Intolerance to ACE Inhibitor or ARB"]
+    ["ConditionEncounterDiagnosis": "Allergy to ACE Inhibitor or ARB"]
+      union ["ConditionEncounterDiagnosis": "Intolerance to ACE Inhibitor or ARB"]
    ) ACEIOrARBAllergyOrIntoleranceDiagnosis
       where ACEIOrARBAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
   )
@@ -109,7 +109,7 @@ define "Has Diagnosis of Pregnancy":
     )
 
 define "Has Diagnosis of Renal Failure Due to ACEI":
-  exists ( ( [Condition: "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"] ) RenalFailureDueToACEI
+  exists ( ( [ConditionEncounterDiagnosis: "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"] ) RenalFailureDueToACEI
       where RenalFailureDueToACEI.overlapsHeartFailureOutpatientEncounter ( )
   )
 
