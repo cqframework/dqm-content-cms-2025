@@ -6,7 +6,7 @@
     <name value="DraftDQMContentCMSDerived"/>
     <title value="Draft dQM CMS Content Implementation Guide"/>
     <status value="draft"/>
-    <experimental value="false"/>
+    <experimental value="true"/>
     <date value="2026-03-25"/>
     <publisher value="cqframework"/>
     <contact>
