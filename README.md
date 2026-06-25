@@ -1,15 +1,9 @@
 # dqm-content-cms-2025
-Draft CMS dQM Measure Content (Using USCore 6.1.0-derived, QICore 6.0.0-derived, based on FHIR R4 v4.0.1)
+Draft CMS dQM Measure Content (Using USCore 6.1.0-derived, USQualityCore 0.1.0-cibuild, based on FHIR R4 v4.0.1)
 
-> This repository is a focus repostiory created from dqm-content-qicore-2025, but with only the following measures:
+> This repository contains draft 2025AU content refactored to use the USQualityCore 0.1.0-cibuild, and US Core 6.1.0-derived models. All measure content in this repository was copied from the dqm-content-qicore-2025 repository and refactored using the VSCode CQL Authoring plugin.
 
-* CMS2: Preventive Care and Screening: Depression Screening and Followup
-* CMS122: Diabetes: Glycemic Status Assessment
-* CMS125: Breast Cancer Screening
-* CMS130: Colon Cancer Screening
-* CMS165: Controlling High Blood Pressure
-
-These draft FHIR-based measures are based on the measures in the dqm-content-qicore-2025 repository but refactored to make use of the US Core 6.1.0-derived, QICore 6.0.0-derived, and shared libraries in the ballot version of the [US Core Common IG](https://build.fhir.org/ig/HL7/us-cql-ig).
+Measures in this repository were refactored following the [US Quality Core Update Process](USQualityCoreUpdateProcess.md)
 
 Commits to this repository will automatically trigger a build of the continuous integration build, available here:
 
