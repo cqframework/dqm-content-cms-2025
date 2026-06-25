@@ -5,6 +5,8 @@ Draft CMS dQM Measure Content (Using USCore 6.1.0-derived, USQualityCore 0.1.0-c
 
 Measures in this repository were refactored following the [US Quality Core Update Process](USQualityCoreUpdateProcess.md)
 
+> NOTE: This repository is still using 0.1.0-cibuild because there is still active discrepancy testing happening on the content and so there is a content freeze while that testing is being completed. Once that freeze is lifted, these measures will be updated to the published 0.5.0 US Quality Core IG.
+
 Commits to this repository will automatically trigger a build of the continuous integration build, available here:
 
 https://build.fhir.org/ig/cqframework/dqm-content-cms-2025
