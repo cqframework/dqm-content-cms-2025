@@ -10,12 +10,12 @@ For the purposes of this discussion, we will be focusing on the following 5 meas
 | Measure | QI Core | US Quality Core |
 |----|----|----|
 | CMS2: Preventive Care and Screening: Depression Screening and Followup | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS2FHIRPCSDepScreenAndFollowUp.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS2FHIRPCSDepScreenAndFollowUp.cql) |
-| CMS122: Diabetes: Glycemic Status Assessment | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql)* |
+| CMS122: Diabetes: Glycemic Status Assessment | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) |
 | CMS125: Breast Cancer Screening | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS125FHIRBreastCancerScreen.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS125FHIRBreastCancerScreen.cql) |
-| CMS130: Colon Cancer Screening | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS130FHIRColorectalCancerScrn.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS130FHIRColorectalCancerScrn.cql)* |
-| CMS165: Controlling High Blood Pressure | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS165FHIRControllingHighBP.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS165FHIRControllingHighBP.cql)* |
+| CMS130: Colon Cancer Screening | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS130FHIRColorectalCancerScrn.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS130FHIRColorectalCancerScrn.cql) |
+| CMS165: Controlling High Blood Pressure | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS165FHIRControllingHighBP.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS165FHIRControllingHighBP.cql) |
 
-Note: Measures marked with an asterisk are still in progress
+Note that this list is not a complete listing of the measures, see the [input/cql](input/cql) directory for all CQL source, and see the [Measures](https://build.fhir.org/ig/cqframework/dqm-content-cms-2025/measures.html) index in the CI build for a listing of all the specifications.
 
 These are all EC measures that make use of the following shared libraries:
 
@@ -79,6 +79,8 @@ using USQualityCore version '0.1.0-cibuild'
 using USCore version '6.1.0-derived'
 using FHIR version '4.0.1'
 ```
+
+> NOTE: This repository is still using 0.1.0-cibuild because there is still active discrepancy testing happening on the content and so there is a content freeze while that testing is being completed. Once that freeze is lifted, these measures will be updated to the published 0.5.0 US Quality Core IG.
 
 ### Step 2: Update Libraries
 
