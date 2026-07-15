@@ -61,7 +61,7 @@ US Quality Core:
 ```
 FHIR.Encounter
     |- USCore.Encounter
-        |- QICore.Encounter
+        |- USQualityCore.Encounter
 ```
 
 For almost all the measure logic, this change is transparent and the only thing that needs to happen is to change the version of the model being used:
