@@ -182,7 +182,7 @@ define "Bilateral Mastectomy Diagnosis":
     where BilateralMastectomyHistory.prevalenceInterval ( ) starts on or before end of "Measurement Period"
 ```
 
-### Step 3: Replace extension elements:
+### Step 4: Replace extension elements:
 
 In the derived models, extensions and slices are no longer created as first-class elements, rather they are represented as fluent functions:
 
@@ -198,7 +198,7 @@ US Quality Core:
     and Patient.sex() = '248152002'
 ```
 
-### Step 4: Consider Functions
+### Step 5: Consider Functions
 
 QI Core:
 
@@ -214,7 +214,7 @@ define "Initial Population":
   Patient.ageInYearsAt(date from end of "Measurement Period") in Interval[42, 74]
 ```
 
-### Step 5: Consider Elements and Patterns
+### Step 6: Consider Elements and Patterns
 
 And finally, consider whether the patterns documented in the CQL US Common IG can be applied to the measure logic. For example, the [Mammography](https://build.fhir.org/ig/HL7/us-cql-ig/en/patterns-service.html#mammography) pattern proposes that in addition to Observation resources, Mammographies may be represented in FHIR data as DiagnosticReport resources:
 
