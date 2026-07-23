@@ -39,8 +39,8 @@ define "First SUD Episode During Measurement Period":
   First(("Qualifying Encounters") ValidEncounters
       with(([ConditionEncounterDiagnosis: "Substance Use Disorder"]).verified()) SUDDiagnosis
         such that ValidEncounters.period during "Measurement Period"
-          and SUDDiagnosis.prevalenceInterval() starts during ValidEncounters.period
-          and SUDDiagnosis.prevalenceInterval() starts 47 days or more before day of 
+          and SUDDiagnosis.prevalenceInterval ( ) starts during ValidEncounters.period
+          and SUDDiagnosis.prevalenceInterval ( ) starts 47 days or more before day of 
           end of "Measurement Period"
       return {
         ValidEncounterDate: date from start of ValidEncounters.period,

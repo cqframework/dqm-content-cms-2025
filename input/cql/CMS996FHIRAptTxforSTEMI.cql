@@ -161,7 +161,7 @@ define "Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter
               or ThrombolyticAllergy.verificationStatus ~ QICoreCommon."allergy-unconfirmed"
           )
         )
-        and ( ThrombolyticAllergy.onset.toInterval ( ) overlaps ( EDwSTEMI.period )
+        and ( ThrombolyticAllergy.prevalenceInterval ( ) overlaps ( EDwSTEMI.period )
             or ThrombolyticAllergy.onset before end EDwSTEMI.period
         )
 

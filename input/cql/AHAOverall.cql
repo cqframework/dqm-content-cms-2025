@@ -239,7 +239,7 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(Procedure Pr
 */
 define fluent function overlapsAfterHeartFailureOutpatientEncounter(AllergyIntolerance AllergyIntolerance):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-      where Interval[start of AllergyIntolerance.onset.toInterval ( ), AllergyIntolerance.lastOccurrence]overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
+      where Interval[start of AllergyIntolerance.prevalenceInterval ( ), AllergyIntolerance.lastOccurrence]overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and AllergyIntolerance.isVerified ( )
   )
           

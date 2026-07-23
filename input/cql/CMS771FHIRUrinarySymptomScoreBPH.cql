@@ -123,14 +123,14 @@ define "Urinary Retention Diagnosis Starts Within 1 Year After Initial BPH Diagn
 define "Urinary Symptom Score 6 to 12 Months After Initial BPH Diagnosis":
   Last("Urinary Symptom Score Assessment" USSAssessment
       with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
-        such that difference in months between start of InitialBPHDiagnosis.prevalenceInterval() and USSAssessment.effectiveDatetime in Interval[6, 12]
+        such that difference in months between start of InitialBPHDiagnosis.prevalenceInterval ( ) and USSAssessment.effectiveDatetime in Interval[6, 12]
       sort by effectiveDatetime
   )
 
 define "Urinary Symptom Score Within 1 Month After Initial BPH Diagnosis":
   First("Urinary Symptom Score Assessment" USSAssessment
       with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
-        such that USSAssessment.effectiveDatetime 1 month or less on or after day of start of InitialBPHDiagnosis.prevalenceInterval()
+        such that USSAssessment.effectiveDatetime 1 month or less on or after day of start of InitialBPHDiagnosis.prevalenceInterval ( )
       sort by effectiveDatetime
   )
 
@@ -143,9 +143,9 @@ define "Has Initial BPH Diagnosis Starts During or Within 30 Days After End of H
 define "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period":
   First(([ConditionProblemsHealthConcerns: "Benign prostatic hyperplasia with lower urinary tract symptoms"]
       union [ConditionEncounterDiagnosis: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
-      where NewBPHDiagnosis.prevalenceInterval() starts during Interval[start of "Measurement Period" - 6 months, start of "Measurement Period"]
-        and NewBPHDiagnosis.verificationStatusIsNotInvalid()
-      sort by start of onset.toInterval()
+      where NewBPHDiagnosis.prevalenceInterval ( ) starts during Interval[start of "Measurement Period" - 6 months, start of "Measurement Period"]
+        and NewBPHDiagnosis.verificationStatusIsNotInvalid ( )
+      sort by start of onset.toInterval ( )
   )
 
 define "Morbid Obesity Diagnosis On or Before Follow Up USS Assessment":

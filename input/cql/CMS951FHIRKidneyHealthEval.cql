@@ -61,8 +61,8 @@ define "Has Active Diabetes Overlaps Start Of Measurement Period":
   exists ( ["ConditionProblemsHealthConcerns": "Diabetes"]
     union ["ConditionEncounterDiagnosis": "Diabetes"] ) DiabetesDiagnosis
     where DiabetesDiagnosis.prevalenceInterval ( ) overlaps before day of "Measurement Period"
-      and ( DiabetesDiagnosis.verificationStatus is not null implies ( DiabetesDiagnosis.verificationStatus !~ QICoreCommon."refuted"
-            and DiabetesDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
+      and ( DiabetesDiagnosis.verificationStatus is not null implies ( DiabetesDiagnosis.verificationStatus !~ Status."refuted"
+            and DiabetesDiagnosis.verificationStatus !~ Status."entered-in-error"
         )
       )
 
@@ -74,8 +74,8 @@ define "Has CKD Stage 5 Or ESRD Diagnosis Overlaps Measurement Period":
         union ["ConditionEncounterDiagnosis": "End Stage Renal Disease"]
     ) ) CKDOrESRD
     where CKDOrESRD.prevalenceInterval ( ) overlaps day of "Measurement Period"
-      and ( CKDOrESRD.verificationStatus is not null implies ( CKDOrESRD.verificationStatus !~ QICoreCommon."refuted"
-            and CKDOrESRD.verificationStatus !~ QICoreCommon."entered-in-error"
+      and ( CKDOrESRD.verificationStatus is not null implies ( CKDOrESRD.verificationStatus !~ Status."refuted"
+            and CKDOrESRD.verificationStatus !~ Status."entered-in-error"
         )
       )
 

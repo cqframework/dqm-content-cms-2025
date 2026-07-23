@@ -79,7 +79,7 @@ define "First ADT in 3 Months Before to 9 Months After Start of Measurement Peri
   First(("Androgen Deprivation Therapy for Urology Care Medication Active Start Dates"
       union "Androgen Deprivation Therapy for Urology Care Medication Order Start Dates") ADTDateTime
       with "Prostate Cancer Diagnosis" ProstateCancer
-        such that ADTDateTime during day of ProstateCancer.prevalenceInterval()
+        such that ADTDateTime during day of ProstateCancer.prevalenceInterval ( )
           and ADTDateTime during day of Interval[start of "Measurement Period" - 3 months, start of "Measurement Period" + 9 months]
       sort ascending
   )

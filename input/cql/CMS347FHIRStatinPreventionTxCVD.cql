@@ -132,7 +132,7 @@ define "Has Adverse Reaction to Statin":
 define "Has Allergy to Statin":
   exists ( [AllergyIntolerance: "Statin Allergen"] StatinAllergy
       where StatinAllergy.onset.toInterval ( ) overlaps day of "Measurement Period"
-        and StatinAllergy.clinicalStatus ~ QICoreCommon."allergy-active"
+        and StatinAllergy.clinicalStatus ~ FHIRCommon."allergy-active"
   )
 
 define "Has Diabetes Diagnosis":

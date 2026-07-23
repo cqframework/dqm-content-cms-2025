@@ -210,7 +210,7 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prio
         such that AtrialFibrillation.verificationStatus is not null implies ( AtrialFibrillation.verificationStatus !~ QICoreCommon."refuted"
             and AtrialFibrillation.verificationStatus !~ QICoreCommon."entered-in-error"
         )
-          and AtrialFibrillation.onset.toInterval ( ) starts on or before end of QualifyingEncounter.period
+          and AtrialFibrillation.prevalenceInterval ( ) starts on or before end of QualifyingEncounter.period
   )
     union ( VTE."Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions" QualifyingEncounter
         where QualifyingEncounter.hasEncDiagnosisOf ( "Atrial Fibrillation or Flutter" )
@@ -224,7 +224,7 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prio
             and VTEDiagnosis.verificationStatus is not null implies ( VTEDiagnosis.verificationStatus !~ QICoreCommon."refuted"
               and VTEDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
           )
-            and VTEDiagnosis.onset.toInterval ( ) before start of QualifyingEncounter.period
+            and VTEDiagnosis.prevalenceInterval ( ) before start of QualifyingEncounter.period
     )
 
 define "Encounter With Prior Or Present Procedure Of Hip Or Knee Replacement Surgery":
