@@ -100,7 +100,7 @@ define "Has Diagnoses Identifying Sexual Activity":
         union [ConditionEncounterDiagnosis: "Complications of Pregnancy, Childbirth and the Puerperium"]
         union [ConditionProblemsHealthConcerns: "Complications of Pregnancy, Childbirth and the Puerperium"]
     ).verified ( ) ) SexualActivityDiagnosis
-      where SexualActivityDiagnosis.onset.toInterval ( ) overlaps "Measurement Period"
+      where SexualActivityDiagnosis.prevalenceInterval ( ) overlaps "Measurement Period"
   )
 
 define "Has Active Contraceptive Medications":

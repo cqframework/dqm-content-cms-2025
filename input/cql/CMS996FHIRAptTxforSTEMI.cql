@@ -148,8 +148,8 @@ define "Active Long Term use of Anticoagulants":
     with ( ( ["ConditionProblemsHealthConcerns": "Long term (current) use of anticoagulants"]
         union ["ConditionEncounterDiagnosis": "Long term (current) use of anticoagulants"]
     ).verified ( ) ) LongTermAnticoagulant
-      such that ( LongTermAnticoagulant.onset.toInterval ( ) starts before or on start of EDwithSTEMI.period
-          and LongTermAnticoagulant.onset.toInterval ( ) ends on or after start of EDwithSTEMI.period
+      such that ( LongTermAnticoagulant.prevalenceInterval ( ) starts before or on start of EDwithSTEMI.period
+          and LongTermAnticoagulant.prevalenceInterval ( ) ends on or after start of EDwithSTEMI.period
       )
 
 define "Active use of Anticoagulants":
@@ -170,7 +170,7 @@ define "Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter
               or ThrombolyticAllergy.verificationStatus ~ USQualityCoreCommon."allergy-unconfirmed"
           )
         )
-        and ( ThrombolyticAllergy.onset.toInterval ( ) overlaps ( EDwSTEMI.period )
+        and ( ThrombolyticAllergy.prevalenceInterval ( ) overlaps ( EDwSTEMI.period )
             or ThrombolyticAllergy.onset before end EDwSTEMI.period
         )
 
@@ -193,7 +193,7 @@ define "ED Encounter with STEMI Diagnosis":
               union [ConditionEncounterDiagnosis: "STEMI"]
           ).verified ( ) ) DxSTEMI
             where ( EDEncounterinMP.encounterDiagnosis ( ).code in "STEMI"
-                or ( DxSTEMI.onset.toInterval ( ) starts during EDEncounterinMP.period )
+                or ( DxSTEMI.prevalenceInterval ( ) starts during EDEncounterinMP.period )
             )
         )
     )
@@ -234,7 +234,7 @@ define "ED Encounter with Hospice Services":
               and ( HospicePerformed.performed.toInterval ( ) overlaps day of SixMonthsBeforeToEndOfSTEMI )
         )
         or exists ( ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"] ).verified ( ) ) HospiceCareDiagnosis
-            where HospiceCareDiagnosis.onset.toInterval ( ) ends on or after start of ( EDwSTEMI.period )
+            where HospiceCareDiagnosis.prevalenceInterval ( ) ends on or after start of ( EDwSTEMI.period )
         )
     )
 
@@ -249,8 +249,8 @@ define "Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encount
         union ["ConditionProblemsHealthConcerns": "Takotsubo syndrome"]
         union ["ConditionProblemsHealthConcerns": "Cardiopulmonary Emergency"]
     ).verified ( ) ) ExclusionDiagnosis
-      such that ( ( ExclusionDiagnosis.onset.toInterval ( ) starts during EDwithSTEMI.period )
-          or ( ExclusionDiagnosis.onset.toInterval ( ) starts 24 hours or less before start of EDwithSTEMI.period )
+      such that ( ( ExclusionDiagnosis.prevalenceInterval ( ) starts during EDwithSTEMI.period )
+          or ( ExclusionDiagnosis.prevalenceInterval ( ) starts 24 hours or less before start of EDwithSTEMI.period )
       )
 
 define "Received tPA in Another Facility within 24 hours Prior to Admission":
@@ -258,7 +258,7 @@ define "Received tPA in Another Facility within 24 hours Prior to Admission":
     with ( ( ["ConditionProblemsHealthConcerns": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
         union ["ConditionEncounterDiagnosis": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
     ).verified ( ) ) TPA
-      such that TPA.onset.toInterval ( ) starts during EDwithSTEMI.period
+      such that TPA.prevalenceInterval ( ) starts during EDwithSTEMI.period
 
 define "ED Encounter with a Documented Reason for No PCI Performed":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI

@@ -88,7 +88,7 @@ define "Diabetic Retinopathy Encounter":
   "Qualifying Encounter During Day of Measurement Period" ValidQualifyingEncounter
     with ( ["ConditionProblemsHealthConcerns": "Diabetic Retinopathy"]
       union ["ConditionEncounterDiagnosis": "Diabetic Retinopathy"] ) DiabeticRetinopathy
-      such that DiabeticRetinopathy.onset.toInterval ( ) overlaps day of ValidQualifyingEncounter.period
+      such that DiabeticRetinopathy.prevalenceInterval ( ) overlaps day of ValidQualifyingEncounter.period
         and DiabeticRetinopathy.isVerified ( )
 
 define "Macular Exam Performed":

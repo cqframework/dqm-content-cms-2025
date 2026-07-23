@@ -155,11 +155,11 @@ define "Qualified VTE Encounter With Hospice Services Within Previous 90 Days":
           where HospicePerformed.performed.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
       )
       or exists ( ( [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
-          where HospiceCareDiagnosis.onset.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
+          where HospiceCareDiagnosis.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and HospiceCareDiagnosis.isVerified ( )
       )
       or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"] ) HospiceCareConcern
-          where HospiceCareConcern.onset.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
+          where HospiceCareConcern.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and HospiceCareConcern.isVerified ( )
       )
 
@@ -172,11 +172,11 @@ define "Qualified VTE Encounter With Palliative Care Within Previous 90 Days":
           and PalliativeAssessment.status in { 'final', 'amended', 'corrected' }
     )
       or exists ( ( ( [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) ) PalliativeCareDiagnosis
-          where PalliativeCareDiagnosis.onset.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
+          where PalliativeCareDiagnosis.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and PalliativeCareDiagnosis.isVerified ( )
       )
       or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"] ) PalliativeCareConcern
-          where PalliativeCareConcern.onset.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
+          where PalliativeCareConcern.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and PalliativeCareConcern.isVerified ( )
       )
       or exists ( ( [Encounter: "Palliative Care Encounter"] ) PalliativeEncounter

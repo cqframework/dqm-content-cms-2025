@@ -85,7 +85,7 @@ define "Has Pregnancy Diagnosis During Measurement Period":
   ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
       union [ConditionEncounterDiagnosis: "Pregnancy"]
   ).verified ( ) ) PregnancyDx
-    where PregnancyDx.onset.toInterval ( ) overlaps day of "Measurement Period"
+    where PregnancyDx.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "Preventive Care Outpatient Visits During Measurement Period":
   [Encounter: "Preventative Clinical Encounters"] PreventiveCare
@@ -121,7 +121,7 @@ define "Prediabetes Diagnosis Overlaps 2 Year Look Back Period":
   ( ( ["ConditionProblemsHealthConcerns": "Prediabetes (Borderline Diabetes)"]
       union [ConditionEncounterDiagnosis: "Prediabetes (Borderline Diabetes)"]
   ).verified ( ) ) PriorPrediabetes
-    where "PriorPrediabetes".onset.toInterval ( ) overlaps day of "Look Back Period"
+    where "PriorPrediabetes".prevalenceInterval ( ) overlaps day of "Look Back Period"
 
 define "Denominator Exclusions":
   "Has Pregnancy Observation During Measurement Period"
@@ -135,7 +135,7 @@ define "Diabetes Diagnosis Overlaps 2 Year Look Back Period":
   ( ( ["ConditionProblemsHealthConcerns": "Diabetes"]
       union [ConditionEncounterDiagnosis: "Diabetes"]
   ).verified ( ) ) PriorDiabetes
-    where "PriorDiabetes".onset.toInterval ( ) overlaps day of "Look Back Period"
+    where "PriorDiabetes".prevalenceInterval ( ) overlaps day of "Look Back Period"
 
 define "Has Glycemic Laboratory Test Performed During 2 Year Look Back Period":
   exists ( [LaboratoryResultObservation: "Glycemic Screening Tests"] LabTestPerformed

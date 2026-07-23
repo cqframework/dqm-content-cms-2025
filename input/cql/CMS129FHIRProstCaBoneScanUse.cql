@@ -85,7 +85,7 @@ define "Has Diagnosis of Pain related to Prostate Cancer":
   exists ( ( [ConditionProblemsHealthConcerns: "Pain Warranting Further Investigation for Prostate Cancer"]
       union [ConditionEncounterDiagnosis: "Pain Warranting Further Investigation for Prostate Cancer"] ) ProstateCancerPain
       with "Prostate Cancer Diagnosis" ActiveProstateCancer
-        such that ProstateCancerPain.onset.toInterval ( ) starts after start of ActiveProstateCancer.prevalenceInterval ( )
+        such that ProstateCancerPain.prevalenceInterval ( ) starts after start of ActiveProstateCancer.prevalenceInterval ( )
           and ProstateCancerPain.isVerified ( )
   )
 
@@ -108,7 +108,7 @@ define "Most Recent PSA Test Result is Low":
 define "Has Salvage Therapy Performed after Prostate Cancer Diagnosis":
   exists ( [Procedure: "Salvage Therapy"] SalvageTherapy
       with "Prostate Cancer Diagnosis" ActiveProstateCancer
-        such that SalvageTherapy.performed.toInterval ( ) starts after start of ActiveProstateCancer.onset.toInterval ( )
+        such that SalvageTherapy.performed.toInterval ( ) starts after start of ActiveProstateCancer.prevalenceInterval ( )
           and SalvageTherapy.status = 'completed'
   )
 
@@ -140,7 +140,7 @@ define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
 
 define "Prostate Cancer Diagnosis":
   [ConditionProblemsHealthConcerns: "Prostate Cancer"] ProstateCancer
-    where ProstateCancer.onset.toInterval ( ) overlaps day of "Measurement Period"
+    where ProstateCancer.prevalenceInterval ( ) overlaps day of "Measurement Period"
       and ProstateCancer.isVerified ( )
 
 /*

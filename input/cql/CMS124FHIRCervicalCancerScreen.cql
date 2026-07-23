@@ -74,7 +74,7 @@ define "Absence of Cervix":
     union ( ( ( [ConditionProblemsHealthConcerns: "Congenital or Acquired Absence of Cervix"]
           union [ConditionEncounterDiagnosis: "Congenital or Acquired Absence of Cervix"]
       ).verified ( ) ) NoCervixDiagnosis
-        where NoCervixDiagnosis.onset.toInterval ( ) starts on or before end of "Measurement Period"
+        where NoCervixDiagnosis.prevalenceInterval ( ) starts on or before end of "Measurement Period"
     )
 
 define "Cervical Cytology Within 3 Years":

@@ -77,7 +77,7 @@ define "Initial Population":
     and exists ( ( ( [ConditionProblemsHealthConcerns: "Heart Failure"]
           union [ConditionEncounterDiagnosis: "Heart Failure"]
       ).verified ( ) ) HeartFailure
-        where HeartFailure.onset.toInterval ( ) overlaps before day of "Measurement Period"
+        where HeartFailure.prevalenceInterval ( ) overlaps before day of "Measurement Period"
     )
     and exists ( "Outpatient Encounters with at least one subsequent Outpatient Encounter during Measurement Period" )
 
@@ -89,7 +89,7 @@ define "Denominator Exclusions":
     or exists ( ( ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
           union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"]
       ).verified ( ) ) SevereCognitiveImpairment
-        where SevereCognitiveImpairment.onset.toInterval ( ) overlaps day of "Measurement Period"
+        where SevereCognitiveImpairment.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 
 define "Numerator":

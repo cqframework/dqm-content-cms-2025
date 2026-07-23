@@ -136,7 +136,7 @@ define "Narcolepsy Exclusion":
   ( ( [ConditionProblemsHealthConcerns: "Narcolepsy"]
       union [ConditionEncounterDiagnosis: "Narcolepsy"]
   ).verified ( ) ) NarcolepsyDx
-    where NarcolepsyDx.onset.toInterval ( ) starts on or before end of "Measurement Period"
+    where NarcolepsyDx.prevalenceInterval ( ) starts on or before end of "Measurement Period"
 
 define "Numerator 1":
   exists "Encounter During Initiation Phase"

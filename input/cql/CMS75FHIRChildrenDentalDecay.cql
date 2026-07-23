@@ -42,7 +42,7 @@ define "Denominator Exclusions":
 define "Numerator":
   exists ( [ConditionProblemsHealthConcerns: "Dental Caries"]
     union [ConditionEncounterDiagnosis: "Dental Caries"] ) DentalCaries
-    where DentalCaries.onset.toInterval ( ) overlaps day of "Measurement Period"
+    where DentalCaries.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "SDE Ethnicity":
   SDE."SDE Ethnicity"

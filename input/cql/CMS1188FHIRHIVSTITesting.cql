@@ -70,7 +70,7 @@ define "Has Qualifying Encounter During Measurement Period":
 define "Has HIV Diagnosis Before End of Measurement Period":
   exists ( ["ConditionProblemsHealthConcerns": "HIV"]
     union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDx
-    where HIVDx.onset.toInterval ( ) starts on or before day of end of "Measurement Period"
+    where HIVDx.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
       and HIVDx.isVerified ( )
 
 define "Has Chlamydia Testing":

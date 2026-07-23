@@ -50,7 +50,7 @@ define "Has IPSD and Major Depression Diagnosis":
         union [ConditionEncounterDiagnosis: "Major Depression"]
     ).verified ( ) ) MajorDepression
       where "IPSD" is not null
-        and date from start of MajorDepression.onset.toInterval ( ) within 60 days of "IPSD"
+        and date from start of MajorDepression.prevalenceInterval ( ) within 60 days of "IPSD"
   )
 
 define "IPSD":

@@ -52,7 +52,7 @@ define "Initial Population":
   ) in Interval[18, 75]
     and exists ( "Qualifying Encounters" )
     and exists ( ( ( [ConditionEncounterDiagnosis: "Diabetes"] ).verified ( ) ) DiabetesDx
-        where DiabetesDx.onset.toInterval ( ) overlaps day of "Measurement Period"
+        where DiabetesDx.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 
 define "Qualifying Encounters":
@@ -96,7 +96,7 @@ define "Bilateral Absence of Eyes":
   exists ( ( [ConditionProblemsHealthConcerns: "Anophthalmos of bilateral eyes (disorder)"]
       union [ConditionEncounterDiagnosis: "Anophthalmos of bilateral eyes (disorder)"]
   ).verified ( ) ) BilateralAbsenceEyes
-    where BilateralAbsenceEyes.onset.toInterval ( ) starts on or before day of end of "Measurement Period"
+    where BilateralAbsenceEyes.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
 
 define "Retinal Exam in Measurement Period":
   exists ( ( [ObservationClinicalResult: "Retinal or Dilated Eye Exam"] ).isPhysicalExamPerformed ( ) ) RetinalExam
@@ -110,7 +110,7 @@ define "Diabetic Retinopathy Overlapping Measurement Period":
   exists ( ( [ConditionProblemsHealthConcerns: "Diabetic Retinopathy"]
       union [ConditionEncounterDiagnosis: "Diabetic Retinopathy"]
   ).verified ( ) ) Retinopathy
-    where Retinopathy.onset.toInterval ( ) overlaps day of "Measurement Period"
+    where Retinopathy.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "Has Left Eye No Retinopathy in Year Prior":
   exists ( ( [ObservationClinicalResult: "Left eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) LeftEyeNoRetinopathy

@@ -165,7 +165,7 @@ define "Numerator 2":
   ( "More than One Antipsychotic Order"
       and ( not exists ( ( "Schizophrenia Diagnosis"
             union "Bipolar Disorder Diagnosis" ) AntipsychoticTreatedDiagnoses
-            where AntipsychoticTreatedDiagnoses.onset.toInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Antipsychotic Index Prescription Start Date"]
+            where AntipsychoticTreatedDiagnoses.prevalenceInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Antipsychotic Index Prescription Start Date"]
         )
       )
   )
@@ -175,7 +175,7 @@ define "Numerator 2":
               union "Benzodiazepine Withdrawal Diagnosis"
               union "Alcohol Withdrawal Diagnosis"
               union "Generalized Anxiety Disorder Diagnosis" ) BenzodiazepineTreatedDiagnoses
-              where BenzodiazepineTreatedDiagnoses.onset.toInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Benzodiazepine Index Prescription Start Date"]
+              where BenzodiazepineTreatedDiagnoses.prevalenceInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Benzodiazepine Index Prescription Start Date"]
           )
         )
     )

@@ -47,7 +47,7 @@ define "Denominator":
 define "Has Active HIV Diagnosis Before or in First 90 Days of Measurement Period":
   exists ( ["ConditionProblemsHealthConcerns": "HIV"]
     union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDx
-    where HIVDx.onset.toInterval ( ) starts before day of ( start of "Measurement Period" + 90 days )
+    where HIVDx.prevalenceInterval ( ) starts before day of ( start of "Measurement Period" + 90 days )
       and HIVDx.isVerified ( )
 
 define "Initial Population":

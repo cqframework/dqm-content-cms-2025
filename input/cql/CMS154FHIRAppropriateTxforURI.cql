@@ -85,8 +85,8 @@ define "Encounter with Upper Respiratory Infection":
   from
     "Qualifying Encounters" QualifyingEncounters,
     ( ( [ConditionEncounterDiagnosis: "Upper Respiratory Infection"] ).verified ( ) ) URI
-    where URI.onset.toInterval ( ) starts during day of QualifyingEncounters.period
-      or URI.onset.toInterval ( ) overlaps before QualifyingEncounters.period
+    where URI.prevalenceInterval ( ) starts during day of QualifyingEncounters.period
+      or URI.prevalenceInterval ( ) overlaps before QualifyingEncounters.period
     return QualifyingEncounters
 
 define "Qualifying Encounters":

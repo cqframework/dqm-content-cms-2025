@@ -88,8 +88,8 @@ define "Acute Tuberculosis Diagnosis":
   ( [ConditionProblemsHealthConcerns: "Tuberculosis for Urology Care"]
     union [ConditionEncounterDiagnosis: "Tuberculosis for Urology Care"] ) ActiveTuberculosis
     with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
-      such that ( ( ActiveTuberculosis.onset.toInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( ) )
-          or ( ActiveTuberculosis.onset.toInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( )
+      such that ( ( ActiveTuberculosis.prevalenceInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( ) )
+          or ( ActiveTuberculosis.prevalenceInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( )
               and ( ( ActiveTuberculosis.abatement.toInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( ) )
                   or ( ActiveTuberculosis.abatement is null )
               )
@@ -114,8 +114,8 @@ define "Has Excluding HIV, Immunocompromised Conditions or Mixed Histology Befor
           union [ConditionEncounterDiagnosis: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
       ) ) ExclusionDiagnosis
       with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
-        such that ( ( ExclusionDiagnosis.onset.toInterval ( ) starts on or before day of start of FirstBladderCancerStaging.performed.toInterval ( ) )
-            or ( ExclusionDiagnosis.onset.toInterval ( ) starts on or before day of start of FirstBladderCancerStaging.performed.toInterval ( ) )
+        such that ( ( ExclusionDiagnosis.prevalenceInterval ( ) starts on or before day of start of FirstBladderCancerStaging.performed.toInterval ( ) )
+            or ( ExclusionDiagnosis.prevalenceInterval ( ) starts on or before day of start of FirstBladderCancerStaging.performed.toInterval ( ) )
         )
       where ExclusionDiagnosis.isVerified ( )
   )
@@ -142,7 +142,7 @@ define "Has Excluding Chemotherapy or Radiotherapy Procedure Before Staging":
 define "First Bladder Cancer Staging Procedure":
   First([Procedure: "Tumor staging (tumor staging)"] BladderCancerStaging
       with "Bladder Cancer Diagnosis" BladderCancer
-        such that BladderCancerStaging.performed.toInterval() starts on or before day of start of BladderCancer.onset.toInterval ( )
+        such that BladderCancerStaging.performed.toInterval() starts on or before day of start of BladderCancer.prevalenceInterval ( )
       where BladderCancerStaging.status = 'completed'
       sort by start of performed.toInterval()
   )
@@ -157,8 +157,8 @@ define "Has Qualifying Encounter":
 define "Bladder Cancer Diagnosis":
   ( [ConditionProblemsHealthConcerns: "Bladder Cancer for Urology Care"]
     union [ConditionEncounterDiagnosis: "Bladder Cancer for Urology Care"] ) BladderCancer
-    where ( BladderCancer.onset.toInterval ( ) starts before day of end of "Measurement Period"
-        or BladderCancer.onset.toInterval ( ) before day of end of "Measurement Period"
+    where ( BladderCancer.prevalenceInterval ( ) starts before day of end of "Measurement Period"
+        or BladderCancer.prevalenceInterval ( ) before day of end of "Measurement Period"
     )
       and BladderCancer.isVerified ( )
 

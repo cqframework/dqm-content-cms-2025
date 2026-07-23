@@ -73,7 +73,7 @@ define "Primary Open Angle Glaucoma Encounter":
   "Qualifying Encounter During Measurement Period" ValidQualifyingEncounter
     with ( ["ConditionProblemsHealthConcerns": "Primary Open-Angle Glaucoma"]
       union ["ConditionEncounterDiagnosis": "Primary Open-Angle Glaucoma"] ) PrimaryOpenAngleGlaucoma
-      such that PrimaryOpenAngleGlaucoma.onset.toInterval ( ) overlaps day of ValidQualifyingEncounter.period
+      such that PrimaryOpenAngleGlaucoma.prevalenceInterval ( ) overlaps day of ValidQualifyingEncounter.period
         and PrimaryOpenAngleGlaucoma.isVerified ( )
 
 define "Cup to Disc Ratio Performed with Result":

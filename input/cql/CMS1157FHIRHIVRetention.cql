@@ -63,14 +63,14 @@ define "Encounter During Measurement Period With HIV":
         union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDiagnosis
         such that ValidEncounter.period during day of "Measurement Period"
           and ValidEncounter.status = 'finished'
-          and HIVDiagnosis.onset.toInterval ( ) starts on or before day of start of ValidEncounter.period
+          and HIVDiagnosis.prevalenceInterval ( ) starts on or before day of start of ValidEncounter.period
           and HIVDiagnosis.isVerified ( )
   )
 
 define "Has Active HIV Diagnosis Starts On or Before First 240 Days of Measurement Period":
   exists ( ( ["ConditionProblemsHealthConcerns": "HIV"]
       union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDx
-      where HIVDx.onset.toInterval ( ) starts on or before day of ( start of "Measurement Period" + 240 days )
+      where HIVDx.prevalenceInterval ( ) starts on or before day of ( start of "Measurement Period" + 240 days )
         and HIVDx.isVerified ( )
   )
 

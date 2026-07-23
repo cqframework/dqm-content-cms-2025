@@ -124,35 +124,35 @@ define "Has Severe Combined Immunodeficiency":
   exists ( ( ( [ConditionEncounterDiagnosis: "Severe Combined Immunodeficiency"]
         union [ConditionProblemsHealthConcerns: "Severe Combined Immunodeficiency"]
     ).verified ( ) ) SevereImmuneDisorder
-      where date from start of SevereImmuneDisorder.onset.toInterval ( ) during day of "First Two Years"
+      where date from start of SevereImmuneDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Immunodeficiency":
   exists ( ( ( [ConditionEncounterDiagnosis: "Disorders of the Immune System"]
         union [ConditionProblemsHealthConcerns: "Disorders of the Immune System"]
     ).verified ( ) ) ImmuneDisorder
-      where date from start of ImmuneDisorder.onset.toInterval ( ) during day of "First Two Years"
+      where date from start of ImmuneDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has HIV":
   exists ( ( ( [ConditionEncounterDiagnosis: "HIV"]
         union [ConditionProblemsHealthConcerns: "HIV"]
     ).verified ( ) ) HIVDiagnosis
-      where date from start of HIVDiagnosis.onset.toInterval ( ) during day of "First Two Years"
+      where date from start of HIVDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Lymphoreticular Cancer, Multiple Myeloma or Leukemia":
   exists ( ( ( [ConditionEncounterDiagnosis: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
         union [ConditionProblemsHealthConcerns: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
     ).verified ( ) ) LymphaticMalignantNeoplasm
-      where date from start of LymphaticMalignantNeoplasm.onset.toInterval ( ) during day of "First Two Years"
+      where date from start of LymphaticMalignantNeoplasm.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Intussusception":
   exists ( ( ( [ConditionEncounterDiagnosis: "Intussusception"]
         union [ConditionProblemsHealthConcerns: "Intussusception"]
     ).verified ( ) ) IntussusceptionDisorder
-      where date from start of IntussusceptionDisorder.onset.toInterval ( ) during day of "First Two Years"
+      where date from start of IntussusceptionDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Numerator":
@@ -232,7 +232,7 @@ define "DTaP Numerator Inclusion Conditions":
       union [ConditionEncounterDiagnosis: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
       union [ConditionProblemsHealthConcerns: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
   ).verified ( ) ) DTaPConditions
-    where date from start of DTaPConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of DTaPConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "DTaP Immunizations or Procedures":
   ( ( ( [Immunization: "DTaP Vaccine"] ).isImmunizationAdministered ( ) ) DTaPVaccination
@@ -270,7 +270,7 @@ define "Polio Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
   ).verified ( ) ) PolioConditions
-    where date from start of PolioConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of PolioConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 //MMR
 
@@ -289,25 +289,25 @@ define "Measles Indicators":
   ( ( [ConditionEncounterDiagnosis: "Measles"]
       union [ConditionEncounterDiagnosis: "Measles"]
   ).verified ( ) ) MeaslesDiagnosis
-    where date from start of MeaslesDiagnosis.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of MeaslesDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Mumps Indicators":
   ( ( [ConditionEncounterDiagnosis: "Mumps"]
       union [ConditionProblemsHealthConcerns: "Mumps"]
   ).verified ( ) ) MumpsDiagnosis
-    where date from start of MumpsDiagnosis.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of MumpsDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Rubella Indicators":
   ( ( [ConditionEncounterDiagnosis: "Rubella"]
       union [ConditionProblemsHealthConcerns: "Rubella"]
   ).verified ( ) ) RubellaDiagnosis
-    where date from start of RubellaDiagnosis.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of RubellaDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "MMR Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
   ).verified ( ) ) MMRConditions
-    where date from start of MMRConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of MMRConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 //HiB
 
@@ -338,7 +338,7 @@ define "Hib Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
   ).verified ( ) ) HibReaction
-    where date from start of HibReaction.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of HibReaction.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Hib 3 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "Hib Vaccine (3 dose schedule)"] ).isImmunizationAdministered ( ) ) ThreeDoseHibVaccine
@@ -373,7 +373,7 @@ define "Hepatitis B Numerator Inclusion Conditions":
       union [ConditionEncounterDiagnosis: "Hepatitis B"]
       union [ConditionProblemsHealthConcerns: "Hepatitis B"]
   ).verified ( ) ) HepBConditions
-    where date from start of HepBConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of HepBConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Three Hepatitis B Vaccinations":
   from
@@ -428,7 +428,7 @@ define "Varicella Zoster Numerator Inclusion Conditions":
       union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
   ).verified ( ) ) VaricellaZoster
-    where date from start of VaricellaZoster.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of VaricellaZoster.prevalenceInterval ( ) during day of "First Two Years"
 
 //PCV
 
@@ -458,7 +458,7 @@ define "Pneumococcal Conjugate Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
   ).verified ( ) ) PneumococcalReaction
-    where date from start of PneumococcalReaction.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of PneumococcalReaction.prevalenceInterval ( ) during day of "First Two Years"
 
 //HepA
 
@@ -479,7 +479,7 @@ define "Hepatitis A Numerator Inclusion Conditions":
       union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
   ).verified ( ) ) HepatitisADiagnosis
-    where date from start of HepatitisADiagnosis.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of HepatitisADiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 //RV
 
@@ -519,7 +519,7 @@ define "Rotavirus Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
   ).verified ( ) ) RotavirusConditions
-    where date from start of RotavirusConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of RotavirusConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Rotavirus 3 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "Rotavirus Vaccine (3 dose schedule)"] ).isImmunizationAdministered ( ) ) ThreeDoseRotavirusVaccine
@@ -555,7 +555,7 @@ define "Influenza Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
       union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
   ).verified ( ) ) InfluenzaConditions
-    where date from start of InfluenzaConditions.onset.toInterval ( ) during day of "First Two Years"
+    where date from start of InfluenzaConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Two Influenza Vaccinations Including One LAIV Vaccination":
   exists "LAIV Vaccinations"

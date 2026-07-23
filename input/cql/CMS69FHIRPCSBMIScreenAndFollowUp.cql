@@ -100,7 +100,7 @@ define "High BMI Interventions Ordered":
       where HighInterventionsOrdered.reasonCode in "Overweight or Obese"
         or ( exists ( [ConditionProblemsHealthConcerns: "Overweight or Obese"]
             union [ConditionEncounterDiagnosis: "Overweight or Obese"] ) OverweightObese
-            where OverweightObese.onset.toInterval ( ) starts before or on day of HighInterventionsOrdered.authoredOn
+            where OverweightObese.prevalenceInterval ( ) starts before or on day of HighInterventionsOrdered.authoredOn
         )
   )
 
@@ -128,7 +128,7 @@ define "Low BMI Interventions Ordered":
       where LowInterventionsOrdered.reasonCode in "Underweight"
         or ( exists ( [ConditionProblemsHealthConcerns: "Underweight"]
             union [ConditionEncounterDiagnosis: "Underweight"] ) UnderweightDiagnosis
-            where UnderweightDiagnosis.onset.toInterval ( ) starts before or on day of LowInterventionsOrdered.authoredOn
+            where UnderweightDiagnosis.prevalenceInterval ( ) starts before or on day of LowInterventionsOrdered.authoredOn
               and LowInterventionsOrdered.authoredOn during day of "Measurement Period"
         )
   )
@@ -172,7 +172,7 @@ define "Medical Reason For Not Documenting A Follow Up Plan For Low Or High BMI"
 define "Is Pregnant During Measurement Period":
   exists ( ( [ConditionProblemsHealthConcerns: "Pregnancy or Other Related Diagnoses"]
       union [ConditionEncounterDiagnosis: "Pregnancy or Other Related Diagnoses"] ) PregnancyDiagnosis
-      where PregnancyDiagnosis.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where PregnancyDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
   )
     or exists ( [USCore.ObservationPregnancyStatusProfile] PregnantObservation
         where PregnantObservation.effective.toInterval ( ) overlaps day of "Measurement Period"

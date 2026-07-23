@@ -127,7 +127,7 @@ define "Tobacco Cessation Counseling Given":
     union ( ( ( [ConditionProblemsHealthConcerns: "Tobacco abuse counseling"]
           union [ConditionEncounterDiagnosis: "Tobacco abuse counseling"]
       ).verified ( ) ) TobaccoCounseling
-        where TobaccoCounseling.onset.toInterval ( ) starts during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
+        where TobaccoCounseling.prevalenceInterval ( ) starts during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
     )
 
 define "Preventive Visit During Measurement Period":

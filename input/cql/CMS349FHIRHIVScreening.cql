@@ -47,7 +47,7 @@ define "Numerator":
 define "Denominator Exclusions":
   exists ( ( [ConditionProblemsHealthConcerns: "HIV"]
       union [ConditionEncounterDiagnosis: "HIV"] ) HIVDiagnosis
-      where HIVDiagnosis.onset.toInterval ( ) starts before day of start of "Measurement Period"
+      where HIVDiagnosis.prevalenceInterval ( ) starts before day of start of "Measurement Period"
         and HIVDiagnosis.isVerified ( )
   )
 

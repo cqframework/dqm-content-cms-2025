@@ -58,7 +58,7 @@ define "Face to Face or Telehealth Encounter with Ongoing Chemotherapy":
     "Chemotherapy Within 31 Days Prior and During Measurement Period" ChemoAfterEncounter,
     ( [ConditionProblemsHealthConcerns: "Cancer"]
       union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
-    where CancerDx.onset.toInterval ( ) overlaps day of FaceToFaceOrTelehealthEncounter.period
+    where CancerDx.prevalenceInterval ( ) overlaps day of FaceToFaceOrTelehealthEncounter.period
       and ChemoBeforeEncounter.performed.toInterval ( ) starts 30 days or less on or before day of end of FaceToFaceOrTelehealthEncounter.period
       and ChemoAfterEncounter.performed.toInterval ( ) starts 30 days or less on or after day of end of FaceToFaceOrTelehealthEncounter.period
       and not ( ChemoAfterEncounter.performed.toInterval ( ) same day as ChemoBeforeEncounter.performed.toInterval ( ) )
@@ -75,7 +75,7 @@ define "Radiation Treatment Management During Measurement Period with Cancer Dia
   ( [Encounter: "Radiation Treatment Management"] ) RadiationTreatmentManagement
     with ( [ConditionProblemsHealthConcerns: "Cancer"]
       union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
-      such that CancerDx.onset.toInterval ( ) overlaps day of RadiationTreatmentManagement.period
+      such that CancerDx.prevalenceInterval ( ) overlaps day of RadiationTreatmentManagement.period
     where RadiationTreatmentManagement.period during day of "Measurement Period"
       and RadiationTreatmentManagement.status = 'finished'
 
