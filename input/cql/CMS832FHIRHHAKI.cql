@@ -1,21 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS832FHIRHHAKI version '1.1.000'
+library CMS832FHIRHHAKI version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 codesystem "LOINC": 'http://loinc.org'
@@ -73,7 +63,7 @@ define "Numerator":
 
 define "Encounter With Age 18 And Length Of Stay 48 Hours Or More":
   ["Encounter": "Encounter Inpatient"] InpatientEncounter
-    where Patient.sex ( ) in { "Male (finding)".code, "Female (finding)".code }
+    where Patient.sex in { "Male (finding)".code, "Female (finding)".code }
       and InpatientEncounter.period ends during day of "Measurement Period"
       and InpatientEncounter.status = 'finished'
       and AgeInYearsAt(date from start of InpatientEncounter.period) >= 18
@@ -196,7 +186,7 @@ define "Encounter With 2 Times Serum Creatinine Increase":
     return EncounterWithHighCreatinine
 
 define "Serum Creatinine Normal":
-  if ( Patient.sex ( ) = "Female (finding)".code ) then 1.02 'mg/dL' 
+  if ( Patient.sex = "Female (finding)".code ) then 1.02 'mg/dL' 
     else 1.18 'mg/dL'
 
 define "Encounter With High Risk Diagnosis For AKI":
@@ -283,7 +273,7 @@ define "Encounter With 1.5 Times Serum Creatinine Increase":
     return QualifyingEncounter
 
 define "Qualifying Blood Pressure Reading":
-  ["USCore.BloodPressureProfile"] BloodPressure
+  ["USCoreBloodPressureProfile"] BloodPressure
     where BloodPressure.effective.earliest ( ) during day of "Measurement Period"
 
 define fluent function "creatinineLabTestwithResultwithinFirst48Hours"(QualifyingEncounter Encounter):
@@ -296,11 +286,11 @@ define fluent function "creatinineLabTestwithResultwithinFirst48Hours"(Qualifyin
     return CreatinineTest
 
 define fluent function "femaleeGFR"(QualifyingEncounter Encounter):
-  if Patient.sex () = "Female (finding)".code then ( 142 * Min({("QualifyingEncounter".indexCreatinine().value / 0.7), 1 }) ^ ( - 0.241 ) * Max({("QualifyingEncounter".indexCreatinine().value / 0.7), 1 }) ^ ( - 1.200 ) * 0.9938 ^ ( AgeInYearsAt(date from start of QualifyingEncounter.hospitalizationWithObservation()) ) * 1.012 ) 
+  if Patient.sex = "Female (finding)".code then ( 142 * Min({("QualifyingEncounter".indexCreatinine().value / 0.7), 1 }) ^ ( - 0.241 ) * Max({("QualifyingEncounter".indexCreatinine().value / 0.7), 1 }) ^ ( - 1.200 ) * 0.9938 ^ ( AgeInYearsAt(start of QualifyingEncounter.hospitalizationWithObservation()) ) * 1.012 ) 
     else null
 
 define fluent function "maleeGFR"(QualifyingEncounter Encounter):
-  if Patient.sex () = "Male (finding)".code then ( 142 * Min({("QualifyingEncounter".indexCreatinine().value / 0.9), 1 }) ^ ( - 0.302 ) * Max({("QualifyingEncounter".indexCreatinine().value / 0.9), 1 }) ^ ( - 1.200 ) * 0.9938 ^ ( AgeInYearsAt(date from start of QualifyingEncounter.hospitalizationWithObservation()) ) ) 
+  if Patient.sex = "Male (finding)".code then ( 142 * Min({("QualifyingEncounter".indexCreatinine().value / 0.9), 1 }) ^ ( - 0.302 ) * Max({("QualifyingEncounter".indexCreatinine().value / 0.9), 1 }) ^ ( - 1.200 ) * 0.9938 ^ ( AgeInYearsAt(start of QualifyingEncounter.hospitalizationWithObservation()) ) ) 
     else null
 
 define fluent function "indexCreatinine"(QualifyingEncounter Encounter):
@@ -426,21 +416,21 @@ define "Risk Variable First Temperature In Encounter":
     }
 
 define fluent function "firstBodyTemperature"(QualifyingEncounter Encounter):
-  First(["USCore.BodyTemperatureProfile"] FirstTemperature
+  First(["USCoreBodyTemperatureProfile"] FirstTemperature
       where FirstTemperature.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstTemperature.value is not null
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function "firstHeartRate"(QualifyingEncounter Encounter):
-  First(["USCore.HeartRateProfile"] FirstHeartBeats
+  First(["USCoreHeartRateProfile"] FirstHeartBeats
       where FirstHeartBeats.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstHeartBeats.value is not null
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function "firstRespiratoryRate"(QualifyingEncounter Encounter):
-  First(["USCore.RespiratoryRateProfile"] FirstRespiration
+  First(["USCoreRespiratoryRateProfile"] FirstRespiration
       where FirstRespiration.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstRespiration.value is not null
       sort by effective.earliest()

@@ -1,22 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS144FHIRHFBetaBlockerForLVSD version '1.1.000'
+library CMS144FHIRHFBetaBlockerForLVSD version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include AHAOverall version '5.1.000' called AHA
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include AHAOverall version '4.1.000' called AHA
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -131,9 +120,9 @@ define "Has Bradycardia Diagnosis":
 
 define "Has Consecutive Heart Rates Less than 50":
   exists ( from
-      ["USCore.HeartRateProfile"] HeartRate,
+      ["USCoreHeartRateProfile"] HeartRate,
       AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-      let PriorHeartRate: Last(["USCore.HeartRateProfile"] MostRecentPriorHeartRate
+      let PriorHeartRate: Last(["USCoreHeartRateProfile"] MostRecentPriorHeartRate
           where MostRecentPriorHeartRate.effective.toInterval() during ModerateOrSevereLVSDHFOutpatientEncounter.period
             and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
           sort by start of effective.toInterval()
@@ -192,14 +181,7 @@ define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
 */
 
 
-define fluent function isVerified(allergyIntolerance AllergyIntolerance):
-  allergyIntolerance.verificationStatus is not null implies ( allergyIntolerance.verificationStatus ~ USQualityCoreCommon."allergy-confirmed"
-      or allergyIntolerance.verificationStatus ~ USQualityCoreCommon."allergy-unconfirmed"
-  )
-
-define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+define fluent function isVerified(allergyIntolerance QICore.AllergyIntolerance):
+  allergyIntolerance.verificationStatus is not null implies ( allergyIntolerance.verificationStatus ~ QICoreCommon."allergy-confirmed"
+      or allergyIntolerance.verificationStatus ~ QICoreCommon."allergy-unconfirmed"
   )

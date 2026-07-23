@@ -14,6 +14,6 @@
    "verifyOnly":false,
    "errorLevel":"Info",
    "signatureLevel":"All",
-   "analyzeDataRequirements":true,
-   "collapseDataRequirements":true
+   "analyzeDataRequirements":false,
+   "collapseDataRequirements":false
 } 

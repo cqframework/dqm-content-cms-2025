@@ -1,23 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS71FHIRSTKAnticoagAFFlutter version '1.1.000'
+library CMS71FHIRSTKAnticoagAFFlutter version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-
-include TJCOverall version '9.1.000' called TJC
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
+include TJCOverall version '8.25.000' called TJC
 
 valueset "Anticoagulant Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.200'
 valueset "Atrial Ablation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.203'
@@ -52,8 +41,8 @@ define "Encounter With A History Of Atrial Ablation":
   )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
         with ["ConditionProblemsHealthConcerns": "History of Atrial Ablation"] AtrialAblationDiagnosis
-          such that AtrialAblationDiagnosis.verificationStatus is not null implies ( AtrialAblationDiagnosis.verificationStatus !~ Status."refuted"
-              and AtrialAblationDiagnosis.verificationStatus !~ Status."entered-in-error"
+          such that AtrialAblationDiagnosis.verificationStatus is not null implies ( AtrialAblationDiagnosis.verificationStatus !~ QICoreCommon."refuted"
+              and AtrialAblationDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
           )
             and AtrialAblationDiagnosis.onset.toInterval ( ) starts before start of IschemicStrokeEncounter.period
     )
@@ -64,8 +53,8 @@ define "Encounter With A History Of Atrial Ablation":
     )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
         with ["ConditionEncounterDiagnosis": "History of Atrial Ablation"] AtrialAblationEncDiagnosis
-          such that AtrialAblationEncDiagnosis.verificationStatus is not null implies ( AtrialAblationEncDiagnosis.verificationStatus !~ Status."refuted"
-              and AtrialAblationEncDiagnosis.verificationStatus !~ Status."entered-in-error"
+          such that AtrialAblationEncDiagnosis.verificationStatus is not null implies ( AtrialAblationEncDiagnosis.verificationStatus !~ QICoreCommon."refuted"
+              and AtrialAblationEncDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
           )
             and AtrialAblationEncDiagnosis.onset.toInterval ( ) starts before start of IschemicStrokeEncounter.period
     )
@@ -73,8 +62,8 @@ define "Encounter With A History Of Atrial Ablation":
 define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Flutter":
   ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
       with ["ConditionProblemsHealthConcerns": "Atrial Fibrillation or Flutter"] AtrialFibrillationFlutter
-        such that AtrialFibrillationFlutter.verificationStatus is not null implies ( AtrialFibrillationFlutter.verificationStatus !~ Status."refuted"
-            and AtrialFibrillationFlutter.verificationStatus !~ Status."entered-in-error"
+        such that AtrialFibrillationFlutter.verificationStatus is not null implies ( AtrialFibrillationFlutter.verificationStatus !~ QICoreCommon."refuted"
+            and AtrialFibrillationFlutter.verificationStatus !~ QICoreCommon."entered-in-error"
         )
           and AtrialFibrillationFlutter.onset.toInterval ( ) starts on or before end of IschemicStrokeEncounter.period
   )
@@ -111,7 +100,7 @@ define "Numerator":
         and DischargeAnticoagulant.authoredOn during Encounter.period
         and not exists ( ["TaskRejected"] TaskReject
             where TaskReject.focus.references ( DischargeAnticoagulant )
-              and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+              and TaskReject.code ~ QICoreCommon."Fulfill"
         )
 
 define "Denominator Exceptions":
@@ -137,7 +126,7 @@ define "Documented Reason For Not Giving Anticoagulant At Discharge":
                 or TaskReject.statusReason in "Patient Refusal"
             )
             and MedReqAntiCoagulant.status in { 'active', 'completed' }
-            and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+            and TaskReject.code ~ QICoreCommon."Fulfill"
     )
 
 define "SDE Ethnicity":

@@ -1,20 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS133FHIRCataracts2040BCVA90Days version '1.1.000'
+library CMS133FHIRCataracts2040BCVA90Days version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -267,7 +257,7 @@ define "Cataract Surgeries in Patients with Significant Ocular Conditions Impact
       union ( ["ConditionProblemsHealthConcerns": "Visual Field Defects"]
           union ["ConditionEncounterDiagnosis": "Visual Field Defects"]
       ) ) ComorbidDiagnosis
-      such that ComorbidDiagnosis.onset.toInterval ( ) overlaps before day of CataractSurgeryPerformed.performed.toInterval ( )
+      such that ComorbidDiagnosis.prevalenceInterval ( ) overlaps before day of CataractSurgeryPerformed.performed.toInterval ( )
         and ComorbidDiagnosis.isVerified ( )
 
 define "Numerator":
@@ -276,7 +266,7 @@ define "Numerator":
       union [ObservationClinicalResult: "Best Corrected Visual Acuity Exam Using Snellen Chart"] ) VisualAcuityExamPerformed
       such that VisualAcuityExamPerformed.effective.toInterval ( ) 90 days or less after day of end of CataractSurgeryPerformed.performed.toInterval ( )
         and VisualAcuityExamPerformed.status in { 'final', 'amended', 'corrected' }
-        and VisualAcuityExamPerformed.value as CodeableConcept in "Visual Acuity 20/40 or Better"
+        and VisualAcuityExamPerformed.value as Concept in "Visual Acuity 20/40 or Better"
         
 /*
 @description: Returns true if the given Condition has a verification status of "confirmed", "unconfirmed", "provisional", or "differential"
@@ -284,10 +274,10 @@ define "Numerator":
 
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )
 
 define "SDE Ethnicity":

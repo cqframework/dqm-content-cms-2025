@@ -1,22 +1,11 @@
-/*
-@description: TJCOverall Common Functions
+library TJCOverall version '8.25.000'
 
-NOTE: This library is not published in this IG, it is included here for convenience. The source of truth for
-this library will be the MADiE environment once it fully supports use of QICore STU6-derived.
-*/
-library TJCOverall version '9.1.000'
+using QICore version '6.0.0'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
-
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include CQMCommon   version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Discharge To Acute Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'

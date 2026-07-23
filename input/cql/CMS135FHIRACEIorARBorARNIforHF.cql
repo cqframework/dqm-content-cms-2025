@@ -1,20 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS135FHIRACEIorARBorARNIforHF version '1.1.000'
+library CMS135FHIRACEIorARBorARNIforHF version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include AHAOverall version '5.1.000' called AHA
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include AHAOverall version '4.1.000' called AHA
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -87,20 +78,22 @@ define "Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient":
   )
 
 define "Has Diagnosis of Allergy or Intolerance to ACEI or ARB":
-  exists ( (
-    ["ConditionEncounterDiagnosis": "Allergy to ACE Inhibitor or ARB"]
-      union ["ConditionEncounterDiagnosis": "Intolerance to ACE Inhibitor or ARB"]
-   ) ACEIOrARBAllergyOrIntoleranceDiagnosis
+  exists ( ( ( ["ConditionProblemsHealthConcerns": "Allergy to ACE Inhibitor or ARB"]
+        union ["ConditionEncounterDiagnosis": "Allergy to ACE Inhibitor or ARB"]
+    )
+      union ( ["ConditionProblemsHealthConcerns": "Intolerance to ACE Inhibitor or ARB"] )
+      union ["ConditionEncounterDiagnosis": "Intolerance to ACE Inhibitor or ARB"] ) ACEIOrARBAllergyOrIntoleranceDiagnosis
       where ACEIOrARBAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
   )
 
 define "Has Diagnosis of Pregnancy":
-  exists ( ( [Condition: "Pregnancy"] ) PregnancyDiagnosis
+  exists ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
+      union ["ConditionEncounterDiagnosis": "Pregnancy"] ) PregnancyDiagnosis
       with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
         such that PregnancyDiagnosis.prevalenceInterval ( ) starts 9 months or less before or on start of ModerateOrSevereLVSDHFOutpatientEncounter.period
           and PregnancyDiagnosis.isVerified ( )
   )
-    or exists ( [USCore.ObservationPregnancyStatusProfile] PregnantObservation
+    or exists ( [USCoreObservationPregnancyStatusProfile] PregnantObservation
         with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
           such that PregnantObservation.effective.toInterval ( ) starts 9 months or less before or on start of ModerateOrSevereLVSDHFOutpatientEncounter.period
             and ( PregnantObservation.value in "Pregnancy"
@@ -109,7 +102,8 @@ define "Has Diagnosis of Pregnancy":
     )
 
 define "Has Diagnosis of Renal Failure Due to ACEI":
-  exists ( ( [ConditionEncounterDiagnosis: "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"] ) RenalFailureDueToACEI
+  exists ( ( [ConditionProblemsHealthConcerns: "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"]
+      union [ConditionEncounterDiagnosis: "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"] ) RenalFailureDueToACEI
       where RenalFailureDueToACEI.overlapsHeartFailureOutpatientEncounter ( )
   )
 

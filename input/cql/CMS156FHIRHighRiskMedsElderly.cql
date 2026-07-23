@@ -1,24 +1,15 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS156FHIRHighRiskMedsElderly version '1.1.000'
+library CMS156FHIRHighRiskMedsElderly version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.CumulativeMedicationDuration version '2.0.0-ballot' called CMD
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include CQMCommon version '4.1.000' called CQMCommon
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
+include CumulativeMedicationDuration version '6.0.000' called CMD
+include QICoreCommon version '4.0.000' called QICoreCommon
+include Status version '1.15.000' called Status
 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 codesystem "CPT": 'http://www.ama-assn.org/go/cpt'
@@ -165,7 +156,7 @@ define "Numerator 2":
   ( "More than One Antipsychotic Order"
       and ( not exists ( ( "Schizophrenia Diagnosis"
             union "Bipolar Disorder Diagnosis" ) AntipsychoticTreatedDiagnoses
-            where AntipsychoticTreatedDiagnoses.onset.toInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Antipsychotic Index Prescription Start Date"]
+            where AntipsychoticTreatedDiagnoses.prevalenceInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Antipsychotic Index Prescription Start Date"]
         )
       )
   )
@@ -175,7 +166,7 @@ define "Numerator 2":
               union "Benzodiazepine Withdrawal Diagnosis"
               union "Alcohol Withdrawal Diagnosis"
               union "Generalized Anxiety Disorder Diagnosis" ) BenzodiazepineTreatedDiagnoses
-              where BenzodiazepineTreatedDiagnoses.onset.toInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Benzodiazepine Index Prescription Start Date"]
+              where BenzodiazepineTreatedDiagnoses.prevalenceInterval ( ) overlaps Interval[start of "Measurement Period" - 1 year, "Benzodiazepine Index Prescription Start Date"]
           )
         )
     )
@@ -303,7 +294,7 @@ define fluent function medicationRequestPeriodInDays(Request MedicationRequest):
       end of doseRange, doseQuantity
     ),
     dosesPerDay: Coalesce((CMD."ToDaily"(frequency, period)), Count(timing.repeat.timeOfDay), 1.0),
-    boundsPeriod: timing.repeat.bounds as FHIR.Period,
+    boundsPeriod: timing.repeat.bounds as Interval<DateTime>,
     daysSupply: ( convert R.dispenseRequest.expectedSupplyDuration to days ).value,
     quantity: R.dispenseRequest.quantity,
     refills: Coalesce(R.dispenseRequest.numberOfRepeatsAllowed, 0),
@@ -320,5 +311,5 @@ define fluent function averageDailyDose(MedicationRequest MedicationRequest):
           or ( MedicationStrength.unit = 'mg/mL'
               and Order.dispenseRequest.quantity.unit = 'mL'
           )
-      ) then ( ( Order.dispenseRequest.quantity * MedicationStrength ) / System.Quantity { value: DaysSupplied, unit: 'd' } )
+      ) then ( ( Order.dispenseRequest.quantity * MedicationStrength ) / Quantity { value: DaysSupplied, unit: 'd' } ) 
       else null

@@ -1,21 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS90FHIRFSAforHeartFailure version '1.1.000'
+library CMS90FHIRFSAforHeartFailure version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include Hospice version '7.1.000' called Hospice
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
+include Hospice version '6.18.000' called Hospice
+include Status version '1.15.000' called Status
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -77,7 +68,7 @@ define "Initial Population":
     and exists ( ( ( [ConditionProblemsHealthConcerns: "Heart Failure"]
           union [ConditionEncounterDiagnosis: "Heart Failure"]
       ).verified ( ) ) HeartFailure
-        where HeartFailure.onset.toInterval ( ) overlaps before day of "Measurement Period"
+        where HeartFailure.prevalenceInterval ( ) overlaps before day of "Measurement Period"
     )
     and exists ( "Outpatient Encounters with at least one subsequent Outpatient Encounter during Measurement Period" )
 
@@ -89,7 +80,7 @@ define "Denominator Exclusions":
     or exists ( ( ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
           union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"]
       ).verified ( ) ) SevereCognitiveImpairment
-        where SevereCognitiveImpairment.onset.toInterval ( ) overlaps day of "Measurement Period"
+        where SevereCognitiveImpairment.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 
 define "Numerator":

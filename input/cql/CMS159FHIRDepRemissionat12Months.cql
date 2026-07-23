@@ -1,21 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS159FHIRDepRemissionat12Months version '1.1.000'
+library CMS159FHIRDepRemissionat12Months version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -50,7 +39,7 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define "Initial Population":
-  AgeInYearsAt(date from start of("Index Depression Assessment".effective.toInterval())) >= 12
+  AgeInYearsAt(start of("Index Depression Assessment".effective.toInterval())) >= 12
 
 define "Denominator":
   "Initial Population"
@@ -98,7 +87,7 @@ define "Depression Diagnoses":
 define "Depression Encounter":
   [Encounter: "Contact or Office Visit"] ValidEncounter
     with "Depression Diagnoses" Depression
-      such that ValidEncounter.period overlaps Depression.onset.toInterval ( )
+      such that ValidEncounter.period overlaps Depression.prevalenceInterval ( )
         and ValidEncounter.period ends during day of "Denominator Identification Period"
         and ValidEncounter.status = 'finished'
 
@@ -111,7 +100,7 @@ define "Has Mental Health Disorder Diagnoses":
       union [ConditionEncounterDiagnosis: "Schizophrenia or Psychotic Disorder"]
       union [ConditionProblemsHealthConcerns: "Pervasive Developmental Disorder"]
       union [ConditionEncounterDiagnosis: "Pervasive Developmental Disorder"] ) MentalHealthDisorderDiagnoses
-      where start of MentalHealthDisorderDiagnoses.onset.toInterval ( ) on or before day of end of "Measure Assessment Period"
+      where start of MentalHealthDisorderDiagnoses.prevalenceInterval ( ) on or before day of end of "Measure Assessment Period"
         and MentalHealthDisorderDiagnoses.isVerified ( )
   )
 
@@ -151,7 +140,7 @@ define "Has Hospice Services prior to or during the Measure Assessment Period":
     )
     or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"]
         union [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
-        where HospiceCareDiagnosis.onset.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
+        where HospiceCareDiagnosis.prevalenceInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and HospiceCareDiagnosis.isVerified ( )
     )
 
@@ -170,7 +159,7 @@ define "Has Palliative Care prior to or during the Measure Assessment Period":
   )
     or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"]
         union [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) PalliativeDiagnosis
-        where PalliativeDiagnosis.onset.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
+        where PalliativeDiagnosis.prevalenceInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and PalliativeDiagnosis.isVerified ( )
     )
     or exists ( [Encounter: "Palliative Care Encounter"] PalliativeEncounter
@@ -183,10 +172,10 @@ define "Has Palliative Care prior to or during the Measure Assessment Period":
     )
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )
 
 define "Stratification 1":

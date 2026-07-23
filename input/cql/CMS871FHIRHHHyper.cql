@@ -1,21 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS871FHIRHHHyper version '1.1.000'
+library CMS871FHIRHHHyper version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Diabetes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.103.12.1001'
@@ -134,10 +124,10 @@ define "Encounter with Existing Diabetes Diagnosis":
           and DiabetesEncounter.prevalenceInterval ( ) starts before end of Hospitalization.hospitalizationPeriod
     )
       union ( [ConditionProblemsHealthConcerns: "Diabetes"] DiabetesProblem
-          where DiabetesProblem.verificationStatus is not null implies ( DiabetesProblem.verificationStatus ~ Status."confirmed"
-              or DiabetesProblem.verificationStatus ~ Status."unconfirmed"
-              or DiabetesProblem.verificationStatus ~ Status."provisional"
-              or DiabetesProblem.verificationStatus ~ Status."differential"
+          where DiabetesProblem.verificationStatus is not null implies ( DiabetesProblem.verificationStatus ~ QICoreCommon."confirmed"
+              or DiabetesProblem.verificationStatus ~ QICoreCommon."unconfirmed"
+              or DiabetesProblem.verificationStatus ~ QICoreCommon."provisional"
+              or DiabetesProblem.verificationStatus ~ QICoreCommon."differential"
           )
             and DiabetesProblem.prevalenceInterval ( ) starts before end of Hospitalization.hospitalizationPeriod
       ) ) DiabetesCondition

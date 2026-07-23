@@ -1,21 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS986FHIRMalnutritionScore version '1.1.000'
+library CMS986FHIRMalnutritionScore version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include CQMCommon version '5.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include CQMCommon version '4.1.000' called CQMCommon
+include Status version '1.15.000' called Status
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Hospice Status": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1095.101'
@@ -148,7 +139,7 @@ define "Encounters with Malnutrition Risk Screening Not At Risk":
     with ["ObservationScreeningAssessment": "Malnutrition Risk Screening"] MalnutritionRiskScreening
       such that MalnutritionRiskScreening.status in { 'final', 'amended', 'corrected' }
         and MalnutritionRiskScreening.effective.toInterval ( ) during QualifyingEncounter.hospitalizationWithObservation ( )
-        and ( MalnutritionRiskScreening.value as FHIR.CodeableConcept in "Malnutrition Screening Finding of Not At Risk Result" )
+        and ( MalnutritionRiskScreening.value as Concept in "Malnutrition Screening Finding of Not At Risk Result" )
 
 define "Encounters with Malnutrition Not At Risk Screening and without Dietitian Referral":
   "Encounters with Malnutrition Risk Screening Not At Risk"
@@ -159,7 +150,7 @@ define "Encounters with Malnutrition Risk Screening At Risk":
     with ["ObservationScreeningAssessment": "Malnutrition Risk Screening"] MalnutritionRiskScreening
       such that MalnutritionRiskScreening.status in { 'final', 'amended', 'corrected' }
         and MalnutritionRiskScreening.effective.toInterval ( ) during QualifyingEncounter.hospitalizationWithObservation ( )
-        and ( MalnutritionRiskScreening.value as FHIR.CodeableConcept in "Malnutrition Screening Finding of At Risk Result" )
+        and ( MalnutritionRiskScreening.value as Concept in "Malnutrition Screening Finding of At Risk Result" )
 
 define "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral":
   "Encounters with Malnutrition Risk Screening At Risk"
@@ -201,9 +192,9 @@ define "Encounter With Most Recent Nutrition Assessment And Identified Status":
     with ["ObservationScreeningAssessment": "Nutrition Assessment"] NutritionAssessment
       such that ( NutritionAssessment.status in { 'final', 'amended', 'corrected' }
           and NutritionAssessment.effective.toInterval ( ) during QualifyingEncounter.hospitalizationWithObservation ( )
-          and ( NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Well Nourished or Not Malnourished or Mildly Malnourished"
-              or ( NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Moderately Malnourished" )
-              or ( NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Severely Malnourished" )
+          and ( NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Well Nourished or Not Malnourished or Mildly Malnourished"
+              or ( NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Moderately Malnourished" )
+              or ( NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Severely Malnourished" )
           )
           and NutritionAssessment.effective.latest ( ) same day as "Last Nutrition Assessment Day During Encounter"(QualifyingEncounter)
       )
@@ -213,8 +204,8 @@ define "Encounter With Most Recent Nutrition Assessment Status of Moderately Or 
     with ["ObservationScreeningAssessment": "Nutrition Assessment"] NutritionAssessment
       such that NutritionAssessment.status in { 'final', 'amended', 'corrected' }
         and NutritionAssessment.effective.toInterval ( ) during QualifyingEncounter.hospitalizationWithObservation ( )
-        and ( NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Moderately Malnourished"
-            or NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Severely Malnourished"
+        and ( NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Moderately Malnourished"
+            or NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Severely Malnourished"
         )
         and NutritionAssessment.effective.latest ( ) same day as "Last Nutrition Assessment Day During Encounter"(QualifyingEncounter)
 
@@ -223,7 +214,7 @@ define "Encounter With Most Recent Nutrition Assessment Status of Not or Mildly 
     with ["ObservationScreeningAssessment": "Nutrition Assessment"] NutritionAssessment
       such that ( NutritionAssessment.status in { 'final', 'amended', 'corrected' }
           and NutritionAssessment.effective.toInterval ( ) during QualifyingEncounter.hospitalizationWithObservation ( )
-          and ( NutritionAssessment.value as FHIR.CodeableConcept in "Nutrition Assessment Status Finding of Well Nourished or Not Malnourished or Mildly Malnourished" )
+          and ( NutritionAssessment.value as Concept in "Nutrition Assessment Status Finding of Well Nourished or Not Malnourished or Mildly Malnourished" )
           and NutritionAssessment.effective.latest ( ) same day as "Last Nutrition Assessment Day During Encounter"(QualifyingEncounter)
       )
 
@@ -245,6 +236,13 @@ define "Encounters With Encounter Diagnosis Of Malnutrition Diagnosis":
     where QualifyingEncounter.reasonCode in "Malnutrition Diagnosis"
       or QualifyingEncounter.encounterDiagnosis ( ).verified ( ).code in "Malnutrition Diagnosis"
 
+define fluent function isVerified(condition Choice<QICore.ConditionProblemsHealthConcerns, QICore.ConditionEncounterDiagnosis>):
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
+  )
+
 define "Encounters with Nutrition Care Plan":
   "Measure Population" QualifyingEncounter
     with ["Procedure": "Nutrition Care Plan"] NutritionCarePlan
@@ -257,29 +255,24 @@ define function "Measure Observation 1"(MalnutritionRiskScreening Encounter):
 
 define function "Measure Observation 2"(NutritionAssessment Encounter):
   if "Encounters with Malnutrition Not At Risk Screening and without Dietitian Referral" contains NutritionAssessment then 0 
-    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains NutritionAssessment then 
-      if "Encounter With Most Recent Nutrition Assessment And Identified Status" contains NutritionAssessment then 1 
-      else 0 
+    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains NutritionAssessment then if "Encounter With Most Recent Nutrition Assessment And Identified Status" contains NutritionAssessment then 1 
+    else 0 
     else 0
 
 define function "Measure Observation 3"(MalnutritionDiagnosis Encounter):
   if "Encounters with Malnutrition Not At Risk Screening and without Dietitian Referral" contains MalnutritionDiagnosis then 0 
-    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains MalnutritionDiagnosis then 
-      if "Encounters with Malnutrition Diagnosis" contains MalnutritionDiagnosis then 
-        if "Encounter With Most Recent Nutrition Assessment Status of Not or Mildly Malnourished" contains MalnutritionDiagnosis then 0 
-        else if "Encounter With Most Recent Nutrition Assessment Status of Moderately Or Severely Malnourished" contains MalnutritionDiagnosis then 1 
-      else 0 
+    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains MalnutritionDiagnosis then if "Encounters with Malnutrition Diagnosis" contains MalnutritionDiagnosis then if "Encounter With Most Recent Nutrition Assessment Status of Not or Mildly Malnourished" contains MalnutritionDiagnosis then 0 
+    else if "Encounter With Most Recent Nutrition Assessment Status of Moderately Or Severely Malnourished" contains MalnutritionDiagnosis then 1 
     else 0 
-  else 0
+    else 0 
+    else 0
 
 define function "Measure Observation 4"(NutritionCarePlan Encounter):
   if "Encounters with Malnutrition Not At Risk Screening and without Dietitian Referral" contains NutritionCarePlan then 0 
-    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains NutritionCarePlan then 
-      if "Encounters with Nutrition Care Plan" contains NutritionCarePlan then 
-        if "Encounter With Most Recent Nutrition Assessment Status of Not or Mildly Malnourished" contains NutritionCarePlan then 0 
-        else if "Encounter With Most Recent Nutrition Assessment Status of Moderately Or Severely Malnourished" contains NutritionCarePlan then 1 
-        else 0 
-      else 0 
+    else if "Encounters with Malnutrition Risk Screening At Risk or with Dietitian Referral" contains NutritionCarePlan then if "Encounters with Nutrition Care Plan" contains NutritionCarePlan then if "Encounter With Most Recent Nutrition Assessment Status of Not or Mildly Malnourished" contains NutritionCarePlan then 0 
+    else if "Encounter With Most Recent Nutrition Assessment Status of Moderately Or Severely Malnourished" contains NutritionCarePlan then 1 
+    else 0 
+    else 0 
     else 0
 
 define function "Total Malnutrition Care Score Eligible Occurrences"(QualifyingEncounter Encounter):

@@ -1,22 +1,13 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS124FHIRCervicalCancerScreen version '1.1.000'
+library CMS124FHIRCervicalCancerScreen version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
+include Status version '1.15.000' called Status
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -42,7 +33,7 @@ define "Initial Population":
   AgeInYearsAt(date from 
     end of "Measurement Period"
   ) in Interval[24, 64]
-    and Patient.sex() = '248152002'
+    and Patient.sex = '248152002'
     and exists "Qualifying Encounters"
 
 define "Qualifying Encounters":
@@ -74,7 +65,7 @@ define "Absence of Cervix":
     union ( ( ( [ConditionProblemsHealthConcerns: "Congenital or Acquired Absence of Cervix"]
           union [ConditionEncounterDiagnosis: "Congenital or Acquired Absence of Cervix"]
       ).verified ( ) ) NoCervixDiagnosis
-        where NoCervixDiagnosis.onset.toInterval ( ) starts on or before end of "Measurement Period"
+        where NoCervixDiagnosis.prevalenceInterval ( ) starts on or before end of "Measurement Period"
     )
 
 define "Cervical Cytology Within 3 Years":

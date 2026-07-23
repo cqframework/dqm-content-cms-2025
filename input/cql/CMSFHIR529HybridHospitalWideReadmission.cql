@@ -1,21 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMSFHIR529HybridHospitalWideReadmission version '0.6.001'
+library CMSFHIR529HybridHospitalWideReadmission version '0.5.001'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include CQMCommon version '4.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
 
 codesystem "LOINC": 'http://loinc.org'
 
@@ -54,7 +44,7 @@ define "Inpatient Encounters":
 
 define "SDE Encounter With First Body Temperature":
   "Inpatient Encounters" EncounterInpatient
-    let FirstTemperature: First([USCore.BodyTemperatureProfile] Temperature
+    let FirstTemperature: First([USCoreBodyTemperatureProfile] Temperature
         where Temperature.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and Temperature.status in { 'final', 'amended', 'corrected' }
           and Temperature.value is not null
@@ -68,7 +58,7 @@ define "SDE Encounter With First Body Temperature":
 
 define "SDE Encounter With First Heart Rate":
   "Inpatient Encounters" EncounterInpatient
-    let FirstHeartRate: First([USCore.HeartRateProfile] HeartRate
+    let FirstHeartRate: First([USCoreHeartRateProfile] HeartRate
         where HeartRate.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and HeartRate.status in { 'final', 'amended', 'corrected' }
           and HeartRate.value is not null
@@ -82,7 +72,7 @@ define "SDE Encounter With First Heart Rate":
 
 define "SDE Encounter With First Oxygen Saturation":
   "Inpatient Encounters" EncounterInpatient
-    let FirstOxygenSat: First(["USCore.PulseOximetryProfile": "Oxygen Saturation by Pulse Oximetry"] O2Saturation
+    let FirstOxygenSat: First(["USCorePulseOximetryProfile": "Oxygen Saturation by Pulse Oximetry"] O2Saturation
         where O2Saturation.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and O2Saturation.status in { 'final', 'amended', 'corrected' }
           and O2Saturation.value is not null
@@ -96,7 +86,7 @@ define "SDE Encounter With First Oxygen Saturation":
 
 define "SDE Encounter With First Respiratory Rate":
   "Inpatient Encounters" EncounterInpatient
-    let FirstRespRate: First([USCore.RespiratoryRateProfile] Respirations
+    let FirstRespRate: First([USCoreRespiratoryRateProfile] Respirations
         where Respirations.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and Respirations.status in { 'final', 'amended', 'corrected' }
           and Respirations.value is not null
@@ -110,7 +100,7 @@ define "SDE Encounter With First Respiratory Rate":
 
 define "SDE Encounter With First Systolic Blood Pressure":
   "Inpatient Encounters" EncounterInpatient
-    let FirstSystolicBP: First(["USCore.BloodPressureProfile"] BP
+    let FirstSystolicBP: First(["USCoreBloodPressureProfile"] BP
         where BP.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and BP.status in { 'final', 'amended', 'corrected' }
           and BP.component.value is not null
@@ -130,7 +120,7 @@ define "SDE Encounter With First Bicarbonate Lab Test":
         where bicarbonatelab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and bicarbonatelab.status in { 'final', 'amended', 'corrected' }
           and bicarbonatelab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -144,7 +134,7 @@ define "SDE Encounter With First Creatinine Lab Test":
         where CreatinineLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and CreatinineLab.status in { 'final', 'amended', 'corrected' }
           and CreatinineLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -158,7 +148,7 @@ define "SDE Encounter With First Glucose Lab Test":
         where GlucoseLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and GlucoseLab.status in { 'final', 'amended', 'corrected' }
           and GlucoseLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -172,7 +162,7 @@ define "SDE Encounter With First Hematocrit Lab Test":
         where HematocritLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and HematocritLab.status in { 'final', 'amended', 'corrected' }
           and HematocritLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -186,7 +176,7 @@ define "SDE Encounter With First Potassium Lab Test":
         where PotassiumLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and PotassiumLab.status in { 'final', 'amended', 'corrected' }
           and PotassiumLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -200,7 +190,7 @@ define "SDE Encounter With First Sodium Lab Test":
         where SodiumLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and SodiumLab.status in { 'final', 'amended', 'corrected' }
           and SodiumLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -214,7 +204,7 @@ define "SDE Encounter With First White Blood Cells Lab Test":
         where WhiteBloodCellLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and WhiteBloodCellLab.status in { 'final', 'amended', 'corrected' }
           and WhiteBloodCellLab.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: EncounterInpatient.id,
@@ -224,7 +214,7 @@ define "SDE Encounter With First White Blood Cells Lab Test":
 
 define "SDE Encounter With First Weight Recorded":
   "Inpatient Encounters" EncounterInpatient
-    let FirstWeight: First(["USCore.BodyWeightProfile"] WeightExam
+    let FirstWeight: First(["USCoreBodyWeightProfile"] WeightExam
         where WeightExam.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and WeightExam.status in { 'final', 'amended', 'corrected' }
           and WeightExam.value is not null

@@ -1,23 +1,13 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS190FHIRVTEProphylaxisICU version '1.1.000'
+library CMS190FHIRVTEProphylaxisICU version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include TJCOverall version '9.1.000' called TJC
-include VTE version '9.1.000' called VTE
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include TJCOverall version '8.25.000' called TJC
+include VTE version '8.18.000' called VTE
 
 codesystem "LOINC": 'http://loinc.org'
 
@@ -200,8 +190,8 @@ define "Encounter With Medication Oral Factor Xa Inhibitor Administered On Day O
 define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prior Diagnosis Of VTE":
   ( "Encounter With ICU Location" QualifyingEncounterICU
       with ["ConditionProblemsHealthConcerns": "Atrial Fibrillation or Flutter"] AtrialFibrillation
-        such that AtrialFibrillation.verificationStatus is not null implies ( AtrialFibrillation.verificationStatus !~ Status."refuted"
-            and AtrialFibrillation.verificationStatus !~ Status."entered-in-error"
+        such that AtrialFibrillation.verificationStatus is not null implies ( AtrialFibrillation.verificationStatus !~ QICoreCommon."refuted"
+            and AtrialFibrillation.verificationStatus !~ QICoreCommon."entered-in-error"
         )
           and AtrialFibrillation.onset.toInterval ( ) starts on or before end of QualifyingEncounterICU.period
   )
@@ -210,12 +200,12 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prio
     )
     union ( "Encounter With ICU Location" QualifyingEncounterICU
         with ["ConditionProblemsHealthConcerns": "Venous Thromboembolism"] VTEDiagnosis
-          such that ( VTEDiagnosis.clinicalStatus ~ Status."inactive"
-              or VTEDiagnosis.clinicalStatus ~ Status."remission"
-              or VTEDiagnosis.clinicalStatus ~ Status."resolved"
+          such that ( VTEDiagnosis.clinicalStatus ~ QICoreCommon."inactive"
+              or VTEDiagnosis.clinicalStatus ~ QICoreCommon."remission"
+              or VTEDiagnosis.clinicalStatus ~ QICoreCommon."resolved"
           )
-            and VTEDiagnosis.verificationStatus is not null implies ( VTEDiagnosis.verificationStatus !~ Status."refuted"
-              and VTEDiagnosis.verificationStatus !~ Status."entered-in-error"
+            and VTEDiagnosis.verificationStatus is not null implies ( VTEDiagnosis.verificationStatus !~ QICoreCommon."refuted"
+              and VTEDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
           )
             and VTEDiagnosis.onset.toInterval ( ) before start of QualifyingEncounterICU.period
     )
@@ -233,7 +223,7 @@ define "Encounter With Low Risk For VTE Or Anticoagulant Administered":
 
 define "Low Risk Indicator For VTE":
   ( ["SimpleObservation": "Risk for venous thromboembolism"] VTERiskAssessment
-      where VTERiskAssessment.value as CodeableConcept in "Low Risk"
+      where VTERiskAssessment.value as Concept in "Low Risk"
         and VTERiskAssessment.status in { 'final', 'amended', 'corrected' }
       return {
         id: VTERiskAssessment.id,
@@ -298,7 +288,7 @@ define "No VTE Prophylaxis Medication Administered Or Ordered":
       return {
         id: NoMedicationAdm.id,
         medicationStatusReason: NoMedicationAdm.statusReason,
-        authoredOn: NoMedicationAdm.effective
+        authoredOn: NoMedicationAdm.recorded
       }
   )
     union ( ( ["MedicationNotRequested": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
@@ -322,7 +312,7 @@ define "No VTE Prophylaxis Medication Administered Or Ordered":
           union ["MedicationRequest": "Rivaroxaban for VTE Prophylaxis"] ) MedicationOrderReject,
         [TaskRejected] T
         where T.focus.references ( MedicationOrderReject )
-          and T.code ~ USQualityCoreCommon."Fulfill"
+          and T.code ~ QICoreCommon."Fulfill"
           and MedicationOrderReject.status = 'active'
         return {
           id: MedicationOrderReject.id,
@@ -344,7 +334,7 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
       where DeviceNotOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
       return {
         id: DeviceNotOrder.id,
-        requestStatusReason: DeviceNotOrder.reasonRefused ( ),
+        requestStatusReason: DeviceNotOrder.reasonRefused,
         authoredOn: DeviceNotOrder.authoredOn
       }
   )
@@ -356,7 +346,7 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
         where DeviceOrderReject.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
           and DeviceOrderReject.status = 'active'
           and T.focus.references ( DeviceOrderReject )
-          and T.code ~ USQualityCoreCommon."Fulfill"
+          and T.code ~ QICoreCommon."Fulfill"
         return {
           id: DeviceOrderReject.id,
           requestStatusReason: T.statusReason,
@@ -366,7 +356,7 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
     union ( ( [ProcedureNotDone: "Application of Intermittent Pneumatic Compression Devices"]
         union [ProcedureNotDone: "Application of Venous Foot Pumps"]
         union [ProcedureNotDone: "Application of Graduated Compression Stockings"] ) DeviceNotApplied
-        let DeviceNotDoneTiming: DeviceNotApplied.performed
+        let DeviceNotDoneTiming: DeviceNotApplied.recorded
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,

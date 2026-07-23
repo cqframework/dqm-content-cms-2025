@@ -1,23 +1,14 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS128FHIRAntidepressantMgmt version '1.1.000'
+library CMS128FHIRAntidepressantMgmt version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.CumulativeMedicationDuration version '2.0.0-ballot' called CMD
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Hospice version '7.1.000' called Hospice
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include Hospice version '6.18.000' called Hospice
+include CumulativeMedicationDuration version '6.0.000' called CMD
+include Status version '1.15.000' called Status
+include QICoreCommon version '4.0.000' called QICoreCommon
+include CQMCommon version '4.1.000' called CQMCommon
 
 valueset "Annual Wellness Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1240'
 valueset "Antidepressant Medication": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.196.12.1213'
@@ -50,7 +41,7 @@ define "Has IPSD and Major Depression Diagnosis":
         union [ConditionEncounterDiagnosis: "Major Depression"]
     ).verified ( ) ) MajorDepression
       where "IPSD" is not null
-        and date from start of MajorDepression.onset.toInterval ( ) within 60 days of "IPSD"
+        and date from start of MajorDepression.prevalenceInterval ( ) within 60 days of "IPSD"
   )
 
 define "IPSD":

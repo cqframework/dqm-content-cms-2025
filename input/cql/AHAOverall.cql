@@ -1,18 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library AHAOverall version '5.1.000'
+library AHAOverall version '4.1.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
+using USCore version '6.1.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -48,7 +40,8 @@ context Patient
 */
 define "Heart Failure Outpatient Encounter":
   "Outpatient Encounter" QualifyingEncounter
-    with ( [Condition: "Heart Failure"] ) HeartFailure
+    with ( [ConditionProblemsHealthConcerns: "Heart Failure"]
+      union [ConditionEncounterDiagnosis: "Heart Failure"] ) HeartFailure
       such that HeartFailure.prevalenceInterval ( ) overlaps day of QualifyingEncounter.period
         and HeartFailure.isVerified ( )
     where QualifyingEncounter.period during day of "Measurement Period"
@@ -66,7 +59,8 @@ define "Outpatient Encounter":
 @description: Returns true if patient has confirmed heart transplant complications that start before the end of a heart failure outpatient encounter with history of moderate or severe LVSD 
 */
 define "Has Heart Transplant Complications":
-  exists ( ( [Condition: "Heart Transplant Complications"] ) HeartTransplantComplications
+  exists ( ( [ConditionEncounterDiagnosis: "Heart Transplant Complications"]
+      union [ConditionProblemsHealthConcerns: "Heart Transplant Complications"] ) HeartTransplantComplications
       let diagnosisStart: Coalesce(start of HeartTransplantComplications.prevalenceInterval(), HeartTransplantComplications.recordedDate)
       with "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
         such that date from diagnosisStart on or before date from end of ModerateOrSevereLVSDHFOutpatientEncounter.period
@@ -87,7 +81,8 @@ define "Has Left Ventricular Assist Device":
 @description: Returns true if patient has active LVAD complications that start before the end of a heart failure outpatient encounter with history of moderate or severe LVSD
 */
 define "Has Left Ventricular Assist Device Complications":
-  exists ( ( [Condition: "Left Ventricular Assist Device Complications"] ) LVADComplications
+  exists ( ( [ConditionEncounterDiagnosis: "Left Ventricular Assist Device Complications"]
+      union [ConditionProblemsHealthConcerns: "Left Ventricular Assist Device Complications"] ) LVADComplications
       let diagnosisStart: Coalesce(start of LVADComplications.prevalenceInterval(), LVADComplications.recordedDate)
       with "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
         such that date from diagnosisStart on or before date from end of ModerateOrSevereLVSDHFOutpatientEncounter.period
@@ -140,11 +135,14 @@ define "Moderate or Severe LVSD Findings":
       where EjectionFraction.value as Quantity <= 40 '%'
         and EjectionFraction.status in { 'final', 'amended', 'corrected' }
   )
-    union ( ( ( [Condition: "Moderate or Severe LVSD"] )
-      union ( ( [Condition: "Left ventricular systolic dysfunction (disorder)"] ) LVSDDiagnosis
-        where LVSDDiagnosis.severity in "Moderate or Severe"
-      ) ) ModerateOrSevereLVSD
-      where ModerateOrSevereLVSD.isVerified ( )
+    union ( ( ( [ConditionProblemsHealthConcerns: "Moderate or Severe LVSD"]
+          union [ConditionEncounterDiagnosis: "Moderate or Severe LVSD"]
+      )
+        union ( ( [ConditionProblemsHealthConcerns: "Left ventricular systolic dysfunction (disorder)"]
+            union [ConditionEncounterDiagnosis: "Left ventricular systolic dysfunction (disorder)"] ) LVSDDiagnosis
+            where LVSDDiagnosis.severity in "Moderate or Severe"
+        ) ) ModerateOrSevereLVSD
+        where ModerateOrSevereLVSD.isVerified ( )
     ) 
 
 /*
@@ -163,6 +161,16 @@ define "Is Adult With Two Qualifying Outpatient Encounters and One Heart Failure
 
 
 /*
+@description: Returns true if the given Condition has a verification status of "confirmed", "unconfirmed", "provisional", or "differential"
+*/
+define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
+  )
+
+/*
 @description: Returns true if the given Encounter is finished
 */
 define fluent function isEncounterFinished(Encounter Encounter):
@@ -178,7 +186,7 @@ define fluent function isOrderedDuringHeartFailureOutpatientEncounter(Medication
         and MedicationRequest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and not exists ( ["TaskRejected"] TaskReject
             where TaskReject.focus.references ( MedicationRequest )
-              and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+              and TaskReject.code ~ QICoreCommon."Fulfill"
         )
   )
 
@@ -192,14 +200,14 @@ define fluent function isMedicationNotRequestedOrderedDuringHeartFailureOutpatie
         and MedicationRequest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and not exists ( ["TaskRejected"] TaskReject
             where TaskReject.focus.references ( MedicationRequest )
-              and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+              and TaskReject.code ~ QICoreCommon."Fulfill"
         )
   )
 
 /*
 @description: Returns true if the given Condition overlaps the heart failure outpatient encounter with history of moderate or severe LVSD at any point
 */
-define fluent function overlapsHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
+define fluent function overlapsHeartFailureOutpatientEncounter(Condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )
@@ -209,7 +217,7 @@ define fluent function overlapsHeartFailureOutpatientEncounter(Condition USQuali
 @overloaded
 @description: Returns true if the given Condition overlaps after the day of the heart failure outpatient encounter with history of moderate or severe LVSD
 */
-define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )
@@ -236,6 +244,14 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(AllergyIntol
   )
           
 /*
+@description: Returns true if the given condition either has no verification status or has a verification status of confirmed, unconfirmed, provisional, or differential
+*/
+define fluent function isVerified(AllergyIntolerance AllergyIntolerance):
+  AllergyIntolerance.verificationStatus is not null implies ( AllergyIntolerance.verificationStatus ~ QICoreCommon."allergy-confirmed"
+      or AllergyIntolerance.verificationStatus ~ QICoreCommon."allergy-unconfirmed"
+  )
+
+/*
 @overloaded
 @description: Returns true if the given MedicationRequest overlaps after the day of the heart failure outpatient encounter with history of moderate or severe LVSD
 */
@@ -250,7 +266,7 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(MedicationRe
         and MedicationRequest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and not exists ( ["TaskRejected"] TaskReject
             where TaskReject.focus.references ( MedicationRequest )
-              and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+              and TaskReject.code ~ QICoreCommon."Fulfill"
         )
   )
 
@@ -258,23 +274,20 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(MedicationRe
 @overloaded
 @description: Returns true if the given HeartRateObservation overlaps after the day of the heart failure outpatient encounter with history of moderate or severe LVSD
 */
-define fluent function overlapsAfterHeartFailureOutpatientEncounter(HeartRateObservation USCore.HeartRateProfile):
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(HeartRateObservation USCoreHeartRateProfile):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where HeartRateObservation.effective.toInterval ( ) overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and HeartRateObservation.status in { 'final', 'amended', 'corrected' }
   )
-
-/*
-@description: Converts the possible representations of the timing bound to an interval using the given date as an anchor for durations
-*/ 
-define function TimingBoundToInterval(startDate System.DateTime, choice Choice<FHIR.Duration, FHIR.Range, FHIR.Period>):
+ 
+define function TimingBoundToInterval(startDate System.DateTime, choice Choice<Quantity, Interval<Quantity>, Interval<DateTime>>):
   case
-    when choice is FHIR.Period then
-        choice as FHIR.Period
-    when choice is FHIR.Range then
+    when choice is Interval<DateTime> then
+        choice as Interval<DateTime>
+    when choice is Interval<Quantity> then
         Interval[startDate + (choice.low as Quantity), startDate + (choice.high as Quantity)]
-    when choice is FHIR.Duration then
-        Interval[startDate, startDate + (choice as FHIR.Duration))
+    when choice is Quantity then
+        Interval[startDate, startDate + (choice as Quantity))
     else
 		null as Interval<DateTime>
 	end

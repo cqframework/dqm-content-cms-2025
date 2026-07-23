@@ -1,23 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS951FHIRKidneyHealthEval version '1.1.000'
+library CMS951FHIRKidneyHealthEval version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 valueset "Annual Wellness Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1240'
 valueset "Chronic Kidney Disease, Stage 5": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1002'
@@ -71,9 +60,9 @@ define "Numerator":
 define "Has Active Diabetes Overlaps Start Of Measurement Period":
   exists ( ["ConditionProblemsHealthConcerns": "Diabetes"]
     union ["ConditionEncounterDiagnosis": "Diabetes"] ) DiabetesDiagnosis
-    where DiabetesDiagnosis.onset.toInterval ( ) overlaps before day of "Measurement Period"
-      and ( DiabetesDiagnosis.verificationStatus is not null implies ( DiabetesDiagnosis.verificationStatus !~ Status."refuted"
-            and DiabetesDiagnosis.verificationStatus !~ Status."entered-in-error"
+    where DiabetesDiagnosis.prevalenceInterval ( ) overlaps before day of "Measurement Period"
+      and ( DiabetesDiagnosis.verificationStatus is not null implies ( DiabetesDiagnosis.verificationStatus !~ QICoreCommon."refuted"
+            and DiabetesDiagnosis.verificationStatus !~ QICoreCommon."entered-in-error"
         )
       )
 
@@ -84,9 +73,9 @@ define "Has CKD Stage 5 Or ESRD Diagnosis Overlaps Measurement Period":
     union ( ["ConditionProblemsHealthConcerns": "End Stage Renal Disease"]
         union ["ConditionEncounterDiagnosis": "End Stage Renal Disease"]
     ) ) CKDOrESRD
-    where CKDOrESRD.onset.toInterval ( ) overlaps day of "Measurement Period"
-      and ( CKDOrESRD.verificationStatus is not null implies ( CKDOrESRD.verificationStatus !~ Status."refuted"
-            and CKDOrESRD.verificationStatus !~ Status."entered-in-error"
+    where CKDOrESRD.prevalenceInterval ( ) overlaps day of "Measurement Period"
+      and ( CKDOrESRD.verificationStatus is not null implies ( CKDOrESRD.verificationStatus !~ QICoreCommon."refuted"
+            and CKDOrESRD.verificationStatus !~ QICoreCommon."entered-in-error"
         )
       )
 
@@ -120,7 +109,7 @@ define "Has Urine Albumin Creatinine Ratio Test Performed During Measurement Per
       where uACRTest.effective.toInterval ( ) during day of "Measurement Period"
         and uACRTest.status in { 'final', 'amended', 'corrected' }
         and ( ( uACRTest.value is Quantity )
-            or ( uACRTest.value as FHIR.CodeableConcept in "Undetectable Lab Result Value" )
+            or ( uACRTest.value as Concept in "Undetectable Lab Result Value" )
         )
   )
 

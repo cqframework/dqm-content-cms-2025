@@ -1,20 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS1264FHIRECATREHQR version '1.1.000'
+library CMS1264FHIRECATREHQR version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include CQMCommon version '5.1.000' called CQMCommon
+include CQMCommon version '4.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 codesystem "RoleCode": 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'

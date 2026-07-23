@@ -1,20 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library NHSNGlycemicControlHypoglycemiaInitialPopulation version '1.1.000'
+library NHSNGlycemicControlHypoglycemiaInitialPopulation version '0.0.003'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include CQMCommon version '5.1.000' called CQMCommon
+include CQMCommon version '4.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include NHSNHelpers version '0.1.000' called NHSNHelpers
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "HSLOC": 'https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html'
@@ -51,11 +43,11 @@ define "Initial Population":
 define "Inpatient Encounters During Measurement Period":
   [Encounter: "Encounter Inpatient"] InpatientEncounters
     where InpatientEncounters.period ends during day of "Measurement Period"
-      and ( InpatientEncounters.class ~ USQualityCoreCommon."inpatient non-acute"
-          or InpatientEncounters.class ~ USQualityCoreCommon."inpatient non-acute"
-          or InpatientEncounters.class ~ USQualityCoreCommon."short stay"
-          or InpatientEncounters.class ~ USQualityCoreCommon."inpatient acute"
-          or InpatientEncounters.class ~ USQualityCoreCommon."inpatient encounter"
+      and ( InpatientEncounters.class ~ QICoreCommon."inpatient non-acute"
+          or InpatientEncounters.class ~ QICoreCommon."inpatient non-acute"
+          or InpatientEncounters.class ~ QICoreCommon."short stay"
+          or InpatientEncounters.class ~ QICoreCommon."inpatient acute"
+          or InpatientEncounters.class ~ QICoreCommon."inpatient encounter"
       )
 
 define "Encounters with Patient Hospital Locations":
@@ -68,7 +60,14 @@ define "Encounters with Patient Hospital Locations":
 define "Antidiabetic Drugs Administered or Ordered":
   ( "MedicationRequests"
     union "MedicationAdministrations" ) MedReqOrAdmin
-    where MedReqOrAdmin.getMedicationCode() in "Diabetes Medications"
+    where Coalesce(MedReqOrAdmin.getMedicationCode(), MedReqOrAdmin.getMedicationAdministrationCode()) in "Diabetes Medications"
+
+define fluent function getMedicationAdministrationCode(admin MedicationAdministration):
+  if admin.medication is Concept then admin.medication as Concept 
+    else ( singleton from ( [Medication] M
+        where admin.medication.references ( M )
+    )
+  ).code
 
 //Supplemental Data Elements
 
@@ -85,7 +84,7 @@ define "SDE Blood Glucose Observation":
 define "SDE Chief Complaint":
   "Initial Population" IP
     where exists ( IP.diagnosis InitialPopulationDiagnosis
-        where InitialPopulationDiagnosis.use ~ FHIRCommon."CC"
+        where InitialPopulationDiagnosis.use ~ QICoreCommon."CC"
     )
     return { IP.id, IP.meta, IP.identifier, IP.status, IP.statusHistory, IP.class, IP.classHistory, IP.type, IP.serviceType, IP.priority, IP.subject, IP.period, IP.length, IP.reasonCode, IP.reasonReference, IP.diagnosis, IP.account, IP.hospitalization, IP.location, IP.partOf }
 
@@ -98,7 +97,7 @@ define "SDE Condition":
     where exists ( "Initial Population" IP
         where Diagnosis.prevalenceInterval ( ) overlaps day of IP.period
     )
-    return { Diagnosis.id, Diagnosis.meta, Diagnosis.clinicalStatus, Diagnosis.verificationStatus, Diagnosis.category, Diagnosis.severity, Diagnosis.code, Diagnosis.bodySite, Diagnosis.subject, Diagnosis.encounter.reference.getId(), Diagnosis.onset, Diagnosis.stage, Diagnosis.evidence, Diagnosis.note }
+    return { Diagnosis.id, Diagnosis.meta, Diagnosis.clinicalStatus, Diagnosis.verificationStatus, Diagnosis.category, Diagnosis.severity, Diagnosis.code, Diagnosis.bodySite, Diagnosis.subject, Diagnosis.encounter.reference.getId ( ), Diagnosis.onset, Diagnosis.stage, Diagnosis.evidence, Diagnosis.note }
 
 define "SDE Coverage":
   [Coverage] Coverages

@@ -1,23 +1,13 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS347FHIRStatinPreventionTxCVD version '1.1.000'
+library CMS347FHIRStatinPreventionTxCVD version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.CumulativeMedicationDuration version '2.0.0-ballot' called CMD
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
+include CumulativeMedicationDuration version '6.0.000' called CMD
 
 codesystem "ICD10CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
@@ -98,7 +88,7 @@ define "Denominator Exclusions":
       union [ConditionProblemsHealthConcerns: "Rhabdomyolysis"]
       union [ConditionEncounterDiagnosis: "Breastfeeding"]
       union [ConditionEncounterDiagnosis: "Rhabdomyolysis"] ) ExclusionDiagnosis
-      where ExclusionDiagnosis.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where ExclusionDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and ExclusionDiagnosis.isVerified ( )
   )
 
@@ -123,7 +113,7 @@ define "ASCVD Diagnosis or Procedure before End of Measurement Period":
       union [ConditionProblemsHealthConcerns: "Atherosclerosis and Peripheral Arterial Disease"]
       union [ConditionProblemsHealthConcerns: "Ischemic Heart Disease or Other Related Diagnoses"]
       union [ConditionProblemsHealthConcerns: "Stable and Unstable Angina"] ) ASCVDDiagnosis
-      where ASCVDDiagnosis.onset.toInterval ( ) starts on or before day of end of "Measurement Period"
+      where ASCVDDiagnosis.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
         and ASCVDDiagnosis.isVerified ( )
   )
     union ( ( [Procedure: "PCI"]
@@ -142,18 +132,18 @@ define "Has Adverse Reaction to Statin":
 define "Has Allergy to Statin":
   exists ( [AllergyIntolerance: "Statin Allergen"] StatinAllergy
       where StatinAllergy.onset.toInterval ( ) overlaps day of "Measurement Period"
-        and StatinAllergy.clinicalStatus ~ FHIRCommon."allergy-active"
+        and StatinAllergy.clinicalStatus ~ QICoreCommon."allergy-active"
   )
 
 define "Has Diabetes Diagnosis":
   exists ( [ConditionProblemsHealthConcerns: "Diabetes"] DiabetesDiagnosis
-      where DiabetesDiagnosis.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where DiabetesDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and DiabetesDiagnosis.isVerified ( )
   )
 
 define "Has ESRD Diagnosis":
   exists ( [ConditionProblemsHealthConcerns: "End Stage Renal Disease"] ESRD
-      where ESRD.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where ESRD.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and ESRD.isVerified ( )
   )
 
@@ -161,7 +151,7 @@ define "Has Hepatitis or Liver Disease Diagnosis":
   exists ( ( [ConditionProblemsHealthConcerns: "Hepatitis A"]
       union [ConditionProblemsHealthConcerns: "Hepatitis B"]
       union [ConditionProblemsHealthConcerns: "Liver Disease"] ) HepatitisLiverDisease
-      where HepatitisLiverDisease.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where HepatitisLiverDisease.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and HepatitisLiverDisease.isVerified ( )
   )
 
@@ -177,13 +167,13 @@ define "Has Medical Reason for Not Ordering Statin Therapy":
 
 define "Has Statin Associated Muscle Symptoms":
   exists ( [ConditionProblemsHealthConcerns: "Statin Associated Muscle Symptoms"] StatinMuscleSymptom
-      where StatinMuscleSymptom.onset.toInterval ( ) overlaps day of "Measurement Period"
+      where StatinMuscleSymptom.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and StatinMuscleSymptom.isVerified ( )
   )
 
 define "Hypercholesterolemia Diagnosis":
   ( [ConditionProblemsHealthConcerns: "Familial Hypercholesterolemia"] Hypercholesterolemia
-      where Hypercholesterolemia.onset.toInterval ( ) starts on or before day of end of "Measurement Period"
+      where Hypercholesterolemia.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
         and Hypercholesterolemia.isVerified ( )
   )
 
@@ -257,10 +247,10 @@ define "Ten Year CVD Risk is High":
   )
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )
 
 define "SDE Ethnicity":

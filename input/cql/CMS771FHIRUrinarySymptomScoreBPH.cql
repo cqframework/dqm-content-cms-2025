@@ -1,21 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS771FHIRUrinarySymptomScoreBPH version '1.1.000'
+library CMS771FHIRUrinarySymptomScoreBPH version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "ICD10CM": 'http://hl7.org/fhir/sid/icd-10-cm'
@@ -95,7 +84,7 @@ define "Documented IPSS Assessment Result":
       and IPSSAssessment.value is not null
     return {
       effectiveDatetime: IPSSAssessment.effective.earliest ( ),
-      valueInteger: IPSSAssessment.value as FHIR.integer
+      valueInteger: IPSSAssessment.value as Integer
     }
 
 define "AUA Symptom Index and Quality of Life Assessment Result":
@@ -110,7 +99,7 @@ define "AUA Symptom Index and Quality of Life Assessment Result":
       and AUASIAssessment.value is not null
     return {
       effectiveDatetime: AUASIAssessment.effective.earliest ( ),
-      valueInteger: ( AUASIAssessment.value as FHIR.integer ) + ( LastQOLOnDate.value as FHIR.integer )
+      valueInteger: ( AUASIAssessment.value as Integer ) + ( LastQOLOnDate.value as Integer )
     }
 
 define "Has Qualifying Encounter":
@@ -128,43 +117,43 @@ define "Urinary Retention Diagnosis Starts Within 1 Year After Initial BPH Diagn
   ( [ConditionProblemsHealthConcerns: "Urinary Retention"]
     union [ConditionEncounterDiagnosis: "Urinary Retention"] ) UrinaryRetention
     with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
-      such that UrinaryRetention.onset.toInterval ( ) starts 1 year or less on or after day of start of InitialBPHDiagnosis.onset.toInterval ( )
+      such that UrinaryRetention.prevalenceInterval ( ) starts 1 year or less on or after day of start of InitialBPHDiagnosis.prevalenceInterval ( )
     where UrinaryRetention.verificationStatusIsNotInvalid ( )
 
 define "Urinary Symptom Score 6 to 12 Months After Initial BPH Diagnosis":
   Last("Urinary Symptom Score Assessment" USSAssessment
       with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
-        such that difference in months between start of InitialBPHDiagnosis.onset.toInterval ( ) and USSAssessment.effectiveDatetime in Interval[6, 12]
+        such that difference in months between start of InitialBPHDiagnosis.prevalenceInterval() and USSAssessment.effectiveDatetime in Interval[6, 12]
       sort by effectiveDatetime
   )
 
 define "Urinary Symptom Score Within 1 Month After Initial BPH Diagnosis":
   First("Urinary Symptom Score Assessment" USSAssessment
       with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
-        such that USSAssessment.effectiveDatetime 1 month or less on or after day of start of InitialBPHDiagnosis.onset.toInterval ( )
+        such that USSAssessment.effectiveDatetime 1 month or less on or after day of start of InitialBPHDiagnosis.prevalenceInterval()
       sort by effectiveDatetime
   )
 
 define "Has Initial BPH Diagnosis Starts During or Within 30 Days After End of Hospitalization":
   "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
     with [Encounter: "Hospital Services for Urology Care"] UrologyHospitalServices
-      such that InitialBPHDiagnosis.onset.toInterval ( ) starts during Interval[start of UrologyHospitalServices.period, end of UrologyHospitalServices.period + 31 days]
+      such that InitialBPHDiagnosis.prevalenceInterval ( ) starts during Interval[start of UrologyHospitalServices.period, end of UrologyHospitalServices.period + 31 days]
         and UrologyHospitalServices.status = 'finished'
 
 define "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period":
   First(([ConditionProblemsHealthConcerns: "Benign prostatic hyperplasia with lower urinary tract symptoms"]
       union [ConditionEncounterDiagnosis: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
-      where NewBPHDiagnosis.onset.toInterval ( ) starts during Interval[start of "Measurement Period" - 6 months, start of "Measurement Period"]
-        and NewBPHDiagnosis.verificationStatusIsNotInvalid ( )
-      sort by start of onset.toInterval ( )
+      where NewBPHDiagnosis.prevalenceInterval() starts during Interval[start of "Measurement Period" - 6 months, start of "Measurement Period"]
+        and NewBPHDiagnosis.verificationStatusIsNotInvalid()
+      sort by start of onset.toInterval()
   )
 
 define "Morbid Obesity Diagnosis On or Before Follow Up USS Assessment":
   ( [ConditionProblemsHealthConcerns: "Morbid Obesity"]
     union [ConditionEncounterDiagnosis: "Morbid Obesity"] ) MorbidObesityDiagnosis
     with "Urinary Symptom Score 6 to 12 Months After Initial BPH Diagnosis" FollowUpUSSAssessment
-      such that MorbidObesityDiagnosis.onset.toInterval ( ) overlaps "Measurement Period"
-        and MorbidObesityDiagnosis.onset.toInterval ( ) starts on or before FollowUpUSSAssessment.effectiveDatetime
+      such that MorbidObesityDiagnosis.prevalenceInterval ( ) overlaps "Measurement Period"
+        and MorbidObesityDiagnosis.prevalenceInterval ( ) starts on or before FollowUpUSSAssessment.effectiveDatetime
     where MorbidObesityDiagnosis.verificationStatusIsNotInvalid ( )  
   
 /*
@@ -174,7 +163,7 @@ define "Morbid Obesity Diagnosis On or Before Follow Up USS Assessment":
 
 
 define "BMI Exam Result Greater Than or Equal To 40 During Measurement Period and On or Before Follow Up USS Assessment":
-  exists ( ["USCore.BMIProfile"] BMIExam
+  exists ( ["USCoreBMIProfile"] BMIExam
       with "Urinary Symptom Score 6 to 12 Months After Initial BPH Diagnosis" FollowUpUSSAssessment
         such that BMIExam.value >= 40 'kg/m2'
           and BMIExam.status in { 'final', 'amended', 'corrected' }
@@ -185,7 +174,7 @@ define "BMI Exam Result Greater Than or Equal To 40 During Measurement Period an
 
 define fluent function verificationStatusIsNotInvalid(condition Choice<"ConditionEncounterDiagnosis", "ConditionProblemsHealthConcerns">):
   condition.verificationStatus is null
-    or not ( condition.verificationStatus ~ Status."unconfirmed"
-        or condition.verificationStatus ~ Status."refuted"
-        or condition.verificationStatus ~ Status."entered-in-error"
+    or not ( condition.verificationStatus ~ QICoreCommon."unconfirmed"
+        or condition.verificationStatus ~ QICoreCommon."refuted"
+        or condition.verificationStatus ~ QICoreCommon."entered-in-error"
     )

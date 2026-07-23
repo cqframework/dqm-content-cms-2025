@@ -1,21 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS996FHIRAptTxforSTEMI version '2.1.000'
+library CMS996FHIRAptTxforSTEMI version '2.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include CQMCommon version '4.1.000' called CQMCommon
+include Status version '1.15.000' called Status
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "HSLOC": 'https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html'
@@ -123,7 +114,7 @@ define "Active Exclusion Diagnosis at Start of ED Encounter":
 
 define "Currently Pregnant":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
-    with ( ["USCore.ObservationPregnancyStatusProfile"] ) PregStatus
+    with ( ["USCoreObservationPregnancyStatusProfile"] ) PregStatus
       such that PregStatus.status = 'final'
         and ( PregStatus.value in "Pregnant State" )
         and ( PregStatus.effective during EDwSTEMI.period )
@@ -148,8 +139,8 @@ define "Active Long Term use of Anticoagulants":
     with ( ( ["ConditionProblemsHealthConcerns": "Long term (current) use of anticoagulants"]
         union ["ConditionEncounterDiagnosis": "Long term (current) use of anticoagulants"]
     ).verified ( ) ) LongTermAnticoagulant
-      such that ( LongTermAnticoagulant.onset.toInterval ( ) starts before or on start of EDwithSTEMI.period
-          and LongTermAnticoagulant.onset.toInterval ( ) ends on or after start of EDwithSTEMI.period
+      such that ( LongTermAnticoagulant.prevalenceInterval ( ) starts before or on start of EDwithSTEMI.period
+          and LongTermAnticoagulant.prevalenceInterval ( ) ends on or after start of EDwithSTEMI.period
       )
 
 define "Active use of Anticoagulants":
@@ -165,9 +156,9 @@ define "Adverse Effect to Thrombolytic Medications Before End of ED Encounter":
 define "Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
     with ["AllergyIntolerance": "Thrombolytic medications"] ThrombolyticAllergy
-      such that ThrombolyticAllergy.clinicalStatus ~ USQualityCoreCommon."allergy-active"
-        and ( ThrombolyticAllergy.verificationStatus is not null implies ( ThrombolyticAllergy.verificationStatus ~ USQualityCoreCommon."allergy-confirmed"
-              or ThrombolyticAllergy.verificationStatus ~ USQualityCoreCommon."allergy-unconfirmed"
+      such that ThrombolyticAllergy.clinicalStatus ~ QICoreCommon."allergy-active"
+        and ( ThrombolyticAllergy.verificationStatus is not null implies ( ThrombolyticAllergy.verificationStatus ~ QICoreCommon."allergy-confirmed"
+              or ThrombolyticAllergy.verificationStatus ~ QICoreCommon."allergy-unconfirmed"
           )
         )
         and ( ThrombolyticAllergy.onset.toInterval ( ) overlaps ( EDwSTEMI.period )
@@ -193,7 +184,7 @@ define "ED Encounter with STEMI Diagnosis":
               union [ConditionEncounterDiagnosis: "STEMI"]
           ).verified ( ) ) DxSTEMI
             where ( EDEncounterinMP.encounterDiagnosis ( ).code in "STEMI"
-                or ( DxSTEMI.onset.toInterval ( ) starts during EDEncounterinMP.period )
+                or ( DxSTEMI.prevalenceInterval ( ) starts during EDEncounterinMP.period )
             )
         )
     )
@@ -234,7 +225,7 @@ define "ED Encounter with Hospice Services":
               and ( HospicePerformed.performed.toInterval ( ) overlaps day of SixMonthsBeforeToEndOfSTEMI )
         )
         or exists ( ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"] ).verified ( ) ) HospiceCareDiagnosis
-            where HospiceCareDiagnosis.onset.toInterval ( ) ends on or after start of ( EDwSTEMI.period )
+            where HospiceCareDiagnosis.prevalenceInterval ( ) ends on or after start of ( EDwSTEMI.period )
         )
     )
 
@@ -249,8 +240,8 @@ define "Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encount
         union ["ConditionProblemsHealthConcerns": "Takotsubo syndrome"]
         union ["ConditionProblemsHealthConcerns": "Cardiopulmonary Emergency"]
     ).verified ( ) ) ExclusionDiagnosis
-      such that ( ( ExclusionDiagnosis.onset.toInterval ( ) starts during EDwithSTEMI.period )
-          or ( ExclusionDiagnosis.onset.toInterval ( ) starts 24 hours or less before start of EDwithSTEMI.period )
+      such that ( ( ExclusionDiagnosis.prevalenceInterval ( ) starts during EDwithSTEMI.period )
+          or ( ExclusionDiagnosis.prevalenceInterval ( ) starts 24 hours or less before start of EDwithSTEMI.period )
       )
 
 define "Received tPA in Another Facility within 24 hours Prior to Admission":
@@ -258,7 +249,7 @@ define "Received tPA in Another Facility within 24 hours Prior to Admission":
     with ( ( ["ConditionProblemsHealthConcerns": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
         union ["ConditionEncounterDiagnosis": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
     ).verified ( ) ) TPA
-      such that TPA.onset.toInterval ( ) starts during EDwithSTEMI.period
+      such that TPA.prevalenceInterval ( ) starts during EDwithSTEMI.period
 
 define "ED Encounter with a Documented Reason for No PCI Performed":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
@@ -266,7 +257,7 @@ define "ED Encounter with a Documented Reason for No PCI Performed":
       such that ( PCINotDone.statusReason in "Patient Refusal"
           or PCINotDone.statusReason in "Procedure Not Indicated/Contraindicated"
       )
-        and PCINotDone.performed during EDwSTEMI.period
+        and PCINotDone.recorded during EDwSTEMI.period
 
 define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic Therapy":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
@@ -274,7 +265,7 @@ define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic
       such that ( FibrinolyticNoMed.statusReason in "Patient Refusal"
           or FibrinolyticNoMed.statusReason in "Drug Intervention Not Indicated/Contraindicated"
       )
-        and FibrinolyticNoMed.effective during EDwSTEMI.period
+        and FibrinolyticNoMed.recorded during EDwSTEMI.period
 
 define "Fibrinolytic Therapy Administration within 30 Minutes of Arrival":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI

@@ -1,22 +1,11 @@
-/*
-@description: VTE Common Functions
+library VTE version '8.18.000'
 
-NOTE: This library is not published in this IG, it is included here for convenience. The source of truth for
-this library will be the MADiE environment once it fully supports use of QICore STU6-derived.
-*/
-library VTE version '9.1.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
+include CQMCommon version '4.1.000' called CQMCommon
 
 valueset "Obstetrical or Pregnancy Related Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.263' 
 valueset "Obstetrics VTE": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.264'
@@ -49,13 +38,13 @@ define fluent function fromDayOfStartOfHospitalizationToDayAfterAdmission(TheEnc
 	Interval[ date from (start of TheEncounter.hospitalizationWithObservation()), date from (start of TheEncounter.period) + 1 days]
 	
 	
-define fluent function hasEncDiagnosisOf(TheEncounter Encounter, DiagnosisValueSet System.ValueSet):
+define fluent function hasEncDiagnosisOf(TheEncounter Encounter, DiagnosisValueSet ValueSet):
    TheEncounter E
      return (E.encounterDiagnosis()).code in DiagnosisValueSet
        or E.reasonCode in DiagnosisValueSet
        
        
-define fluent function hasPrincipalProcedureOf(TheEncounter Encounter, DiagnosisValueSet System.ValueSet):
+define fluent function hasPrincipalProcedureOf(TheEncounter Encounter, DiagnosisValueSet ValueSet):
    TheEncounter E
    let
         PPx: E.principalProcedure(),
