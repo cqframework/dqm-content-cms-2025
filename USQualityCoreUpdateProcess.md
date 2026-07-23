@@ -3,7 +3,7 @@ This topic describes a process for refactoring [FHIR-based 2025 AU draft CMS mea
 1. Use the [US Quality Core Implementation Guide](http://build.fhir.org/ig/FHIR/us-quality-core) as the model
 2. Make use of shared artifacts in the [Common CQL Artifacts for FHIR (US-Based) Implementation Guide](https://build.fhir.org/ig/HL7/us-cql-ig)
 
-> NOTE: Throughout this discussion, we use the version `0.1.0-cibuild` for the US Quality Core references. This is because we are referencing a pre-publication draft. When US Quality Core publishes, the versions will be updated to the published version (most likely `1.0.0`).
+> NOTE: Throughout this discussion, we use the version `0.1.0-cibuild` for the US Quality Core references. This is because the content here is under freeze while we complete discrepancy testing between the QICore and USQualityCore versions of the measures.
 
 For the purposes of this discussion, we will be focusing on the following 5 measures:
 
@@ -17,7 +17,11 @@ For the purposes of this discussion, we will be focusing on the following 5 meas
 
 Note that this list is not a complete listing of the measures, see the [input/cql](input/cql) directory for all CQL source, and see the [Measures](https://build.fhir.org/ig/cqframework/dqm-content-cms-2025/measures.html) index in the CI build for a listing of all the specifications.
 
-These are all EC measures that make use of the following shared libraries:
+For an explicit listing of the changes in each measure, refer to the following draft PR: https://github.com/cqframework/dqm-content-cms-2025/pull/5/changes?diff=split
+
+> NOTE: This PR will not be merged, it is only to provide an explicit listing of changes between the QICore and USQualityCore versions of the measures.
+
+The measures make use of the following shared libraries:
 
 | Shared Library | QI Core | US Quality Core |
 |----|----|----|
@@ -37,10 +41,6 @@ These are all EC measures that make use of the following shared libraries:
 | SupplementalDataElements | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/SupplementalDataElements.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/SupplementalDataElements.cql) |
 | TJCOverall | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/TJCOverall.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/TJCOverall.cql) |
 | VTE | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/VTE.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/VTE.cql) |
-
-These shared libraries had already been updated to use the QICore 7.0.0 (a derived model info) so these were just brought in and updated to use the USQualityCore model instead, no other changes were required to the shared libraries.
-
-> NOTE: Hospital measures and related shared libraries (CQMCommon, PCMaternal, TJCOverall, and others) are still in progress.
 
 This topic will use CMS125: Breast Cancer Screening as a running example
 
@@ -78,6 +78,24 @@ US Quality Core:
 using USQualityCore version '0.1.0-cibuild'
 using USCore version '6.1.0-derived'
 using FHIR version '4.0.1'
+```
+
+Note carefully that the order of using declarations is important here because there are multiple models that define a patient context. To resolve the ambiguity, the reference implementation uses the first using declaration. To make this explicit:
+
+```cql
+using FHIR
+using USQualityCore
+
+context Patient // This resolves as FHIR.Patient
+```
+
+as opposed to
+
+```cql
+using USQualityCore
+using FHIR
+
+context Patient // This resolves as USQualityCore.Patient
 ```
 
 > NOTE: This repository is still using 0.1.0-cibuild because there is still active discrepancy testing happening on the content and so there is a content freeze while that testing is being completed. Once that freeze is lifted, these measures will be updated to the published 0.5.0 US Quality Core IG.
@@ -160,7 +178,7 @@ define "Bilateral Mastectomy Procedure":
     where BilateralMastectomyPerformed.performed.toInterval ( ) ends on or before end of "Measurement Period"
 ```
 
-> DISCUSS: Should we propose that when using multiple models, type names SHALL be qualified
+To avoid potential confusion, when using multiple models, type names SHOULD be qualified.
 
 In addition, the possibility of derived profiles means that some logic can be simplified. For example, in QICore 6.0.0, ConditionEncounterDiagnosis and ConditionProblemHealthConcerns are separate types, whereas in USQualityCore, they both ultimately derive from Condition, allowing logic that needs to deal with both to be written at the FHIR.Condition level, rather than the USQualityCore EncounterDiagnosis and ProblemHealthConcern level:
 
