@@ -1,20 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS129FHIRProstCaBoneScanUse version '1.1.000'
+library CMS129FHIRProstCaBoneScanUse version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -91,17 +81,17 @@ define "Has Diagnosis of Pain related to Prostate Cancer":
 
 define "First Prostate Cancer Treatment during day of Measurement Period":
   First([Procedure: "Prostate Cancer Treatment"] ProstateCancerTreatment
-      where ProstateCancerTreatment.performed.toInterval ( ) ends during day of "Measurement Period"
+      where ProstateCancerTreatment.performed.toInterval() ends during day of "Measurement Period"
         and ProstateCancerTreatment.status = 'completed'
-      sort by start of performed.toInterval ( )
+      sort by start of performed.toInterval()
   )
 
 define "Most Recent PSA Test Result is Low":
   ( Last([LaboratoryResultObservation: "Prostate Specific Antigen Test"] PSATest
       with "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a" MostRecentProstateCancerStaging
-        such that PSATest.effective.toInterval ( ) starts before MostRecentProstateCancerStaging.effective.toInterval ( )
+        such that PSATest.effective.toInterval() starts before MostRecentProstateCancerStaging.effective.toInterval()
           and PSATest.status in { 'final', 'amended', 'corrected' }
-      sort by start of effective.toInterval ( )
+      sort by start of effective.toInterval()
   ) ) LastPSATest
     return LastPSATest.value as Quantity < 10 'ng/mL'
 
@@ -115,11 +105,11 @@ define "Has Salvage Therapy Performed after Prostate Cancer Diagnosis":
 define "Most Recent Gleason Score is Low":
   ( Last([ObservationClinicalResult: "Gleason score in Specimen Qualitative"] GleasonScore
       with "First Prostate Cancer Treatment during day of Measurement Period" FirstProstateCancerTreatment
-        such that GleasonScore.effective.toInterval ( ) starts before start of FirstProstateCancerTreatment.performed.toInterval ( )
+        such that GleasonScore.effective.toInterval() starts before start of FirstProstateCancerTreatment.performed.toInterval()
           and GleasonScore.status in { 'final', 'amended', 'corrected' }
-      sort by start of effective.toInterval ( )
+      sort by start of effective.toInterval()
   ) ) LastGleasonScore
-    return LastGleasonScore.value as FHIR.integer <= 6
+    return LastGleasonScore.value as Integer <= 6
 
 define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
   ( Last(([ObservationClinicalResult: "Tumor staging (tumor staging)"] TumorStaging
@@ -128,9 +118,9 @@ define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
     
     ) ProstateCancerStaging
       with "First Prostate Cancer Treatment during day of Measurement Period" FirstProstateCancerTreatment
-        such that ProstateCancerStaging.effective.toInterval ( ) starts before start of FirstProstateCancerTreatment.performed.toInterval ( )
+        such that ProstateCancerStaging.effective.toInterval() starts before start of FirstProstateCancerTreatment.performed.toInterval()
           and ProstateCancerStaging.status in { 'final', 'amended', 'corrected' }
-      sort by start of effective.toInterval ( )
+      sort by start of effective.toInterval()
   ) ) LastProstateCancerStaging
     where ( LastProstateCancerStaging.value ~ "American Joint Committee on Cancer cT1a (qualifier value)"
         or LastProstateCancerStaging.value ~ "American Joint Committee on Cancer cT1b (qualifier value)"
@@ -150,8 +140,8 @@ define "Prostate Cancer Diagnosis":
 
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )

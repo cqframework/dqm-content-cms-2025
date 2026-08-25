@@ -1,22 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS1017FHIRHHFI version '1.1.000'
+library CMS1017FHIRHHFI version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.CumulativeMedicationDuration version '2.0.0-ballot' called CMD
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
+include CumulativeMedicationDuration version '6.0.000' called CMD
 
 codesystem "LOINC": 'http://loinc.org'
 
@@ -121,7 +111,7 @@ define "Encounter With A Fall Present On Admission":
 
 define "Risk Variable Body Mass Index (BMI)":
   from
-    ["USCore.BMIProfile"] BMI
+    ["USCoreBMIProfile"] BMI
     with "Qualifying Encounter" InpatientEncounter
       such that BMI.effective.toInterval ( ) starts during InpatientEncounter.hospitalizationWithObservation ( )
         and BMI.value is not null
@@ -305,7 +295,7 @@ define function "Numerator Observation"(QualifyingEncounter Encounter):
       where FallsEncounter.period ends during QualifyingEncounter.hospitalizationWithObservation()
   )
 
-define fluent function hasDiagnosisNotPresentOnAdmissionOrNull(encounter Encounter, diagnosisValueSet System.ValueSet):
+define fluent function hasDiagnosisNotPresentOnAdmissionOrNull(encounter Encounter, diagnosisValueSet ValueSet):
   exists ( [Claim] C
       where C.status = 'active'
         and C.use = 'claim'
@@ -320,7 +310,7 @@ define fluent function hasDiagnosisNotPresentOnAdmissionOrNull(encounter Encount
           and ( D.onAdmission is null
               or D.onAdmission in "Not Present On Admission or Documentation Insufficient to Determine"
           )
-          and D.diagnosis as FHIR.CodeableConcept in diagnosisValueSet
+          and D.diagnosis in diagnosisValueSet
   )
 
 define fluent function encountersDiagnosis(Encounter Encounter):

@@ -1,21 +1,14 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS122FHIRDiabetesAssessGT9Pct version '1.1.000'
+library CMS122FHIRDiabetesAssessGT9Pct version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include AdvancedIllnessandFrailty version '2.1.000' called AIFrailLTCF
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
+include Status version '1.15.000' called Status
+include AdvancedIllnessandFrailty version '1.27.000' called AIFrailLTCF
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "HCPCS": 'http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets'

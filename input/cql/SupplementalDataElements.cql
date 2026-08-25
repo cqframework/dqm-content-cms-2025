@@ -1,18 +1,12 @@
 /*
-@description: Supplemental data elements for use in digital quality measure specifications in CMS programs
-
-NOTE: This library is not published in this IG, it is included here for convenience. The source of truth for
-this library will be the MADiE environment once it fully supports use of QICore STU6-derived.
+@update: GCW 2025-03-27 ->
+Updated to reflect valueset name change from CMS Sex to Federal Administrative Sex
 */
-library SupplementalDataElements version '6.1.000'
+library SupplementalDataElements version '5.1.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -27,21 +21,21 @@ code "Female (finding)": '248152002' from "SNOMEDCT" display 'Female (finding)'
 context Patient
 
 define "SDE Ethnicity":
-  (Patient.ethnicity()) E
+  Patient.ethnicity E
     return Tuple {
       codes: { E.ombCategory } union E.detailed,
       display: E.text
     }
 
 define "SDE Payer":
-  [USQualityCore.Coverage: type in "Payer Type"] Payer
+  [Coverage: type in "Payer Type"] Payer
     return {
       code: Payer.type,
       period: Payer.period
     }
 
 define "SDE Race":
-  (Patient.race()) R
+  Patient.race R
     return Tuple {
       codes: R.ombCategory union R.detailed,
       display: R.text
@@ -49,7 +43,7 @@ define "SDE Race":
 
 define "SDE Sex":
   case
-    when Patient.sex() = '248153007' then "Male (finding)"
-    when Patient.sex() = '248152002' then "Female (finding)"
+    when Patient.sex = '248153007' then "Male (finding)"
+    when Patient.sex = '248152002' then "Female (finding)"
     else null
   end

@@ -1,21 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS1218FHIRHHRF version '1.1.000'
+library CMS1218FHIRHHRF version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -297,11 +287,11 @@ define "Risk Variable ASA Physical Status Class":
     with "Initial Population" QualifyingEncounter
       such that ASAclass.status in { 'final', 'amended', 'corrected' }
         and ASAclass.startsDuringHospitalization ( QualifyingEncounter )
-        and ASAclass.value as CodeableConcept in "ASA Physical Status Class"
-    return ASAclass.value as CodeableConcept
+        and ASAclass.value as Concept in "ASA Physical Status Class"
+    return ASAclass.value as Concept
 
 define "Risk Variable Body Mass Index (BMI)":
-  ["USCore.BMIProfile"] BMI
+  ["USCoreBMIProfile"] BMI
     with "Initial Population" InpatientEncounter
       such that BMI.effective.toInterval ( ) starts during InpatientEncounter.hospitalizationWithObservation ( )
         and BMI.value is not null
@@ -532,7 +522,7 @@ define fluent function firstBilirubin(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstBMI(QualifyingEncounter Encounter):
-  First([USCore.BMIProfile] FirstBodyMass
+  First([USCoreBMIProfile] FirstBodyMass
       where FirstBodyMass.status in { 'final', 'amended', 'corrected' }
         and FirstBodyMass.effective.toInterval() starts during QualifyingEncounter.hospitalizationWithObservation()
         and FirstBodyMass.value is not null
@@ -540,7 +530,7 @@ define fluent function firstBMI(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstBodyTemperature(QualifyingEncounter Encounter):
-  First(["USCore.BodyTemperatureProfile": "Body temperature"] FirstTemperature
+  First(["USCoreBodyTemperatureProfile": "Body temperature"] FirstTemperature
       where FirstTemperature.status in { 'final', 'amended', 'corrected' }
         and FirstTemperature.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstTemperature.value is not null
@@ -562,7 +552,7 @@ define fluent function firstCreatinine(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstHeartRate(QualifyingEncounter Encounter):
-  First(["USCore.HeartRateProfile": "Heart rate"] FirstHeartBeats
+  First(["USCoreHeartRateProfile": "Heart rate"] FirstHeartBeats
       where FirstHeartBeats.status in { 'final', 'amended', 'corrected' }
         and FirstHeartBeats.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstHeartBeats.value is not null
@@ -605,7 +595,7 @@ define fluent function firstPlatelet(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstRespiratoryRate(QualifyingEncounter Encounter):
-  First([USCore.RespiratoryRateProfile: "Respiratory rate"] FirstRespiration
+  First([USCoreRespiratoryRateProfile: "Respiratory rate"] FirstRespiration
       where FirstRespiration.status in { 'final', 'amended', 'corrected' }
         and FirstRespiration.effective.earliest() during QualifyingEncounter.hospitalizationWithObservation()
         and FirstRespiration.value is not null
@@ -620,7 +610,7 @@ define fluent function firstSodium(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define "Qualifying Systolic Blood Pressure Reading":
-  ["USCore.BloodPressureProfile"] BloodPressure
+  ["USCoreBloodPressureProfile"] BloodPressure
     where BloodPressure.effective.earliest ( ) during day of "Measurement Period"
 
 define fluent function "firstSystolicBloodPressure"(QualifyingEncounter Encounter):
@@ -666,14 +656,14 @@ define fluent function latestGeneralAnesthesiaOrMAC(event Procedure):
   )
 
 define fluent function latestSmokingStatus(QualifyingEncounter Encounter):
-  First(["USCore.SmokingStatusProfile"] SMStatus
-      let statusInterval: SMStatus.effective.latest()//.toInterval()
+  First(["USCoreSmokingStatusProfile"] SMStatus
+      let statusInterval: SMStatus.effective.latest().toInterval()
       where SMStatus.status in { 'final', 'amended', 'corrected' }
         and(statusInterval during QualifyingEncounter.hospitalizationWithObservationAndOutpatientSurgeryService()
             or statusInterval before QualifyingEncounter.hospitalizationWithObservationAndOutpatientSurgeryService()
         )
-        and SMStatus.value as CodeableConcept in "Smoking Status"
-  ).value as CodeableConcept
+        and SMStatus.value as Concept in "Smoking Status"
+  ).value as Concept
 
 define fluent function startsDuringHospitalization(choice Choice<Procedure, LaboratoryResultObservation, ObservationScreeningAssessment>, enc Encounter):
   case

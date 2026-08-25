@@ -1,16 +1,11 @@
 library CMS145FHIRCADBBlockerTPMIorLVSD version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include SupplementalDataElements version '6.1.000' called SDE
-include AHAOverall version '5.1.000' called AHA
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include AHAOverall version '4.1.000' called AHA
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
@@ -68,10 +63,9 @@ define "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI wi
 
 define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI":
   exists ( from
-      // TODO: Consider best practice of always qualifying type names
-      ["HeartRateProfile"] HeartRateExam,
+      ["USCoreHeartRateProfile"] HeartRateExam,
       "Qualifying CAD Encounter and Prior MI" CADEncounterMI
-      let PriorHeartRateExam: Last(["HeartRateProfile"] MostRecentPriorHeartRateExam
+      let PriorHeartRateExam: Last(["USCoreHeartRateProfile"] MostRecentPriorHeartRateExam
           where MostRecentPriorHeartRateExam.effective.toInterval() during CADEncounterMI.period
             and MostRecentPriorHeartRateExam.status in { 'final', 'amended', 'corrected' }
             and MostRecentPriorHeartRateExam.effective.toInterval() before HeartRateExam.effective.toInterval()
@@ -112,7 +106,8 @@ define "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Pri
 
 define "Qualifying CAD Encounter and Prior MI":
   "Qualifying CAD Encounter" EncounterWithCADProxy
-    with ( [FHIR.Condition: "Myocardial Infarction"] ) MyocardialInfarction
+    with ( [ConditionProblemsHealthConcerns: "Myocardial Infarction"]
+      union [ConditionEncounterDiagnosis: "Myocardial Infarction"] ) MyocardialInfarction
       such that MyocardialInfarction.prevalenceInterval ( ) starts 3 years or less before day of start of EncounterWithCADProxy.period
         and not exists AHA."Moderate or Severe LVSD Findings"
         and MyocardialInfarction.isVerified ( )
@@ -134,9 +129,9 @@ define "Has Atrioventricular Block with Qualifying CAD Encounter and History of 
 
 define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
   exists ( from
-      ["HeartRateProfile"] HeartRateExam,
+      ["USCoreHeartRateProfile"] HeartRateExam,
       "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
-      let PriorHeartRateExam: Last(["HeartRateProfile"] MostRecentPriorHeartRateExam
+      let PriorHeartRateExam: Last(["USCoreHeartRateProfile"] MostRecentPriorHeartRateExam
           where MostRecentPriorHeartRateExam.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
             and MostRecentPriorHeartRateExam.status in { 'final', 'amended', 'corrected' }
             and MostRecentPriorHeartRateExam.effective.toInterval() before HeartRateExam.effective.toInterval()
@@ -381,10 +376,10 @@ define fluent function overlapsAfterDayOfEncounter(Event Choice<AllergyIntoleran
       case
         when Event is AllergyIntolerance then Interval[start of Event.onset.toInterval(), Event.lastOccurrence]overlaps after day of Visit.period
           and(Event.clinicalStatus is null
-              or Event.clinicalStatus ~ FHIRCommon."allergy-active"
+              or Event.clinicalStatus ~ QICoreCommon."allergy-active"
           )
           and(Event.verificationStatus is null
-              or Event.verificationStatus ~ FHIRCommon."allergy-confirmed"
+              or Event.verificationStatus ~ QICoreCommon."allergy-confirmed"
           )
         when Event is ConditionProblemsHealthConcerns then Event.isVerified()
           and Event.prevalenceInterval() overlaps after day of Visit.period 

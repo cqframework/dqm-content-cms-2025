@@ -1,23 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS72FHIRSTKAntithromboticDay2 version '1.1.000'
+library CMS72FHIRSTKAntithromboticDay2 version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-
-include TJCOverall version '9.1.000' called TJC
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include TJCOverall version '8.25.000' called TJC
 
 valueset "Antithrombotic Therapy for Ischemic Stroke": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62'
 valueset "INR": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.213'
@@ -89,8 +78,8 @@ define "Encounter With Thrombolytic Therapy Documented As Already Given":
   ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
       where exists [ConditionProblemsHealthConcerns: "Intravenous or Intraarterial Thrombolytic tPA Therapy Prior to Arrival"] PriorTPA
         where PriorTPA.recordedDate during IschemicStrokeEncounter.hospitalizationWithObservation ( )
-          and PriorTPA.verificationStatus is not null implies ( PriorTPA.verificationStatus !~ Status."refuted"
-            and PriorTPA.verificationStatus !~ Status."entered-in-error" 
+          and PriorTPA.verificationStatus is not null implies ( PriorTPA.verificationStatus !~ QICoreCommon."refuted"
+            and PriorTPA.verificationStatus !~ QICoreCommon."entered-in-error"
         )
   )
     union TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
@@ -128,7 +117,7 @@ define "Reason For Not Administering Antithrombotic":
     )
     return {
       id: MedicationAdm.id,
-      authoredOn: MedicationAdm.effective
+      authoredOn: MedicationAdm.recorded
     }
 
 define "Reason For Not Ordering Antithrombotic":
@@ -150,7 +139,7 @@ define "Reason For Not Ordering Antithrombotic":
                 or TaskReject.statusReason in "Patient Refusal"
             )
             and ( MedReqAntithrombotic.status in { 'active', 'completed' }
-                and TaskReject.code ~ USQualityCoreCommon."Fulfill"
+                and TaskReject.code ~ QICoreCommon."Fulfill"
             )
         return {
           id: MedReqAntithrombotic.id,

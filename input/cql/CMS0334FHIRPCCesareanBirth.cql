@@ -1,21 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS0334FHIRPCCesareanBirth version '1.1.000'
+library CMS0334FHIRPCCesareanBirth version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include CQMCommon version '5.1.000' called CQMCommon
-include PCMaternal version '6.1.000' called PCMaternal
+include CQMCommon version '4.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include PCMaternal version '5.25.000' called PCMaternal
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 
@@ -139,7 +130,7 @@ define fluent function lastGravida(TheEncounter Encounter):
         and Gravida.status in { 'final', 'amended', 'corrected' }
         and Gravida.effective.earliest() 42 weeks or less before TheEncounter.lastTimeOfDelivery()
       sort by effective.earliest()
-  ).value as FHIR.integer
+  ).value as Integer
 
 define fluent function lastHistoryPretermBirth(TheEncounter Encounter):
   Last(["SimpleObservation": "[#] Births.preterm"] PretermBirth
@@ -147,7 +138,7 @@ define fluent function lastHistoryPretermBirth(TheEncounter Encounter):
         and PretermBirth.status in { 'final', 'amended', 'corrected' }
         and PretermBirth.value is not null
       sort by effective.earliest()
-  ).value as FHIR.integer
+  ).value as Integer
 
 define fluent function lastHistoryTermBirth(TheEncounter Encounter):
   Last(["SimpleObservation": "[#] Births.term"] TermBirth
@@ -155,7 +146,7 @@ define fluent function lastHistoryTermBirth(TheEncounter Encounter):
         and TermBirth.status in { 'final', 'amended', 'corrected' }
         and TermBirth.value is not null
       sort by effective.earliest()
-  ).value as FHIR.integer
+  ).value as Integer
 
 define fluent function lastParity(TheEncounter Encounter):
   Last(["SimpleObservation": "[#] Parity"] Parity
@@ -163,4 +154,4 @@ define fluent function lastParity(TheEncounter Encounter):
         and Parity.status in { 'final', 'amended', 'corrected' }
         and Parity.value is not null
       sort by effective.earliest()
-  ).value as FHIR.integer
+  ).value as Integer

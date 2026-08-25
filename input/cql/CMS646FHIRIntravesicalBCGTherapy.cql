@@ -1,21 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS646FHIRIntravesicalBCGTherapy version '1.1.000'
+library CMS646FHIRIntravesicalBCGTherapy version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 codesystem "ICD10CM": 'http://hl7.org/fhir/sid/icd-10-cm'
@@ -165,7 +154,7 @@ define "Bladder Cancer Diagnosis":
 define "BCG Not Available Within 6 Months After Bladder Cancer Staging":
   [MedicationAdministrationNotDone: "Bacillus Calmette Guerin for Urology Care"] BCGNotGiven
     with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
-      such that BCGNotGiven.effective 6 months or less after day of start of FirstBladderCancerStaging.performed.toInterval ( )
+      such that BCGNotGiven.recorded 6 months or less after day of start of FirstBladderCancerStaging.performed.toInterval ( )
     where BCGNotGiven.statusReason in "Unavailability of Bacillus Calmette Guerin for Urology Care"
 
 define "First Bladder Cancer Staging Procedure during 6 Months Prior to Measurement Period through the First 6 Months of Measurement Period":
@@ -187,10 +176,10 @@ define "First BCG Administered":
 define "Has Most Recent Bladder Cancer Tumor Staging is T1, Tis, Ta HG":
   exists ( [LaboratoryResultObservation] StagingObservation
       where StagingObservation.getStagingProcedure ( ) is not null
-        and ( StagingObservation.value as CodeableConcept ~ "American Joint Committee on Cancer cT1 (qualifier value)"
-            or StagingObservation.value as CodeableConcept ~ "American Joint Committee on Cancer cTis (qualifier value)"
-            or StagingObservation.value as CodeableConcept ~ "American Joint Committee on Cancer cTa (qualifier value)"
-            or StagingObservation.value as CodeableConcept ~ "Carcinoma in situ of bladder"
+        and ( StagingObservation.value as Concept ~ "American Joint Committee on Cancer cT1 (qualifier value)"
+            or StagingObservation.value as Concept ~ "American Joint Committee on Cancer cTis (qualifier value)"
+            or StagingObservation.value as Concept ~ "American Joint Committee on Cancer cTa (qualifier value)"
+            or StagingObservation.value as Concept ~ "Carcinoma in situ of bladder"
         )
         and StagingObservation.status in { 'final', 'amended', 'corrected' }
   )
@@ -224,8 +213,8 @@ define "Immunosuppressive Drugs":
       and ImmunosuppressiveDrugs.intent = 'order'
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )

@@ -1,22 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS1028FHIRPCSevereOBComps version '1.1.000'
+library CMS1028FHIRPCSevereOBComps version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include PCMaternal version '6.1.000' called PCMaternal
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include CQMCommon version '4.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include PCMaternal version '5.25.000' called PCMaternal
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "Present On Admission Indicators": 'https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding'
@@ -428,10 +418,10 @@ define "Delivery Encounters With Blood Transfusion":
 define "Risk Variable First Hematocrit Lab Test":
   "Delivery Encounters At Greater Than Or Equal To 20 Weeks Gestation" TwentyWeeksPlusEncounter
     let FirstHematocrit: First(["LaboratoryResultObservation": "Hematocrit Lab Test"] Hematocrit
-        where Hematocrit.effective during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
+        where Hematocrit.issued during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
           and Hematocrit.status in { 'final', 'amended', 'corrected' }
           and Hematocrit.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: TwentyWeeksPlusEncounter.id,
@@ -448,10 +438,10 @@ define "Risk Variable First Hematocrit Lab Test":
 define "Risk Variable First White Blood Cell Count Lab Test":
   "Delivery Encounters At Greater Than Or Equal To 20 Weeks Gestation" TwentyWeeksPlusEncounter
     let FirstWBC: First(["LaboratoryResultObservation": "White Blood Cells Count Lab Test"] WBC
-        where WBC.effective during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
+        where WBC.issued during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
           and WBC.status in { 'final', 'amended', 'corrected' }
           and WBC.value is not null
-        sort by effective.earliest()
+        sort by issued.earliest()
     )
     return {
       EncounterId: TwentyWeeksPlusEncounter.id,
@@ -469,7 +459,7 @@ define "Risk Variable First White Blood Cell Count Lab Test":
 
 define "Risk Variable Heart Rate":
   "Delivery Encounters At Greater Than Or Equal To 20 Weeks Gestation" TwentyWeeksPlusEncounter
-    let FirstHeartRate: First([USCore.HeartRateProfile] HeartRate
+    let FirstHeartRate: First([USCoreHeartRateProfile] HeartRate
         where HeartRate.effective.earliest() during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
           and HeartRate.status in { 'final', 'amended', 'corrected' }
         sort by effective.earliest()
@@ -490,7 +480,7 @@ define "Risk Variable Heart Rate":
 
 define "Risk Variable Systolic Blood Pressure":
   "Delivery Encounters At Greater Than Or Equal To 20 Weeks Gestation" TwentyWeeksPlusEncounter
-    let FirstSystolicBP: First(["USCore.BloodPressureProfile"] BP
+    let FirstSystolicBP: First(["USCoreBloodPressureProfile"] BP
         where BP.effective.earliest() during Interval[start of TwentyWeeksPlusEncounter.hospitalizationWithEDOBTriageObservation() - 1440 minutes, TwentyWeeksPlusEncounter.lastTimeOfDelivery()]
           and BP.status in { 'final', 'amended', 'corrected' }
           and BP.component.value is not null

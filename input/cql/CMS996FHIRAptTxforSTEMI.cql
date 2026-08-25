@@ -1,21 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS996FHIRAptTxforSTEMI version '2.1.000'
+library CMS996FHIRAptTxforSTEMI version '2.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include CQMCommon version '4.1.000' called CQMCommon
+include Status version '1.15.000' called Status
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "HSLOC": 'https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html'
@@ -123,7 +114,7 @@ define "Active Exclusion Diagnosis at Start of ED Encounter":
 
 define "Currently Pregnant":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
-    with ( ["USCore.ObservationPregnancyStatusProfile"] ) PregStatus
+    with ( ["USCoreObservationPregnancyStatusProfile"] ) PregStatus
       such that PregStatus.status = 'final'
         and ( PregStatus.value in "Pregnant State" )
         and ( PregStatus.effective during EDwSTEMI.period )
@@ -165,9 +156,9 @@ define "Adverse Effect to Thrombolytic Medications Before End of ED Encounter":
 define "Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
     with ["AllergyIntolerance": "Thrombolytic medications"] ThrombolyticAllergy
-      such that ThrombolyticAllergy.clinicalStatus ~ USQualityCoreCommon."allergy-active"
-        and ( ThrombolyticAllergy.verificationStatus is not null implies ( ThrombolyticAllergy.verificationStatus ~ USQualityCoreCommon."allergy-confirmed"
-              or ThrombolyticAllergy.verificationStatus ~ USQualityCoreCommon."allergy-unconfirmed"
+      such that ThrombolyticAllergy.clinicalStatus ~ QICoreCommon."allergy-active"
+        and ( ThrombolyticAllergy.verificationStatus is not null implies ( ThrombolyticAllergy.verificationStatus ~ QICoreCommon."allergy-confirmed"
+              or ThrombolyticAllergy.verificationStatus ~ QICoreCommon."allergy-unconfirmed"
           )
         )
         and ( ThrombolyticAllergy.prevalenceInterval ( ) overlaps ( EDwSTEMI.period )
@@ -266,7 +257,7 @@ define "ED Encounter with a Documented Reason for No PCI Performed":
       such that ( PCINotDone.statusReason in "Patient Refusal"
           or PCINotDone.statusReason in "Procedure Not Indicated/Contraindicated"
       )
-        and PCINotDone.performed during EDwSTEMI.period
+        and PCINotDone.recorded during EDwSTEMI.period
 
 define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic Therapy":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
@@ -274,7 +265,7 @@ define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic
       such that ( FibrinolyticNoMed.statusReason in "Patient Refusal"
           or FibrinolyticNoMed.statusReason in "Drug Intervention Not Indicated/Contraindicated"
       )
-        and FibrinolyticNoMed.effective during EDwSTEMI.period
+        and FibrinolyticNoMed.recorded during EDwSTEMI.period
 
 define "Fibrinolytic Therapy Administration within 30 Minutes of Arrival":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI

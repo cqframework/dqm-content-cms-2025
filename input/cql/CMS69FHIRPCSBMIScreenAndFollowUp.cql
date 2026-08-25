@@ -1,23 +1,13 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS69FHIRPCSBMIScreenAndFollowUp version '1.1.000'
+library CMS69FHIRPCSBMIScreenAndFollowUp version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-include Hospice version '7.1.000' called Hospice
-include PalliativeCare version '2.1.000' called PalliativeCare
-
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include Status version '1.15.000' called Status
+include Hospice version '6.18.000' called Hospice
+include PalliativeCare version '1.18.000' called PalliativeCare
+include QICoreCommon version '4.0.000' called QICoreCommon
+include SupplementalDataElements version '5.1.000' called SDE
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "ICD10CM": 'http://hl7.org/fhir/sid/icd-10-cm'
@@ -66,7 +56,7 @@ define "Denominator Exceptions":
     or exists "Medical Reason Or Patient Reason For Not Performing BMI Exam"
 
 define "BMI During Measurement Period":
-  ( ( [USCore.BMIProfile] ).isObservationBMI ( ) ) BMI
+  ( ( [USCoreBMIProfile] ).isObservationBMI ( ) ) BMI
     where BMI.value > 0 'kg/m2'
       and BMI.effective.toInterval ( ) during day of "Measurement Period"
 
@@ -117,8 +107,8 @@ define "Medical Reason Or Patient Reason For Not Performing BMI Exam":
   [ObservationCancelled: "Body mass index (BMI) [Ratio]"] NoBMI
     with "Qualifying Encounter During Day Of Measurement Period" QualifyingEncounter
       such that NoBMI.effective.toInterval ( ) ends same day as start of QualifyingEncounter.period
-    where ( NoBMI.notDoneReason ( ) in "Patient Declined"
-        or NoBMI.notDoneReason ( ) in "Medical Reason"
+    where ( NoBMI.notDoneReason in "Patient Declined"
+        or NoBMI.notDoneReason in "Medical Reason"
     )
 
 define "Low BMI Interventions Ordered":
@@ -159,7 +149,7 @@ define "Medical Reason For Not Documenting A Follow Up Plan For Low Or High BMI"
       with "Qualifying Encounter During Day Of Measurement Period" QualifyingEncounter
         such that NoBMIFollowUp.authoredOn same day as start of QualifyingEncounter.period
       where NoBMIFollowUp.status ~ 'completed'
-        and NoBMIFollowUp.reasonRefused ( ) in "Medical Reason"
+        and NoBMIFollowUp.reasonRefused in "Medical Reason"
   )
     union ( ( [MedicationNotRequested: "Medications for Above Normal BMI"]
         union [MedicationNotRequested: "Medications for Below Normal BMI"] ) NoBMIFollowUp
@@ -174,7 +164,7 @@ define "Is Pregnant During Measurement Period":
       union [ConditionEncounterDiagnosis: "Pregnancy or Other Related Diagnoses"] ) PregnancyDiagnosis
       where PregnancyDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
   )
-    or exists ( [USCore.ObservationPregnancyStatusProfile] PregnantObservation
+    or exists ( [USCoreObservationPregnancyStatusProfile] PregnantObservation
         where PregnantObservation.effective.toInterval ( ) overlaps day of "Measurement Period"
           and PregnantObservation.status in { 'final', 'amended', 'corrected' }
           and ( PregnantObservation.value in "Pregnancy or Other Related Diagnoses" )

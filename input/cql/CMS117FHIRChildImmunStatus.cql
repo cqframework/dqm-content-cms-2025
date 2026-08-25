@@ -1,24 +1,12 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS117FHIRChildImmunStatus version '1.1.000'
+library CMS117FHIRChildImmunStatus version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
-
-include TJCOverall version '9.1.000' called TJC
-include Hospice version '7.1.000' called Hospice
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include Hospice version '6.18.000' called Hospice
+include Status version '1.15.000' called Status
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 codesystem "CPT": 'http://www.ama-assn.org/go/cpt'
@@ -195,19 +183,19 @@ define "Numerator":
     )
 
 define "Vaccine Administration Interval - 180 Days up to 2 Years Old":
-  Interval[Patient.birthDate + 180 days, "Date of Second Birthday"]
+  Interval[date from Patient.birthDate + 180 days, "Date of Second Birthday"]
 
 define "First Two Years":
-  Interval[Patient.birthDate, "Date of Second Birthday"]
+  Interval[date from Patient.birthDate, "Date of Second Birthday"]
 
 define "Vaccine Administration Interval - 42 Days up to 2 Years Old":
-  Interval[Patient.birthDate + 42 days, "Date of Second Birthday"]
+  Interval[date from Patient.birthDate + 42 days, "Date of Second Birthday"]
 
 define "Date of Second Birthday":
-  Patient.birthDate + 2 years
+  date from Patient.birthDate + 2 years
 
 define "Date of First Birthday":
-  Patient.birthDate + 1 year
+  date from Patient.birthDate + 1 year
 
 define "Date of First Birthday to Date of Second Birthday":
   Interval["Date of First Birthday", "Date of Second Birthday"]
@@ -237,23 +225,24 @@ define "DTaP Numerator Inclusion Conditions":
 define "DTaP Immunizations or Procedures":
   ( ( ( [Immunization: "DTaP Vaccine"] ).isImmunizationAdministered ( ) ) DTaPVaccination
       where date from DTaPVaccination.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return DTaPVaccination.occurrence
+      return date from DTaPVaccination.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "DTaP Vaccine Administered"] ).isProcedurePerformed ( ) ) DTaPProcedure
         where date from DTaPProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return DTaPProcedure.performed
+        return date from DTaPProcedure.performed.earliest ( )
     )
 
 //Polio
 
+
 define "Polio Immunizations or Procedures":
   ( ( ( [Immunization: "Inactivated Polio Vaccine (IPV)"] ).isImmunizationAdministered ( ) ) PolioVaccination
       where date from PolioVaccination.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return PolioVaccination.occurrence
-    )
+      return date from PolioVaccination.occurrence.earliest ( )
+  )
     union ( ( ( [Procedure: "Inactivated Polio Vaccine (IPV) Administered"] ).isProcedurePerformed ( ) ) PolioProcedure
         where date from PolioProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return PolioProcedure.performed
+        return date from PolioProcedure.performed.earliest ( )
     )
 
 define "Three Polio Vaccinations":
@@ -264,7 +253,6 @@ define "Three Polio Vaccinations":
     where date from PolioVaccination2.earliest ( ) 1 day or more after date from PolioVaccination1.earliest ( )
       and date from PolioVaccination3.earliest ( ) 1 day or more after date from PolioVaccination2.earliest ( )
     return date from PolioVaccination1.earliest ( )
-
 
 define "Polio Numerator Inclusion Conditions":
   ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
@@ -343,11 +331,11 @@ define "Hib Numerator Inclusion Conditions":
 define "Hib 3 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "Hib Vaccine (3 dose schedule)"] ).isImmunizationAdministered ( ) ) ThreeDoseHibVaccine
       where date from ThreeDoseHibVaccine.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return ThreeDoseHibVaccine.occurrence
+      return date from ThreeDoseHibVaccine.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Hib Vaccine (3 dose schedule) Administered"] ).isProcedurePerformed ( ) ) ThreeDoseHibProcedure
         where date from ThreeDoseHibProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return ThreeDoseHibProcedure.performed
+        return date from ThreeDoseHibProcedure.performed.earliest ( )
     )
 
 define "Hib 3 or 4 Dose Immunizations":
@@ -357,11 +345,11 @@ define "Hib 3 or 4 Dose Immunizations":
 define "Hib 4 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "Hib Vaccine (4 dose schedule)"] ).isImmunizationAdministered ( ) ) HibVaccine
       where date from HibVaccine.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return HibVaccine.occurrence
+      return date from HibVaccine.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Hib Vaccine (4 dose schedule) Administered"] ).isProcedurePerformed ( ) ) HibProcedure
         where date from HibProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return HibProcedure.performed
+        return date from HibProcedure.performed.earliest ( )
     )
 
 //HepB
@@ -387,11 +375,11 @@ define "Three Hepatitis B Vaccinations":
 define "Hepatitis B Immunizations or Procedures":
   ( ( ( [Immunization: "Hepatitis B Vaccine"] ).isImmunizationAdministered ( ) ) HepatitisBVaccination
       where date from HepatitisBVaccination.occurrence.earliest ( ) during day of "First Two Years"
-      return HepatitisBVaccination.occurrence
+      return date from HepatitisBVaccination.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Hepatitis B Vaccine Administered"] ).isProcedurePerformed ( ) ) HepatitisBProcedure
         where date from HepatitisBProcedure.performed.earliest ( ) during day of "First Two Years"
-        return HepatitisBProcedure.performed
+        return date from HepatitisBProcedure.performed.earliest ( )
     )
 
 define "Meets HepB Vaccination Requirement":
@@ -406,8 +394,8 @@ define "Meets HepB Vaccination Requirement":
 
 define "NewBorn Vaccine Requirement":
   ( ( [Procedure: "Introduction of Serum, Toxoid and Vaccine into Muscle, Percutaneous Approach"] ).isProcedurePerformed ( ) ) NewBornVaccine
-    where date from NewBornVaccine.performed.earliest ( ) during day of Interval[Patient.birthDate, Patient.birthDate + 7 days]
-    return NewBornVaccine.performed
+    where date from NewBornVaccine.performed.earliest ( ) during day of Interval[date from Patient.birthDate, date from Patient.birthDate + 7 days]
+    return date from NewBornVaccine.performed.earliest ( )
 
 //VZV
 
@@ -447,11 +435,11 @@ define "Four Pneumococcal Conjugate Vaccinations":
 define "Pneumococcal Conjugate Immunizations or Procedures":
   ( ( ( [Immunization: "Pneumococcal Conjugate Vaccine"] ).isImmunizationAdministered ( ) ) PneumococcalVaccination
       where date from PneumococcalVaccination.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return PneumococcalVaccination.occurrence
+      return date from PneumococcalVaccination.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Pneumococcal Conjugate Vaccine Administered"] ).isProcedurePerformed ( ) ) PneumococcalProcedure
         where date from PneumococcalProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return PneumococcalProcedure.performed
+        return date from PneumococcalProcedure.performed.earliest ( )
     )
 
 define "Pneumococcal Conjugate Numerator Inclusion Conditions":
@@ -504,11 +492,11 @@ define "Has Appropriate Number of Rotavirus Immunizations":
 define "Rotavirus 2 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "rotavirus, live, monovalent vaccine"] ).isImmunizationAdministered ( ) ) TwoDoseRotavirusVaccine
       where date from TwoDoseRotavirusVaccine.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return TwoDoseRotavirusVaccine.occurrence
+      return date from TwoDoseRotavirusVaccine.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Rotavirus Vaccine (2 dose schedule) Administered"] ).isProcedurePerformed ( ) ) TwoDoseRotavirusProcedure
         where date from TwoDoseRotavirusProcedure.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return TwoDoseRotavirusProcedure.performed
+        return date from TwoDoseRotavirusProcedure.performed.earliest ( )
     )
 
 define "Rotavirus 2 or 3 Dose Immunizations":
@@ -524,11 +512,11 @@ define "Rotavirus Numerator Inclusion Conditions":
 define "Rotavirus 3 Dose Immunizations or Procedures":
   ( ( ( [Immunization: "Rotavirus Vaccine (3 dose schedule)"] ).isImmunizationAdministered ( ) ) ThreeDoseRotavirusVaccine
       where date from ThreeDoseRotavirusVaccine.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-      return ThreeDoseRotavirusVaccine.occurrence
+      return date from ThreeDoseRotavirusVaccine.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Rotavirus Vaccine (3 dose schedule) Administered"] ).isProcedurePerformed ( ) ) ThreeDoseRotavirusAdministered
         where date from ThreeDoseRotavirusAdministered.performed.earliest ( ) during day of "Vaccine Administration Interval - 42 Days up to 2 Years Old"
-        return ThreeDoseRotavirusAdministered.performed
+        return date from ThreeDoseRotavirusAdministered.performed.earliest ( )
     )
 
 //Flu
@@ -537,11 +525,11 @@ define "Rotavirus 3 Dose Immunizations or Procedures":
 define "Influenza Immunizations or Procedures":
   ( ( ( [Immunization: "Child Influenza Vaccine"] ).isImmunizationAdministered ( ) ) InfluenzaVaccine
       where date from InfluenzaVaccine.occurrence.earliest ( ) during day of "Vaccine Administration Interval - 180 Days up to 2 Years Old"
-      return InfluenzaVaccine.occurrence
+      return date from InfluenzaVaccine.occurrence.earliest ( )
   )
     union ( ( ( [Procedure: "Child Influenza Vaccine Administered"] ).isProcedurePerformed ( ) ) InfluenzaAdministration
         where date from InfluenzaAdministration.performed.earliest ( ) during day of "Vaccine Administration Interval - 180 Days up to 2 Years Old"
-        return InfluenzaAdministration.performed
+        return date from InfluenzaAdministration.performed.earliest ( )
     )
 
 define "Two Influenza Vaccinations":

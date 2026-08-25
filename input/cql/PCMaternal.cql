@@ -1,19 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library PCMaternal version '6.1.000'
+library PCMaternal version '5.25.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include CQMCommon version '5.1.000' called CQMCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include CQMCommon version '4.1.000' called CQMCommon
+include QICoreCommon version '4.0.000' called QICoreCommon 
 
 codesystem "LOINC": 'http://loinc.org' 
 
@@ -33,13 +24,13 @@ context Patient
 
 define "Delivery Encounter With Age Range":
   "Encounter With Age Range" EncounterWithAge
-    with ["Procedure": "Delivery Procedures"] DeliveryProcedure
-      such that DeliveryProcedure.status = 'completed'
-        and DeliveryProcedure.performed.toInterval  ( ) starts during EncounterWithAge.hospitalizationWithEDOBTriageObservation ()
+                with ["Procedure": "Delivery Procedures"] DeliveryProcedure
+                such that DeliveryProcedure.status = 'completed'
+                and DeliveryProcedure.performed.toInterval  ( ) starts during EncounterWithAge.hospitalizationWithEDOBTriageObservation ()
 
 define "Encounter With Age Range":
-  CQMCommon."Inpatient Encounter" InpatientEncounter
-    where AgeInYearsAt(date from start of InpatientEncounter.period) in Interval[ 8, 65 )
+ CQMCommon."Inpatient Encounter" InpatientEncounter
+                      where AgeInYearsAt(date from start of InpatientEncounter.period) in Interval[ 8, 65 )
                   
 
 define "Variable Calculated Gestational Age":
@@ -79,11 +70,11 @@ define fluent function hospitalizationWithEDOBTriageObservation (TheEncounter En
 define fluent function lastEstimatedDeliveryDate (TheEncounter Encounter ):
   /*This function identifies the last time the EDD was assessed 42 weeks or less prior to or on delivery and stores the result of that assessment.*/
   Last(["SimpleObservation": "Delivery date Estimated"] EstimatedDateOfDelivery
-      where EstimatedDateOfDelivery.value as FHIR.dateTime is not null
+      where EstimatedDateOfDelivery.value as DateTime is not null
         and EstimatedDateOfDelivery.status in { 'final', 'amended', 'corrected' }
         and EstimatedDateOfDelivery.effective.earliest ( ) 42 weeks or less before or on TheEncounter.lastTimeOfDelivery ()
       sort by effective.earliest ( )
-  ).value as FHIR.dateTime
+  ).value as DateTime
 
 
   define fluent function lastEstimatedGestationalAge (TheEncounter Encounter ):
@@ -100,9 +91,9 @@ define fluent function lastEstimatedDeliveryDate (TheEncounter Encounter ):
 
 define fluent function lastTimeOfDelivery (TheEncounter Encounter ):
   Last(["SimpleObservation": "Date and time of obstetric delivery"] TimeOfDelivery
-      where TimeOfDelivery.value as FHIR.dateTime is not null
+      where TimeOfDelivery.value as DateTime is not null
         and TimeOfDelivery.status in { 'final', 'amended', 'corrected' }
         and TimeOfDelivery.effective.earliest () during TheEncounter.hospitalizationWithEDOBTriageObservation ()
-        and TimeOfDelivery.value as FHIR.dateTime during TheEncounter.hospitalizationWithEDOBTriageObservation()
+        and TimeOfDelivery.value as DateTime during TheEncounter.hospitalizationWithEDOBTriageObservation()
       sort by effective.earliest()
-  ).value as FHIR.dateTime
+  ).value as DateTime

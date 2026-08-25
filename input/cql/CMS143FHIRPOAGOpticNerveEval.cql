@@ -1,21 +1,10 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library CMS143FHIRPOAGOpticNerveEval version '1.1.000'
+library CMS143FHIRPOAGOpticNerveEval version '1.0.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
-
-include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
-include SupplementalDataElements version '6.1.000' called SDE
-include Status version '2.1.000' called Status
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include SupplementalDataElements version '5.1.000' called SDE
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 
@@ -98,17 +87,17 @@ define "Medical Reason for Not Performing Cup to Disc Ratio":
   ["ObservationCancelled": "Cup to Disc Ratio"] CupToDiscExamNotPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that CupToDiscExamNotPerformed.issued during day of EncounterWithPOAG.period
-    where CupToDiscExamNotPerformed.notDoneReason ( ) in "Medical Reason"
+    where CupToDiscExamNotPerformed.notDoneReason in "Medical Reason"
 
 define "Medical Reason for Not Performing Optic Disc Exam":
   ["ObservationCancelled": "Optic Disc Exam for Structural Abnormalities"] OpticDiscExamNotPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that OpticDiscExamNotPerformed.issued during day of EncounterWithPOAG.period
-    where OpticDiscExamNotPerformed.notDoneReason ( ) in "Medical Reason"
+    where OpticDiscExamNotPerformed.notDoneReason in "Medical Reason"
 
 define fluent function isVerified(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):
-  condition.verificationStatus is not null implies ( condition.verificationStatus ~ Status."confirmed"
-      or condition.verificationStatus ~ Status."unconfirmed"
-      or condition.verificationStatus ~ Status."provisional"
-      or condition.verificationStatus ~ Status."differential"
+  condition.verificationStatus is not null implies ( condition.verificationStatus ~ QICoreCommon."confirmed"
+      or condition.verificationStatus ~ QICoreCommon."unconfirmed"
+      or condition.verificationStatus ~ QICoreCommon."provisional"
+      or condition.verificationStatus ~ QICoreCommon."differential"
   )

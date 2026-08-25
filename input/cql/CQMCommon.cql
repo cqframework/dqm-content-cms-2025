@@ -1,19 +1,9 @@
-/*
-@description: Common Functions for use in quality measures
+library CQMCommon version '4.1.000'
 
-NOTE: This library is not published in this IG, it is included here for convenience. The source of truth for
-this library will be the MADiE environment once it fully supports use of QICore STU6-derived.
-*/
-library CQMCommon version '5.1.000'
+using QICore version '6.0.0'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
-
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
-include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
-include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
+include FHIRHelpers version '4.4.000' called FHIRHelpers
+include QICoreCommon version '4.0.000' called QICoreCommon
 
 codesystem DiagnosisRole: 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Diagnosis Type": 'http://terminology.hl7.org/CodeSystem/ex-diagnosistype'
@@ -423,7 +413,7 @@ define fluent function claimDiagnosis(encounter Encounter):
  @description: Returns the condition that is specified as the principal diagnosis for the encounter and has a code in the given valueSet.
  @comment: See the QICore 6 Authoring Patterns discussion on [Principal Diagnosis and Present on Admission](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Authoring-Patterns-QICore-v6.0.0#conditions-present-on-admission-and-principal-diagnoses) for more information
  */
- define fluent function hasPrincipalDiagnosisOf(encounter Encounter, valueSet System.ValueSet):
+ define fluent function hasPrincipalDiagnosisOf(encounter Encounter, valueSet ValueSet):
    (encounter.principalDiagnosis()) PD
      return PD.diagnosis in valueSet
        or PD.diagnosis.getCondition().code in valueSet
@@ -432,7 +422,7 @@ define fluent function claimDiagnosis(encounter Encounter):
  @description: Returns true if the given diagnosis is present on admission, based on the given poaValueSet
  @comment: See the QICore 6 Authoring Patterns discussion on [Principal Diagnosis and Present on Admission](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Authoring-Patterns-QICore-v6.0.0#conditions-present-on-admission-and-principal-diagnoses) for more information
  */
- define fluent function isDiagnosisPresentOnAdmission(encounter Encounter, diagnosisValueSet System.ValueSet, poaValueSet System.ValueSet):
+ define fluent function isDiagnosisPresentOnAdmission(encounter Encounter, diagnosisValueSet ValueSet, poaValueSet ValueSet):
    exists (
      (encounter.claimDiagnosis()) CD
        where CD.onAdmission in poaValueSet
@@ -464,17 +454,17 @@ define fluent function getLocation(reference Reference):
 @deprecated: This function is deprecated. Use the fluent function `getMedicationCode()` instead.
 */
 define function "GetMedicationCode"(request MedicationRequest):
-  if request.medication is FHIR.CodeableConcept then
-  	  request.medication as FHIR.CodeableConcept
+  if request.medication is Concept then
+  	  request.medication as Concept
   	else
   	  (singleton from ([Medication] M where request.medication.references(M))).code
 
 /*
 @description: Returns the medication code for the given MedicationRequest
 */
-define fluent function getMedicationCode(request Choice<MedicationAdministration, MedicationRequest>):
-  if request.medication is FHIR.CodeableConcept then
-  	  request.medication as FHIR.CodeableConcept
+define fluent function getMedicationCode(request MedicationRequest):
+  if request.medication is Concept then
+  	  request.medication as Concept
   	else
   	  (singleton from ([Medication] M where request.medication.references(M))).code
   	  

@@ -1,15 +1,11 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library NHSNHelpers version '1.1.000'
+library NHSNHelpers version '0.1.000'
 
 using FHIR version '4.0.1'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
+include FHIRHelpers version '4.4.000' called FHIRHelpers
 
 context Patient
 
-/* NOTE: Available in FHIRCommon already
 define function "Normalize Interval"(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant, FHIR.string, FHIR.Age, FHIR.Range>):
   case
 	  when choice is FHIR.dateTime then
@@ -34,9 +30,7 @@ define function "Normalize Interval"(choice Choice<FHIR.dateTime, FHIR.Period, F
      
 define function "ToDateInterval"(period FHIR.Period):
  Interval[date from period.start, date from period.end]
-*/
 
-/* NOTE: Moved to USQualityCoreCommon
 define function "GetLocation"(reference Reference ):
 singleton from ([Location] Locations
 where Locations.id = GetId(reference.reference)
@@ -44,4 +38,3 @@ where Locations.id = GetId(reference.reference)
 
 define function "GetId"(uri String ):
 Last(Split(uri, '/'))
-*/

@@ -1,14 +1,8 @@
-/*
-NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
-*/
-library AlaraCommonFunctions version '2.1.000'
+library AlaraCommonFunctions version '1.10.000'
 
-using USQualityCore version '0.1.0-cibuild'
-using USCore version '6.1.0-derived'
-using FHIR version '4.0.1'
+using QICore version '6.0.0'
 
-include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
-include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
+include FHIRHelpers version '4.4.000' called FHIRHelpers
 
 codesystem "LOINC": 'http://loinc.org'
 
@@ -76,13 +70,13 @@ define fluent function "ctScanQualifies"(Result ObservationClinicalResult ):
     or Result.qualifies("Simultaneous Head and Neck High Dose", 25, 3092)
     
 define function "Qualifies"(Result ObservationClinicalResult, code System.Code, noiseThreshold Decimal, sizeDoseThreshold Decimal ):
-  (Result.value as FHIR.CodeableConcept) ~ code
+  (Result.value as Concept) ~ code
     and ( "Global Noise Value"(Result) >= noiseThreshold
         or "Size Adjusted Value"(Result) >= sizeDoseThreshold
     )
     
 define fluent function "qualifies"(Result ObservationClinicalResult, code System.Code, noiseThreshold Decimal, sizeDoseThreshold Decimal ):
-  (Result.value as FHIR.CodeableConcept) ~ code
+  (Result.value as Concept) ~ code
     and ( Result.globalNoiseValue() >= noiseThreshold
         or Result.sizeAdjustedValue() >= sizeDoseThreshold
     )
