@@ -245,7 +245,19 @@ define "Low Risk Indicator For VTE":
           and INRLabTest.status in { 'final', 'amended', 'corrected' }
         return {
           id: INRLabTest.id,
-          LowRiskDatetime: INRLabTest.issued
+          // I-61 (translator defect, corroborated on CMS190 2026-09-17): this union's three
+          // branches return LowRiskDatetime as divergent types (System.DateTime / raw
+          // FHIR.instant / System.DateTime), so the translator emits a ChoiceType for the
+          // tuple element. The translator's choice-compatibility check treats that ChoiceType
+          // as compatible with System.DateTime because ONE branch already matches, so it
+          // skips inserting the FHIRHelpers.ToDateTime conversion it would otherwise apply —
+          // silently emitting a no-op cast instead. At runtime that cast returns null whenever
+          // the actual value is the FHIR.instant branch, breaking the downstream "during day
+          // of" comparison. Same mechanism as CMS108's "Low Risk Indicator For VTE".
+          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug;
+          // see I-61 for the full investigation (translator issue, not fixable at this layer).
+          // Original: LowRiskDatetime: INRLabTest.issued
+          LowRiskDatetime: INRLabTest.issued.ToDateTime()
         }
     )
     union ( ( ( ["MedicationAdministration": "Unfractionated Heparin"] UnfractionatedHeparin
@@ -298,7 +310,7 @@ define "No VTE Prophylaxis Medication Administered Or Ordered":
       return {
         id: NoMedicationAdm.id,
         medicationStatusReason: NoMedicationAdm.statusReason,
-        authoredOn: NoMedicationAdm.effective
+        authoredOn: NoMedicationAdm.recorded()
       }
   )
     union ( ( ["MedicationNotRequested": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
@@ -366,11 +378,14 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
     union ( ( [ProcedureNotDone: "Application of Intermittent Pneumatic Compression Devices"]
         union [ProcedureNotDone: "Application of Venous Foot Pumps"]
         union [ProcedureNotDone: "Application of Graduated Compression Stockings"] ) DeviceNotApplied
-        let DeviceNotDoneTiming: DeviceNotApplied.performed
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,
-          authoredOn: DeviceNotDoneTiming
+          // [I-18 / I-55] .performed is null/unbounded on a ProcedureNotDone (data-absent-reason: not-performed);
+          // read the us-quality-core-recorded extension directly instead of .recorded() (ambiguous overload).
+          // Original: let DeviceNotDoneTiming: DeviceNotApplied.performed; authoredOn: DeviceNotDoneTiming
+          // authoredOn: DeviceNotApplied.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
+          authoredOn: DeviceNotApplied.recorded()
         }
     )
 

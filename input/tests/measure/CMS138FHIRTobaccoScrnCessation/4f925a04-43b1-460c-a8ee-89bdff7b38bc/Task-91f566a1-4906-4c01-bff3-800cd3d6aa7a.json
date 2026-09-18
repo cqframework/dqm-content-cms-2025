@@ -2,26 +2,35 @@
   "resourceType": "Task",
   "id": "91f566a1-4906-4c01-bff3-800cd3d6aa7a",
   "meta": {
-    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected"
+    ]
   },
   "status": "rejected",
   "statusReason": {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "code": "31438003",
-      "display": "Drug resistance (disorder)"
-    } ]
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "31438003",
+        "display": "Drug resistance (disorder)"
+      }
+    ]
   },
   "intent": "order",
   "code": {
-    "coding": [ {
-      "system": "http://hl7.org/fhir/CodeSystem/task-code",
-      "code": "fulfill",
-      "display": "Fulfill the focal request"
-    } ]
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/CodeSystem/task-code",
+        "code": "fulfill",
+        "display": "Fulfill the focal request"
+      }
+    ]
   },
   "focus": {
     "reference": "MedicationRequest/6ec8cd68-7c6f-4f18-ae2f-d4ebd787ca19"
+  },
+  "for": {
+    "reference": "Patient/4f925a04-43b1-460c-a8ee-89bdff7b38bc"
   },
   "executionPeriod": {
     "start": "2026-01-01T01:00:00.000+00:00",

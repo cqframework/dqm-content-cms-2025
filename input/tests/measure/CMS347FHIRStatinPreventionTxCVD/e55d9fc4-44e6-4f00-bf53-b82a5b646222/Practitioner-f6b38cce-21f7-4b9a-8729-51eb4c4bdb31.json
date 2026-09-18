@@ -2,7 +2,7 @@
   "resourceType": "Practitioner",
   "id": "f6b38cce-21f7-4b9a-8729-51eb4c4bdb31",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-practitioner" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-practitioner" ]
   },
   "identifier": [ {
     "system": "http://hl7.org/fhir/sid/us-npi",

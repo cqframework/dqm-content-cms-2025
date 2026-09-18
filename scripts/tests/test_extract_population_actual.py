@@ -26,12 +26,19 @@ class TestExtractPopulationActual(unittest.TestCase):
         self.assertEqual(parse_count('False'), 0)
         self.assertEqual(parse_count('FALSE'), 0)
 
+    # These five previously called `validate_numerator(populations)`, which was
+    # removed when scoring validation was widened into
+    # `validate_measure_population_counts(measurename, populations)`. The tests
+    # were never updated, so they had been failing with NameError ever since.
+    # Retargeted at the successor, which keeps the same mutate-in-place contract
+    # on `populations` and adds a measure name for logging.
+
     def test_validate_scoring_denom_true_numer_true_then_numer_true(self):
         populations = {
             'Denominator': 1,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Numerator'], 1)
 
@@ -40,7 +47,7 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator': 0,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 0)
         self.assertEqual(populations['Numerator'], 0)
 
@@ -50,7 +57,7 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator Exclusion': 0,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Denominator Exclusion'], 0)
         self.assertEqual(populations['Numerator'], 1)
@@ -61,21 +68,30 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator Exclusion': 1,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Denominator Exclusion'], 1)
         self.assertEqual(populations['Numerator'], 0)
 
-    def test_validate_scoring_denom_true_numer_true_denexp_true_then_denom_true(self):
+    def test_validate_scoring_denom_true_numer_true_denexp_true_then_denexp_zeroed(self):
+        """Expectation deliberately changed from the pre-removal version.
+
+        The old `validate_numerator` left Denominator Exception at 1 here. The
+        successor zeroes it, which is the conformant behaviour: a patient who
+        meets the Numerator cannot also be a Denominator Exception (an exception
+        removes a patient from the denominator only when they did *not* meet the
+        numerator). See the proportion-measure scoring rules linked in
+        `validate_measure_population_counts`. The old assertion encoded the bug.
+        """
         populations = {
             'Denominator': 1,
             'Denominator Exception': 1,
             'Numerator': 1,
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
-        self.assertEqual(populations['Denominator Exception'], 1)
         self.assertEqual(populations['Numerator'], 1)
+        self.assertEqual(populations['Denominator Exception'], 0)
 
     def test_convert_results_to_rows(self):
         results = {

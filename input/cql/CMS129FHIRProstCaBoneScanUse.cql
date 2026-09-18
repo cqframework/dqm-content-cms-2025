@@ -82,8 +82,11 @@ define "Has Bone Scan Study Performed with Documented Reason":
     where BoneScanAfterDiagnosis.value ~ "Procedure reason record (record artifact)"
 
 define "Has Diagnosis of Pain related to Prostate Cancer":
-  exists ( ( [ConditionProblemsHealthConcerns: "Pain Warranting Further Investigation for Prostate Cancer"]
-      union [ConditionEncounterDiagnosis: "Pain Warranting Further Investigation for Prostate Cancer"] ) ProstateCancerPain
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ( [ConditionProblemsHealthConcerns: "Pain Warranting Further Investigation for Prostate Cancer"]
+  //       union [ConditionEncounterDiagnosis: "Pain Warranting Further Investigation for Prostate Cancer"] ) ProstateCancerPain
+  exists ( ( [FHIR.Condition: "Pain Warranting Further Investigation for Prostate Cancer"] ) ProstateCancerPain
       with "Prostate Cancer Diagnosis" ActiveProstateCancer
         such that ProstateCancerPain.prevalenceInterval ( ) starts after start of ActiveProstateCancer.prevalenceInterval ( )
           and ProstateCancerPain.isVerified ( )
@@ -139,7 +142,10 @@ define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
     )
 
 define "Prostate Cancer Diagnosis":
-  [ConditionProblemsHealthConcerns: "Prostate Cancer"] ProstateCancer
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionProblemsHealthConcerns: "Prostate Cancer"] ProstateCancer
+  [FHIR.Condition: "Prostate Cancer"] ProstateCancer
     where ProstateCancer.prevalenceInterval ( ) overlaps day of "Measurement Period"
       and ProstateCancer.isVerified ( )
 

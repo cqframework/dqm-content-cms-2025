@@ -2,7 +2,7 @@
   "resourceType": "Encounter",
   "id": "a84ceb39-e67b-47fc-9ee0-d7a051ac4501",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
   },
   "status": "finished",
   "class": {

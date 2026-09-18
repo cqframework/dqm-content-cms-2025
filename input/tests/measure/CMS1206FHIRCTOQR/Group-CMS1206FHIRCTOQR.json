@@ -10,8 +10,28 @@
   "actual": true,
   "member": [ {
     "entity": {
+      "reference": "Patient/87011e54-9905-4753-b2ae-8676f61f4c2b",
+      "display": "DENOMFail MissingResults"
+    }
+  }, {
+    "entity": {
       "reference": "Patient/2d2bacf5-dde6-4e4d-8c98-7469adf2b6df",
       "display": "NUMERPass TwoScans"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/81a1095b-130f-4ef2-b5a9-f78289a2373e",
+      "display": "IPPPass Age18"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/eca36e7f-95ed-4395-933e-44899a268b79",
+      "display": "DENOMPass AllScans"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/9799ac8e-b6b6-4159-bd9a-97a4ba98366d",
+      "display": "IPPFail DuringEncounter"
     }
   }, {
     "entity": {
@@ -25,18 +45,8 @@
     }
   }, {
     "entity": {
-      "reference": "Patient/81a1095b-130f-4ef2-b5a9-f78289a2373e",
-      "display": "IPPPass Age18"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/87011e54-9905-4753-b2ae-8676f61f4c2b",
-      "display": "DENOMFail MissingResults"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/9799ac8e-b6b6-4159-bd9a-97a4ba98366d",
-      "display": "IPPFail DuringEncounter"
+      "reference": "Patient/e3275336-9783-45d9-9d17-089f5b686227",
+      "display": "IPPFail Under18"
     }
   }, {
     "entity": {
@@ -47,16 +57,6 @@
     "entity": {
       "reference": "Patient/a9d929e8-3e1b-49b8-aa68-44b3d860ef6f",
       "display": "NUMERPass HighDose"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/e3275336-9783-45d9-9d17-089f5b686227",
-      "display": "IPPFail Under18"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/eca36e7f-95ed-4395-933e-44899a268b79",
-      "display": "DENOMPass AllScans"
     }
   } ]
 }

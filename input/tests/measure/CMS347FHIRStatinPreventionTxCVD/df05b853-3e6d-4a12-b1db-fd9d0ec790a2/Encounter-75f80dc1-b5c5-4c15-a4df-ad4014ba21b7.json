@@ -2,7 +2,9 @@
   "resourceType": "Encounter",
   "id": "75f80dc1-b5c5-4c15-a4df-ad4014ba21b7",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter"
+    ]
   },
   "status": "finished",
   "class": {
@@ -10,16 +12,20 @@
     "code": "AMB",
     "display": "ambulatory"
   },
-  "type": [ {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "code": "185389009",
-      "display": "Follow-up visit (procedure)",
-      "userSelected": true
-    } ]
-  } ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit (procedure)",
+          "userSelected": true
+        }
+      ]
+    }
+  ],
   "subject": {
-    "reference": "Patient/5b37b5a5-0e28-4b28-9889-8878d41ff9cf"
+    "reference": "Patient/df05b853-3e6d-4a12-b1db-fd9d0ec790a2"
   },
   "period": {
     "start": "2026-01-01T08:00:00.000+00:00",

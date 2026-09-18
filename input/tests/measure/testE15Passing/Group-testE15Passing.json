@@ -1,0 +1,17 @@
+{
+  "resourceType": "Group",
+  "id": "testE15Passing",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/testE15Passing"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/124b25e9-4d11-4d0f-8077-da4df6ab9786",
+      "display": "Probe E15"
+    }
+  } ]
+}

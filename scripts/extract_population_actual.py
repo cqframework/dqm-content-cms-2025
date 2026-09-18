@@ -1,4 +1,5 @@
 import os
+import argparse
 import json
 import re
 import csv
@@ -38,6 +39,7 @@ allowed_display_names = {
 }
 
 patient_pattern = re.compile(r'Patient\s*=\s*Patient\(id=(?P<id>[a-f0-9\-]+)\)')
+json_patient_pattern = re.compile(r'Patient\(id=(?P<id>[a-f0-9\-]+)\)')
 expression_pattern = re.compile(rf'^(?P<expression>(?:{"|".join(list(allowed_display_names))})(?:\s*\d*))\s*=\s*(?P<value>.*)')
 section_pattern = re.compile(r'\n\s*\n')   # Split sections by two line breaks instead of hyphens
 
@@ -169,28 +171,95 @@ def validate_measure_population_counts(measurename: str, populations: Dict[str, 
     if 'Measure Population Exclusion'in populations:
         populations['Measure Population Exclusion'] = measurepopexc_count
 
-def load_measure_sections(dir_path: str) -> Generator['MeasureSection', None, None]:
-    """Load Measure Sections from VS Code CQL Extension result files
-    
+def detect_results_format(dir_path: str) -> str:
+    """Determine the result file format present in dir_path.
+
+    Flat *.txt result files may live directly in dir_path or inside a per-measure
+    subdirectory dir_path/<MEASURE NAME>/. JSON test case result files live only
+    inside per-measure subdirectories. The presence of any *.txt file takes
+    precedence and selects the text format.
+
     Args:
         dir_path (str): path to directory with VSCode CQL Extension result files
-    
+
+    Returns:
+        str: 'txt' when any *.txt result file is found, otherwise 'json'.
+    """
+    for entry in sorted(os.listdir(dir_path)):
+        if entry.startswith('.'):
+            continue
+        entry_path = os.path.join(dir_path, entry)
+        if os.path.isdir(entry_path):
+            for file_name in sorted(os.listdir(entry_path)):
+                if not file_name.startswith('.') and file_name.endswith('.txt'):
+                    return 'txt'
+        elif os.path.isfile(entry_path) and entry.endswith('.txt'):
+            return 'txt'
+    return 'json'
+
+def load_measure_sections(dir_path: str) -> Generator['MeasureSection', None, None]:
+    """Load Measure Sections from flat VS Code CQL Extension result files.
+
+    Flat *.txt result files may live directly in dir_path or inside a per-measure
+    subdirectory dir_path/<MEASURE NAME>/.
+
+    Args:
+        dir_path (str): path to directory with VSCode CQL Extension result files
+
     Yields:
         Generator['MeasureSection', None, None]: A generator object that yields MeasureSections
     """
-    for file_name in os.listdir(dir_path):
+    for entry in sorted(os.listdir(dir_path)):
         # Skip hidden/system files like .DS_Store
-        if file_name.startswith('.') or not file_name.endswith('.txt'):
+        if entry.startswith('.'):
             continue
-        log(f' {file_name}')
-        file_path = os.path.join(dir_path, file_name)
-        if os.path.isfile(file_path):
-            measure_name = os.path.splitext(file_name)[0]
-            with open(file_path, "r") as f:
+        entry_path = os.path.join(dir_path, entry)
+        if os.path.isdir(entry_path):
+            for file_name in sorted(os.listdir(entry_path)):
+                if file_name.startswith('.') or not file_name.endswith('.txt'):
+                    continue
+                log(f' {entry}/{file_name}')
+                file_path = os.path.join(entry_path, file_name)
+                if os.path.isfile(file_path):
+                    measure_name = entry
+                    with open(file_path, "r") as f:
+                        content = f.read()
+                    for section in section_pattern.split(content):
+                        yield MeasureSection(measure_name, section)
+        elif entry.endswith('.txt') and os.path.isfile(entry_path):
+            log(f' {entry}')
+            measure_name = os.path.splitext(entry)[0]
+            with open(entry_path, "r") as f:
                 content = f.read()
-            sections = section_pattern.split(content)
-            for section in sections:
+            for section in section_pattern.split(content):
                 yield MeasureSection(measure_name, section)
+
+def load_json_results(dir_path: str) -> Generator['MeasureSection', None, None]:
+    """Load Measure Sections from VSCode CQL Extension JSON Test Case result files.
+
+    JSON results are written to input/tests/results/<MEASURE NAME>/TestCaseResult-<testCaseId>.json.
+
+    Args:
+        dir_path (str): path to directory containing one subdirectory per measure
+
+    Yields:
+        Generator['MeasureSection', None, None]: A generator that yields MeasureSections
+            whose section is the parsed JSON dict of a single test case.
+    """
+    for entry in sorted(os.listdir(dir_path)):
+        if entry.startswith('.') or not os.path.isdir(os.path.join(dir_path, entry)):
+            continue
+        measure_path = os.path.join(dir_path, entry)
+        for file_name in sorted(os.listdir(measure_path)):
+            if file_name.startswith('.') or not file_name.endswith('.json'):
+                continue
+            log(f' {entry}/{file_name}')
+            file_path = os.path.join(measure_path, file_name)
+            if os.path.isfile(file_path):
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                measure_name = data.get('libraryName') or entry
+                yield MeasureSection(measure_name, data)
 
 def create_empty_populations(measure_name:str, patient_guid: str, measure_criteria: Dict[str, Dict[str, str]]) -> Dict[MeasureResultId, Dict[str, str]]:
     return {
@@ -212,6 +281,9 @@ def capture_results(measure_sections: Generator['MeasureSection', None, None], a
     for measure_section in measure_sections:
         measure_name = measure_section.measure
         section_data = measure_section.section
+        if isinstance(section_data, dict):
+            results.update(capture_json_results(measure_name, section_data, all_measure_criteria))
+            continue
         patient_guid_match = patient_pattern.search(section_data)
         if patient_guid_match:
             patient_guid = patient_guid_match.group('id')
@@ -222,6 +294,38 @@ def capture_results(measure_sections: Generator['MeasureSection', None, None], a
                     measure_criteria = all_measure_criteria[measure_name]
                     for group, population in find_all_groups_by_expression(measure_criteria, expression_match.group('expression')).items():
                         results[MeasureResultId(measure_name, patient_guid, group)][population] = parse_count(expression_match.group('value'))
+    return results
+
+def capture_json_results(measure_name: str, section_data: Dict, all_measure_criteria: Dict[str, Dict[str, Dict[str, str]]]) -> Dict[MeasureResultId, Dict[str, str]]:
+    """Convert a single JSON test case result (data from VSCode CQL extension JSON results)
+
+    Args:
+        measure_name (str): name of the measure/library
+        section_data (Dict): parsed JSON test case result
+        all_measure_criteria (Dict[str, Dict[str, Dict[str, str]]]): All Measure Criteria as Dict[<MEASURE NAME>, Dict[<GROUP ID>, Dict[<EXPRESSION>, <POPULATION>]]]
+
+    Returns:
+        Dict[MeasureResultId, Dict[str, str]]: Results that match the allowed_display_names.
+    """
+    results = {}
+    if section_data.get('errors'):
+        log(f'   ({measure_name}) skipping test case with errors: {section_data.get("testCaseName")}')
+        return results
+    patient_guid = section_data.get('testCaseName')
+    if not patient_guid:
+        patient_value = next((result.get('value', '') for result in section_data.get('results', []) if result.get('name') == 'Patient'), '')
+        patient_guid_match = json_patient_pattern.search(patient_value)
+        if not patient_guid_match:
+            return results
+        patient_guid = patient_guid_match.group('id')
+    results.update(create_empty_populations(measure_name, patient_guid, all_measure_criteria[measure_name]))
+    measure_criteria = all_measure_criteria[measure_name]
+    for result in section_data.get('results', []):
+        expression = result.get('name')
+        if not expression:
+            continue
+        for group, population in find_all_groups_by_expression(measure_criteria, expression).items():
+            results[MeasureResultId(measure_name, patient_guid, group)][population] = parse_count(str(result.get('value')))
     return results
 
 def convert_results_to_rows(results: Dict[MeasureResultId, Dict[str, str]]) -> List[List[str]]:
@@ -241,17 +345,49 @@ def save_results(output_file: str, rows: List[List[str]]):
         writer.writerow(header)
         writer.writerows(rows)
 
-if __name__ == '__main__':
-    VERBOSE=True
-    measure_resource_dir = "./input/resources/measure"
-    output_file = "./scripts/comparison/actual_results.csv"
-    results_dir = "./input/tests/results"
+
+_MEASURE_RESOURCE_DIR = "./input/resources/measure"
+_DEFAULT_OUTPUT = "./scripts/comparison/actual_results.csv"
+_DEFAULT_RESULTS_DIR = "./input/tests/results"
+
+
+def main(argv=None):
+    """Parse argv (or sys.argv) and run the extract.
+
+    Exposed as a function so other scripts (notably ``run_reports.py`` step 0/6)
+    can call into the same logic without re-implementing the wiring or
+    spawning a subprocess.
+    """
+    global VERBOSE
+    VERBOSE = True
+
+    parser = argparse.ArgumentParser(description="Extract actual population counts from CQL engine result files.")
+    parser.add_argument("--results-dir", default=_DEFAULT_RESULTS_DIR,
+                        help=f"Directory containing result files. Defaults to '{_DEFAULT_RESULTS_DIR}'.")
+    parser.add_argument("--output", default=_DEFAULT_OUTPUT,
+                        help=f"Where to write the extracted CSV. Defaults to '{_DEFAULT_OUTPUT}'.")
+    format_group = parser.add_mutually_exclusive_group()
+    format_group.add_argument("-jr", "--json-results", action="store_true",
+                              help="Read JSON test case result files (input/tests/results/<MEASURE NAME>/TestCaseResult-*.json).")
+    format_group.add_argument("-txt", "--text-results", action="store_true",
+                              help="Read flat text result files (*.txt), either directly in the results directory or in per-measure subdirectories.")
+    args = parser.parse_args(argv)
 
     log("Loading Measure Criteria")
-    all_measure_criteria =  load_measure_criteria(measure_resource_dir)
+    all_measure_criteria = load_measure_criteria(_MEASURE_RESOURCE_DIR)
 
     log("Loading Measures")
-    measure_sections = load_measure_sections(results_dir)
+    if args.json_results:
+        measure_sections = load_json_results(args.results_dir)
+    elif args.text_results:
+        measure_sections = load_measure_sections(args.results_dir)
+    else:
+        results_format = detect_results_format(args.results_dir)
+        log(f"No result format flag provided; detected '{results_format}' format in '{args.results_dir}'.")
+        if results_format == 'txt':
+            measure_sections = load_measure_sections(args.results_dir)
+        else:
+            measure_sections = load_json_results(args.results_dir)
 
     log("Capturing Results")
     results = capture_results(measure_sections, all_measure_criteria)
@@ -260,4 +396,8 @@ if __name__ == '__main__':
     rows = convert_results_to_rows(results)
 
     log("Saving Results")
-    save_results(output_file, rows)
+    save_results(args.output, rows)
+
+
+if __name__ == '__main__':
+    main()

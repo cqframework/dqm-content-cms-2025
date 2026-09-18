@@ -2,7 +2,7 @@
   "resourceType": "Coverage",
   "id": "d83fae9e-9541-4e60-9a59-12e011f02c2a",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-coverage" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-coverage" ]
   },
   "status": "active",
   "subscriberId": "123456",

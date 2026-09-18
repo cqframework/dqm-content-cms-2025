@@ -4,6 +4,12 @@
   "meta": {
     "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary", "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library" ]
   },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem",
+    "valueReference": {
+      "reference": "Device/cqf-tooling"
+    }
+  } ],
   "url": "https://madie.cms.gov/Library/SupplementalDataElements",
   "version": "6.1.000",
   "name": "SupplementalDataElements",
@@ -25,6 +31,8 @@
     "text": "CQL"
   } ],
   "content": [ {
-    "id": "ig-loader-SupplementalDataElements.cql"
+    "contentType": "text/cql",
+    "data": "LyoKQGRlc2NyaXB0aW9uOiBTdXBwbGVtZW50YWwgZGF0YSBlbGVtZW50cyBmb3IgdXNlIGluIGRpZ2l0YWwgcXVhbGl0eSBtZWFzdXJlIHNwZWNpZmljYXRpb25zIGluIENNUyBwcm9ncmFtcwoKTk9URTogVGhpcyBsaWJyYXJ5IGlzIG5vdCBwdWJsaXNoZWQgaW4gdGhpcyBJRywgaXQgaXMgaW5jbHVkZWQgaGVyZSBmb3IgY29udmVuaWVuY2UuIFRoZSBzb3VyY2Ugb2YgdHJ1dGggZm9yCnRoaXMgbGlicmFyeSB3aWxsIGJlIHRoZSBNQURpRSBlbnZpcm9ubWVudCBvbmNlIGl0IGZ1bGx5IHN1cHBvcnRzIHVzZSBvZiBRSUNvcmUgU1RVNi1kZXJpdmVkLgoqLwpsaWJyYXJ5IFN1cHBsZW1lbnRhbERhdGFFbGVtZW50cyB2ZXJzaW9uICc2LjEuMDAwJwoKdXNpbmcgVVNRdWFsaXR5Q29yZSB2ZXJzaW9uICcwLjEuMC1jaWJ1aWxkJwp1c2luZyBVU0NvcmUgdmVyc2lvbiAnNi4xLjAtZGVyaXZlZCcKdXNpbmcgRkhJUiB2ZXJzaW9uICc0LjAuMScKCmluY2x1ZGUgaGw3LmZoaXIudXYuY3FsLkZISVJIZWxwZXJzIHZlcnNpb24gJzQuMC4xJyBjYWxsZWQgRkhJUkhlbHBlcnMKaW5jbHVkZSBobDcuZmhpci51di5jcWwuRkhJUkNvbW1vbiB2ZXJzaW9uICcyLjAuMCcgY2FsbGVkIEZISVJDb21tb24KaW5jbHVkZSBobDcuZmhpci51cy5jcWwuVVNDb3JlQ29tbW9uIHZlcnNpb24gJzIuMC4wLWJhbGxvdCcgY2FsbGVkIFVTQ29tbW9uCgpjb2Rlc3lzdGVtICJTTk9NRURDVCI6ICdodHRwOi8vc25vbWVkLmluZm8vc2N0JwoKdmFsdWVzZXQgIkV0aG5pY2l0eSI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS44MzcnCnZhbHVlc2V0ICJGZWRlcmFsIEFkbWluaXN0cmF0aXZlIFNleCI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTM3NjIuMS40LjEwMjEuMTIxJwp2YWx1ZXNldCAiUGF5ZXIgVHlwZSI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS4zNTkxJwp2YWx1ZXNldCAiUmFjZSI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS44MzYnCgpjb2RlICJNYWxlIChmaW5kaW5nKSI6ICcyNDgxNTMwMDcnIGZyb20gIlNOT01FRENUIiBkaXNwbGF5ICdNYWxlIChmaW5kaW5nKScKY29kZSAiRmVtYWxlIChmaW5kaW5nKSI6ICcyNDgxNTIwMDInIGZyb20gIlNOT01FRENUIiBkaXNwbGF5ICdGZW1hbGUgKGZpbmRpbmcpJwoKY29udGV4dCBQYXRpZW50CgpkZWZpbmUgIlNERSBFdGhuaWNpdHkiOgogIChQYXRpZW50LmV0aG5pY2l0eSgpKSBFCiAgICByZXR1cm4gVHVwbGUgewogICAgICBjb2RlczogeyBFLm9tYkNhdGVnb3J5IH0gdW5pb24gRS5kZXRhaWxlZCwKICAgICAgZGlzcGxheTogRS50ZXh0CiAgICB9CgpkZWZpbmUgIlNERSBQYXllciI6CiAgW1VTUXVhbGl0eUNvcmUuQ292ZXJhZ2U6IHR5cGUgaW4gIlBheWVyIFR5cGUiXSBQYXllcgogICAgcmV0dXJuIHsKICAgICAgY29kZTogUGF5ZXIudHlwZSwKICAgICAgcGVyaW9kOiBQYXllci5wZXJpb2QKICAgIH0KCmRlZmluZSAiU0RFIFJhY2UiOgogIChQYXRpZW50LnJhY2UoKSkgUgogICAgcmV0dXJuIFR1cGxlIHsKICAgICAgY29kZXM6IFIub21iQ2F0ZWdvcnkgdW5pb24gUi5kZXRhaWxlZCwKICAgICAgZGlzcGxheTogUi50ZXh0CiAgICB9CgpkZWZpbmUgIlNERSBTZXgiOgogIGNhc2UKICAgIHdoZW4gUGF0aWVudC5zZXgoKSA9ICcyNDgxNTMwMDcnIHRoZW4gIk1hbGUgKGZpbmRpbmcpIgogICAgd2hlbiBQYXRpZW50LnNleCgpID0gJzI0ODE1MjAwMicgdGhlbiAiRmVtYWxlIChmaW5kaW5nKSIKICAgIGVsc2UgbnVsbAogIGVuZA==",
+    "url": "https://madie.cms.gov/Library-SupplementalDataElements.cql"
   } ]
 }

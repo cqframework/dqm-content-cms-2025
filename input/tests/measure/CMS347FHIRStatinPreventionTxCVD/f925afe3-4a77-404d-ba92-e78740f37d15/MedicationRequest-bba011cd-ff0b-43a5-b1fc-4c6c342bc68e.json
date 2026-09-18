@@ -2,7 +2,7 @@
   "resourceType": "MedicationRequest",
   "id": "bba011cd-ff0b-43a5-b1fc-4c6c342bc68e",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
   },
   "status": "active",
   "intent": "order",

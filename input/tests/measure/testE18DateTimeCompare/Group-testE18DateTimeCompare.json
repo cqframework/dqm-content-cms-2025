@@ -1,0 +1,17 @@
+{
+  "resourceType": "Group",
+  "id": "testE18DateTimeCompare",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/testE18DateTimeCompare"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/ca78c4ac-c681-44ac-b6fc-3a981edd3e63",
+      "display": "Probe E18"
+    }
+  } ]
+}

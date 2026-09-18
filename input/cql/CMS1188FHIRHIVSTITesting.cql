@@ -68,8 +68,11 @@ define "Has Qualifying Encounter During Measurement Period":
   )
 
 define "Has HIV Diagnosis Before End of Measurement Period":
-  exists ( ["ConditionProblemsHealthConcerns": "HIV"]
-    union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDx
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( ["ConditionProblemsHealthConcerns": "HIV"]
+  //     union ["ConditionEncounterDiagnosis": "HIV"] )
+  exists ( [FHIR.Condition: "HIV"] ) HIVDx
     where HIVDx.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
       and HIVDx.isVerified ( )
 

@@ -1,0 +1,27 @@
+{
+  "resourceType": "Patient",
+  "id": "62577993-8c88-440d-ba30-d4a0a72990f9",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-sex",
+    "valueCode": "248152002"
+  } ],
+  "identifier": [ {
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+        "code": "MR"
+      } ]
+    },
+    "system": "http://hospital.smarthealthit.org",
+    "value": "100000019"
+  } ],
+  "name": [ {
+    "family": "E11",
+    "given": [ "Probe" ]
+  } ],
+  "gender": "female",
+  "birthDate": "1958-12-31"
+}

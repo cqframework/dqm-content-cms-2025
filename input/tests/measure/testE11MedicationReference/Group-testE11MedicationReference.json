@@ -1,0 +1,17 @@
+{
+  "resourceType": "Group",
+  "id": "testE11MedicationReference",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/testE11MedicationReference"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/62577993-8c88-440d-ba30-d4a0a72990f9",
+      "display": "Probe E11"
+    }
+  } ]
+}

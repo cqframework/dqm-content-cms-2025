@@ -1,0 +1,17 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "e17a6fc6-e5a9-49e6-8db5-02f0ebb7d934",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "doNotPerform": false,
+  "medicationReference": {
+    "reference": "Medication/89f079aa-7325-49e3-a247-3dc290c6dd6b"
+  },
+  "subject": {
+    "reference": "Patient/62577993-8c88-440d-ba30-d4a0a72990f9"
+  },
+  "authoredOn": "2026-12-30T00:00:00.000Z"
+}

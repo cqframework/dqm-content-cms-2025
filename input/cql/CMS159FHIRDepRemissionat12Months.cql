@@ -89,10 +89,14 @@ define "Depression Assessments Greater Than 9":
       and DepressionAssessment.status in { 'final', 'amended', 'corrected' }
 
 define "Depression Diagnoses":
-  ( [ConditionProblemsHealthConcerns: "Major Depression Including Remission"]
-    union [ConditionEncounterDiagnosis: "Major Depression Including Remission"]
-    union [ConditionProblemsHealthConcerns: "Dysthymia"]
-    union [ConditionEncounterDiagnosis: "Dysthymia"] ) Depression
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  // ( [ConditionProblemsHealthConcerns: "Major Depression Including Remission"]
+  //   union [ConditionEncounterDiagnosis: "Major Depression Including Remission"]
+  //   union [ConditionProblemsHealthConcerns: "Dysthymia"]
+  //   union [ConditionEncounterDiagnosis: "Dysthymia"] ) Depression
+  ( [Condition: "Major Depression Including Remission"]
+    union [Condition: "Dysthymia"] ) Depression
     where Depression.isVerified ( )
 
 define "Depression Encounter":
@@ -103,14 +107,20 @@ define "Depression Encounter":
         and ValidEncounter.status = 'finished'
 
 define "Has Mental Health Disorder Diagnoses":
-  exists ( ( [ConditionProblemsHealthConcerns: "Bipolar Disorder"]
-      union [ConditionEncounterDiagnosis: "Bipolar Disorder"]
-      union [ConditionProblemsHealthConcerns: "Personality Disorder Emotionally Labile"]
-      union [ConditionEncounterDiagnosis: "Personality Disorder Emotionally Labile"]
-      union [ConditionProblemsHealthConcerns: "Schizophrenia or Psychotic Disorder"]
-      union [ConditionEncounterDiagnosis: "Schizophrenia or Psychotic Disorder"]
-      union [ConditionProblemsHealthConcerns: "Pervasive Developmental Disorder"]
-      union [ConditionEncounterDiagnosis: "Pervasive Developmental Disorder"] ) MentalHealthDisorderDiagnoses
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  // exists ( ( [ConditionProblemsHealthConcerns: "Bipolar Disorder"]
+  //     union [ConditionEncounterDiagnosis: "Bipolar Disorder"]
+  //     union [ConditionProblemsHealthConcerns: "Personality Disorder Emotionally Labile"]
+  //     union [ConditionEncounterDiagnosis: "Personality Disorder Emotionally Labile"]
+  //     union [ConditionProblemsHealthConcerns: "Schizophrenia or Psychotic Disorder"]
+  //     union [ConditionEncounterDiagnosis: "Schizophrenia or Psychotic Disorder"]
+  //     union [ConditionProblemsHealthConcerns: "Pervasive Developmental Disorder"]
+  //     union [ConditionEncounterDiagnosis: "Pervasive Developmental Disorder"] ) MentalHealthDisorderDiagnoses
+  exists ( ( [Condition: "Bipolar Disorder"]
+      union [Condition: "Personality Disorder Emotionally Labile"]
+      union [Condition: "Schizophrenia or Psychotic Disorder"]
+      union [Condition: "Pervasive Developmental Disorder"] ) MentalHealthDisorderDiagnoses
       where start of MentalHealthDisorderDiagnoses.prevalenceInterval ( ) on or before day of end of "Measure Assessment Period"
         and MentalHealthDisorderDiagnoses.isVerified ( )
   )
@@ -149,8 +159,11 @@ define "Has Hospice Services prior to or during the Measure Assessment Period":
         where HospicePerformed.performed.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and not ( HospicePerformed.status in { 'not-done', 'entered-in-error', 'unknown' } )
     )
-    or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"]
-        union [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    // or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"]
+    //     union [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
+    or exists ( [Condition: "Hospice Diagnosis"]  HospiceCareDiagnosis
         where HospiceCareDiagnosis.prevalenceInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and HospiceCareDiagnosis.isVerified ( )
     )
@@ -168,8 +181,11 @@ define "Has Palliative Care prior to or during the Measure Assessment Period":
       where PalliativeAssessment.effective.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
         and PalliativeAssessment.status in { 'final', 'amended', 'corrected' }
   )
-    or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"]
-        union [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) PalliativeDiagnosis
+      // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      // or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"]
+      //   union [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) PalliativeDiagnosis
+      or exists ( [Condition: "Palliative Care Diagnosis"] PalliativeDiagnosis
         where PalliativeDiagnosis.prevalenceInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and PalliativeDiagnosis.isVerified ( )
     )

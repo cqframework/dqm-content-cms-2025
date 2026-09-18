@@ -85,8 +85,11 @@ define "June 30 of the Measurement Period":
   Date((year from start of "Measurement Period"), 6, 30)
 
 define "Acute Tuberculosis Diagnosis":
-  ( [ConditionProblemsHealthConcerns: "Tuberculosis for Urology Care"]
-    union [ConditionEncounterDiagnosis: "Tuberculosis for Urology Care"] ) ActiveTuberculosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( [ConditionProblemsHealthConcerns: "Tuberculosis for Urology Care"]
+  //     union [ConditionEncounterDiagnosis: "Tuberculosis for Urology Care"] )
+  ( [FHIR.Condition: "Tuberculosis for Urology Care"] ) ActiveTuberculosis
     with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
       such that ( ( ActiveTuberculosis.prevalenceInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( ) )
           or ( ActiveTuberculosis.prevalenceInterval ( ) overlaps after day of FirstBladderCancerStaging.performed.toInterval ( )
@@ -104,14 +107,22 @@ define "Cystectomy Done":
     where Cystectomy.status = 'completed'
 
 define "Has Excluding HIV, Immunocompromised Conditions or Mixed Histology Before Staging":
-  exists ( ( ( [ConditionProblemsHealthConcerns: "HIV"]
-        union [ConditionEncounterDiagnosis: "HIV"]
+  // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ( ( [ConditionProblemsHealthConcerns: "HIV"]
+  //         union [ConditionEncounterDiagnosis: "HIV"]
+  //     )
+  //       union ( [ConditionProblemsHealthConcerns: "Immunocompromised Conditions"]
+  //           union [ConditionEncounterDiagnosis: "Immunocompromised Conditions"]
+  //       )
+  //       union ( [ConditionProblemsHealthConcerns: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
+  //           union [ConditionEncounterDiagnosis: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
+  //       ) ) ExclusionDiagnosis
+  exists ( ( ( [FHIR.Condition: "HIV"]
     )
-      union ( [ConditionProblemsHealthConcerns: "Immunocompromised Conditions"]
-          union [ConditionEncounterDiagnosis: "Immunocompromised Conditions"]
+      union ( [FHIR.Condition: "Immunocompromised Conditions"]
       )
-      union ( [ConditionProblemsHealthConcerns: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
-          union [ConditionEncounterDiagnosis: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
+      union ( [FHIR.Condition: "Mixed Histology Urothelial Cell Carcinoma for Urology Care"]
       ) ) ExclusionDiagnosis
       with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
         such that ( ( ExclusionDiagnosis.prevalenceInterval ( ) starts on or before day of start of FirstBladderCancerStaging.performed.toInterval ( ) )
@@ -155,8 +166,11 @@ define "Has Qualifying Encounter":
   )
 
 define "Bladder Cancer Diagnosis":
-  ( [ConditionProblemsHealthConcerns: "Bladder Cancer for Urology Care"]
-    union [ConditionEncounterDiagnosis: "Bladder Cancer for Urology Care"] ) BladderCancer
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( [ConditionProblemsHealthConcerns: "Bladder Cancer for Urology Care"]
+  //     union [ConditionEncounterDiagnosis: "Bladder Cancer for Urology Care"] )
+  ( [FHIR.Condition: "Bladder Cancer for Urology Care"] ) BladderCancer
     where ( BladderCancer.prevalenceInterval ( ) starts before day of end of "Measurement Period"
         or BladderCancer.prevalenceInterval ( ) before day of end of "Measurement Period"
     )

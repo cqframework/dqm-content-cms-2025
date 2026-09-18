@@ -2,7 +2,7 @@
   "resourceType": "Observation",
   "id": "8315d995-7a93-4bd7-80e2-a18e2a8a9234",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-observation-lab" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-observation-lab" ]
   },
   "status": "final",
   "category": [ {

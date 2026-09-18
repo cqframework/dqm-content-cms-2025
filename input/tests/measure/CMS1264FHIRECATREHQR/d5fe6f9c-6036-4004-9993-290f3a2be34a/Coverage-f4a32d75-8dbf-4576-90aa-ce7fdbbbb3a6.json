@@ -30,7 +30,7 @@
     } ]
   },
   "period": {
-    "start": "2024-12-31T00:00:00.000+00:00"
+    "start": "2023-12-31T00:00:00.000+00:00"
   },
   "payor": [ {
     "reference": "Organization/39d8f542-869a-4ffe-bc40-47e33ba5baee"

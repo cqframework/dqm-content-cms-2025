@@ -38,8 +38,8 @@
   "encounter": {
     "reference": "Encounter/6372e9eb-37b1-404d-8580-0c3c5167b2a5"
   },
-  "effectiveDateTime": "2025-01-08T12:00:00.000Z",
-  "issued": "2025-01-08T12:00:00.000Z",
+  "effectiveDateTime": "2026-01-08T12:00:00.000Z",
+  "issued": "2026-01-08T12:00:00.000Z",
   "valueQuantity": {
     "value": 85,
     "unit": "mg/dL",

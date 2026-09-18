@@ -1,0 +1,20 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "5da14334-c140-46b0-a34a-0b05d98ee697",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest" ]
+  },
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "654321002",
+      "display": "Medication B"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/ca78c4ac-c681-44ac-b6fc-3a981edd3e63"
+  },
+  "authoredOn": "2026-09-20T09:00:00.000Z"
+}

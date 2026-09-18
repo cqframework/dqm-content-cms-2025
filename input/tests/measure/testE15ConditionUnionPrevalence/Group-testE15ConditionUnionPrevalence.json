@@ -1,0 +1,17 @@
+{
+  "resourceType": "Group",
+  "id": "testE15ConditionUnionPrevalence",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/testE15ConditionUnionPrevalence"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4",
+      "display": "Probe E15"
+    }
+  } ]
+}

@@ -1,0 +1,62 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "7fb904a3-9e25-4bdb-8a6e-144ff3f0ba1d",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "62577993-8c88-440d-ba30-d4a0a72990f9-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "62577993-8c88-440d-ba30-d4a0a72990f9"
+    }, {
+      "name": "Measurement Period",
+      "valuePeriod": {
+        "start": "2026-01-01",
+        "end": "2026-12-31"
+      }
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#62577993-8c88-440d-ba30-d4a0a72990f9-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "E-11 unit test: one Patient carrying TWO MedicationRequests for the same Dementia Medication (RxNorm 312836 rivastigmine). One uses medicationReference -> Medication/89f079aa (reproduces the 'Unable to extract codes from fhirType Reference' crash in the FAILING define); the other uses medicationCodeableConcept (the PASSING define evaluates cleanly and returns it). This mirrors the CMS165 fix and the 3 CMS135 cases."
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/testE11MedicationReference",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ]
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/62577993-8c88-440d-ba30-d4a0a72990f9"
+  }, {
+    "reference": "MedicationRequest/e17a6fc6-e5a9-49e6-8db5-02f0ebb7d934"
+  }, {
+    "reference": "MedicationRequest/59f54162-37af-49da-b1a6-36d804a0f7fa"
+  } ]
+}

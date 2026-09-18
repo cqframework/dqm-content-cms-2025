@@ -1,0 +1,37 @@
+{
+  "resourceType": "Condition",
+  "id": "11111111-1111-4111-8111-111111111111",
+  "meta": {
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-condition-problems-health-concerns" ]
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active"
+    } ]
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed"
+    } ]
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "problem-list-item",
+      "display": "Problem List Item"
+    } ]
+  } ],
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "72892002",
+      "display": "Pregnancy (finding)"
+    } ]
+  },
+  "subject": {
+    "reference": "Patient/8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4"
+  },
+  "onsetDateTime": "2026-04-01T00:00:00.000+00:00"
+}

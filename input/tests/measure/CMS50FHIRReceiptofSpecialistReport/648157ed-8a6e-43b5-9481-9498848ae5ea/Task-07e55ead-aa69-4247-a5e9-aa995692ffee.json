@@ -2,7 +2,7 @@
   "resourceType": "Task",
   "id": "07e55ead-aa69-4247-a5e9-aa995692ffee",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-task" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-task" ]
   },
   "identifier": [ {
     "use": "official",

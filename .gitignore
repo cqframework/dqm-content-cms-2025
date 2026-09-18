@@ -12,3 +12,5 @@
 __pycache__
 script_env
 *__MACOSX
+.cql-debug
+

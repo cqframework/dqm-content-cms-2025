@@ -94,10 +94,15 @@ define "Denominator 4":
   "Initial Population 4"
 
 define "Denominator Exclusions":
-  exists ( ( [ConditionProblemsHealthConcerns: "Breastfeeding"]
-      union [ConditionProblemsHealthConcerns: "Rhabdomyolysis"]
-      union [ConditionEncounterDiagnosis: "Breastfeeding"]
-      union [ConditionEncounterDiagnosis: "Rhabdomyolysis"] ) ExclusionDiagnosis
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for .prevalenceInterval()/.isVerified() (defect-tracking/known-issues.md).
+  // Original:
+  //   exists ( ( [ConditionProblemsHealthConcerns: "Breastfeeding"]
+  //       union [ConditionProblemsHealthConcerns: "Rhabdomyolysis"]
+  //       union [ConditionEncounterDiagnosis: "Breastfeeding"]
+  //       union [ConditionEncounterDiagnosis: "Rhabdomyolysis"] ) ExclusionDiagnosis
+  exists ( ( [FHIR.Condition: "Breastfeeding"]
+      union [FHIR.Condition: "Rhabdomyolysis"] ) ExclusionDiagnosis
       where ExclusionDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and ExclusionDiagnosis.isVerified ( )
   )

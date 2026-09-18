@@ -59,8 +59,12 @@ define "Encounter During Measurement Period With HIV":
       union ["Encounter": "Preventive Care, Established Office Visit, 0 to 17"]
       union ["Encounter": "Telephone Visits"]
       union ["Encounter": "Preventive Care Services Other"] ) ValidEncounter
-      with ( ["ConditionProblemsHealthConcerns": "HIV"]
-        union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDiagnosis
+      with (
+        // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Original:
+        //   ( ["ConditionProblemsHealthConcerns": "HIV"]
+        //     union ["ConditionEncounterDiagnosis": "HIV"] )
+        [FHIR.Condition: "HIV"] ) HIVDiagnosis
         such that ValidEncounter.period during day of "Measurement Period"
           and ValidEncounter.status = 'finished'
           and HIVDiagnosis.prevalenceInterval ( ) starts on or before day of start of ValidEncounter.period
@@ -68,8 +72,12 @@ define "Encounter During Measurement Period With HIV":
   )
 
 define "Has Active HIV Diagnosis Starts On or Before First 240 Days of Measurement Period":
-  exists ( ( ["ConditionProblemsHealthConcerns": "HIV"]
-      union ["ConditionEncounterDiagnosis": "HIV"] ) HIVDx
+  exists ( (
+      // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      //   ( ["ConditionProblemsHealthConcerns": "HIV"]
+      //     union ["ConditionEncounterDiagnosis": "HIV"] )
+      [FHIR.Condition: "HIV"] ) HIVDx
       where HIVDx.prevalenceInterval ( ) starts on or before day of ( start of "Measurement Period" + 240 days )
         and HIVDx.isVerified ( )
   )

@@ -1697,6 +1697,8 @@ CMS771FHIRUrinarySymptomScoreBPH,cb9497a6-968f-4034-b85c-d254c07e34e5,Group_1:De
 CMS771FHIRUrinarySymptomScoreBPH,cb9497a6-968f-4034-b85c-d254c07e34e5,Group_1:Denominator Exclusion,0
 CMS771FHIRUrinarySymptomScoreBPH,cb9497a6-968f-4034-b85c-d254c07e34e5,Group_1:Numerator,0
 CMSFHIR529HybridHospitalWideReadmission,afd5733f-e9eb-4a17-9be7-783850a132fc,Group_1:Initial Population,1
+testE18DateTimeCompare,ca78c4ac-c681-44ac-b6fc-3a981edd3e63,Group_1:Initial Population,1
+testE11MedicationReference,62577993-8c88-440d-ba30-d4a0a72990f9,Group_1:Initial Population,1
 CMS50FHIRReceiptofSpecialistReport,3c747b52-446b-4107-aff5-a6121d5e9ffc,Group_1:Initial Population,0
 CMS50FHIRReceiptofSpecialistReport,3c747b52-446b-4107-aff5-a6121d5e9ffc,Group_1:Denominator,0
 CMS50FHIRReceiptofSpecialistReport,3c747b52-446b-4107-aff5-a6121d5e9ffc,Group_1:Numerator,0
@@ -1880,6 +1882,7 @@ CMS816FHIRHHHypo,8eca4ab8-49f0-45e4-b1ee-dc34e54dd430,Group_1:Numerator,1
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Initial Population,0
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Denominator,0
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Numerator,0
+testE15ConditionUnionPrevalence,8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4,Group_1:Initial Population,1
 CMS129FHIRProstCaBoneScanUse,c55f6f6d-e355-4280-9e5d-d21fc00b5c3e,Group_1:Initial Population,1
 CMS129FHIRProstCaBoneScanUse,c55f6f6d-e355-4280-9e5d-d21fc00b5c3e,Group_1:Denominator,1
 CMS129FHIRProstCaBoneScanUse,c55f6f6d-e355-4280-9e5d-d21fc00b5c3e,Group_1:Numerator,1
@@ -19831,6 +19834,7 @@ CMS74FHIRDentalCariesPrevention,ed7ad3f4-507a-4980-aefa-7d6a8baafaa2,Group_1:Ini
 CMS74FHIRDentalCariesPrevention,ed7ad3f4-507a-4980-aefa-7d6a8baafaa2,Group_1:Denominator,1
 CMS74FHIRDentalCariesPrevention,ed7ad3f4-507a-4980-aefa-7d6a8baafaa2,Group_1:Denominator Exclusion,0
 CMS74FHIRDentalCariesPrevention,ed7ad3f4-507a-4980-aefa-7d6a8baafaa2,Group_1:Numerator,0
+testE15Passing,124b25e9-4d11-4d0f-8077-da4df6ab9786,Group_1:Initial Population,1
 CMS143FHIRPOAGOpticNerveEval,e320fffc-78f7-4fb3-9cce-cc3608809c53,Group_1:Initial Population,0
 CMS143FHIRPOAGOpticNerveEval,e320fffc-78f7-4fb3-9cce-cc3608809c53,Group_1:Denominator,0
 CMS143FHIRPOAGOpticNerveEval,e320fffc-78f7-4fb3-9cce-cc3608809c53,Group_1:Numerator,0
