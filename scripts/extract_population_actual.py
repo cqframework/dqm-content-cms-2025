@@ -171,20 +171,86 @@ def validate_measure_population_counts(measurename: str, populations: Dict[str, 
     if 'Measure Population Exclusion'in populations:
         populations['Measure Population Exclusion'] = measurepopexc_count
 
-def detect_results_format(dir_path: str) -> str:
-    """Determine the result file format present in dir_path.
+def measures_in_results_dir(dir_path: str, results_format: str) -> set:
+    """Measure names the results directory claims to contain.
 
-    Flat *.txt result files may live directly in dir_path or inside a per-measure
-    subdirectory dir_path/<MEASURE NAME>/. JSON test case result files live only
-    inside per-measure subdirectories. The presence of any *.txt file takes
-    precedence and selects the text format.
-
-    Args:
-        dir_path (str): path to directory with VSCode CQL Extension result files
-
-    Returns:
-        str: 'txt' when any *.txt result file is found, otherwise 'json'.
+    Used only for diagnostics: comparing this against the measures that
+    actually produced rows is what turns "this measure silently contributed
+    nothing" into a visible warning.
     """
+    names = set()
+    for entry in sorted(os.listdir(dir_path)):
+        if entry.startswith('.'):
+            continue
+        entry_path = os.path.join(dir_path, entry)
+        if results_format == 'json':
+            if os.path.isdir(entry_path) and any(
+                    f.startswith('TestCaseResult-') and f.endswith('.json')
+                    for f in os.listdir(entry_path)):
+                names.add(entry)
+        else:
+            if os.path.isfile(entry_path) and entry.endswith('.txt'):
+                names.add(entry[:-4])
+            elif os.path.isdir(entry_path) and any(
+                    f.endswith('.txt') for f in os.listdir(entry_path)):
+                names.add(entry)
+    return names
+
+
+def report_extraction_health(results_dir: str, results_format: str,
+                             rows: list, autodetected: bool) -> None:
+    """Print always-visible warnings about measures that produced nothing.
+
+    These use print(), not log(): log() is gated behind --verbose, and the
+    whole reason a 49.12% pass rate went unexplained is that every clue was
+    either verbose-only or silently swallowed. A measure contributing zero rows
+    surfaces downstream as "Missing Results", which reads identically to the
+    CQL failing to translate -- so it has to be called out here, at the point
+    where the cause is still knowable.
+    """
+    print(f"Extraction: format={results_format} "
+          f"({'auto-detected' if autodetected else 'explicit flag'}), "
+          f"{len(rows)} population rows")
+
+    if autodetected and results_format == 'txt' and has_json_results(results_dir):
+        print("WARNING: reading *.txt traces even though TestCaseResult-*.json "
+              "files are also present. JSON is the complete format; pass "
+              "--text-results if you really want the traces.")
+
+    claimed = measures_in_results_dir(results_dir, results_format)
+    produced = {row[0] for row in rows}
+    empty = sorted(claimed - produced)
+    if empty:
+        print(f"WARNING: {len(empty)} measure(s) in {results_dir} produced NO "
+              f"population rows and will show as 'Missing Results':")
+        for name in empty[:15]:
+            print(f"  - {name}")
+        if len(empty) > 15:
+            print(f"  ... and {len(empty) - 15} more")
+        if results_format == 'txt':
+            print("  The usual cause is header-only *.txt traces; re-run with "
+                  "--json-results.")
+        else:
+            print("  Check the 'errors' array in the corresponding "
+                  "TestCaseResult-*.json -- test cases with errors are skipped.")
+
+
+def has_json_results(dir_path: str) -> bool:
+    """True when any per-measure TestCaseResult-*.json file exists."""
+    for entry in sorted(os.listdir(dir_path)):
+        if entry.startswith('.'):
+            continue
+        entry_path = os.path.join(dir_path, entry)
+        if os.path.isdir(entry_path):
+            for file_name in os.listdir(entry_path):
+                if (file_name.startswith('TestCaseResult-')
+                        and file_name.endswith('.json')):
+                    return True
+    return False
+
+
+def has_txt_results(dir_path: str) -> bool:
+    """True when any *.txt trace exists, flat or in a per-measure subdirectory."""
     for entry in sorted(os.listdir(dir_path)):
         if entry.startswith('.'):
             continue
@@ -192,10 +258,46 @@ def detect_results_format(dir_path: str) -> str:
         if os.path.isdir(entry_path):
             for file_name in sorted(os.listdir(entry_path)):
                 if not file_name.startswith('.') and file_name.endswith('.txt'):
-                    return 'txt'
+                    return True
         elif os.path.isfile(entry_path) and entry.endswith('.txt'):
-            return 'txt'
-    return 'json'
+            return True
+    return False
+
+
+def detect_results_format(dir_path: str) -> str:
+    """Determine the result file format present in dir_path.
+
+    **JSON wins whenever it is present.** `TestCaseResult-*.json` is the
+    complete, per-test-case format: one file per test case, carrying every
+    population plus an `errors` array. The `*.txt` files are human-readable
+    traces that the VS Code CQL extension writes *inconsistently* -- on
+    extension 0.9.8 / engine 5.3.0, only 48 of 73 traces contained population
+    lines and the remaining 25 were header-only stubs (just the tool versions
+    and a list of test-case paths).
+
+    This used to be the other way round -- "the presence of any *.txt file
+    takes precedence" -- and that cost real debugging time: a run whose JSON was
+    complete for all 74 measures scored 49.12% instead of 96.29%, because 35
+    measures were read from stub traces and so reported zero populations. The
+    comparison report calls that "Missing Results", which is indistinguishable
+    from the CQL failing to translate, so it looked like a catastrophic content
+    regression rather than a file-selection bug. Re-extracting the same run as
+    JSON gave 24,675 rows instead of 13,454 and reproduced the expected
+    3,817 pass / 147 fail exactly.
+
+    Override with the explicit format flags when needed -- e.g. an archived
+    capture that only contains traces: --json-results / -jr and
+    --text-results / -txt.
+
+    Args:
+        dir_path (str): path to directory with VSCode CQL Extension result files
+
+    Returns:
+        str: 'json' when any TestCaseResult-*.json is found, otherwise 'txt'.
+    """
+    if has_json_results(dir_path):
+        return 'json'
+    return 'txt'
 
 def load_measure_sections(dir_path: str) -> Generator['MeasureSection', None, None]:
     """Load Measure Sections from flat VS Code CQL Extension result files.
@@ -377,12 +479,16 @@ def main(argv=None):
     all_measure_criteria = load_measure_criteria(_MEASURE_RESOURCE_DIR)
 
     log("Loading Measures")
+    autodetected = False
     if args.json_results:
+        results_format = 'json'
         measure_sections = load_json_results(args.results_dir)
     elif args.text_results:
+        results_format = 'txt'
         measure_sections = load_measure_sections(args.results_dir)
     else:
         results_format = detect_results_format(args.results_dir)
+        autodetected = True
         log(f"No result format flag provided; detected '{results_format}' format in '{args.results_dir}'.")
         if results_format == 'txt':
             measure_sections = load_measure_sections(args.results_dir)
@@ -397,6 +503,8 @@ def main(argv=None):
 
     log("Saving Results")
     save_results(args.output, rows)
+
+    report_extraction_health(args.results_dir, results_format, rows, autodetected)
 
 
 if __name__ == '__main__':

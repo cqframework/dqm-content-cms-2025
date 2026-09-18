@@ -35,9 +35,22 @@ _NOTES_
 
 ### `extract_population_actual.py`
 
-- Reads actual result files from `./input/tests/results` — either the `{MeasureName}.txt` engine traces or `TestCaseResult-*.json` files; the format is auto-detected.
-- Parses population results for each test case, handling boolean and list values.
-- Skips measures whose name starts with `test` — those are debugging scaffolds, not real measures.
+- Reads actual result files from `./input/tests/results`, which the CQL plugin writes in two
+  forms: per-measure `TestCaseResult-*.json` files, and `{MeasureName}.txt` engine traces.
+- **Prefers the JSON whenever it is present**, falling back to traces only when there is no JSON.
+  The JSON is the complete format — one file per test case, with every population plus an
+  `errors` array. The traces are for humans and the plugin writes them inconsistently: on
+  extension 0.9.8 / engine 5.3.0, only 48 of 73 traces contained population lines; the other 25
+  were header-only stubs (tool versions and a list of test-case paths, nothing else).
+- Override with `--json-results` / `-jr` or `--text-results` / `-txt`, e.g. for an archived
+  capture containing only traces.
+- Parses population results for each test case, handling boolean and list values. Test cases
+  whose JSON carries a non-empty `errors` array are skipped.
+- Prints the format it chose, the row count, and a **warning listing any measure that produced
+  zero population rows**. Take that warning seriously: a measure contributing nothing appears
+  downstream as "Missing Results", which reads identically to the CQL failing to translate.
+  Reading stub traces instead of the JSON once turned a healthy 96.29% run into an apparent
+  49.12%, with 35 measures reported missing.
 - Outputs a CSV of actual results to `./scripts/comparison/actual_results.csv`.
 
 ### `compare_results.py`

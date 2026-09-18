@@ -4253,11 +4253,11 @@ PASS,CMS871FHIRHHHyper,76dc2b63-710c-4ac5-afef-f76c2ef07dcd,Group_1:Denominator,
 PASS,CMS871FHIRHHHyper,76dc2b63-710c-4ac5-afef-f76c2ef07dcd,Group_1:Denominator Exclusion,0,0
 PASS,CMS871FHIRHHHyper,76dc2b63-710c-4ac5-afef-f76c2ef07dcd,Group_1:Numerator,1,1
 PASS,CMS871FHIRHHHyper,76dc2b63-710c-4ac5-afef-f76c2ef07dcd,Group_1:Numerator Exclusion,0,0
-FAIL,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Initial Population,1,MISSING
-FAIL,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator,1,MISSING
-FAIL,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator,0,MISSING
-FAIL,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator Exclusion,0,MISSING
+PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Initial Population,1,1
+PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator,1,1
+PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator Exclusion,0,0
+PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator,0,0
+PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator Exclusion,0,0
 FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Initial Population,1,MISSING
 FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator,1,MISSING
 FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator Exclusion,1,MISSING
@@ -4298,11 +4298,11 @@ PASS,CMS871FHIRHHHyper,62f61668-6b4e-4d0a-be44-16a83dfec00e,Group_1:Denominator,
 PASS,CMS871FHIRHHHyper,62f61668-6b4e-4d0a-be44-16a83dfec00e,Group_1:Denominator Exclusion,1,1
 PASS,CMS871FHIRHHHyper,62f61668-6b4e-4d0a-be44-16a83dfec00e,Group_1:Numerator,0,0
 PASS,CMS871FHIRHHHyper,62f61668-6b4e-4d0a-be44-16a83dfec00e,Group_1:Numerator Exclusion,0,0
-FAIL,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Initial Population,1,MISSING
-FAIL,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Denominator,1,MISSING
-FAIL,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Numerator,0,MISSING
-FAIL,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Numerator Exclusion,0,MISSING
+PASS,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Initial Population,1,1
+PASS,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Denominator,1,1
+PASS,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Denominator Exclusion,0,0
+PASS,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Numerator,0,0
+PASS,CMS871FHIRHHHyper,7507debb-a991-4de0-bd71-634a684ddcd7,Group_1:Numerator Exclusion,0,0
 PASS,NHSNGlycemicControlHypoglycemiaInitialPopulation,62cfb49d-d68f-4366-ada1-977e827ca7e2,Group_1:Initial Population,1,1
 PASS,NHSNGlycemicControlHypoglycemiaInitialPopulation,40b66b90-4811-4f6f-8eec-c46d1a5e6eeb,Group_1:Initial Population,1,1
 PASS,NHSNGlycemicControlHypoglycemiaInitialPopulation,6d2ba015-ead4-4a64-b3c2-91798444d44b,Group_1:Initial Population,1,1
@@ -15736,22 +15736,22 @@ PASS,CMS986FHIRMalnutritionScore,b625bf76-24fe-4114-a609-434271f750ec,Group_6:Me
 PASS,CMS986FHIRMalnutritionScore,b625bf76-24fe-4114-a609-434271f750ec,Group_6:Measure Population Exclusion,0,0
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_1:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_1:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_1:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_1:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_2:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_2:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_2:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_2:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_3:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_3:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_3:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_3:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_4:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_4:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_4:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_4:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_5:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_5:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_5:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_5:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_6:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_6:Measure Population,1,1
-FAIL,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_6:Measure Population Exclusion,1,0
+PASS,CMS986FHIRMalnutritionScore,a4f53b12-e0e3-4faf-8e66-6ce8193a6477,Group_6:Measure Population Exclusion,1,1
 PASS,CMS986FHIRMalnutritionScore,9fe3ca47-1605-4187-93a0-be6618160cc7,Group_1:Initial Population,1,1
 PASS,CMS986FHIRMalnutritionScore,9fe3ca47-1605-4187-93a0-be6618160cc7,Group_1:Measure Population,1,1
 PASS,CMS986FHIRMalnutritionScore,9fe3ca47-1605-4187-93a0-be6618160cc7,Group_1:Measure Population Exclusion,0,0

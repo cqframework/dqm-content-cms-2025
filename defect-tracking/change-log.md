@@ -51,7 +51,7 @@ runtime with "not comparable" errors (engine issues I-16/I-33).
 ## Port CMS149 CQL from QICore
 
 **Problem:** CMS149 had no CQL authored at all under USQualityCore — a content gap, not a
-conversion bug.
+conversion bug (issue I-02, which also covers CMS145).
 
 **Fix:** ported the QICore CQL over; comes up fully passing.
 
@@ -60,7 +60,7 @@ conversion bug.
 ## Fix measurement-period/date issues on CMS1264 and NHSN
 
 **Problem:** CMS1264's measurement period and an NHSN measure's fixture resource year were out of
-sync with the current cycle.
+sync with the current cycle (issue I-49).
 
 **Fix:** adjusted CMS1264's measurement period; updated NHSN's fixture resource year.
 
@@ -70,7 +70,9 @@ sync with the current cycle.
 
 **Problem:** some fixtures still carried the stale `onc` profile-namespace/resource-reference
 issues after the initial bulk fix; the comparison/discrepancy-report tooling needed more detail to
-keep diagnosing the remaining mismatches.
+keep diagnosing the remaining mismatches. This is the residual pass for issues I-40 (`onc`→`astp`
+namespace) and I-41 / I-42 / I-46 (wrong-patient references); the initial bulk fixes predate this
+log and have no entry of their own.
 
 **Fix:** fixed the residual `onc`→`astp` issues on affected fixtures; extended the
 comparison/discrepancy-report tooling (qi-core diff detail, a global measurement-period
@@ -81,8 +83,9 @@ CMS347, NHSNGlycemicControlHypoglycemiaInitialPopulation
 
 ## Fix CMS347 fixture data (UCUM URI, whitespace reference)
 
-**Problem:** an Observation fixture carried a non-canonical UCUM system URI, and an Encounter's
-`subject.reference` was whitespace-corrupted (GUID split).
+**Problem:** an Observation fixture carried a non-canonical UCUM system URI (issue I-50; the same
+`https://ucum.org` defect is tracked more broadly as I-43), and an Encounter's `subject.reference`
+was whitespace-corrupted (GUID split — issue I-51).
 
 **Fix:** repaired both fixture defects directly; also added hygiene fixes to the known-issues
 catalog (boolean `resolved` field instead of stringly-typed).
@@ -124,7 +127,8 @@ cache; confirmed CPT valuesets were unaffected (none exceed 1000 codes); documen
 valuesets were updated.
 
 **Measures Affected:** cross-cutting (terminology cache, not measure-scoped in the diff itself);
-known to have resolved the CMS157 "Cancer" valueset mismatch documented elsewhere
+resolved issue I-03 (the CMS157 "Cancer" valueset mismatch) and, with it, I-06 — whose original
+fixture `Encounter.type` diagnosis was retracted once this repair landed
 
 ## Resync resources after IG Publisher refresh; bypass fix for CMS108
 
@@ -426,3 +430,185 @@ unchanged.
 **Measures Affected:** comment-only across 34 measure libraries; also `defectHelper.cql` and the
 `testE11` / `testE15` / `testE18` / `testI37` scaffold probes (non-`CMS` names, so absent from the
 list convention above). No measure logic changed.
+
+## Split `known-issues.md` into open issues and resolved reference patterns (docs only)
+
+**Problem:** the 20 `Fixed` / `Retired` rows carried no usable information — several had an Issue
+cell that was only a measure name (`I-02 | CMS145 / CMS149`, `I-03 | CMS157`). No `Fixed` id is
+cited anywhere in `input/cql/`, and only I-59 was cited in this change log, so those rows had no
+consumer and no trail to their own fix. Separately, 11 Issue cells were truncated mid-sentence
+with a `…` — residue from when the file was generated from the per-issue dossiers — including
+open ones: I-61 ended `"when a union…"` and I-62 ended `"(per-member function invocation +…"`.
+
+**Fix:** restructured `known-issues.md` into two parts:
+
+- **Open issues** — the table, restricted to `Open — confirmed`, `Open — suspected` and
+  `Worked around` (42 rows). All 11 truncated cells rewritten as self-contained lines from the
+  dossiers, keeping the operator / profile / field identifier. Fixed the `anticoagulation-FLutter`
+  typo inherited from I-36's dossier title.
+- **Resolved — reference patterns** — the 20 closed issues as a list grouped by failure family
+  (profile URI mismatch, broken patient reference, non-canonical UCUM `system`, missing or
+  truncated terminology, wrong element/overload, date-window mismatch, no CQL authored, retired
+  ids). Each bullet names the concrete artifact rather than the measure, so it reads as a
+  recognizable fingerprint — I-03 is "committed valueset files held only page 0 of a paged
+  `$expand`, so `[Condition: "Cancer"]` missed `C00.0`", not "CMS157". The two misdiagnoses
+  (I-06 → I-03, I-09 → I-39) are called out as such, since a wrong first diagnosis is the most
+  transferable part of a closed issue.
+
+Also added the missing I-01 row (QI-Core baseline disagreement, 670 cases across 26 measures) and
+the missing `baseline` entry in the root-cause class table, and carried forward a latent lead that
+was buried inside a Fixed issue: 4 CMS69 Observations still use a malformed
+`us-quality-core-observationcancelled` profile (missing hyphen), noted under I-47.
+
+Backfilled `I-XX` cross-references into the five entries above that described a fix without citing
+its issue: I-02 (CMS149 port), I-03/I-06 (valueset repair), I-49 (CMS1264 dates),
+I-40/I-41/I-42/I-46 (`onc`→`astp` and reference sweep), I-43/I-50/I-51 (CMS347 fixture data).
+
+**Three resolved issues had no entry in this log** and were left uncited rather than attributed
+to an unrelated entry: I-44, I-53 and I-54. All three were traced on 2026-09-18 — see the two
+entries below. Tracing I-44 is what revealed it had never been fixed at all.
+
+Verified: all 62 ids appear exactly once, no id was lost against the previous revision, every id
+cited in `input/cql/` (I-18, I-26, I-28, I-33, I-37, I-55, I-61 — all open) still resolves, and no
+`…` truncation remains apart from the deliberate `convert…to days` operator elision in I-57.
+
+**Measures Affected:** none — documentation only. No CQL, FHIR resource, valueset or modelinfo
+file was touched.
+
+## Commit the missing CMS871 "Hypoglycemics Treatment Medications" valueset (I-44)
+
+**Problem:** I-44 was recorded as `Fixed` — "committed the external valueset source file" — but
+the file had never been committed. `input/cql/CMS871FHIRHHHyper.cql:26` declares
+`2.16.840.1.113762.1.4.1196.394`, and `input/vocabulary/valueset/external/` held the sibling
+`...1196.393` but nothing for `.394`; no commit on any branch ever touched that path. The engine
+was erroring on it at every run:
+
+```text
+Unable to locate ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1196.394
+```
+
+`Encounter with Hypoglycemic Medication` evaluated `[]` for every patient in the trace, and 3
+test cases (`7507debb`, `35719b1a`, `fd579f44`) produced Missing Results across all 5 populations
+— 15 of CMS871's 20 failing cells. The remaining 5 belong to a separate, newly-catalogued error
+(I-63).
+
+**Fix:** committed
+`input/vocabulary/valueset/external/ValueSet-2.16.840.1.113762.1.4.1196.394-20250227.json`,
+copied from the IG Publisher terminology cache at
+`input-cache/txcache/vs-4d4e1cfc-8e1d-45e5-ae0e-f62f71192e14.json` with exactly one change — `id`
+normalised from `2.16.840.1.113762.1.4.1196.394` to `2.16.840.1.113762.1.4.1196.394-20250227`, to
+match the `<oid>-<version>` convention every other committed file uses. All other fields verbatim.
+
+**Example:**
+
+```text
+before: (no file)
+after:  ValueSet-2.16.840.1.113762.1.4.1196.394-20250227.json
+        version 20250227, status active, expansion.total = contains = 238
+```
+
+**AMA CPT licensing check — passed.** A valueset containing CPT codes must never be committed
+with more than 1000 expanded entries; this is an AMA licensing restriction, not a tooling limit.
+All 238 codes here are RxNorm (`http://www.nlm.nih.gov/research/umls/rxnorm`) with zero CPT, and
+238 is under 1000 regardless. Audited for context: 179 committed valuesets contain CPT, none
+exceeds 1000 expanded codes (largest 596). This is the same constraint that scoped I-03's repair
+to *non-CPT* valuesets.
+
+No `expansion.parameter` block was synthesised. The cached resource has none, while committed
+files typically carry `count: 1000 / offset: 0`; that block is ordinary VSAC `$expand` response
+metadata, not the marker of I-03's defect (whose real signature is `contains < total`). Here
+`contains == total == 238`, so the expansion is complete.
+
+**Regression guard:** added `scripts/tests/test_valueset_licensing.py`, which asserts (a) no
+valueset under `input/vocabulary/valueset/external/` containing CPT codes exceeds 1000 expanded
+entries, and (b) `2.16.840.1.113762.1.4.1196.394` is present with a complete, CPT-free expansion.
+Test (b) would have caught I-44's phantom "Fixed" status. Full suite: 37 passing.
+
+**Verified 2026-09-18.** The CQL language server's `CQL_DEBUG_MCP_WORKSPACE` was first corrected
+(it still pointed at the pre-repo-split `_repo/dqm-content-cms-2025`, which no longer exists),
+then the CMS871 suite was re-run from the VS Code extension and the harness re-run
+(`extract_population_actual.py`, `compare_results.py`):
+
+- **CMS871 went from 20 failing cells to 10.** Cases `7507debb` and `35719b1a` now pass
+  outright — their `errors` arrays are empty where they previously held
+  `Unable to locate ValueSet …1196.394`.
+- **Exactly one measure moved.** A per-measure diff of `output_results.csv` before and after
+  shows CMS871 `20 -> 10` and no change anywhere else, as expected since only
+  `CMS871FHIRHHHyper.cql` references this oid. Suite total: 3,817 -> **3,819** of 3,964 test
+  cases passing (96.29% -> 96.34%).
+
+**The fix also unmasked a second defect.** Case `fd579f44` did *not* recover. It had reported
+only the ValueSet error because that error aborted the library before evaluation reached the
+interval expression; with the valueset resolving, it now reports
+`Invalid Interval - the ending boundary (0) must be greater than or equal to the starting
+boundary (1).` — the same error as `98533ccd`. I-63 therefore covers 2 cases and 10 cells, not
+the 1 case and 5 cells originally catalogued, and the earlier estimate that this fix would
+recover 15 cells was wrong: it recovers 10. A hard terminology error masks everything downstream
+of it, so per-case attribution taken while one is live will understate the other defects present.
+
+**Reconfirmed 2026-09-18 from a full clean re-run.** All `input/tests/results/` content
+(including the `.txt` engine traces, which had gone stale mid-verification above) was deleted and
+every measure re-run from scratch, then the harness re-run again. CMS871 still shows exactly the
+same 10 failing cells (`98533ccd`, `fd579f44`, both on I-63), and the suite-wide total is
+byte-identical: 3,819 / 3,964 passing, 374 failing cells across all measures, with zero other
+measures changed versus the prior partial re-run. `.txt` traces no longer exist in this repo's
+results at all — only the per-case `TestCaseResult-*.json` files, which is what
+`extract_population_actual.py` already preferred, so the earlier staleness caveat no longer
+applies.
+
+**Measures Affected:** CMS871
+
+## Trace I-53 / I-54 to their upstream commit (no new content change)
+
+**Problem:** I-53 (`.toInterval()` on choice-typed `.effective`/`.performed`) and I-54
+(`.onset.toInterval()` used where `.prevalenceInterval()` was meant) were both recorded as
+`Fixed` with no entry in this log, so neither traced to a change.
+
+**Fix:** no new change — both trace to upstream commit `6cccf5ce`, authored by Bryn Rhodes,
+"Updated incorrect translation of prevalenceInterval to onset.toInterval throughout".
+`git log -S'.toInterval'` over `CMS72FHIRSTKAntithromboticDay2.cql` and
+`CMS646FHIRIntravesicalBCGTherapy.cql` returns only that commit and `355d04f5` ("Refactored all
+dqms"). Note `6cccf5ce` touches 24+ libraries — considerably wider than I-54's 16 tracked sites —
+so the catalog's site count understates its reach. Logged here for traceability only.
+
+**Measures Affected:** none newly changed; `6cccf5ce` itself spans 24+ measure libraries.
+
+## Convert raw `authoredOn` before `union` in CMS986's Hospice/Dietitian Referral defines
+
+**Problem:** `"Intervention Hospice Care"` and `"Intervention Dietitian Referral"` each `union` a
+`ServiceRequest` branch that `return`s a raw `FHIR.dateTime` (`...authoredOn`, no conversion) with
+a `Procedure` branch that already `return`s a converted `System.DateTime`
+(`start of ...performed.toInterval()`). The translator resolves the resulting list as
+`Choice<FHIR.dateTime, System.DateTime>` and its overly-permissive choice-compatibility check
+skips the registered `FHIRHelpers.ToDateTime` conversion, so the consuming `with ... such that X
+during day of QualifyingEncounter.hospitalizationWithObservation()` join silently evaluates to
+`null` instead of `true` whenever the raw-typed branch is selected — this is the translator defect
+`root_cause_status: open` originally identified on CMS108/CMS190 (issue I-61); CMS986 is the first
+bare-value (non-tuple) trigger shape for the same mechanism.
+
+**Fix:** added an explicit `.ToDateTime()` fluent call to both raw `authoredOn` branches, matching
+I-61's established workaround style, with a "do not remove as redundant" warning comment (I-61's
+own investigation had this stripped once and had to restore it).
+
+**Example:**
+
+```cql
+// before
+return HospiceStatusOrder.authoredOn
+
+// after
+return HospiceStatusOrder.authoredOn.ToDateTime()  // I-61: do not remove as "redundant" — raw FHIR.dateTime unioned with an already-converted System.DateTime branch silently nulls in "during"/"such that" without this
+```
+
+The identical change was applied to `"Intervention Dietitian Referral"`'s
+`DietitianReferralOrder.authoredOn`.
+
+**Verified 2026-09-18** via `mcp__mcp-cql-debug__cql_execute` against fixture
+`a4f53b12-e0e3-4faf-8e66-6ce8193a6477`: `"Intervention Hospice Care"` now resolves to
+`[2026-02-04T00:00:00.000+00:00]` (plain `System.DateTime`, no more raw-type tag) and
+`"Encounters with Hospice during Eligible Encounter"` to `[Encounter(id=f23b0d3c-...)]`, feeding
+`"Measure Population Exclusion"` correctly. Confirmed against the harness after re-running the
+measure: all six `Measure Population Exclusion` group cells for that case now **PASS**. Suite
+total: 3,819 -> **3,820** of 3,964 test cases passing (96.34% -> 96.37%).
+
+**Measures Affected:** CMS986
