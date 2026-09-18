@@ -19607,8 +19607,8 @@ CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:In
 CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Denominator,0
 CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Denominator Exclusion,0
 CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Numerator,0
-CMS816FHIRHHHypo,05c8cd12-addd-4b94-8f92-da093c556a84,Group_1:Initial Population,0
-CMS816FHIRHHHypo,05c8cd12-addd-4b94-8f92-da093c556a84,Group_1:Denominator,0
+CMS816FHIRHHHypo,05c8cd12-addd-4b94-8f92-da093c556a84,Group_1:Initial Population,1
+CMS816FHIRHHHypo,05c8cd12-addd-4b94-8f92-da093c556a84,Group_1:Denominator,1
 CMS816FHIRHHHypo,05c8cd12-addd-4b94-8f92-da093c556a84,Group_1:Numerator,0
 CMS816FHIRHHHypo,1a89fbca-df20-4f17-97d0-9fa5990860b2,Group_1:Initial Population,1
 CMS816FHIRHHHypo,1a89fbca-df20-4f17-97d0-9fa5990860b2,Group_1:Denominator,1
@@ -19616,21 +19616,21 @@ CMS816FHIRHHHypo,1a89fbca-df20-4f17-97d0-9fa5990860b2,Group_1:Numerator,0
 CMS816FHIRHHHypo,1d298cf0-aa38-4943-ba4c-f7209cf59e63,Group_1:Initial Population,1
 CMS816FHIRHHHypo,1d298cf0-aa38-4943-ba4c-f7209cf59e63,Group_1:Denominator,1
 CMS816FHIRHHHypo,1d298cf0-aa38-4943-ba4c-f7209cf59e63,Group_1:Numerator,1
-CMS816FHIRHHHypo,1d2bb25a-21a7-4529-9486-a320d4864719,Group_1:Initial Population,0
-CMS816FHIRHHHypo,1d2bb25a-21a7-4529-9486-a320d4864719,Group_1:Denominator,0
+CMS816FHIRHHHypo,1d2bb25a-21a7-4529-9486-a320d4864719,Group_1:Initial Population,1
+CMS816FHIRHHHypo,1d2bb25a-21a7-4529-9486-a320d4864719,Group_1:Denominator,1
 CMS816FHIRHHHypo,1d2bb25a-21a7-4529-9486-a320d4864719,Group_1:Numerator,0
-CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Initial Population,0
-CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Denominator,0
-CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Numerator,0
-CMS816FHIRHHHypo,304052f7-e416-4da4-87ae-488e6589cab3,Group_1:Initial Population,0
-CMS816FHIRHHHypo,304052f7-e416-4da4-87ae-488e6589cab3,Group_1:Denominator,0
+CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Initial Population,1
+CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Denominator,1
+CMS816FHIRHHHypo,2adf5469-46a1-4020-be3b-01f91f8acc9d,Group_1:Numerator,1
+CMS816FHIRHHHypo,304052f7-e416-4da4-87ae-488e6589cab3,Group_1:Initial Population,1
+CMS816FHIRHHHypo,304052f7-e416-4da4-87ae-488e6589cab3,Group_1:Denominator,1
 CMS816FHIRHHHypo,304052f7-e416-4da4-87ae-488e6589cab3,Group_1:Numerator,0
-CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Initial Population,0
-CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Denominator,0
-CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Numerator,0
-CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Initial Population,0
-CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Denominator,0
-CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Numerator,0
+CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Initial Population,1
+CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Denominator,1
+CMS816FHIRHHHypo,339a989b-722c-4452-9d25-454e2d53eea8,Group_1:Numerator,1
+CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Initial Population,1
+CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Denominator,1
+CMS816FHIRHHHypo,37fd9c7e-bf9e-4769-b448-094ed97bd3e8,Group_1:Numerator,1
 CMS816FHIRHHHypo,3fdd92df-f418-45ef-93a6-920e3d813f32,Group_1:Initial Population,2
 CMS816FHIRHHHypo,3fdd92df-f418-45ef-93a6-920e3d813f32,Group_1:Denominator,2
 CMS816FHIRHHHypo,3fdd92df-f418-45ef-93a6-920e3d813f32,Group_1:Numerator,1
@@ -19649,14 +19649,14 @@ CMS816FHIRHHHypo,480245d6-3ce8-4944-b6c8-339cf2f69acb,Group_1:Numerator,0
 CMS816FHIRHHHypo,5570227b-f288-4a0c-9df5-807d2afa241a,Group_1:Initial Population,0
 CMS816FHIRHHHypo,5570227b-f288-4a0c-9df5-807d2afa241a,Group_1:Denominator,0
 CMS816FHIRHHHypo,5570227b-f288-4a0c-9df5-807d2afa241a,Group_1:Numerator,0
-CMS816FHIRHHHypo,5bfa3b7e-2b6f-4eb5-b09b-7c6f1145780b,Group_1:Initial Population,0
-CMS816FHIRHHHypo,5bfa3b7e-2b6f-4eb5-b09b-7c6f1145780b,Group_1:Denominator,0
+CMS816FHIRHHHypo,5bfa3b7e-2b6f-4eb5-b09b-7c6f1145780b,Group_1:Initial Population,1
+CMS816FHIRHHHypo,5bfa3b7e-2b6f-4eb5-b09b-7c6f1145780b,Group_1:Denominator,1
 CMS816FHIRHHHypo,5bfa3b7e-2b6f-4eb5-b09b-7c6f1145780b,Group_1:Numerator,0
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Initial Population,0
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Denominator,0
 CMS816FHIRHHHypo,61a026c6-be9e-4a0f-b495-8ea421edfe39,Group_1:Numerator,0
-CMS816FHIRHHHypo,6bc18290-1925-4239-81d7-0118bd062225,Group_1:Initial Population,0
-CMS816FHIRHHHypo,6bc18290-1925-4239-81d7-0118bd062225,Group_1:Denominator,0
+CMS816FHIRHHHypo,6bc18290-1925-4239-81d7-0118bd062225,Group_1:Initial Population,1
+CMS816FHIRHHHypo,6bc18290-1925-4239-81d7-0118bd062225,Group_1:Denominator,1
 CMS816FHIRHHHypo,6bc18290-1925-4239-81d7-0118bd062225,Group_1:Numerator,0
 CMS816FHIRHHHypo,7cb05de4-6b74-4ce5-a2ea-be59635a74f6,Group_1:Initial Population,1
 CMS816FHIRHHHypo,7cb05de4-6b74-4ce5-a2ea-be59635a74f6,Group_1:Denominator,1
@@ -19664,17 +19664,17 @@ CMS816FHIRHHHypo,7cb05de4-6b74-4ce5-a2ea-be59635a74f6,Group_1:Numerator,1
 CMS816FHIRHHHypo,7df60531-857d-45bc-ad5b-31b5462f3f54,Group_1:Initial Population,1
 CMS816FHIRHHHypo,7df60531-857d-45bc-ad5b-31b5462f3f54,Group_1:Denominator,1
 CMS816FHIRHHHypo,7df60531-857d-45bc-ad5b-31b5462f3f54,Group_1:Numerator,0
-CMS816FHIRHHHypo,8301c6c8-e50c-4457-add0-1ebd909c8ca7,Group_1:Initial Population,0
-CMS816FHIRHHHypo,8301c6c8-e50c-4457-add0-1ebd909c8ca7,Group_1:Denominator,0
+CMS816FHIRHHHypo,8301c6c8-e50c-4457-add0-1ebd909c8ca7,Group_1:Initial Population,1
+CMS816FHIRHHHypo,8301c6c8-e50c-4457-add0-1ebd909c8ca7,Group_1:Denominator,1
 CMS816FHIRHHHypo,8301c6c8-e50c-4457-add0-1ebd909c8ca7,Group_1:Numerator,0
 CMS816FHIRHHHypo,8eca4ab8-49f0-45e4-b1ee-dc34e54dd430,Group_1:Initial Population,1
 CMS816FHIRHHHypo,8eca4ab8-49f0-45e4-b1ee-dc34e54dd430,Group_1:Denominator,1
 CMS816FHIRHHHypo,8eca4ab8-49f0-45e4-b1ee-dc34e54dd430,Group_1:Numerator,1
-CMS816FHIRHHHypo,974284eb-fc89-452a-9b38-a884c0e0477e,Group_1:Initial Population,0
-CMS816FHIRHHHypo,974284eb-fc89-452a-9b38-a884c0e0477e,Group_1:Denominator,0
+CMS816FHIRHHHypo,974284eb-fc89-452a-9b38-a884c0e0477e,Group_1:Initial Population,1
+CMS816FHIRHHHypo,974284eb-fc89-452a-9b38-a884c0e0477e,Group_1:Denominator,1
 CMS816FHIRHHHypo,974284eb-fc89-452a-9b38-a884c0e0477e,Group_1:Numerator,0
-CMS816FHIRHHHypo,aa5f21cc-2d56-4749-a190-2828d579f790,Group_1:Initial Population,0
-CMS816FHIRHHHypo,aa5f21cc-2d56-4749-a190-2828d579f790,Group_1:Denominator,0
+CMS816FHIRHHHypo,aa5f21cc-2d56-4749-a190-2828d579f790,Group_1:Initial Population,1
+CMS816FHIRHHHypo,aa5f21cc-2d56-4749-a190-2828d579f790,Group_1:Denominator,1
 CMS816FHIRHHHypo,aa5f21cc-2d56-4749-a190-2828d579f790,Group_1:Numerator,0
 CMS816FHIRHHHypo,cf9c230a-adc0-4830-bf04-fed4ab5ff6c8,Group_1:Initial Population,0
 CMS816FHIRHHHypo,cf9c230a-adc0-4830-bf04-fed4ab5ff6c8,Group_1:Denominator,0
@@ -19685,8 +19685,8 @@ CMS816FHIRHHHypo,d26ca5cd-9415-4c14-8a0b-947747c29ec2,Group_1:Numerator,0
 CMS816FHIRHHHypo,e360ffc2-5b98-425a-a2bd-b051ba5ec506,Group_1:Initial Population,1
 CMS816FHIRHHHypo,e360ffc2-5b98-425a-a2bd-b051ba5ec506,Group_1:Denominator,1
 CMS816FHIRHHHypo,e360ffc2-5b98-425a-a2bd-b051ba5ec506,Group_1:Numerator,0
-CMS816FHIRHHHypo,ecde4132-9028-420a-aa7c-d1d14e5c1ab0,Group_1:Initial Population,0
-CMS816FHIRHHHypo,ecde4132-9028-420a-aa7c-d1d14e5c1ab0,Group_1:Denominator,0
+CMS816FHIRHHHypo,ecde4132-9028-420a-aa7c-d1d14e5c1ab0,Group_1:Initial Population,1
+CMS816FHIRHHHypo,ecde4132-9028-420a-aa7c-d1d14e5c1ab0,Group_1:Denominator,1
 CMS816FHIRHHHypo,ecde4132-9028-420a-aa7c-d1d14e5c1ab0,Group_1:Numerator,0
 CMS816FHIRHHHypo,f58dcdc6-cce9-4b49-b657-7e1e2593e428,Group_1:Initial Population,3
 CMS816FHIRHHHypo,f58dcdc6-cce9-4b49-b657-7e1e2593e428,Group_1:Denominator,3

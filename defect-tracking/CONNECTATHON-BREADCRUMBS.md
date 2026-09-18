@@ -69,6 +69,25 @@ and update/remove entries once the Connectathon resolves them one way or the oth
   the define returns a literal `false` — so no retrieve happens and I-36 cannot be the mechanism.
   `cases.csv` attribution moved I-36 → I-60.
 
+## Methodology note: fixtures missing patient-reference fields (repo-wide sweep not yet done)
+
+- **I-07 (fixed for CMS816, 2026-09-18)**: 17 of 28 CMS816 fixture Encounter resources (19 files)
+  omitted `subject` entirely. Under `context Patient`, an Encounter with no `subject` is silently
+  filtered out of every `[Encounter: "..."]` retrieve regardless of type/status/period — same
+  mechanism as `Task.for` (I-46), just never checked for on Encounter/Observation/
+  MedicationAdministration until now. Fixed by extending `scripts/validate_test_fixtures.py`'s
+  `REQUIRED_PATIENT_FIELDS` and running `--fix-required-fields --apply`. Full writeup:
+  `known-issues.md`'s "Broken or typo'd patient reference" section, `change-log.md`.
+- **Judgment call for the Connectathon / next pass**: the enhanced validator has only been run
+  against CMS816 (fixed) and CMS986 (spot-checked clean, 0 findings) so far — **no repo-wide
+  sweep has been performed**. Since the same silent-drop mechanism applies to any measure whose
+  CQL retrieves Encounter, Observation, or MedicationAdministration under `context Patient`,
+  other measures' fixtures may carry the same undetected defect, misfiled under a different (or
+  no) issue. Recommended next step: `python scripts/validate_test_fixtures.py
+  --fix-required-fields` (dry-run, no `--apply`) across the full fixture tree, then triage
+  per-measure before applying — a repo-wide `--apply` without review risks silently
+  reclassifying/fixing cases currently (correctly or incorrectly) attributed elsewhere.
+
 ## Unaudited (flagged, not yet investigated)
 
 - **CMS771FHIRUrinarySymptomScoreBPH**, **CMS177FHIRChildMDDSuicideAssmt**: no negation-profile

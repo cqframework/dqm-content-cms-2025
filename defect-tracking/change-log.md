@@ -612,3 +612,64 @@ measure: all six `Measure Population Exclusion` group cells for that case now **
 total: 3,819 -> **3,820** of 3,964 test cases passing (96.34% -> 96.37%).
 
 **Measures Affected:** CMS986
+
+## Fix CMS816 fixture Encounters missing `subject`; extend the fixture validator's required-field check beyond Task
+
+**Problem:** CMS816 had 12 failing test cases on Initial Population/Denominator (2 also
+Numerator), originally filed as I-07 with `content` category and root cause "fixture MR hand-
+authors expected values that don't reproduce with the fixture Resources." Direct CQL execution
+against test case `05c8cd12-addd-4b94-8f92-da093c556a84` showed the actual cause was narrower:
+`["Encounter": "Encounter Inpatient"]` (`input/cql/CMS816FHIRHHHypo.cql:66-70`) returned an empty
+list *before* any `where` filter (age/period/status) even applied. The fixture's Encounter
+resource had no `subject` element at all — under `context Patient`, a resource with no reference
+to the patient is invisible to the retrieve regardless of how correctly its type/status/period
+are authored, the same mechanism already known for `Task.for` (I-46), just never checked for on
+Encounter/Observation/MedicationAdministration. Every other piece of fixture data (Patient age,
+Encounter type/status/period, MedicationAdministration timing) was correctly authored.
+
+Extending the check confirmed this was uniform across all 12 originally-failing cases (control
+check against 3 passing cases, whose Encounters all had `subject` set correctly), and **wider
+than originally filed**: 17 unique patients / 19 Encounter resources were missing `subject` — 5
+more than the 12 in I-07 (`423a396b-...`, `480245d6-...`, `5570227b-...`, `61a026c6-...`,
+`cf9c230a-...`), which hadn't produced a visible mismatch because their expected population value
+happened to be `0` regardless.
+
+**Fix:** extended `scripts/validate_test_fixtures.py`'s `REQUIRED_PATIENT_FIELDS` presence check
+to also cover `Encounter`, `MedicationAdministration`, and `Observation` `subject` (previously
+only `Task.for`), adding one dedicated fixer function per resource type
+(`apply_encounter_subject_fix`, `apply_medicationadministration_subject_fix`,
+`apply_observation_subject_fix`) rather than a single generic one, so the script stays readable.
+Renamed the CLI flag from `--fix-task-for` to `--fix-required-fields` to reflect the broader
+scope. Ran `--measure CMS816FHIRHHHypo --fix-required-fields --apply`, which injected
+`subject: {"reference": "Patient/<folder guid>"}` into all 19 affected Encounter files.
+**Verified 2026-09-18**: CMS816FHIRHHHypo now passes all 28 test cases (84/84 population cells).
+I-07 moved to `known-issues.md`'s "Resolved — reference patterns" (`content` → `fixture`).
+
+**Not done — known divergence:** the enhanced validator has only been run against
+CMS816FHIRHHHypo. A repo-wide `--fix-required-fields` sweep has not been performed, so other
+measures' fixtures may carry the same missing-`subject` defect undetected — see
+`CONNECTATHON-BREADCRUMBS.md`. (A spot-check against CMS986FHIRMalnutritionScore on 2026-09-18
+came back clean — 0 findings — so this is not universal.)
+
+**Example** (`input/tests/measure/CMS816FHIRHHHypo/05c8cd12-.../Encounter-bddf3a47-...json`):
+
+```json
+-- before
+{
+  "resourceType": "Encounter",
+  "status": "finished",
+  "class": { "code": "IMP", ... },
+  ...
+}
+
+-- after
+{
+  "resourceType": "Encounter",
+  "status": "finished",
+  "subject": { "reference": "Patient/05c8cd12-addd-4b94-8f92-da093c556a84" },
+  "class": { "code": "IMP", ... },
+  ...
+}
+```
+
+**Measures Affected:** CMS816

@@ -66,6 +66,39 @@ Support module for the above. It does two things that exist to stop the report i
 - **Canonicalises population names.** The expected CSV takes names from the fixture MeasureReport's `code.coding[0].display`, while the engine emits its own spelling. CMS986's "Measure Population Observation" and "Measure Observation" are the same cell under two names; without canonicalisation those rows could never match and every one would read as a failure.
 - **Excludes CQFM measure-observation populations from scoring.** CMS1017, CMS871 and CMS986 wire a `measure-observation` to a parameterized CQL function that is meant to be invoked once per member of another population and then aggregated (`cqfm-criteriaReference` + `cqfm-aggregateMethod`). This workflow has no way to perform that computation, so those cells are listed in their own report section instead of being scored — see `defect-tracking/known-issues.md`, I-62. Every other population on those three measures is scored normally.
 
+### `validate_test_fixtures.py`
+
+Sanity-checks the per-measure test case fixtures under `input/tests/measure/` for
+internal-reference consistency — the kind of data-authoring bug that produces a silent zero
+population instead of an error, and so is easy to misdiagnose as a CQL or engine defect (see
+I-07 below).
+
+- **Patient-reference mismatches.** Each test case is scoped to one patient (`context Patient`);
+  a resource whose `subject` / `patient` / `beneficiary` / `Task.for` (etc.) points at a
+  *different* or non-existent patient is invisible to the measure logic. Auto-discovers every
+  such field across a folder's resources and classifies each mismatch.
+- **Missing required fields.** Some resource types (`Task.for`, `Encounter.subject`,
+  `MedicationAdministration.subject`, `Observation.subject`) need that reference present at all
+  for `context Patient` retrieval to work — not just correct. A resource missing it entirely is
+  flagged as `MISSING-REQUIRED-FIELD`.
+- **This is exactly what was needed to fix CMS816** (I-07, see `defect-tracking/change-log.md`):
+  17 of its 28 fixture Encounter resources had no `subject` at all, so the engine silently
+  dropped them from every retrieve no matter how correctly their type/status/period were
+  authored — 12 cases failed visibly, 5 more carried the same defect without a visible symptom.
+  `python3 scripts/validate_test_fixtures.py --measure CMS816FHIRHHHypo --fix-required-fields
+  --apply` found and fixed all 19 affected files.
+
+```sh
+python3 scripts/validate_test_fixtures.py                                    # report only
+python3 scripts/validate_test_fixtures.py --measure CMS104                   # one measure
+python3 scripts/validate_test_fixtures.py --json                             # machine output
+python3 scripts/validate_test_fixtures.py --fix --apply                      # rewrite CORE fields
+python3 scripts/validate_test_fixtures.py --fix-required-fields --apply      # inject missing for/subject
+```
+
+No `--apply` run ever commits anything — review with `git diff` first. See the script's own
+docstring for the full field taxonomy and the `--fix-profile-ns` migration mode.
+
 ## Reproducing Results Without Running CQL
 
 To quickly reproduce the comparison results without running the CQL plugin:
@@ -82,6 +115,7 @@ python3 scripts/compare_results.py
 
 ## Unit Tests
 
-- Unit tests are provided for the two modules with logic worth pinning
+- Unit tests are provided for the modules with logic worth pinning
   - run them from the root directory: `python3 -m pytest`
   - or individually, e.g. `python3 -m pytest scripts/tests/test_populations.py`
+  - or `python3 -m pytest scripts/tests/test_validate_test_fixtures.py`

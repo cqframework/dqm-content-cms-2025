@@ -50,14 +50,13 @@ Do not promote anything to `Fixed` without confirming the fix is actually
 present in the repo and that the engine agrees — I-44 sat at `Fixed` for weeks
 while the valueset it needed had never been committed.
 
-## Open issues (43)
+## Open issues (42)
 
 | ID | Issue | Class | Status | Measures |
 |---|---|---|---|---|
 | I-01 | QI-Core baseline disagrees with fixture MeasureReports on 670 cases / 26 measures; CMS engine matches, baseline is fresh | `baseline` | Open — confirmed | 26 measures |
 | I-04 | CMS986 malnutrition Measure-Observation component rows | `content` | Open — confirmed | CMS986 |
 | I-05 | CMS1017 fall-prevention HHFI Denominator/Numerator/Measure-Observation rows | `content` | Open — confirmed | CMS1017 |
-| I-07 | CMS816 HH Hypoglycemia fixture MR/Denominator authoring mismatch | `content` | Open — confirmed | CMS816 |
 | I-08 | CMS871 HH Hyperglycemia fixture MR/Denominator authoring mismatch. **Needs re-confirmation (2026-09-18):** after the I-44 fix CMS871 has 10 failing cells, all `MISSING` and all attributable to I-63; no currently-failing cell matches this authoring-mismatch symptom | `content` | Open — needs re-confirmation | CMS871 |
 | I-10 | CMS819 HH Opioid-Related Adverse Events fixture MR authoring mismatch | `content` | Open — confirmed | CMS819 |
 | I-11 | CMS159 Depression Remission fixture MR authoring mismatch | `content` | Open — confirmed | CMS159 |
@@ -139,6 +138,24 @@ resource simply never attaches to the patient.
 - **I-46** `fixture` — 229 files' `subject` / `patient` / `beneficiary` pointed
   at the wrong Patient GUID, plus a `null-null.json` (CMS871) and a
   misnamed CMS1264 Claim. Repaired by `scripts/validate_test_fixtures.py`.
+- **I-07** `fixture` — CMS816's 12 failing Initial Population/Denominator cases
+  (2 also Numerator) were originally filed as a `content` "fixture MR hand-
+  authors expected values that don't reproduce" mismatch. The real cause was
+  narrower and mechanical: 17 of CMS816's 28 fixture `Encounter` resources
+  (19 files) had **no `subject` element at all**, so `context Patient` scoping
+  silently dropped them from `["Encounter": "Encounter Inpatient"]` regardless
+  of how correctly type/status/period were authored — confirmed by direct CQL
+  execution (`["Encounter": "Encounter Inpatient"]` returned empty *before* any
+  `where` filter applied) and by a control check (every failing case's
+  Encounter lacked `subject`; every passing case's had it). 5 of the 17
+  patients hadn't produced a visible mismatch (expected value was `0`
+  regardless), so the defect was wider than the 12 originally filed. Fixed by
+  extending `scripts/validate_test_fixtures.py`'s required-field presence
+  check from `Task.for` only to also cover `Encounter` / `MedicationAdministration`
+  / `Observation` `subject` (`--fix-required-fields --apply`), which injected
+  `subject: {"reference": "Patient/<folder guid>"}` into all 19 files.
+  **Verified 2026-09-18**: CMS816FHIRHHHypo now passes all 28 test cases
+  (84/84 population cells). See `change-log.md`.
 - **I-51** `fixture` — CMS347 `1d3021bb` carried
   `Patient/1d3021bb-b593-4efc-af5b-3  20243bbe9b7` (two stray spaces splitting
   the GUID) on Encounter `9d311cdd` (CPT `99385`) and FACIT-Pal Observation
