@@ -33,9 +33,10 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define "Non Elective Inpatient Encounter With Age":
+  // ["Encounter"] NonElectiveEncounter
   ["Encounter": "Nonelective Inpatient Encounter"] NonElectiveEncounter
-        where AgeInYearsAt(date from start of NonElectiveEncounter.period ) >= 18
-         and NonElectiveEncounter.period ends during day of "Measurement Period"
+    where AgeInYearsAt(date from start of NonElectiveEncounter.period ) >= 18
+      and NonElectiveEncounter.period ends during day of "Measurement Period"
 
 define "Ischemic Stroke Encounter":
   "Non Elective Inpatient Encounter With Age" NonElectiveEncounterWithAge

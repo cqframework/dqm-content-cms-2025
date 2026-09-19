@@ -25,8 +25,8 @@
   "encounter": {
     "reference": "Encounter/3971c0fb-b076-4f67-96a5-e4416948f8f0"
   },
-  "effectiveDateTime": "2025-01-06T10:00:00.000Z",
-  "issued": "2025-01-06T10:00:00.000Z",
+  "effectiveDateTime": "2026-01-06T10:00:00.000Z",
+  "issued": "2026-01-06T10:00:00.000Z",
   "valueCodeableConcept": {
     "coding": [ {
       "system": "http://snomed.info/sct",

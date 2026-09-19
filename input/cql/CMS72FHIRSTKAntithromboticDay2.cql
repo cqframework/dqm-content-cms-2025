@@ -128,7 +128,8 @@ define "Reason For Not Administering Antithrombotic":
     )
     return {
       id: MedicationAdm.id,
-      authoredOn: MedicationAdm.effective
+      // original: authoredOn: MedicationAdm.effective
+      authoredOn: MedicationAdm.recorded()
     }
 
 define "Reason For Not Ordering Antithrombotic":

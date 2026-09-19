@@ -2,7 +2,7 @@
   "resourceType": "Observation",
   "id": "3d47a98b-7d46-4cec-b760-9d60e867159e",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-observation-screening-assessment" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-observation-screening-assessment" ]
   },
   "status": "amended",
   "category": [ {

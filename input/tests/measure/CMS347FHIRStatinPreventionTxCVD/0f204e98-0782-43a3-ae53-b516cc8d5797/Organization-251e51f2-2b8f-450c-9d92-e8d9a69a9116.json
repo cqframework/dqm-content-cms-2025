@@ -2,7 +2,7 @@
   "resourceType": "Organization",
   "id": "251e51f2-2b8f-450c-9d92-e8d9a69a9116",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-organization" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-organization" ]
   },
   "identifier": [ {
     "use": "temp",

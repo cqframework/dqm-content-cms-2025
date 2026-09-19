@@ -102,171 +102,65 @@ define "Denominator Exclusions":
 
 define "Cataract Surgeries in Patients with Significant Ocular Conditions Impacting the Visual Outcome of Surgery":
   "Cataract Surgery Between January and September of Measurement Period" CataractSurgeryPerformed
-    with ( ( ["ConditionProblemsHealthConcerns": "Acute and Subacute Iridocyclitis"]
-        union ["ConditionEncounterDiagnosis": "Acute and Subacute Iridocyclitis"]
-    )
-      union ( ["ConditionProblemsHealthConcerns": "Amblyopia"]
-          union ["ConditionEncounterDiagnosis": "Amblyopia"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Burn Confined to Eye and Adnexa"]
-          union ["ConditionEncounterDiagnosis": "Burn Confined to Eye and Adnexa"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Cataract Secondary to Ocular Disorders"]
-          union ["ConditionEncounterDiagnosis": "Cataract Secondary to Ocular Disorders"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Cataract Congenital"]
-          union ["ConditionEncounterDiagnosis": "Cataract Congenital"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Cataract Mature or Hypermature"]
-          union ["ConditionEncounterDiagnosis": "Cataract Mature or Hypermature"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Cataract Posterior Polar"]
-          union ["ConditionEncounterDiagnosis": "Cataract Posterior Polar"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Central Corneal Ulcer"]
-          union ["ConditionEncounterDiagnosis": "Central Corneal Ulcer"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Certain Types of Iridocyclitis"]
-          union ["ConditionEncounterDiagnosis": "Certain Types of Iridocyclitis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Choroidal Degenerations"]
-          union ["ConditionEncounterDiagnosis": "Choroidal Degenerations"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Choroidal Detachment"]
-          union ["ConditionEncounterDiagnosis": "Choroidal Detachment"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Choroidal Hemorrhage and Rupture"]
-          union ["ConditionEncounterDiagnosis": "Choroidal Hemorrhage and Rupture"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Chronic Iridocyclitis"]
-          union ["ConditionEncounterDiagnosis": "Chronic Iridocyclitis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Cloudy Cornea"]
-          union ["ConditionEncounterDiagnosis": "Cloudy Cornea"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Corneal Edema"]
-          union ["ConditionEncounterDiagnosis": "Corneal Edema"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Disorders of Cornea Including Corneal Opacity"]
-          union ["ConditionEncounterDiagnosis": "Disorders of Cornea Including Corneal Opacity"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Degeneration of Macula and Posterior Pole"]
-          union ["ConditionEncounterDiagnosis": "Degeneration of Macula and Posterior Pole"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Degenerative Disorders of Globe"]
-          union ["ConditionEncounterDiagnosis": "Degenerative Disorders of Globe"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Diabetic Macular Edema"]
-          union ["ConditionEncounterDiagnosis": "Diabetic Macular Edema"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Diabetic Retinopathy"]
-          union ["ConditionEncounterDiagnosis": "Diabetic Retinopathy"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Disorders of Optic Chiasm"]
-          union ["ConditionEncounterDiagnosis": "Disorders of Optic Chiasm"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Disorders of Visual Cortex"]
-          union ["ConditionEncounterDiagnosis": "Disorders of Visual Cortex"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Disseminated Chorioretinitis and Disseminated Retinochoroiditis"]
-          union ["ConditionEncounterDiagnosis": "Disseminated Chorioretinitis and Disseminated Retinochoroiditis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Focal Chorioretinitis and Focal Retinochoroiditis"]
-          union ["ConditionEncounterDiagnosis": "Focal Chorioretinitis and Focal Retinochoroiditis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Glaucoma"]
-          union ["ConditionEncounterDiagnosis": "Glaucoma"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Glaucoma Associated with Congenital Anomalies and Dystrophies and Systemic Syndromes"]
-          union ["ConditionEncounterDiagnosis": "Glaucoma Associated with Congenital Anomalies and Dystrophies and Systemic Syndromes"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Hereditary Choroidal Dystrophies"]
-          union ["ConditionEncounterDiagnosis": "Hereditary Choroidal Dystrophies"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Hereditary Corneal Dystrophies"]
-          union ["ConditionEncounterDiagnosis": "Hereditary Corneal Dystrophies"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Hereditary Retinal Dystrophies"]
-          union ["ConditionEncounterDiagnosis": "Hereditary Retinal Dystrophies"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Hypotony of Eye"]
-          union ["ConditionEncounterDiagnosis": "Hypotony of Eye"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Injury to Optic Nerve and Pathways"]
-          union ["ConditionEncounterDiagnosis": "Injury to Optic Nerve and Pathways"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Macular Scar of Posterior Polar"]
-          union ["ConditionEncounterDiagnosis": "Macular Scar of Posterior Polar"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Morgagnian Cataract"]
-          union ["ConditionEncounterDiagnosis": "Morgagnian Cataract"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Nystagmus and Other Irregular Eye Movements"]
-          union ["ConditionEncounterDiagnosis": "Nystagmus and Other Irregular Eye Movements"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Open Wound of Eyeball"]
-          union ["ConditionEncounterDiagnosis": "Open Wound of Eyeball"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Optic Atrophy"]
-          union ["ConditionEncounterDiagnosis": "Optic Atrophy"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Optic Neuritis"]
-          union ["ConditionEncounterDiagnosis": "Optic Neuritis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Other and Unspecified Forms of Chorioretinitis and Retinochoroiditis"]
-          union ["ConditionEncounterDiagnosis": "Other and Unspecified Forms of Chorioretinitis and Retinochoroiditis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Other Background Retinopathy and Retinal Vascular Changes"]
-          union ["ConditionEncounterDiagnosis": "Other Background Retinopathy and Retinal Vascular Changes"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Other Disorders of Optic Nerve"]
-          union ["ConditionEncounterDiagnosis": "Other Disorders of Optic Nerve"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Other Endophthalmitis"]
-          union ["ConditionEncounterDiagnosis": "Other Endophthalmitis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Other Proliferative Retinopathy"]
-          union ["ConditionEncounterDiagnosis": "Other Proliferative Retinopathy"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Pathologic Myopia"]
-          union ["ConditionEncounterDiagnosis": "Pathologic Myopia"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Posterior Lenticonus"]
-          union ["ConditionEncounterDiagnosis": "Posterior Lenticonus"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Prior Penetrating Keratoplasty"]
-          union ["ConditionEncounterDiagnosis": "Prior Penetrating Keratoplasty"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Purulent Endophthalmitis"]
-          union ["ConditionEncounterDiagnosis": "Purulent Endophthalmitis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Retinal Detachment with Retinal Defect"]
-          union ["ConditionEncounterDiagnosis": "Retinal Detachment with Retinal Defect"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Retinal Vascular Occlusion"]
-          union ["ConditionEncounterDiagnosis": "Retinal Vascular Occlusion"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Retrolental Fibroplasias"]
-          union ["ConditionEncounterDiagnosis": "Retrolental Fibroplasias"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Scleritis"]
-          union ["ConditionEncounterDiagnosis": "Scleritis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Separation of Retinal Layers"]
-          union ["ConditionEncounterDiagnosis": "Separation of Retinal Layers"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Traumatic Cataract"]
-          union ["ConditionEncounterDiagnosis": "Traumatic Cataract"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Uveitis"]
-          union ["ConditionEncounterDiagnosis": "Uveitis"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Vascular Disorders of Iris and Ciliary Body"]
-          union ["ConditionEncounterDiagnosis": "Vascular Disorders of Iris and Ciliary Body"]
-      )
-      union ( ["ConditionProblemsHealthConcerns": "Visual Field Defects"]
-          union ["ConditionEncounterDiagnosis": "Visual Field Defects"]
-      ) ) ComorbidDiagnosis
+    with (
+      // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+      // Original: 55 x ( ["ConditionProblemsHealthConcerns": X] union ["ConditionEncounterDiagnosis": X] ) pairs — replaced with base FHIR.Condition retrieves
+      [FHIR.Condition: "Acute and Subacute Iridocyclitis"]
+        union [FHIR.Condition: "Amblyopia"]
+        union [FHIR.Condition: "Burn Confined to Eye and Adnexa"]
+        union [FHIR.Condition: "Cataract Secondary to Ocular Disorders"]
+        union [FHIR.Condition: "Cataract Congenital"]
+        union [FHIR.Condition: "Cataract Mature or Hypermature"]
+        union [FHIR.Condition: "Cataract Posterior Polar"]
+        union [FHIR.Condition: "Central Corneal Ulcer"]
+        union [FHIR.Condition: "Certain Types of Iridocyclitis"]
+        union [FHIR.Condition: "Choroidal Degenerations"]
+        union [FHIR.Condition: "Choroidal Detachment"]
+        union [FHIR.Condition: "Choroidal Hemorrhage and Rupture"]
+        union [FHIR.Condition: "Chronic Iridocyclitis"]
+        union [FHIR.Condition: "Cloudy Cornea"]
+        union [FHIR.Condition: "Corneal Edema"]
+        union [FHIR.Condition: "Disorders of Cornea Including Corneal Opacity"]
+        union [FHIR.Condition: "Degeneration of Macula and Posterior Pole"]
+        union [FHIR.Condition: "Degenerative Disorders of Globe"]
+        union [FHIR.Condition: "Diabetic Macular Edema"]
+        union [FHIR.Condition: "Diabetic Retinopathy"]
+        union [FHIR.Condition: "Disorders of Optic Chiasm"]
+        union [FHIR.Condition: "Disorders of Visual Cortex"]
+        union [FHIR.Condition: "Disseminated Chorioretinitis and Disseminated Retinochoroiditis"]
+        union [FHIR.Condition: "Focal Chorioretinitis and Focal Retinochoroiditis"]
+        union [FHIR.Condition: "Glaucoma"]
+        union [FHIR.Condition: "Glaucoma Associated with Congenital Anomalies and Dystrophies and Systemic Syndromes"]
+        union [FHIR.Condition: "Hereditary Choroidal Dystrophies"]
+        union [FHIR.Condition: "Hereditary Corneal Dystrophies"]
+        union [FHIR.Condition: "Hereditary Retinal Dystrophies"]
+        union [FHIR.Condition: "Hypotony of Eye"]
+        union [FHIR.Condition: "Injury to Optic Nerve and Pathways"]
+        union [FHIR.Condition: "Macular Scar of Posterior Polar"]
+        union [FHIR.Condition: "Morgagnian Cataract"]
+        union [FHIR.Condition: "Nystagmus and Other Irregular Eye Movements"]
+        union [FHIR.Condition: "Open Wound of Eyeball"]
+        union [FHIR.Condition: "Optic Atrophy"]
+        union [FHIR.Condition: "Optic Neuritis"]
+        union [FHIR.Condition: "Other and Unspecified Forms of Chorioretinitis and Retinochoroiditis"]
+        union [FHIR.Condition: "Other Background Retinopathy and Retinal Vascular Changes"]
+        union [FHIR.Condition: "Other Disorders of Optic Nerve"]
+        union [FHIR.Condition: "Other Endophthalmitis"]
+        union [FHIR.Condition: "Other Proliferative Retinopathy"]
+        union [FHIR.Condition: "Pathologic Myopia"]
+        union [FHIR.Condition: "Posterior Lenticonus"]
+        union [FHIR.Condition: "Prior Penetrating Keratoplasty"]
+        union [FHIR.Condition: "Purulent Endophthalmitis"]
+        union [FHIR.Condition: "Retinal Detachment with Retinal Defect"]
+        union [FHIR.Condition: "Retinal Vascular Occlusion"]
+        union [FHIR.Condition: "Retrolental Fibroplasias"]
+        union [FHIR.Condition: "Scleritis"]
+        union [FHIR.Condition: "Separation of Retinal Layers"]
+        union [FHIR.Condition: "Traumatic Cataract"]
+        union [FHIR.Condition: "Uveitis"]
+        union [FHIR.Condition: "Vascular Disorders of Iris and Ciliary Body"]
+        union [FHIR.Condition: "Visual Field Defects"]
+    ) ComorbidDiagnosis
       such that ComorbidDiagnosis.prevalenceInterval ( ) overlaps before day of CataractSurgeryPerformed.performed.toInterval ( )
         and ComorbidDiagnosis.isVerified ( )
 

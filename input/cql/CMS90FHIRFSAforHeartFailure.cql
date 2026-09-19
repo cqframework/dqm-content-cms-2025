@@ -74,9 +74,12 @@ define "SDE Sex":
 
 define "Initial Population":
   AgeInYearsAt(date from start of "Measurement Period") >= 18
-    and exists ( ( ( [ConditionProblemsHealthConcerns: "Heart Failure"]
-          union [ConditionEncounterDiagnosis: "Heart Failure"]
-      ).verified ( ) ) HeartFailure
+    and exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      //   ( ( [ConditionProblemsHealthConcerns: "Heart Failure"]
+      //       union [ConditionEncounterDiagnosis: "Heart Failure"]
+      //   ).verified ( ) )
+      ( ( [FHIR.Condition: "Heart Failure"] ).verified ( ) ) HeartFailure
         where HeartFailure.prevalenceInterval ( ) overlaps before day of "Measurement Period"
     )
     and exists ( "Outpatient Encounters with at least one subsequent Outpatient Encounter during Measurement Period" )
@@ -86,9 +89,12 @@ define "Denominator":
 
 define "Denominator Exclusions":
   Hospice."Has Hospice Services"
-    or exists ( ( ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
-          union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"]
-      ).verified ( ) ) SevereCognitiveImpairment
+    or exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      //   ( ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
+      //       union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"]
+      //   ).verified ( ) )
+      ( ( [FHIR.Condition: "Severe cognitive impairment (finding)"] ).verified ( ) ) SevereCognitiveImpairment
         where SevereCognitiveImpairment.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 

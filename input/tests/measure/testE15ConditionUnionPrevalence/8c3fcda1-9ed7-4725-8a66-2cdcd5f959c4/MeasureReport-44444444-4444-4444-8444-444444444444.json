@@ -1,0 +1,64 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "44444444-4444-4444-8444-444444444444",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Parameters",
+    "id": "8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4-parameters",
+    "parameter": [ {
+      "name": "subject",
+      "valueString": "8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4"
+    }, {
+      "name": "Measurement Period",
+      "valuePeriod": {
+        "start": "2026-01-01",
+        "end": "2026-12-31"
+      }
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters",
+    "valueReference": {
+      "reference": "#8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4-parameters"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+    "valueMarkdown": "E-15 unit test: one Patient carrying BOTH a ConditionProblemsHealthConcerns and a ConditionEncounterDiagnosis for SNOMED 72892002 (Pregnancy). FAILING defines reproduce the translator error; PASSING defines should evaluate to true."
+  } ],
+  "modifierExtension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+    "valueBoolean": true
+  } ],
+  "status": "complete",
+  "type": "individual",
+  "measure": "https://madie.cms.gov/Measure/testE15ConditionUnionPrevalence",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "group": [ {
+    "id": "Group_1",
+    "population": [ {
+      "id": "PASSING_Verified",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "count": 1
+    } ]
+  } ],
+  "evaluatedResource": [ {
+    "reference": "Patient/8c3fcda1-9ed7-4725-8a66-2cdcd5f959c4"
+  }, {
+    "reference": "Condition/11111111-1111-4111-8111-111111111111"
+  }, {
+    "reference": "Condition/22222222-2222-4222-8222-222222222222"
+  }, {
+    "reference": "Encounter/33333333-3333-4333-8333-333333333333"
+  } ]
+}

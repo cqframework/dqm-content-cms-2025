@@ -116,7 +116,7 @@ define "Androgen Deprivation Therapy for Urology Care Medication Active Start Da
     firstMedicationEvent: First((ADTActive.dosageInstruction.timing dosageTiming
         //returns first event for the specific dosageTiming
         
-        return First(dosageTiming.event dosageTimingEvents
+        return First(dosageTiming.event.value dosageTimingEvents
             sort ascending
         )) firstEvents
         sort ascending
@@ -149,8 +149,12 @@ define "Has Qualifying Encounter":
   )
 
 define "Prostate Cancer Diagnosis":
-  ( [ConditionProblemsHealthConcerns: "Prostate Cancer"]
-    union [ConditionEncounterDiagnosis: "Prostate Cancer"] ) ProstateCancer
+  (
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    //   ( [ConditionProblemsHealthConcerns: "Prostate Cancer"]
+    //     union [ConditionEncounterDiagnosis: "Prostate Cancer"] )
+    [FHIR.Condition: "Prostate Cancer"] ) ProstateCancer
     where ProstateCancer.prevalenceInterval ( ) overlaps day of "Measurement Period"
       and ProstateCancer.isVerified ( )
 

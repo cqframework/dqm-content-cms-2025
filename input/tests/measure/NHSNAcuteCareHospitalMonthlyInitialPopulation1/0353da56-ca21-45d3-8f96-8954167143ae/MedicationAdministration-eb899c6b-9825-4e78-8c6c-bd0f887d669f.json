@@ -40,8 +40,8 @@
     "reference": "Observation/obs-5aaa924c"
   } ],
   "effectivePeriod": {
-    "start": "2025-01-10T16:00:00.000Z",
-    "end": "2025-01-10T16:10:00.000Z"
+    "start": "2026-01-10T16:00:00.000Z",
+    "end": "2026-01-10T16:10:00.000Z"
   },
   "performer": [ {
     "function": {
@@ -73,7 +73,7 @@
   } ],
   "note": [ {
     "authorString": "Nurse Admin",
-    "time": "2025-01-10T16:00:00.000Z",
+    "time": "2026-01-10T16:00:00.000Z",
     "text": "Patient tolerated medication well"
   } ],
   "dosage": {

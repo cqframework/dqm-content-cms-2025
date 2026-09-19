@@ -2,7 +2,7 @@
   "resourceType": "AllergyIntolerance",
   "id": "480b3cf3-c40f-491a-a691-295caf79cb2e",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-allergyintolerance" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-allergyintolerance" ]
   },
   "clinicalStatus": {
     "coding": [ {

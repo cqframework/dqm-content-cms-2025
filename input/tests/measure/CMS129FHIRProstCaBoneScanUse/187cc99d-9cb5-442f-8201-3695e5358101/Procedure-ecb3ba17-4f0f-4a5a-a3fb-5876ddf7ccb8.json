@@ -2,10 +2,10 @@
   "resourceType": "Procedure",
   "id": "ecb3ba17-4f0f-4a5a-a3fb-5876ddf7ccb8",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-procedure" ]
   },
   "extension": [ {
-    "url": "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-recorded",
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded",
     "valueDateTime": "2024-02-01T09:00:00.000+00:00"
   } ],
   "status": "completed",

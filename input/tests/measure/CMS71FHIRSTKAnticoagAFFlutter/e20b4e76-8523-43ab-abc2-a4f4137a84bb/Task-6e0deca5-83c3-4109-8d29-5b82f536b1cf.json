@@ -2,25 +2,34 @@
   "resourceType": "Task",
   "id": "6e0deca5-83c3-4109-8d29-5b82f536b1cf",
   "meta": {
-    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected"
+    ]
   },
   "status": "rejected",
   "statusReason": {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "code": "183932001",
-      "userSelected": true
-    } ]
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183932001",
+        "userSelected": true
+      }
+    ]
   },
   "intent": "order",
   "code": {
-    "coding": [ {
-      "system": "http://hl7.org/fhir/CodeSystem/task-code",
-      "code": "fulfill"
-    } ]
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/CodeSystem/task-code",
+        "code": "fulfill"
+      }
+    ]
   },
   "focus": {
     "reference": "MedicationRequest/0d9325a0-5e3b-433e-a3b7-667a1a8c4582"
+  },
+  "for": {
+    "reference": "Patient/e20b4e76-8523-43ab-abc2-a4f4137a84bb"
   },
   "executionPeriod": {
     "start": "2026-11-20T07:16:00.000Z",

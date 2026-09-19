@@ -2,25 +2,34 @@
   "resourceType": "Task",
   "id": "8125f6c9-ed0b-45bb-bc9b-df20d6175b20",
   "meta": {
-    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-taskrejected"
+    ]
   },
   "status": "rejected",
   "statusReason": {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "code": "443390004",
-      "display": "Refusal of treatment by patient (situation)",
-      "userSelected": true
-    } ]
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "443390004",
+        "display": "Refusal of treatment by patient (situation)",
+        "userSelected": true
+      }
+    ]
   },
   "code": {
-    "coding": [ {
-      "system": "http://hl7.org/fhir/CodeSystem/task-code",
-      "code": "fulfill"
-    } ]
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/CodeSystem/task-code",
+        "code": "fulfill"
+      }
+    ]
   },
   "focus": {
     "reference": "MedicationRequest/79054de3-e5b9-4fb7-b015-ffcae89a56da"
+  },
+  "for": {
+    "reference": "Patient/182103c1-0a38-4d85-819c-148e4e105716"
   },
   "executionPeriod": {
     "start": "2026-11-01T09:00:00.000+00:00",

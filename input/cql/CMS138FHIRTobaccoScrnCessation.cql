@@ -124,9 +124,11 @@ define "Tobacco Cessation Counseling Given":
   ( ( ( [Procedure: "Tobacco Use Cessation Counseling"] ).isInterventionPerformed ( ) ) TobaccoCessationCounseling
       where TobaccoCessationCounseling.performed.toInterval ( ) during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
   )
-    union ( ( ( [ConditionProblemsHealthConcerns: "Tobacco abuse counseling"]
-          union [ConditionEncounterDiagnosis: "Tobacco abuse counseling"]
-      ).verified ( ) ) TobaccoCounseling
+    union ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Original:
+        //   [ConditionProblemsHealthConcerns: "Tobacco abuse counseling"]
+        //     union [ConditionEncounterDiagnosis: "Tobacco abuse counseling"]
+        ( ( [FHIR.Condition: "Tobacco abuse counseling"] ).verified ( ) ) TobaccoCounseling
         where TobaccoCounseling.prevalenceInterval ( ) starts during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
     )
 

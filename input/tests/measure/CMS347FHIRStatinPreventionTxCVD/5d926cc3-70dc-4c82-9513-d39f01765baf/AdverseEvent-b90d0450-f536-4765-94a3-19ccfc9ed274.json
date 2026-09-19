@@ -2,7 +2,7 @@
   "resourceType": "AdverseEvent",
   "id": "b90d0450-f536-4765-94a3-19ccfc9ed274",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-adverseevent" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-adverseevent" ]
   },
   "actuality": "actual",
   "event": {

@@ -57,10 +57,15 @@ define fluent function verified(conditions List<Choice<ConditionProblemsHealthCo
     )
 
 define "Has Advanced Illness or Limited Life Expectancy":
-  ( ( ["ConditionProblemsHealthConcerns": "Advanced Illness"]
-      union ["ConditionEncounterDiagnosis": "Advanced Illness"]
-      union ["ConditionProblemsHealthConcerns": "Limited Life Expectancy"]
-      union ["ConditionEncounterDiagnosis": "Limited Life Expectancy"]
+  // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Original:
+  //   ( ( ["ConditionProblemsHealthConcerns": "Advanced Illness"]
+  //       union ["ConditionEncounterDiagnosis": "Advanced Illness"]
+  //       union ["ConditionProblemsHealthConcerns": "Limited Life Expectancy"]
+  //       union ["ConditionEncounterDiagnosis": "Limited Life Expectancy"]
+  //   ).verified ( ) )
+  ( ( [FHIR.Condition: "Advanced Illness"]
+      union [FHIR.Condition: "Limited Life Expectancy"]
   ).verified ( ) ) AdvancedIllness
     where "AdvancedIllness".onset before day of end of "Measurement Period"
 
@@ -82,9 +87,12 @@ define "Has Pregnancy Observation During Measurement Period":
   )
 
 define "Has Pregnancy Diagnosis During Measurement Period":
-  ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
-      union [ConditionEncounterDiagnosis: "Pregnancy"]
-  ).verified ( ) ) PregnancyDx
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
+  //       union [ConditionEncounterDiagnosis: "Pregnancy"]
+  //   ).verified ( ) )
+  ( ( [FHIR.Condition: "Pregnancy"] ).verified ( ) ) PregnancyDx
     where PregnancyDx.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "Preventive Care Outpatient Visits During Measurement Period":
@@ -118,9 +126,12 @@ define "Patients Aged 35 to 70 with an Office Visit During the Measurement Perio
     and "Aged 35 to 70 at Start of Measurement Period" is true
 
 define "Prediabetes Diagnosis Overlaps 2 Year Look Back Period":
-  ( ( ["ConditionProblemsHealthConcerns": "Prediabetes (Borderline Diabetes)"]
-      union [ConditionEncounterDiagnosis: "Prediabetes (Borderline Diabetes)"]
-  ).verified ( ) ) PriorPrediabetes
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( ( ["ConditionProblemsHealthConcerns": "Prediabetes (Borderline Diabetes)"]
+  //       union ["ConditionEncounterDiagnosis": "Prediabetes (Borderline Diabetes)"]
+  //   ).verified ( ) )
+  ( ( [FHIR.Condition: "Prediabetes (Borderline Diabetes)"] ).verified ( ) ) PriorPrediabetes
     where "PriorPrediabetes".prevalenceInterval ( ) overlaps day of "Look Back Period"
 
 define "Denominator Exclusions":
@@ -132,9 +143,12 @@ define "Denominator Exclusions":
     or "Has Glycemic Laboratory Test Performed During 2 Year Look Back Period"
 
 define "Diabetes Diagnosis Overlaps 2 Year Look Back Period":
-  ( ( ["ConditionProblemsHealthConcerns": "Diabetes"]
-      union [ConditionEncounterDiagnosis: "Diabetes"]
-  ).verified ( ) ) PriorDiabetes
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( ( ["ConditionProblemsHealthConcerns": "Diabetes"]
+  //       union ["ConditionEncounterDiagnosis": "Diabetes"]
+  //   ).verified ( ) )
+  ( ( [FHIR.Condition: "Diabetes"] ).verified ( ) ) PriorDiabetes
     where "PriorDiabetes".prevalenceInterval ( ) overlaps day of "Look Back Period"
 
 define "Has Glycemic Laboratory Test Performed During 2 Year Look Back Period":

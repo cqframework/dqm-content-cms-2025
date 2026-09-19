@@ -145,9 +145,11 @@ define "Active Oral Anticoagulant Medication at the Start of ED Encounter":
 
 define "Active Long Term use of Anticoagulants":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI
-    with ( ( ["ConditionProblemsHealthConcerns": "Long term (current) use of anticoagulants"]
-        union ["ConditionEncounterDiagnosis": "Long term (current) use of anticoagulants"]
-    ).verified ( ) ) LongTermAnticoagulant
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    // with ( ( ["ConditionProblemsHealthConcerns": "Long term (current) use of anticoagulants"]
+    //     union ["ConditionEncounterDiagnosis": "Long term (current) use of anticoagulants"]
+    with ( ( [Condition: "Long term (current) use of anticoagulants"] ).verified ( ) ) LongTermAnticoagulant
       such that ( LongTermAnticoagulant.prevalenceInterval ( ) starts before or on start of EDwithSTEMI.period
           and LongTermAnticoagulant.prevalenceInterval ( ) ends on or after start of EDwithSTEMI.period
       )
@@ -189,8 +191,11 @@ define "ED Encounter During MP":
 define "ED Encounter with STEMI Diagnosis":
   "ED Encounter During MP" EDEncounterinMP
     where ( EDEncounterinMP.reasonCode in "STEMI"
-        or exists ( ( ( [ConditionProblemsHealthConcerns: "STEMI"]
-              union [ConditionEncounterDiagnosis: "STEMI"]
+        // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Original:
+        // or exists ( ( ( [ConditionProblemsHealthConcerns: "STEMI"]
+        //       union [ConditionEncounterDiagnosis: "STEMI"]
+        or exists ( ( ( [Condition: "STEMI"]
           ).verified ( ) ) DxSTEMI
             where ( EDEncounterinMP.encounterDiagnosis ( ).code in "STEMI"
                 or ( DxSTEMI.prevalenceInterval ( ) starts during EDEncounterinMP.period )
@@ -255,8 +260,11 @@ define "Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encount
 
 define "Received tPA in Another Facility within 24 hours Prior to Admission":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI
-    with ( ( ["ConditionProblemsHealthConcerns": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
-        union ["ConditionEncounterDiagnosis": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    // with ( ( ["ConditionProblemsHealthConcerns": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
+    //     union ["ConditionEncounterDiagnosis": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
+    with ( ( [Condition: "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
     ).verified ( ) ) TPA
       such that TPA.prevalenceInterval ( ) starts during EDwithSTEMI.period
 

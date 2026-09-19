@@ -2,7 +2,9 @@
   "resourceType": "Encounter",
   "id": "f5862e2e-31b2-4f7f-8a3e-f6a0d871abff",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter"
+    ]
   },
   "status": "finished",
   "class": {
@@ -10,17 +12,21 @@
     "code": "AMB",
     "display": "ambulatory"
   },
-  "type": [ {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "version": "http://snomed.info/sct/900000000000207008/version/20250201",
-      "code": "305284002",
-      "display": "Admission by palliative care physician (procedure)",
-      "userSelected": true
-    } ]
-  } ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/900000000000207008/version/20250201",
+          "code": "305284002",
+          "display": "Admission by palliative care physician (procedure)",
+          "userSelected": true
+        }
+      ]
+    }
+  ],
   "subject": {
-    "reference": "Patient/86bacb29-41c3-4ea8-8e4b-3e13c075e557"
+    "reference": "Patient/537d14db-6ced-4cd2-9553-e88bd6551771"
   },
   "period": {
     "start": "2026-12-31T08:00:00.000+00:00"

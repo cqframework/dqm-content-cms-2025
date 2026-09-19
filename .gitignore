@@ -12,3 +12,9 @@
 __pycache__
 script_env
 *__MACOSX
+.cql-debug
+
+# validate_test_fixtures.py's report output (out/); regenerated per run
+/out/
+scripts/comparison/fixture_validation_report-*.md
+

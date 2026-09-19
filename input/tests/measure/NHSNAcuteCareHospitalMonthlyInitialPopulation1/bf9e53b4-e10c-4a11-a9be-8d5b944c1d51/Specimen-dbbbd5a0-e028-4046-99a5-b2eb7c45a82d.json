@@ -14,8 +14,8 @@
   "subject": {
     "reference": "Patient/bf9e53b4-e10c-4a11-a9be-8d5b944c1d51"
   },
-  "receivedTime": "2025-01-06T14:00:00.000Z",
+  "receivedTime": "2026-01-06T14:00:00.000Z",
   "collection": {
-    "collectedDateTime": "2025-01-06T14:00:00.000Z"
+    "collectedDateTime": "2026-01-06T14:00:00.000Z"
   }
 }

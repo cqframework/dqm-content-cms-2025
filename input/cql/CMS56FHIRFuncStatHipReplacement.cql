@@ -112,14 +112,21 @@ define "Denominator Exclusions":
     or "Death Within 300 Days of the THA Procedure"
 
 define "Has Severe Cognitive Impairment":
-  exists ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
-    union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"] ) Dementia
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
+  //     union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"] ) Dementia
+  //     where Dementia.prevalenceInterval ( ) overlaps day of "Measurement Period"
+  exists ( [FHIR.Condition: "Severe cognitive impairment (finding)"] ) Dementia
     where Dementia.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "Has Total Hip Arthroplasty with 1 or More Lower Body Fractures":
   exists ( "Total Hip Arthroplasty Procedure" THAProcedure
-      with ( [ConditionEncounterDiagnosis: "Lower Body Fractures Excluding Ankle and Foot"]
-        union [ConditionProblemsHealthConcerns: "Lower Body Fractures Excluding Ankle and Foot"] ) LowerBodyFracture
+      with ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Original:
+        //   ( [ConditionEncounterDiagnosis: "Lower Body Fractures Excluding Ankle and Foot"]
+        //     union [ConditionProblemsHealthConcerns: "Lower Body Fractures Excluding Ankle and Foot"] )
+        [FHIR.Condition: "Lower Body Fractures Excluding Ankle and Foot"] ) LowerBodyFracture
         such that LowerBodyFracture.prevalenceInterval ( ) starts 48 hours or less on or before start of THAProcedure.performed.toInterval ( )
           and LowerBodyFracture.isVerified ( )
   )
@@ -137,16 +144,22 @@ define "Has Revision Hip Arthroplasty Procedure or Implanted Device or Prosthesi
   )
 
 define "Has Malignant Neoplasm of Lower and Unspecified Limbs":
-  exists ( ( [ConditionProblemsHealthConcerns: "Malignant Neoplasms of Lower and Unspecified Limbs"]
-      union [ConditionEncounterDiagnosis: "Malignant Neoplasms of Lower and Unspecified Limbs"] ) MalignantNeoplasm
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ( [ConditionProblemsHealthConcerns: "Malignant Neoplasms of Lower and Unspecified Limbs"]
+  //       union [ConditionEncounterDiagnosis: "Malignant Neoplasms of Lower and Unspecified Limbs"] ) MalignantNeoplasm
+  exists ( ( [FHIR.Condition: "Malignant Neoplasms of Lower and Unspecified Limbs"] ) MalignantNeoplasm
       with "Total Hip Arthroplasty Procedure" THAProcedure
         such that MalignantNeoplasm.prevalenceInterval ( ) overlaps day of THAProcedure.performed.toInterval ( )
           and MalignantNeoplasm.isVerified ( )
   )
 
 define "Has Mechanical Complication":
-  exists ( ( [ConditionEncounterDiagnosis: "Mechanical Complications Excluding Upper Body"]
-      union [ConditionProblemsHealthConcerns: "Mechanical Complications Excluding Upper Body"] ) MechanicalComplications
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ( [ConditionEncounterDiagnosis: "Mechanical Complications Excluding Upper Body"]
+  //       union [ConditionProblemsHealthConcerns: "Mechanical Complications Excluding Upper Body"] ) MechanicalComplications
+  exists ( ( [FHIR.Condition: "Mechanical Complications Excluding Upper Body"] ) MechanicalComplications
       with "Total Hip Arthroplasty Procedure" THAProcedure
         such that MechanicalComplications.prevalenceInterval ( ) overlaps day of THAProcedure.performed.toInterval ( )
           and MechanicalComplications.isVerified ( )

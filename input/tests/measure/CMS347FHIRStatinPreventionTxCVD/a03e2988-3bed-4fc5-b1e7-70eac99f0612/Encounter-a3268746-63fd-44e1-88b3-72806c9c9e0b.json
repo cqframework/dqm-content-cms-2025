@@ -2,7 +2,9 @@
   "resourceType": "Encounter",
   "id": "a3268746-63fd-44e1-88b3-72806c9c9e0b",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter"
+    ]
   },
   "status": "finished",
   "class": {
@@ -10,17 +12,21 @@
     "code": "AMB",
     "display": "ambulatory"
   },
-  "type": [ {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "version": "http://snomed.info/sct/900000000000207008/version/20250201",
-      "code": "185463005",
-      "display": "Visit out of hours (procedure)",
-      "userSelected": true
-    } ]
-  } ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/900000000000207008/version/20250201",
+          "code": "185463005",
+          "display": "Visit out of hours (procedure)",
+          "userSelected": true
+        }
+      ]
+    }
+  ],
   "subject": {
-    "reference": "Patient/d9d151d1-9bd3-40ce-a2c1-cb8a985328fc"
+    "reference": "Patient/a03e2988-3bed-4fc5-b1e7-70eac99f0612"
   },
   "period": {
     "start": "2026-01-01T08:00:00.000+00:00",

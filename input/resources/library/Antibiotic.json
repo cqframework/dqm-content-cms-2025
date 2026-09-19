@@ -5,6 +5,12 @@
     "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary", "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library" ]
   },
   "language": "en",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem",
+    "valueReference": {
+      "reference": "Device/cqf-tooling"
+    }
+  } ],
   "url": "https://madie.cms.gov/Library/Antibiotic",
   "version": "2.1.000",
   "name": "Antibiotic",
@@ -26,6 +32,8 @@
     "text": "CQL"
   } ],
   "content": [ {
-    "id": "ig-loader-Antibiotic.cql"
+    "contentType": "text/cql",
+    "data": "LyoKTk9URTogRm9yIHVzZSBieSBNYXJjaCAyMDI2IFVTIFJlYWxtIENvbm5lY3RhdGhvbiBwYXJ0aWNpcGFudHMgZm9yIGludGVybmFsIHVzZSBvbmx5LiBOb3QgZm9yIHVzZSBvciBkaXN0cmlidXRpb24gaW4gY29tbWVyY2lhbCBwcm9kdWN0cy4KKi8KbGlicmFyeSBBbnRpYmlvdGljIHZlcnNpb24gJzIuMS4wMDAnCgp1c2luZyBVU1F1YWxpdHlDb3JlIHZlcnNpb24gJzAuMS4wLWNpYnVpbGQnCnVzaW5nIFVTQ29yZSB2ZXJzaW9uICc2LjEuMC1kZXJpdmVkJwp1c2luZyBGSElSIHZlcnNpb24gJzQuMC4xJwoKaW5jbHVkZSBobDcuZmhpci51di5jcWwuRkhJUkhlbHBlcnMgdmVyc2lvbiAnNC4wLjEnIGNhbGxlZCBGSElSSGVscGVycwppbmNsdWRlIGhsNy5maGlyLnV2LmNxbC5GSElSQ29tbW9uIHZlcnNpb24gJzIuMC4wJyBjYWxsZWQgRkhJUkNvbW1vbgppbmNsdWRlIGhsNy5maGlyLnVzLmNxbC5DdW11bGF0aXZlTWVkaWNhdGlvbkR1cmF0aW9uIHZlcnNpb24gJzIuMC4wLWJhbGxvdCcgY2FsbGVkIENNRAppbmNsdWRlIGhsNy5maGlyLnVzLmNxbC5VU0NvcmVDb21tb24gdmVyc2lvbiAnMi4wLjAtYmFsbG90JyBjYWxsZWQgVVNDb3JlQ29tbW9uCmluY2x1ZGUgaGw3LmZoaXIudXMuY3FsLlVTQ29yZUVsZW1lbnRzIHZlcnNpb24gJzIuMC4wLWJhbGxvdCcgY2FsbGVkIFVTQ29yZUVsZW1lbnRzCgppbmNsdWRlIFVTUXVhbGl0eUNvcmVDb21tb24gdmVyc2lvbiAnMC4xLjAtY2lidWlsZCcgY2FsbGVkIFVTUXVhbGl0eUNvcmVDb21tb24KCnBhcmFtZXRlciAiTWVhc3VyZW1lbnQgUGVyaW9kIiBJbnRlcnZhbDxEYXRlVGltZT4KICBkZWZhdWx0IEludGVydmFsW0AyMDI2LTAxLTAxVDAwOjAwOjAwLjAwMFosIEAyMDI3LTAxLTAxVDAwOjAwOjAwLjAwMFopCgpjb250ZXh0IFBhdGllbnQKCmRlZmluZSBmdW5jdGlvbiAiRW5jb3VudGVyIHdpdGggQ29tb3JiaWQgQ29uZGl0aW9uIEhpc3RvcnkiKGVwaXNvZGVzIExpc3Q8RW5jb3VudGVyPiwgY29tb3JiaWRDb25kaXRpb25zIExpc3Q8Q29uZGl0aW9uPik6CiAgZXBpc29kZXMgZXBpc29kZQogICAgICB3aXRoIGNvbW9yYmlkQ29uZGl0aW9ucyBjb21jb25kaXRpb24KICAgICAgICBzdWNoIHRoYXQgZGF0ZSBmcm9tIHN0YXJ0IG9mIGNvbWNvbmRpdGlvbi5wcmV2YWxlbmNlSW50ZXJ2YWwoKSBkdXJpbmcgSW50ZXJ2YWxbZGF0ZSBmcm9tIHN0YXJ0IG9mIGVwaXNvZGUucGVyaW9kIC0gMSB5ZWFyLCBkYXRlIGZyb20gc3RhcnQgb2YgZXBpc29kZS5wZXJpb2RdCiAgICAgIHJldHVybiBlcGlzb2RlCgpkZWZpbmUgZnVuY3Rpb24gIkVuY291bnRlciB3aXRoIENvbXBldGluZyBEaWFnbm9zaXMgSGlzdG9yeSIoZXBpc29kZXMgTGlzdDxFbmNvdW50ZXI+LCBjb21wZXRpbmdDb25kaXRpb25zIExpc3Q8Q29uZGl0aW9uPik6CiAgZXBpc29kZXMgZXBpc29kZQogICAgICB3aXRoIGNvbXBldGluZ0NvbmRpdGlvbnMgY29tcGV0Y29uZGl0aW9uCiAgICAgICAgc3VjaCB0aGF0IGNvbXBldGNvbmRpdGlvbi5wcmV2YWxlbmNlSW50ZXJ2YWwoKSBzdGFydHMgMyBkYXlzIG9yIGxlc3Mgb24gb3IgYWZ0ZXIgZGF5IG9mIHN0YXJ0IG9mIGVwaXNvZGUucGVyaW9kCiAgICAgIHJldHVybiBlcGlzb2RlCgpkZWZpbmUgZnVuY3Rpb24gIkVuY291bnRlciB3aXRoIEFudGliaW90aWMgTWVkaWNhdGlvbiBIaXN0b3J5IihlcGlzb2RlcyBMaXN0PEVuY291bnRlcj4sIGFudGliaW90aWNNZWRpY2F0aW9ucyBMaXN0PE1lZGljYXRpb25SZXF1ZXN0Pik6CiAgIGVwaXNvZGVzIGVwaXNvZGUKICAgIHdpdGggYW50aWJpb3RpY01lZGljYXRpb25zIEFjdGl2ZU1lZGljYXRpb24KICAgICAgc3VjaCB0aGF0IEFjdGl2ZU1lZGljYXRpb24ubWVkaWNhdGlvblJlcXVlc3RQZXJpb2QoKSBvdmVybGFwcyBkYXkgb2YgSW50ZXJ2YWxbZGF0ZSBmcm9tIHN0YXJ0IG9mIGVwaXNvZGUucGVyaW9kICAtIDMwIGRheXMsIGRhdGUgZnJvbSBzdGFydCBvZiBlcGlzb2RlLnBlcmlvZCAtIDEgZGF5XQ==",
+    "url": "https://madie.cms.gov/Library-Antibiotic.cql"
   } ]
 }

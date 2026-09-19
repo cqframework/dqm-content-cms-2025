@@ -13,7 +13,6 @@ include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
 include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
 
 include CQMCommon version '5.1.000' called CQMCommon
-include USQualityCoreCommon version '0.1.0-cibuild' called USQualityCoreCommon
 include SupplementalDataElements version '6.1.000' called SDE
 include Status version '2.1.000' called Status
 
@@ -125,8 +124,11 @@ define "Morbid Obesity Diagnosis or BMI Exam Result Greater Than or Equal to 40 
     or "BMI Exam Result Greater Than or Equal To 40 During Measurement Period and On or Before Follow Up USS Assessment"
 
 define "Urinary Retention Diagnosis Starts Within 1 Year After Initial BPH Diagnosis":
-  ( [ConditionProblemsHealthConcerns: "Urinary Retention"]
-    union [ConditionEncounterDiagnosis: "Urinary Retention"] ) UrinaryRetention
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( [ConditionProblemsHealthConcerns: "Urinary Retention"]
+  //     union [ConditionEncounterDiagnosis: "Urinary Retention"] )
+  ( [FHIR.Condition: "Urinary Retention"] ) UrinaryRetention
     with "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period" InitialBPHDiagnosis
       such that UrinaryRetention.prevalenceInterval ( ) starts 1 year or less on or after day of start of InitialBPHDiagnosis.prevalenceInterval ( )
     where UrinaryRetention.verificationStatusIsNotInvalid ( )
@@ -152,16 +154,22 @@ define "Has Initial BPH Diagnosis Starts During or Within 30 Days After End of H
         and UrologyHospitalServices.status = 'finished'
 
 define "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period":
-  First(([ConditionProblemsHealthConcerns: "Benign prostatic hyperplasia with lower urinary tract symptoms"]
-      union [ConditionEncounterDiagnosis: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   First(([ConditionProblemsHealthConcerns: "Benign prostatic hyperplasia with lower urinary tract symptoms"]
+  //       union [ConditionEncounterDiagnosis: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
+  First(([FHIR.Condition: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
       where NewBPHDiagnosis.prevalenceInterval ( ) starts during Interval[start of "Measurement Period" - 6 months, start of "Measurement Period"]
         and NewBPHDiagnosis.verificationStatusIsNotInvalid ( )
       sort by start of onset.toInterval ( )
   )
 
 define "Morbid Obesity Diagnosis On or Before Follow Up USS Assessment":
-  ( [ConditionProblemsHealthConcerns: "Morbid Obesity"]
-    union [ConditionEncounterDiagnosis: "Morbid Obesity"] ) MorbidObesityDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   ( [ConditionProblemsHealthConcerns: "Morbid Obesity"]
+  //     union [ConditionEncounterDiagnosis: "Morbid Obesity"] )
+  ( [FHIR.Condition: "Morbid Obesity"] ) MorbidObesityDiagnosis
     with "Urinary Symptom Score 6 to 12 Months After Initial BPH Diagnosis" FollowUpUSSAssessment
       such that MorbidObesityDiagnosis.prevalenceInterval ( ) overlaps "Measurement Period"
         and MorbidObesityDiagnosis.prevalenceInterval ( ) starts on or before FollowUpUSSAssessment.effectiveDatetime
@@ -184,6 +192,13 @@ define "BMI Exam Result Greater Than or Equal To 40 During Measurement Period an
   )
 
 define fluent function verificationStatusIsNotInvalid(condition Choice<"ConditionEncounterDiagnosis", "ConditionProblemsHealthConcerns">):
+  condition.verificationStatus is null
+    or not ( condition.verificationStatus ~ Status."unconfirmed"
+        or condition.verificationStatus ~ Status."refuted"
+        or condition.verificationStatus ~ Status."entered-in-error"
+    )
+
+define fluent function verificationStatusIsNotInvalid(condition FHIR.Condition):
   condition.verificationStatus is null
     or not ( condition.verificationStatus ~ Status."unconfirmed"
         or condition.verificationStatus ~ Status."refuted"

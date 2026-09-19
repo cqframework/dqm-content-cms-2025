@@ -98,8 +98,11 @@ define "High BMI Interventions Ordered":
       union [ServiceRequest: "Referrals Where Weight Assessment May Occur"]
       union [MedicationRequest: "Medications for Above Normal BMI"] ) HighInterventionsOrdered
       where HighInterventionsOrdered.reasonCode in "Overweight or Obese"
-        or ( exists ( [ConditionProblemsHealthConcerns: "Overweight or Obese"]
-            union [ConditionEncounterDiagnosis: "Overweight or Obese"] ) OverweightObese
+        or ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+            // Original:
+            //   exists ( [ConditionProblemsHealthConcerns: "Overweight or Obese"]
+            //       union [ConditionEncounterDiagnosis: "Overweight or Obese"] ) OverweightObese
+            exists ( [FHIR.Condition: "Overweight or Obese"] ) OverweightObese
             where OverweightObese.prevalenceInterval ( ) starts before or on day of HighInterventionsOrdered.authoredOn
         )
   )
@@ -126,8 +129,11 @@ define "Low BMI Interventions Ordered":
       union [ServiceRequest: "Referrals Where Weight Assessment May Occur"]
       union [MedicationRequest: "Medications for Below Normal BMI"] ) LowInterventionsOrdered
       where LowInterventionsOrdered.reasonCode in "Underweight"
-        or ( exists ( [ConditionProblemsHealthConcerns: "Underweight"]
-            union [ConditionEncounterDiagnosis: "Underweight"] ) UnderweightDiagnosis
+        or ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+            // Original:
+            //   exists ( [ConditionProblemsHealthConcerns: "Underweight"]
+            //       union [ConditionEncounterDiagnosis: "Underweight"] ) UnderweightDiagnosis
+            exists ( [FHIR.Condition: "Underweight"] ) UnderweightDiagnosis
             where UnderweightDiagnosis.prevalenceInterval ( ) starts before or on day of LowInterventionsOrdered.authoredOn
               and LowInterventionsOrdered.authoredOn during day of "Measurement Period"
         )
@@ -170,8 +176,11 @@ define "Medical Reason For Not Documenting A Follow Up Plan For Low Or High BMI"
     )
 
 define "Is Pregnant During Measurement Period":
-  exists ( ( [ConditionProblemsHealthConcerns: "Pregnancy or Other Related Diagnoses"]
-      union [ConditionEncounterDiagnosis: "Pregnancy or Other Related Diagnoses"] ) PregnancyDiagnosis
+  exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      //   [ConditionProblemsHealthConcerns: "Pregnancy or Other Related Diagnoses"]
+      //     union [ConditionEncounterDiagnosis: "Pregnancy or Other Related Diagnoses"]
+      [FHIR.Condition: "Pregnancy or Other Related Diagnoses"] PregnancyDiagnosis
       where PregnancyDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
   )
     or exists ( [USCore.ObservationPregnancyStatusProfile] PregnantObservation

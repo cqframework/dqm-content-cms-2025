@@ -2,7 +2,7 @@
   "resourceType": "ServiceRequest",
   "id": "a5b9cb81-caff-471d-b1cf-916d4857e14b",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicerequest" ]
   },
   "status": "active",
   "intent": "order",

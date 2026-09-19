@@ -121,37 +121,47 @@ define "Denominator Exclusions":
     or "Has Intussusception"
 
 define "Has Severe Combined Immunodeficiency":
-  exists ( ( ( [ConditionEncounterDiagnosis: "Severe Combined Immunodeficiency"]
-        union [ConditionProblemsHealthConcerns: "Severe Combined Immunodeficiency"]
-    ).verified ( ) ) SevereImmuneDisorder
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Severe Combined Immunodeficiency"]
+  //     union [ConditionProblemsHealthConcerns: "Severe Combined Immunodeficiency"]
+  exists ( ( ( [FHIR.Condition: "Severe Combined Immunodeficiency"] ).verified ( ) ) SevereImmuneDisorder
       where date from start of SevereImmuneDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Immunodeficiency":
-  exists ( ( ( [ConditionEncounterDiagnosis: "Disorders of the Immune System"]
-        union [ConditionProblemsHealthConcerns: "Disorders of the Immune System"]
-    ).verified ( ) ) ImmuneDisorder
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Disorders of the Immune System"]
+  //     union [ConditionProblemsHealthConcerns: "Disorders of the Immune System"]
+  exists ( ( ( [FHIR.Condition: "Disorders of the Immune System"] ).verified ( ) ) ImmuneDisorder
       where date from start of ImmuneDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has HIV":
-  exists ( ( ( [ConditionEncounterDiagnosis: "HIV"]
-        union [ConditionProblemsHealthConcerns: "HIV"]
-    ).verified ( ) ) HIVDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "HIV"]
+  //     union [ConditionProblemsHealthConcerns: "HIV"]
+  exists ( ( ( [FHIR.Condition: "HIV"] ).verified ( ) ) HIVDiagnosis
       where date from start of HIVDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Lymphoreticular Cancer, Multiple Myeloma or Leukemia":
-  exists ( ( ( [ConditionEncounterDiagnosis: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
-        union [ConditionProblemsHealthConcerns: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
-    ).verified ( ) ) LymphaticMalignantNeoplasm
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
+  //     union [ConditionProblemsHealthConcerns: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
+  exists ( ( ( [FHIR.Condition: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"] ).verified ( ) ) LymphaticMalignantNeoplasm
       where date from start of LymphaticMalignantNeoplasm.prevalenceInterval ( ) during day of "First Two Years"
   )
 
 define "Has Intussusception":
-  exists ( ( ( [ConditionEncounterDiagnosis: "Intussusception"]
-        union [ConditionProblemsHealthConcerns: "Intussusception"]
-    ).verified ( ) ) IntussusceptionDisorder
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Intussusception"]
+  //     union [ConditionProblemsHealthConcerns: "Intussusception"]
+  exists ( ( ( [FHIR.Condition: "Intussusception"] ).verified ( ) ) IntussusceptionDisorder
       where date from start of IntussusceptionDisorder.prevalenceInterval ( ) during day of "First Two Years"
   )
 
@@ -227,10 +237,14 @@ define "Four DTaP Vaccinations":
     return all DTaPVaccination1
 
 define "DTaP Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylactic Reaction to DTaP Vaccine"]
-      union [ConditionProblemsHealthConcerns: "Anaphylactic Reaction to DTaP Vaccine"]
-      union [ConditionEncounterDiagnosis: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
-      union [ConditionProblemsHealthConcerns: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylactic Reaction to DTaP Vaccine"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylactic Reaction to DTaP Vaccine"]
+  //     union [ConditionEncounterDiagnosis: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
+  //     union [ConditionProblemsHealthConcerns: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
+  ( ( [FHIR.Condition: "Anaphylactic Reaction to DTaP Vaccine"]
+      union [FHIR.Condition: "Encephalitis Due to Diphtheria, Tetanus or Pertussis Vaccine"]
   ).verified ( ) ) DTaPConditions
     where date from start of DTaPConditions.prevalenceInterval ( ) during day of "First Two Years"
 
@@ -267,9 +281,11 @@ define "Three Polio Vaccinations":
 
 
 define "Polio Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
-  ).verified ( ) ) PolioConditions
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"] ).verified ( ) ) PolioConditions
     where date from start of PolioConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 //MMR
@@ -292,21 +308,27 @@ define "Measles Indicators":
     where date from start of MeaslesDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Mumps Indicators":
-  ( ( [ConditionEncounterDiagnosis: "Mumps"]
-      union [ConditionProblemsHealthConcerns: "Mumps"]
-  ).verified ( ) ) MumpsDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Mumps"]
+  //     union [ConditionProblemsHealthConcerns: "Mumps"]
+  ( ( [FHIR.Condition: "Mumps"] ).verified ( ) ) MumpsDiagnosis
     where date from start of MumpsDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Rubella Indicators":
-  ( ( [ConditionEncounterDiagnosis: "Rubella"]
-      union [ConditionProblemsHealthConcerns: "Rubella"]
-  ).verified ( ) ) RubellaDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Rubella"]
+  //     union [ConditionProblemsHealthConcerns: "Rubella"]
+  ( ( [FHIR.Condition: "Rubella"] ).verified ( ) ) RubellaDiagnosis
     where date from start of RubellaDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
 define "MMR Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
-  ).verified ( ) ) MMRConditions
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"] ).verified ( ) ) MMRConditions
     where date from start of MMRConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 //HiB
@@ -335,9 +357,11 @@ define "Has Appropriate Number of Hib Immunizations":
   )
 
 define "Hib Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
-  ).verified ( ) ) HibReaction
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"] ).verified ( ) ) HibReaction
     where date from start of HibReaction.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Hib 3 Dose Immunizations or Procedures":
@@ -368,10 +392,14 @@ define "Hib 4 Dose Immunizations or Procedures":
 
 
 define "Hepatitis B Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
-      union [ConditionEncounterDiagnosis: "Hepatitis B"]
-      union [ConditionProblemsHealthConcerns: "Hepatitis B"]
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
+  //     union [ConditionEncounterDiagnosis: "Hepatitis B"]
+  //     union [ConditionProblemsHealthConcerns: "Hepatitis B"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
+      union [FHIR.Condition: "Hepatitis B"]
   ).verified ( ) ) HepBConditions
     where date from start of HepBConditions.prevalenceInterval ( ) during day of "First Two Years"
 
@@ -423,10 +451,14 @@ define "One Chicken Pox Vaccination":
     )
 
 define "Varicella Zoster Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Varicella Zoster"]
-      union [ConditionProblemsHealthConcerns: "Varicella Zoster"]
-      union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Varicella Zoster"]
+  //     union [ConditionProblemsHealthConcerns: "Varicella Zoster"]
+  //     union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
+  ( ( [FHIR.Condition: "Varicella Zoster"]
+      union [FHIR.Condition: "Anaphylaxis caused by vaccine containing Human alphaherpesvirus 3 antigen (disorder)"]
   ).verified ( ) ) VaricellaZoster
     where date from start of VaricellaZoster.prevalenceInterval ( ) during day of "First Two Years"
 
@@ -455,9 +487,11 @@ define "Pneumococcal Conjugate Immunizations or Procedures":
     )
 
 define "Pneumococcal Conjugate Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
-  ).verified ( ) ) PneumococcalReaction
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"] ).verified ( ) ) PneumococcalReaction
     where date from start of PneumococcalReaction.prevalenceInterval ( ) during day of "First Two Years"
 
 //HepA
@@ -474,10 +508,14 @@ define "One Hepatitis A Vaccinations":
     )
 
 define "Hepatitis A Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Hepatitis A"]
-      union [ConditionProblemsHealthConcerns: "Hepatitis A"]
-      union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Hepatitis A"]
+  //     union [ConditionProblemsHealthConcerns: "Hepatitis A"]
+  //     union [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
+  ( ( [FHIR.Condition: "Hepatitis A"]
+      union [FHIR.Condition: "Anaphylaxis caused by vaccine product containing Hepatitis A virus antigen (disorder)"]
   ).verified ( ) ) HepatitisADiagnosis
     where date from start of HepatitisADiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 
@@ -516,9 +554,11 @@ define "Rotavirus 2 or 3 Dose Immunizations":
     union "Rotavirus 3 Dose Immunizations or Procedures"
 
 define "Rotavirus Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
-  ).verified ( ) ) RotavirusConditions
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by rotavirus vaccine (disorder)"] ).verified ( ) ) RotavirusConditions
     where date from start of RotavirusConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Rotavirus 3 Dose Immunizations or Procedures":
@@ -552,9 +592,11 @@ define "Two Influenza Vaccinations":
     return date from FluVaccination1.earliest ( )
 
 define "Influenza Numerator Inclusion Conditions":
-  ( ( [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
-      union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
-  ).verified ( ) ) InfluenzaConditions
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
+  //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
+  ( ( [FHIR.Condition: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"] ).verified ( ) ) InfluenzaConditions
     where date from start of InfluenzaConditions.prevalenceInterval ( ) during day of "First Two Years"
 
 define "Two Influenza Vaccinations Including One LAIV Vaccination":

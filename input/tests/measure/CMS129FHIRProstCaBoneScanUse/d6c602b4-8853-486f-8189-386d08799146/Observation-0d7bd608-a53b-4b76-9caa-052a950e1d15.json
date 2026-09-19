@@ -2,7 +2,7 @@
   "resourceType": "Observation",
   "id": "0d7bd608-a53b-4b76-9caa-052a950e1d15",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-observation-clinical-result" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-observation-clinical-result" ]
   },
   "status": "final",
   "category": [ {

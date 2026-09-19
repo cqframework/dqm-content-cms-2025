@@ -1,5 +1,8 @@
 import json
+import shutil
+import tempfile
 import unittest
+from pathlib import Path
 from collections import namedtuple
 from typing import Dict, NamedTuple
 
@@ -26,12 +29,19 @@ class TestExtractPopulationActual(unittest.TestCase):
         self.assertEqual(parse_count('False'), 0)
         self.assertEqual(parse_count('FALSE'), 0)
 
+    # These five previously called `validate_numerator(populations)`, which was
+    # removed when scoring validation was widened into
+    # `validate_measure_population_counts(measurename, populations)`. The tests
+    # were never updated, so they had been failing with NameError ever since.
+    # Retargeted at the successor, which keeps the same mutate-in-place contract
+    # on `populations` and adds a measure name for logging.
+
     def test_validate_scoring_denom_true_numer_true_then_numer_true(self):
         populations = {
             'Denominator': 1,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Numerator'], 1)
 
@@ -40,7 +50,7 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator': 0,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 0)
         self.assertEqual(populations['Numerator'], 0)
 
@@ -50,7 +60,7 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator Exclusion': 0,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Denominator Exclusion'], 0)
         self.assertEqual(populations['Numerator'], 1)
@@ -61,21 +71,30 @@ class TestExtractPopulationActual(unittest.TestCase):
             'Denominator Exclusion': 1,
             'Numerator': 1
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
         self.assertEqual(populations['Denominator Exclusion'], 1)
         self.assertEqual(populations['Numerator'], 0)
 
-    def test_validate_scoring_denom_true_numer_true_denexp_true_then_denom_true(self):
+    def test_validate_scoring_denom_true_numer_true_denexp_true_then_denexp_zeroed(self):
+        """Expectation deliberately changed from the pre-removal version.
+
+        The old `validate_numerator` left Denominator Exception at 1 here. The
+        successor zeroes it, which is the conformant behaviour: a patient who
+        meets the Numerator cannot also be a Denominator Exception (an exception
+        removes a patient from the denominator only when they did *not* meet the
+        numerator). See the proportion-measure scoring rules linked in
+        `validate_measure_population_counts`. The old assertion encoded the bug.
+        """
         populations = {
             'Denominator': 1,
             'Denominator Exception': 1,
             'Numerator': 1,
         }
-        validate_numerator(populations)
+        validate_measure_population_counts('CMS-test', populations)
         self.assertEqual(populations['Denominator'], 1)
-        self.assertEqual(populations['Denominator Exception'], 1)
         self.assertEqual(populations['Numerator'], 1)
+        self.assertEqual(populations['Denominator Exception'], 0)
 
     def test_convert_results_to_rows(self):
         results = {
@@ -190,6 +209,68 @@ class TestExtractPopulationActual(unittest.TestCase):
                 'Group_2': 'Denominator'
             }, 
             find_all_groups_by_expression(measure_criteria, 'Denominator 2'))
+
+
+class ResultsFormatDetectionTest(unittest.TestCase):
+    """Pins JSON-over-txt precedence.
+
+    Nothing used to pin this either way, which is how the precedence could be
+    inverted-by-accident and cost a debugging session: a run whose JSON was
+    complete for all 74 measures scored 49.12% instead of 96.29%, because the
+    extractor chose header-only *.txt stubs and 35 measures then reported zero
+    populations (rendered downstream as "Missing Results", indistinguishable
+    from the CQL failing to translate).
+    """
+
+    STUB_TXT = (
+        "CQL: /x/input/cql\n"
+        "Extension version: 0.9.8\n"
+        "Engine version: 5.3.0\n"
+        "Test cases:\n"
+        "guid-1 - /x/input/tests/measure/MeasureA/guid-1\n"
+    )
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.tmp)
+
+    def _write_txt(self, measure="MeasureA"):
+        Path(self.tmp, f"{measure}.txt").write_text(self.STUB_TXT, encoding="utf-8")
+
+    def _write_json(self, measure="MeasureA", guid="guid-1"):
+        d = Path(self.tmp, measure)
+        d.mkdir(exist_ok=True)
+        (d / f"TestCaseResult-{guid}.json").write_text(json.dumps({
+            "libraryName": measure,
+            "testCaseName": guid,
+            "results": [{"name": "Initial Population", "value": "true"}],
+            "errors": [],
+        }), encoding="utf-8")
+
+    def test_json_wins_when_both_present(self):
+        self._write_txt()
+        self._write_json()
+        self.assertEqual(detect_results_format(self.tmp), "json")
+
+    def test_txt_used_when_no_json(self):
+        self._write_txt()
+        self.assertEqual(detect_results_format(self.tmp), "txt")
+
+    def test_json_used_when_no_txt(self):
+        self._write_json()
+        self.assertEqual(detect_results_format(self.tmp), "json")
+
+    def test_helpers_agree_with_detection(self):
+        self._write_txt()
+        self._write_json()
+        self.assertTrue(has_json_results(self.tmp))
+        self.assertTrue(has_txt_results(self.tmp))
+
+    def test_measures_in_results_dir_sees_both_shapes(self):
+        self._write_txt("MeasureA")
+        self._write_json("MeasureB")
+        self.assertEqual(measures_in_results_dir(self.tmp, "txt"), {"MeasureA"})
+        self.assertEqual(measures_in_results_dir(self.tmp, "json"), {"MeasureB"})
 
 if __name__ == '__main__':
     unittest.main()

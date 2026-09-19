@@ -2,7 +2,7 @@
   "resourceType": "Encounter",
   "id": "9d311cdd-af97-4c54-9c66-30caa3173b75",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
   },
   "status": "finished",
   "class": {
@@ -20,7 +20,7 @@
     } ]
   } ],
   "subject": {
-    "reference": "Patient/1d3021bb-b593-4efc-af5b-3  20243bbe9b7"
+    "reference": "Patient/1d3021bb-b593-4efc-af5b-320243bbe9b7"
   },
   "period": {
     "start": "2026-01-01T13:00:00.000+00:00",

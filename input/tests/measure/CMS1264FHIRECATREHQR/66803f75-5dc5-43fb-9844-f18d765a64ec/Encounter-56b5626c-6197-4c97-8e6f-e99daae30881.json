@@ -23,8 +23,8 @@
     "reference": "Patient/66803f75-5dc5-43fb-9844-f18d765a64ec"
   },
   "period": {
-    "start": "2027-12-31T08:00:00.000+00:00",
-    "end": "2027-12-31T08:15:00.000+00:00"
+    "start": "2026-12-31T08:00:00.000+00:00",
+    "end": "2026-12-31T08:15:00.000+00:00"
   },
   "hospitalization": {
     "dischargeDisposition": {

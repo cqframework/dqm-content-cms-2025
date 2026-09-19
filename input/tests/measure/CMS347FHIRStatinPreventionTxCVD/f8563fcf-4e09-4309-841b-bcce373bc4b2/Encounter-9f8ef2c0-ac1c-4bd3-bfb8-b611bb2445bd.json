@@ -2,7 +2,9 @@
   "resourceType": "Encounter",
   "id": "9f8ef2c0-ac1c-4bd3-bfb8-b611bb2445bd",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter"
+    ]
   },
   "status": "finished",
   "class": {
@@ -10,17 +12,21 @@
     "code": "AMB",
     "display": "ambulatory"
   },
-  "type": [ {
-    "coding": [ {
-      "system": "http://snomed.info/sct",
-      "version": "http://snomed.info/sct/900000000000207008/version/20250201",
-      "code": "183919006",
-      "display": "Urgent admission to hospice (procedure)",
-      "userSelected": true
-    } ]
-  } ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/900000000000207008/version/20250201",
+          "code": "183919006",
+          "display": "Urgent admission to hospice (procedure)",
+          "userSelected": true
+        }
+      ]
+    }
+  ],
   "subject": {
-    "reference": "Patient/0784160c-98b6-43a2-baa1-77ea9f3fe884"
+    "reference": "Patient/f8563fcf-4e09-4309-841b-bcce373bc4b2"
   },
   "period": {
     "start": "2026-12-31T08:00:00.000+00:00"

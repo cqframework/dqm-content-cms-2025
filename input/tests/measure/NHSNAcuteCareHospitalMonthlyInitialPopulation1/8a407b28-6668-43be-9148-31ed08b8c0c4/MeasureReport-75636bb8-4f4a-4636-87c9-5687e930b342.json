@@ -29,8 +29,8 @@
   "type": "individual",
   "measure": "https://madie.cms.gov/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation1",
   "period": {
-    "start": "2025-01-01",
-    "end": "2025-01-31"
+    "start": "2026-01-01",
+    "end": "2026-01-31"
   },
   "group": [ {
     "id": "Group_1",

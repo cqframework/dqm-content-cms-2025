@@ -2,7 +2,7 @@
   "resourceType": "Observation",
   "id": "e4bca46e-8ab9-4ff3-8510-cc911f5646f0",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-observation-screening-assessment" ]
+    "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-bmi" ]
   },
   "status": "amended",
   "category": [ {

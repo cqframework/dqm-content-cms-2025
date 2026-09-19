@@ -40,8 +40,12 @@ define "Denominator Exclusions":
   Hospice."Has Hospice Services"
 
 define "Numerator":
-  exists ( [ConditionProblemsHealthConcerns: "Dental Caries"]
-    union [ConditionEncounterDiagnosis: "Dental Caries"] ) DentalCaries
+  exists (
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    //   ( [ConditionProblemsHealthConcerns: "Dental Caries"]
+    //     union [ConditionEncounterDiagnosis: "Dental Caries"] )
+    [FHIR.Condition: "Dental Caries"] ) DentalCaries
     where DentalCaries.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "SDE Ethnicity":

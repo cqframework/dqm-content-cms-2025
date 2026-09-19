@@ -2,10 +2,10 @@
   "resourceType": "ServiceRequest",
   "id": "851673ff-959a-4923-80b1-8ce73c907ba0",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-servicenotrequested" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-servicenotrequested" ]
   },
   "extension": [ {
-    "url": "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-doNotPerformReason",
+    "url": "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-doNotPerformReason",
     "valueCodeableConcept": {
       "coding": [ {
         "system": "http://snomed.info/sct",

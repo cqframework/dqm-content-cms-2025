@@ -71,8 +71,12 @@ define "Initial Population":
 
 define "Primary Open Angle Glaucoma Encounter":
   "Qualifying Encounter During Measurement Period" ValidQualifyingEncounter
-    with ( ["ConditionProblemsHealthConcerns": "Primary Open-Angle Glaucoma"]
-      union ["ConditionEncounterDiagnosis": "Primary Open-Angle Glaucoma"] ) PrimaryOpenAngleGlaucoma
+    with (
+      // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Original:
+      //   ( ["ConditionProblemsHealthConcerns": "Primary Open-Angle Glaucoma"]
+      //     union ["ConditionEncounterDiagnosis": "Primary Open-Angle Glaucoma"] )
+      [FHIR.Condition: "Primary Open-Angle Glaucoma"] ) PrimaryOpenAngleGlaucoma
       such that PrimaryOpenAngleGlaucoma.prevalenceInterval ( ) overlaps day of ValidQualifyingEncounter.period
         and PrimaryOpenAngleGlaucoma.isVerified ( )
 

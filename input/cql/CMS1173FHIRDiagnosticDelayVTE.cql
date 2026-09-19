@@ -114,10 +114,10 @@ define "Qualified VTE Encounters":
     "Qualifying VTE Imaging Diagnostic Report" VTEStudy,
     "AntiCoagulant Therapy Ordered" AntiCoagulantOrdered
     where VTEStudy.effective.toInterval ( ) starts during day of VTEEncounter.period
-      and ( AntiCoagulantOrdered.authoredOn 12 hours or less before VTEStudy.effective
-          or AntiCoagulantOrdered.authoredOn 12 hours or less after VTEStudy.effective
+      and ( AntiCoagulantOrdered.authoredOn 12 hours or less before start of VTEStudy.effective.toInterval ( )
+         or AntiCoagulantOrdered.authoredOn 12 hours or less after start of VTEStudy.effective.toInterval ( )
       )
-      and IndexPCP.period starts 30 days or less on or before VTEStudy.effective
+      and IndexPCP.period starts 30 days or less on or before start of VTEStudy.effective.toInterval ( )
     return VTEEncounter
 
 define "Qualified VTE Encounters During Measurement Period":

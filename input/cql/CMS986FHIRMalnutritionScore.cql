@@ -88,7 +88,7 @@ define "Intervention Hospice Care":
   ( ["ServiceRequest": "Hospice Status"] HospiceStatusOrder
       where HospiceStatusOrder.status in { 'active', 'completed', 'on-hold' }
         and HospiceStatusOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
-      return HospiceStatusOrder.authoredOn
+      return HospiceStatusOrder.authoredOn.ToDateTime()  // I-61: do not remove as "redundant" — raw FHIR.dateTime unioned with an already-converted System.DateTime branch silently nulls in "during"/"such that" without this
   )
     union ( ["Procedure": "Hospice Status"] HospiceStatusPerformed
         where HospiceStatusPerformed.status in { 'completed', 'in-progress' }
@@ -123,7 +123,7 @@ define "Intervention Dietitian Referral":
   ( ["ServiceRequest": "Dietitian Referral"] DietitianReferralOrder
       where DietitianReferralOrder.status in { 'active', 'completed', 'on-hold' }
         and DietitianReferralOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
-      return DietitianReferralOrder.authoredOn
+      return DietitianReferralOrder.authoredOn.ToDateTime()  // I-61: do not remove as "redundant" — see "Intervention Hospice Care" above
   )
     union ( ["Procedure": "Dietitian Referral"] DietitianReferralPerformed
         where DietitianReferralPerformed.status in { 'completed', 'in-progress' }

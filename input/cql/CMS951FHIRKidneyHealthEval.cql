@@ -69,8 +69,11 @@ define "Numerator":
   "Kidney Panel Performed During Measurement Period"
 
 define "Has Active Diabetes Overlaps Start Of Measurement Period":
-  exists ( ["ConditionProblemsHealthConcerns": "Diabetes"]
-    union ["ConditionEncounterDiagnosis": "Diabetes"] ) DiabetesDiagnosis
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ["ConditionProblemsHealthConcerns": "Diabetes"]
+  //     union ["ConditionEncounterDiagnosis": "Diabetes"] ) DiabetesDiagnosis
+  exists ( [FHIR.Condition: "Diabetes"] ) DiabetesDiagnosis
     where DiabetesDiagnosis.prevalenceInterval ( ) overlaps before day of "Measurement Period"
       and ( DiabetesDiagnosis.verificationStatus is not null implies ( DiabetesDiagnosis.verificationStatus !~ Status."refuted"
             and DiabetesDiagnosis.verificationStatus !~ Status."entered-in-error"
@@ -78,11 +81,17 @@ define "Has Active Diabetes Overlaps Start Of Measurement Period":
       )
 
 define "Has CKD Stage 5 Or ESRD Diagnosis Overlaps Measurement Period":
-  exists ( ( ["ConditionProblemsHealthConcerns": "Chronic Kidney Disease, Stage 5"]
-      union ["ConditionEncounterDiagnosis": "Chronic Kidney Disease, Stage 5"]
+  // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Original:
+  //   exists ( ( ["ConditionProblemsHealthConcerns": "Chronic Kidney Disease, Stage 5"]
+  //       union ["ConditionEncounterDiagnosis": "Chronic Kidney Disease, Stage 5"]
+  //   )
+  //     union ( ["ConditionProblemsHealthConcerns": "End Stage Renal Disease"]
+  //         union ["ConditionEncounterDiagnosis": "End Stage Renal Disease"]
+  //     ) ) CKDOrESRD
+  exists ( ( [FHIR.Condition: "Chronic Kidney Disease, Stage 5"]
   )
-    union ( ["ConditionProblemsHealthConcerns": "End Stage Renal Disease"]
-        union ["ConditionEncounterDiagnosis": "End Stage Renal Disease"]
+    union ( [FHIR.Condition: "End Stage Renal Disease"]
     ) ) CKDOrESRD
     where CKDOrESRD.prevalenceInterval ( ) overlaps day of "Measurement Period"
       and ( CKDOrESRD.verificationStatus is not null implies ( CKDOrESRD.verificationStatus !~ Status."refuted"

@@ -56,8 +56,11 @@ define "Face to Face or Telehealth Encounter with Ongoing Chemotherapy":
       union [Encounter: "Audio Visual Telehealth Encounter"] ) FaceToFaceOrTelehealthEncounter,
     "Chemotherapy Within 31 Days Prior and During Measurement Period" ChemoBeforeEncounter,
     "Chemotherapy Within 31 Days Prior and During Measurement Period" ChemoAfterEncounter,
-    ( [ConditionProblemsHealthConcerns: "Cancer"]
-      union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    // ( [ConditionProblemsHealthConcerns: "Cancer"]
+    //   union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
+    [Condition: "Cancer"] CancerDx
     where CancerDx.prevalenceInterval ( ) overlaps day of FaceToFaceOrTelehealthEncounter.period
       and ChemoBeforeEncounter.performed.toInterval ( ) starts 30 days or less on or before day of end of FaceToFaceOrTelehealthEncounter.period
       and ChemoAfterEncounter.performed.toInterval ( ) starts 30 days or less on or after day of end of FaceToFaceOrTelehealthEncounter.period
@@ -73,8 +76,11 @@ define "Numerator 1":
 
 define "Radiation Treatment Management During Measurement Period with Cancer Diagnosis":
   ( [Encounter: "Radiation Treatment Management"] ) RadiationTreatmentManagement
-    with ( [ConditionProblemsHealthConcerns: "Cancer"]
-      union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Original:
+    // with ( [ConditionProblemsHealthConcerns: "Cancer"]
+    //   union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
+    with [Condition: "Cancer"] CancerDx
       such that CancerDx.prevalenceInterval ( ) overlaps day of RadiationTreatmentManagement.period
     where RadiationTreatmentManagement.period during day of "Measurement Period"
       and RadiationTreatmentManagement.status = 'finished'

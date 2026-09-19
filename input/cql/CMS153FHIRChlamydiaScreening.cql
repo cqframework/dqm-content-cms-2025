@@ -93,12 +93,17 @@ define "Qualifying Encounters":
     where ValidEncounters.period during day of "Measurement Period"
 
 define "Has Diagnoses Identifying Sexual Activity":
-  exists ( ( ( [ConditionEncounterDiagnosis: "Diagnoses Used to Indicate Sexual Activity"]
-        union [ConditionProblemsHealthConcerns: "Diagnoses Used to Indicate Sexual Activity"]
-        union [ConditionEncounterDiagnosis: "HIV"]
-        union [ConditionProblemsHealthConcerns: "HIV"]
-        union [ConditionEncounterDiagnosis: "Complications of Pregnancy, Childbirth and the Puerperium"]
-        union [ConditionProblemsHealthConcerns: "Complications of Pregnancy, Childbirth and the Puerperium"]
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Original:
+  //   [ConditionEncounterDiagnosis: "Diagnoses Used to Indicate Sexual Activity"]
+  //     union [ConditionProblemsHealthConcerns: "Diagnoses Used to Indicate Sexual Activity"]
+  //     union [ConditionEncounterDiagnosis: "HIV"]
+  //     union [ConditionProblemsHealthConcerns: "HIV"]
+  //     union [ConditionEncounterDiagnosis: "Complications of Pregnancy, Childbirth and the Puerperium"]
+  //     union [ConditionProblemsHealthConcerns: "Complications of Pregnancy, Childbirth and the Puerperium"]
+  exists ( ( ( [FHIR.Condition: "Diagnoses Used to Indicate Sexual Activity"]
+        union [FHIR.Condition: "HIV"]
+        union [FHIR.Condition: "Complications of Pregnancy, Childbirth and the Puerperium"]
     ).verified ( ) ) SexualActivityDiagnosis
       where SexualActivityDiagnosis.prevalenceInterval ( ) overlaps "Measurement Period"
   )

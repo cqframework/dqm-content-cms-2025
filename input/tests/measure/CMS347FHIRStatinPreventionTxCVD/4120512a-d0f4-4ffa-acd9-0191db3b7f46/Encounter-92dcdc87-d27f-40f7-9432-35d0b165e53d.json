@@ -2,7 +2,9 @@
   "resourceType": "Encounter",
   "id": "92dcdc87-d27f-40f7-9432-35d0b165e53d",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-encounter" ]
+    "profile": [
+      "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-encounter"
+    ]
   },
   "status": "finished",
   "class": {
@@ -10,17 +12,21 @@
     "code": "AMB",
     "display": "ambulatory"
   },
-  "type": [ {
-    "coding": [ {
-      "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2021",
-      "code": "99385",
-      "display": "Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnostic procedures, new patient; 18-39 years",
-      "userSelected": true
-    } ]
-  } ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://www.ama-assn.org/go/cpt",
+          "version": "2021",
+          "code": "99385",
+          "display": "Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnostic procedures, new patient; 18-39 years",
+          "userSelected": true
+        }
+      ]
+    }
+  ],
   "subject": {
-    "reference": "Patient/3c4aa676-8ef0-415c-a71e-09289d57cbfa"
+    "reference": "Patient/4120512a-d0f4-4ffa-acd9-0191db3b7f46"
   },
   "period": {
     "start": "2026-12-31T23:20:00.000+00:00",

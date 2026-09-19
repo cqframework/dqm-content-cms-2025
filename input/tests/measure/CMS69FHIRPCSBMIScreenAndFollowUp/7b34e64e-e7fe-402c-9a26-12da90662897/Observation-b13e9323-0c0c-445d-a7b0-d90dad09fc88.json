@@ -2,7 +2,7 @@
   "resourceType": "Observation",
   "id": "b13e9323-0c0c-445d-a7b0-d90dad09fc88",
   "meta": {
-    "profile": [ "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-observation-screening-assessment" ]
+    "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-observation-screening-assessment" ]
   },
   "status": "final",
   "category": [ {
@@ -27,7 +27,7 @@
   "valueQuantity": {
     "value": 40.0,
     "unit": "kg/m2",
-    "system": "https://ucum.org",
+    "system": "http://unitsofmeasure.org",
     "code": "kg/m2"
   }
 }
