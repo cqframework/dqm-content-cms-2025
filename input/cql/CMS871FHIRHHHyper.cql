@@ -34,7 +34,7 @@ define "Comfort Measures Care":
   ( ["Procedure": "Comfort Measures"] ProcedureCM
       where ProcedureCM.status = 'completed'
   )
-    union ( ["ServiceRequest": "Comfort Measures"] ServiceReq
+    union ( [USQualityCore.ServiceRequest: "Comfort Measures"] ServiceReq
         where ServiceReq.status in { 'active', 'completed' }
     )
 
@@ -58,17 +58,17 @@ define "Days with Glucose Results":
           return Tuple {
             dayNumber: EncounterDay.dayIndex,
             dayPeriod: EncounterDay.dayPeriod,
-            hasSevereResult: exists ( ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+            hasSevereResult: exists ( [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
                 where GlucoseTest.status in { 'final', 'amended', 'corrected' }
                   and GlucoseTest.value > 300 'mg/dL'
                   and GlucoseTest.effective.earliest ( ) during EncounterDay.dayPeriod
             ),
-            hasElevatedResult: exists ( ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+            hasElevatedResult: exists ( [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
                 where GlucoseTest.status in { 'final', 'amended', 'corrected' }
                   and GlucoseTest.value >= 200 'mg/dL'
                   and GlucoseTest.effective.earliest ( ) during EncounterDay.dayPeriod
             ),
-            hasNoGlucoseTest: not exists ( ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+            hasNoGlucoseTest: not exists ( [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
                 where GlucoseTest.status in { 'final', 'amended', 'corrected' }
                   and GlucoseTest.effective.earliest ( ) during EncounterDay.dayPeriod
             )
@@ -119,7 +119,7 @@ define "Encounter with Early Glucose Greater Than 600 or with Comfort or Hospice
 
 define "Encounter with Elevated Glucose Greater Than or Equal to 200":
   "Encounter with Hospitalization Period" Hospitalization
-    with ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+    with [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
       such that GlucoseTest.effective.earliest ( ) during Hospitalization.hospitalizationPeriod
         and GlucoseTest.status in { 'final', 'amended', 'corrected' }
         and GlucoseTest.value >= 200 'mg/dL'
@@ -127,13 +127,13 @@ define "Encounter with Elevated Glucose Greater Than or Equal to 200":
 
 define "Encounter with Existing Diabetes Diagnosis":
   "Encounter with Hospitalization Period" Hospitalization
-    with ( ( [ConditionEncounterDiagnosis: "Diabetes"] DiabetesEncounter
+    with ( ( [USQualityCore.ConditionEncounterDiagnosis: "Diabetes"] DiabetesEncounter
         where ( Hospitalization.encounter.reasonReference.references ( DiabetesEncounter )
             or Hospitalization.encounter.reasonCode in "Diabetes"
         )
           and DiabetesEncounter.prevalenceInterval ( ) starts before end of Hospitalization.hospitalizationPeriod
     )
-      union ( [ConditionProblemsHealthConcerns: "Diabetes"] DiabetesProblem
+      union ( [USQualityCore.ConditionProblemsHealthConcerns: "Diabetes"] DiabetesProblem
           where DiabetesProblem.verificationStatus is not null implies ( DiabetesProblem.verificationStatus ~ Status."confirmed"
               or DiabetesProblem.verificationStatus ~ Status."unconfirmed"
               or DiabetesProblem.verificationStatus ~ Status."provisional"
@@ -178,7 +178,7 @@ define "Encounter with Hypoglycemic Medication":
 define "Glucose Greater Than 600 within 1 Hour Prior To and 6 Hours After Encounter Start":
   from
     "Initial Population" InpatientHospitalization,
-    ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+    [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
     let HospitalizationInterval: InpatientHospitalization.hospitalizationWithObservation ( ),
     GlucoseTestTime: GlucoseTest.effective.earliest ( )
     where GlucoseTest.value as Quantity > 600 'mg/dL'
@@ -190,7 +190,7 @@ define "Glucose Tests Earlier Than Glucose Greater Than 600 within 1 Hour Prior 
   from
     "Initial Population" InpatientHospitalization,
     "Glucose Greater Than 600 within 1 Hour Prior To and 6 Hours After Encounter Start" GlucoseResult600,
-    ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] EarlierGlucoseTest
+    [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] EarlierGlucoseTest
     let HospitalizationInterval: InpatientHospitalization.hospitalizationWithObservation ( ),
     GlucoseTest600Time: GlucoseResult600.effective.earliest ( ),
     EarlierGlucoseTestTime: EarlierGlucoseTest.effective.earliest ( )

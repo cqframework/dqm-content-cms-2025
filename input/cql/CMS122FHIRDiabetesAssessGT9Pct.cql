@@ -60,7 +60,7 @@ define "Initial Population":
     end of "Measurement Period"
   ) in Interval[18, 75]
     and exists "Qualifying Encounters"
-    and exists ( ( ( [ConditionEncounterDiagnosis: "Diabetes"] ).verified ( ) ) DiabetesDiagnosis
+    and exists ( ( ( [USQualityCore.ConditionEncounterDiagnosis: "Diabetes"] ).verified ( ) ) DiabetesDiagnosis
         where DiabetesDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 
@@ -115,8 +115,8 @@ define "Qualifying Encounters":
     where ValidEncounters.period during day of "Measurement Period"
 
 define "Glycemic Status Assessment":
-  ( ( [LaboratoryResultObservation: "HbA1c Laboratory Test"]
-      union [LaboratoryResultObservation: "Glucose management indicator"]
+  ( ( [USQualityCore.LaboratoryResultObservation: "HbA1c Laboratory Test"]
+      union [USQualityCore.LaboratoryResultObservation: "Glucose management indicator"]
   ).isLaboratoryTestPerformed ( ) ) GlycemicStatus
     where GlycemicStatus.effective.latest ( ) during day of "Measurement Period"
 

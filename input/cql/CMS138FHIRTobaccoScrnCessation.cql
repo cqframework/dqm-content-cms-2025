@@ -102,7 +102,7 @@ define "Most Recent Tobacco Use Screening Indicates Tobacco Non User":
     where MostRecentTobaccoUseScreening.value as CodeableConcept in "Tobacco Non User"
 
 define "Active Pharmacotherapy for Tobacco Cessation":
-  ( ( [MedicationRequest: "Tobacco Use Cessation Pharmacotherapy"] ).isMedicationActive ( ) ) TakingCessationPharmacotherapy
+  ( ( [USQualityCore.MedicationRequest: "Tobacco Use Cessation Pharmacotherapy"] ).isMedicationActive ( ) ) TakingCessationPharmacotherapy
     where TakingCessationPharmacotherapy.medicationRequestPeriod ( ) during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
 
 define "Most Recent Tobacco Use Screening Indicates Tobacco User":
@@ -113,9 +113,9 @@ define "Most Recent Tobacco Use Screening Indicates Tobacco User":
     where MostRecentTobaccoUseScreening.value as CodeableConcept in "Tobacco User"
 
 define "Tobacco Cessation Pharmacotherapy Ordered":
-  ( ( [MedicationRequest: "Tobacco Use Cessation Pharmacotherapy"] ).isMedicationOrder ( ) ) CessationPharmacotherapyOrdered
+  ( ( [USQualityCore.MedicationRequest: "Tobacco Use Cessation Pharmacotherapy"] ).isMedicationOrder ( ) ) CessationPharmacotherapyOrdered
     where CessationPharmacotherapyOrdered.authoredOn during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
-      and not exists ( [TaskRejected] TaskReject
+      and not exists ( [USQualityCore.TaskRejected] TaskReject
           where TaskReject.focus.references ( CessationPharmacotherapyOrdered )
             and TaskReject.code ~ "fulfill"
       )

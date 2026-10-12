@@ -94,37 +94,37 @@ define "Has Cardiac Pacer Device Implanted":
   )
 
 define "Is Currently Taking Beta Blocker Therapy for LVSD":
-  exists ( ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
+  exists ( [USQualityCore.MedicationRequest: "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
       where ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter ( )
   )
 
 define "Has Hypotension Diagnosis":
-  exists ( ( ["ConditionProblemsHealthConcerns": "Hypotension"]
-      union ["ConditionEncounterDiagnosis": "Hypotension"] ) HypotensionAlias
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Hypotension"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Hypotension"] ) HypotensionAlias
       where HypotensionAlias.overlapsHeartFailureOutpatientEncounter ( )
         and HypotensionAlias.isVerified ( )
   )
 
 define "Has Diagnosis of Cardiac Pacer in Situ":
-  exists ( ( ["ConditionProblemsHealthConcerns": "Cardiac Pacer in Situ"]
-      union ["ConditionEncounterDiagnosis": "Cardiac Pacer in Situ"] ) CardiacPacerDiagnosis
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Cardiac Pacer in Situ"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Cardiac Pacer in Situ"] ) CardiacPacerDiagnosis
       where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
         and CardiacPacerDiagnosis.isVerified ( )
   )
 
 define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
-  exists ( ( ( ["ConditionProblemsHealthConcerns": "Allergy to Beta Blocker Therapy"]
-        union ["ConditionEncounterDiagnosis": "Allergy to Beta Blocker Therapy"]
+  exists ( ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Allergy to Beta Blocker Therapy"]
+        union [USQualityCore.ConditionEncounterDiagnosis: "Allergy to Beta Blocker Therapy"]
     )
-      union ( ["ConditionProblemsHealthConcerns": "Intolerance to Beta Blocker Therapy"] )
-      union ["ConditionEncounterDiagnosis": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+      union ( [USQualityCore.ConditionProblemsHealthConcerns: "Intolerance to Beta Blocker Therapy"] )
+      union [USQualityCore.ConditionEncounterDiagnosis: "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
       where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
         and BetaBlockerAllergyOrIntoleranceDiagnosis.isVerified ( )
   )
 
 define "Has Bradycardia Diagnosis":
-  exists ( ( [ConditionProblemsHealthConcerns: "Bradycardia"]
-      union [ConditionEncounterDiagnosis: "Bradycardia"] ) BradycardiaAlias
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Bradycardia"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Bradycardia"] ) BradycardiaAlias
       where BradycardiaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and BradycardiaAlias.isVerified ( )
   )
@@ -153,33 +153,33 @@ define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient":
   )
 
 define "Has Arrhythmia Diagnosis":
-  exists ( ( [ConditionProblemsHealthConcerns: "Arrhythmia"]
-      union [ConditionEncounterDiagnosis: "Arrhythmia"] ) ArrhythmiaAlias
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Arrhythmia"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Arrhythmia"] ) ArrhythmiaAlias
       where ArrhythmiaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and ArrhythmiaAlias.isVerified ( )
   )
 
 define "Has Asthma Diagnosis":
-  exists ( ( [ConditionProblemsHealthConcerns: "Asthma"]
-      union [ConditionEncounterDiagnosis: "Asthma"] ) AsthmaAlias
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Asthma"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Asthma"] ) AsthmaAlias
       where AsthmaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and AsthmaAlias.isVerified ( )
   )
 
 define "Has Atrioventricular Block Diagnosis":
-  exists ( ( [ConditionProblemsHealthConcerns: "Atrioventricular Block"]
-      union [ConditionEncounterDiagnosis: "Atrioventricular Block"] ) AtrioventricularBlockAlias
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Atrioventricular Block"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Atrioventricular Block"] ) AtrioventricularBlockAlias
       where AtrioventricularBlockAlias.overlapsHeartFailureOutpatientEncounter ( )
         and AtrioventricularBlockAlias.isVerified ( )
   )
 
 define "Has Beta Blocker Therapy for LVSD Ordered":
-  exists ( [MedicationRequest: medication in "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
+  exists ( [USQualityCore.MedicationRequest: medication in "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
       where BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter ( )
   )
 
 define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
-  exists ( ["MedicationNotRequested": medication in "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
+  exists ( [USQualityCore.MedicationNotRequested: medication in "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
       with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
         such that NoBetaBlockerOrdered.authoredOn during day of ModerateOrSevereLVSDHFOutpatientEncounter.period
       where ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"

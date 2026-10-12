@@ -51,19 +51,19 @@ define "Encounter With A History Of Atrial Ablation":
       )
   )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-        with ["ConditionProblemsHealthConcerns": "History of Atrial Ablation"] AtrialAblationDiagnosis
+        with [USQualityCore.ConditionProblemsHealthConcerns: "History of Atrial Ablation"] AtrialAblationDiagnosis
           such that AtrialAblationDiagnosis.verificationStatus is not null implies ( AtrialAblationDiagnosis.verificationStatus !~ Status."refuted"
               and AtrialAblationDiagnosis.verificationStatus !~ Status."entered-in-error"
           )
             and AtrialAblationDiagnosis.prevalenceInterval ( ) starts before start of IschemicStrokeEncounter.period
     )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-        with ["SimpleObservation": "History of Atrial Ablation"] AtrialAblationObservation
+        with [USQualityCore.SimpleObservation: "History of Atrial Ablation"] AtrialAblationObservation
           such that AtrialAblationObservation.status in { 'final', 'amended', 'corrected' }
             and AtrialAblationObservation.effective.earliest ( ) on or before end of IschemicStrokeEncounter.period
     )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-        with ["ConditionEncounterDiagnosis": "History of Atrial Ablation"] AtrialAblationEncDiagnosis
+        with [USQualityCore.ConditionEncounterDiagnosis: "History of Atrial Ablation"] AtrialAblationEncDiagnosis
           such that AtrialAblationEncDiagnosis.verificationStatus is not null implies ( AtrialAblationEncDiagnosis.verificationStatus !~ Status."refuted"
               and AtrialAblationEncDiagnosis.verificationStatus !~ Status."entered-in-error"
           )
@@ -72,7 +72,7 @@ define "Encounter With A History Of Atrial Ablation":
 
 define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Flutter":
   ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-      with ["ConditionProblemsHealthConcerns": "Atrial Fibrillation or Flutter"] AtrialFibrillationFlutter
+      with [USQualityCore.ConditionProblemsHealthConcerns: "Atrial Fibrillation or Flutter"] AtrialFibrillationFlutter
         such that AtrialFibrillationFlutter.verificationStatus is not null implies ( AtrialFibrillationFlutter.verificationStatus !~ Status."refuted"
             and AtrialFibrillationFlutter.verificationStatus !~ Status."entered-in-error"
         )
@@ -102,14 +102,14 @@ define "Encounter With Comfort Measures During Hospitalization For Patients With
 
 define "Numerator":
   "Denominator" Encounter
-    with ["MedicationRequest": "Anticoagulant Therapy"] DischargeAnticoagulant
+    with [USQualityCore.MedicationRequest: "Anticoagulant Therapy"] DischargeAnticoagulant
       such that DischargeAnticoagulant.status in { 'active', 'completed' }
         and DischargeAnticoagulant.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and ( DischargeAnticoagulant.isCommunity ( )
             or DischargeAnticoagulant.isDischarge ( )
         )
         and DischargeAnticoagulant.authoredOn during Encounter.period
-        and not exists ( ["TaskRejected"] TaskReject
+        and not exists ( [USQualityCore.TaskRejected] TaskReject
             where TaskReject.focus.references ( DischargeAnticoagulant )
               and TaskReject.code ~ USQualityCoreCommon."Fulfill"
         )
@@ -120,7 +120,7 @@ define "Denominator Exceptions":
       such that NoDischargeAnticoagulant.authoredOn during Encounter.period
 
 define "Documented Reason For Not Giving Anticoagulant At Discharge":
-  ( ["MedicationNotRequested": "Anticoagulant Therapy"] NoAnticoagulant
+  ( [USQualityCore.MedicationNotRequested: "Anticoagulant Therapy"] NoAnticoagulant
       where ( NoAnticoagulant.reasonCode in "Medical Reason For Not Providing Treatment"
           or NoAnticoagulant.reasonCode in "Patient Refusal"
       )
@@ -130,8 +130,8 @@ define "Documented Reason For Not Giving Anticoagulant At Discharge":
         and NoAnticoagulant.status in { 'active', 'completed' }
         and NoAnticoagulant.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
   )
-    union ( ["MedicationRequest": "Anticoagulant Therapy"] MedReqAntiCoagulant
-        with ["TaskRejected"] TaskReject
+    union ( [USQualityCore.MedicationRequest: "Anticoagulant Therapy"] MedReqAntiCoagulant
+        with [USQualityCore.TaskRejected] TaskReject
           such that TaskReject.focus.references ( MedReqAntiCoagulant )
             and ( TaskReject.statusReason in "Medical Reason For Not Providing Treatment"
                 or TaskReject.statusReason in "Patient Refusal"

@@ -194,11 +194,11 @@ define "Has THA with Initial and Follow Up HOOS Assessments":
 
 define "Date HOOS Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "Quality of life score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSLifeQuality,
-    ( ( [ObservationScreeningAssessment: "Sport-recreation score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSSport,
-    ( ( [ObservationScreeningAssessment: "Activities of daily living score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSActivityScore,
-    ( ( [ObservationScreeningAssessment: "Symptoms score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSSymptoms,
-    ( ( [ObservationScreeningAssessment: "Pain score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSPain
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Quality of life score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSLifeQuality,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Sport-recreation score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSSport,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Activities of daily living score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSActivityScore,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Symptoms score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSSymptoms,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Pain score [HOOS]"] ).isAssessmentPerformed ( ) ) HOOSPain
     let HOOSLifeQualityDate: date from start of HOOSLifeQuality.effective.toInterval ( ),
     HOOSSportDate: date from start of HOOSSport.effective.toInterval ( ),
     HOOSActivityScoreDate: date from start of HOOSActivityScore.effective.toInterval ( ),
@@ -225,7 +225,7 @@ define "Has THA with Initial and Follow Up HOOSJr Assessments":
   )
 
 define "Date HOOSJr Total Assessment Completed":
-  ( ( ( [ObservationScreeningAssessment: "Total interval score [HOOSJR]"] ).isAssessmentPerformed ( ) ) HOOSJr
+  ( ( ( [USQualityCore.ObservationScreeningAssessment: "Total interval score [HOOSJR]"] ).isAssessmentPerformed ( ) ) HOOSJr
     where ( HOOSJr as ObservationScreeningAssessment ).value is not null ) DocumentedHOOSJr
     return date from start of DocumentedHOOSJr.effective.toInterval ( )
 
@@ -240,8 +240,8 @@ define "Has THA with Initial and Follow Up PROMIS10 Assessments":
 
 define "Date PROMIS10 Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "PROMIS-10 Global Mental Health (GMH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10MentalScore,
-    ( ( [ObservationScreeningAssessment: "PROMIS-10 Global Physical Health (GPH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10PhysicalScore
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-10 Global Mental Health (GMH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10MentalScore,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-10 Global Physical Health (GPH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10PhysicalScore
     let PROMIS10MentalScoreDate: date from start of PROMIS10MentalScore.effective.toInterval ( ),
     PROMIS10PhysicalScoreDate: date from start of PROMIS10PhysicalScore.effective.toInterval ( )
     where PROMIS10MentalScoreDate same day as PROMIS10PhysicalScoreDate
@@ -260,8 +260,8 @@ define "Has THA with Initial and Follow Up VR12 Oblique Assessments":
 
 define "Date VR12 Oblique Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
     let VR12MentalAssessmentDate: date from start of VR12MentalAssessment.effective.toInterval ( ),
     VR12PhysicalAssessmentDate: date from start of VR12PhysicalAssessment.effective.toInterval ( )
     where VR12MentalAssessmentDate same day as VR12PhysicalAssessmentDate
@@ -280,8 +280,8 @@ define "Has THA with Initial and Follow Up VR12 Orthogonal Assessments":
 
 define "Date VR12 Orthogonal Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
     let VR12MentalAssessmentDate: date from start of VR12MentalAssessment.effective.toInterval ( ),
     VR12PhysicalAssessmentDate: date from start of VR12PhysicalAssessment.effective.toInterval ( )
     where VR12MentalAssessmentDate same day as VR12PhysicalAssessmentDate

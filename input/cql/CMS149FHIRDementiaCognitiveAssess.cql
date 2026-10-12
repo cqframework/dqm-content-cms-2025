@@ -55,8 +55,8 @@ define "Denominator Exceptions":
 
 
 define "Assessment of Cognition Using Standardized Tools or Alternate Methods":
-  ( ["ObservationScreeningAssessment": "Standardized Tools for Assessment of Cognition"]
-    union ["ObservationScreeningAssessment": "Cognitive Assessment"] ) CognitiveAssessment
+  ( [USQualityCore.ObservationScreeningAssessment: "Standardized Tools for Assessment of Cognition"]
+    union [USQualityCore.ObservationScreeningAssessment: "Cognitive Assessment"] ) CognitiveAssessment
     with "Dementia Encounter During Measurement Period" EncounterDementia
       such that CognitiveAssessment.effective.toInterval ( ) starts 12 months or less on or before day of end of EncounterDementia.period
     where CognitiveAssessment.value is not null
@@ -86,8 +86,8 @@ define "Encounter to Assess Cognition":
       and EncounterAssessCognition.status ~ 'finished'
 
 define "Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools or Alternate Methods":
-  ( [ObservationCancelled: code in "Standardized Tools for Assessment of Cognition"]
-    union [ObservationCancelled: code in "Cognitive Assessment"] ) NoCognitiveAssessment
+  ( [USQualityCore.ObservationCancelled: code in "Standardized Tools for Assessment of Cognition"]
+    union [USQualityCore.ObservationCancelled: code in "Cognitive Assessment"] ) NoCognitiveAssessment
     with "Dementia Encounter During Measurement Period" EncounterDementia
       such that NoCognitiveAssessment.issued during day of EncounterDementia.period
     // QI-Core had notDoneReason as a property, but now it is a fluentFunction in USQualityCoreCommon

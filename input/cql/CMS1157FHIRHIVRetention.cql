@@ -84,7 +84,7 @@ define "Has Active HIV Diagnosis Starts On or Before First 240 Days of Measureme
 
 define "Has One Encounter With HIV and One Viral Load Test At Least 90 Days Apart":
   exists ( "Encounter During Measurement Period With HIV" ) EncounterWithHIV
-    with ["LaboratoryResultObservation": "HIV Viral Load Tests"] ViralLoadTest
+    with [USQualityCore.LaboratoryResultObservation: "HIV Viral Load Tests"] ViralLoadTest
       such that ViralLoadTest.status in { 'final', 'amended', 'corrected' }
         and ViralLoadTest.effective.toInterval ( ) during day of "Measurement Period"
         and ( ( ViralLoadTest.effective.toInterval ( ) starts 90 days or more after day of end of EncounterWithHIV.period )

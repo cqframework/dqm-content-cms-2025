@@ -96,7 +96,7 @@ define "Diabetic Retinopathy Encounter":
         and DiabeticRetinopathy.isVerified ( )
 
 define "Macular Exam Performed":
-  ["ObservationClinicalResult": "Macular Exam"] MacularExam
+  [USQualityCore.ObservationClinicalResult: "Macular Exam"] MacularExam
     with "Diabetic Retinopathy Encounter" EncounterDiabeticRetinopathy
       such that MacularExam.effective.toInterval ( ) during EncounterDiabeticRetinopathy.period
     where MacularExam.value is not null
@@ -130,7 +130,7 @@ define "Macular Edema Presence Communicated":
     where MacularEdemaPresentCommunicated.status = 'completed'
 
 define "Medical or Patient Reason for Not Communicating Level of Severity of Retinopathy":
-  [CommunicationNotDone: category in "Level of Severity of Retinopathy Findings"] LevelOfSeverityNotCommunicated
+  [USQualityCore.CommunicationNotDone: category in "Level of Severity of Retinopathy Findings"] LevelOfSeverityNotCommunicated
     with "Diabetic Retinopathy Encounter" EncounterDiabeticRetinopathy
       such that LevelOfSeverityNotCommunicated.recorded () during day of EncounterDiabeticRetinopathy.period
     where ( LevelOfSeverityNotCommunicated.statusReason in "Medical Reason"
@@ -138,7 +138,7 @@ define "Medical or Patient Reason for Not Communicating Level of Severity of Ret
     )
 
 define "Medical or Patient Reason for Not Communicating Presence of Macular Edema":
-  [CommunicationNotDone: category in "Macular Edema Findings Present"] MacularEdemaPresentNotCommunicated
+  [USQualityCore.CommunicationNotDone: category in "Macular Edema Findings Present"] MacularEdemaPresentNotCommunicated
     with "Diabetic Retinopathy Encounter" EncounterDiabeticRetinopathy
       such that MacularEdemaPresentNotCommunicated.sent during day of EncounterDiabeticRetinopathy.period
     where ( MacularEdemaPresentNotCommunicated.statusReason in "Medical Reason"
@@ -152,7 +152,7 @@ but when QI Core STU 5 gets in the tool, it may be reverted back to a DRC */
 
 
 define "Medical or Patient Reason for Not Communicating Absence of Macular Edema":
-  [CommunicationNotDone: category in "Macular Edema Findings Absent"] MacularEdemaAbsentNotCommunicated
+  [USQualityCore.CommunicationNotDone: category in "Macular Edema Findings Absent"] MacularEdemaAbsentNotCommunicated
     with "Diabetic Retinopathy Encounter" EncounterDiabeticRetinopathy
       such that MacularEdemaAbsentNotCommunicated.sent during day of EncounterDiabeticRetinopathy.period
     where ( MacularEdemaAbsentNotCommunicated.statusReason in "Medical Reason"

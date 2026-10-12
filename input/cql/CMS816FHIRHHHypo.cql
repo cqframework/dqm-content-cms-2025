@@ -43,7 +43,7 @@ define "Glucose Test With Result Less Than 40":
   from
     "Denominator" InpatientHospitalization,
     "Hypoglycemic Medication Administration" HypoglycemicMedication,
-    ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] GlucoseTest
+    [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] GlucoseTest
     let HospitalizationInterval: InpatientHospitalization.hospitalizationWithObservation ( ),
     HypoglycemicMedicationStart: HypoglycemicMedication.effective.toInterval ( ),
     GlucoseTestTime: GlucoseTest.effective.earliest ( )
@@ -90,7 +90,7 @@ define "Low Glucose Test Followed By Glucose Test Result Greater Than 80":
   from
     "Denominator" InpatientHospitalization,
     "Glucose Test With Result Less Than 40" LowGlucoseTest,
-    ["LaboratoryResultObservation": "Glucose Lab Test Mass Per Volume"] FollowupGlucoseTest
+    [USQualityCore.LaboratoryResultObservation: "Glucose Lab Test Mass Per Volume"] FollowupGlucoseTest
     let GlucoseTestTime: LowGlucoseTest.effective.earliest ( ),
     FollowupGlucoseTestTime: FollowupGlucoseTest.effective.earliest ( )
     where FollowupGlucoseTestTime 5 minutes or less after GlucoseTestTime

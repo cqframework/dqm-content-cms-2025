@@ -85,7 +85,7 @@ define "Has Intervention during Measurement Period":
   )
 
 define "First Referral during First 10 Months of Measurement Period":
-  First([ServiceRequest: "Referral"] ReferralOrder
+  First([USQualityCore.ServiceRequest: "Referral"] ReferralOrder
       where ReferralOrder.status in { 'active', 'completed' }
         and ReferralOrder.intent = 'order'
         and date from ReferralOrder.authoredOn during day of Interval[date from start of "Measurement Period", Date(year from start of "Measurement Period", 10, 31)]

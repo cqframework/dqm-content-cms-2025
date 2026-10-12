@@ -74,7 +74,7 @@ define "Antidiabetic Drugs Administered or Ordered":
 
 
 define "SDE Blood Glucose Observation":
-  ( ["LaboratoryResultObservation": "Blood Glucose Laboratory and Point of Care Tests"] GlucoseTest
+  ( [USQualityCore.LaboratoryResultObservation: "Blood Glucose Laboratory and Point of Care Tests"] GlucoseTest
       where exists ( "Initial Population" InitialPopulation
           where start of GlucoseTest.effective.toInterval ( ) during day of InitialPopulation.period
             or GlucoseTest.issued during day of InitialPopulation.period
@@ -90,11 +90,11 @@ define "SDE Chief Complaint":
     return { IP.id, IP.meta, IP.identifier, IP.status, IP.statusHistory, IP.class, IP.classHistory, IP.type, IP.serviceType, IP.priority, IP.subject, IP.period, IP.length, IP.reasonCode, IP.reasonReference, IP.diagnosis, IP.account, IP.hospitalization, IP.location, IP.partOf }
 
 define "Conditions":
-  ["ConditionProblemsHealthConcerns"]
-    union ["ConditionEncounterDiagnosis"]
+  [USQualityCore.ConditionProblemsHealthConcerns]
+    union [USQualityCore.ConditionEncounterDiagnosis]
 
 define "SDE Condition":
-  ["ConditionProblemsHealthConcerns"] Diagnosis
+  [USQualityCore.ConditionProblemsHealthConcerns] Diagnosis
     where exists ( "Initial Population" IP
         where Diagnosis.prevalenceInterval ( ) overlaps day of IP.period
     )
@@ -166,7 +166,7 @@ define "SDE Medication Administration":
     return { MedAdministrations.id, MedAdministrations.meta, MedAdministrations.instantiates, MedAdministrations.partOf, MedAdministrations.status, MedAdministrations.statusReason, MedAdministrations.category, MedAdministrations.medication, MedAdministrations.subject, MedAdministrations.context, MedAdministrations.supportingInformation, MedAdministrations.effective, MedAdministrations.performer, MedAdministrations.reasonCode, MedAdministrations.reasonReference, MedAdministrations.request, MedAdministrations.device, MedAdministrations.note, MedAdministrations.dosage }
 
 define "MedicationRequests":
-  [MedicationRequest]
+  [FHIR.MedicationRequest]
 
 define "SDE Medication Request":
   "MedicationRequests" MedRequests
@@ -181,7 +181,7 @@ define "SDE Minimal Patient":
     return { MinPt.id, MinPt.meta, MinPt.extension, MinPt.identifier, MinPt.active, MinPt.name, MinPt.telecom, MinPt.gender, MinPt.birthDate, MinPt.deceased, MinPt.address, MinPt.maritalStatus, MinPt.multipleBirth, MinPt.photo, MinPt.contact, MinPt.communication, MinPt.generalPractitioner, MinPt.managingOrganization, MinPt.link }
 
 define "SDE Service Request":
-  [ServiceRequest] ServiceRequests
+  [FHIR.ServiceRequest] ServiceRequests
     where exists ( "Initial Population" InitialPopulation
         where ServiceRequests.authoredOn during InitialPopulation.period
     )

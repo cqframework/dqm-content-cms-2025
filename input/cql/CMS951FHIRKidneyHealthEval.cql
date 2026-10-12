@@ -118,14 +118,14 @@ define "Kidney Panel Performed During Measurement Period":
     )
 
 define "Has Estimated Glomerular Filtration Rate Performed During Measurement Period":
-  exists ( ["LaboratoryResultObservation": "Estimated Glomerular Filtration Rate"] eGFRTest
+  exists ( [USQualityCore.LaboratoryResultObservation: "Estimated Glomerular Filtration Rate"] eGFRTest
       where eGFRTest.effective.toInterval ( ) during day of "Measurement Period"
         and eGFRTest.value is not null
         and eGFRTest.status in { 'final', 'amended', 'corrected' }
   )
 
 define "Has Urine Albumin Creatinine Ratio Test Performed During Measurement Period":
-  exists ( ["LaboratoryResultObservation": "Urine Albumin Creatinine Ratio"] uACRTest
+  exists ( [USQualityCore.LaboratoryResultObservation: "Urine Albumin Creatinine Ratio"] uACRTest
       where uACRTest.effective.toInterval ( ) during day of "Measurement Period"
         and uACRTest.status in { 'final', 'amended', 'corrected' }
         and ( ( uACRTest.value is Quantity )
@@ -143,13 +143,13 @@ define "Has Urine Albumin Test And Urine Creatine Test Less Than Or Equal To Fou
   )
 
 define "Urine Albumin Test Performed During The Measurement Period":
-  ["LaboratoryResultObservation": "Urine Albumin"] AlbuminTest
+  [USQualityCore.LaboratoryResultObservation: "Urine Albumin"] AlbuminTest
     where AlbuminTest.effective.toInterval ( ) during day of "Measurement Period"
       and AlbuminTest.value is not null
       and AlbuminTest.status in { 'final', 'amended', 'corrected' }
 
 define "Urine Creatinine Test Performed During The Measurement Period":
-  ["LaboratoryResultObservation": "Urine Creatinine"] CreatinineTest
+  [USQualityCore.LaboratoryResultObservation: "Urine Creatinine"] CreatinineTest
     where CreatinineTest.effective.toInterval ( ) during day of "Measurement Period"
       and CreatinineTest.value is not null
       and CreatinineTest.status in { 'final', 'amended', 'corrected' }

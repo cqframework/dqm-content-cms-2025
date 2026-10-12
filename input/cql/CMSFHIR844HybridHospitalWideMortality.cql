@@ -112,7 +112,7 @@ define "SDE Encounter With First Systolic Blood Pressure":
 
 define "SDE Encounter With First Bicarbonate Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstBicarbonateLab: First(["LaboratoryResultObservation": "Bicarbonate lab test"] BicarbonateLab
+    let FirstBicarbonateLab: First([USQualityCore.LaboratoryResultObservation: "Bicarbonate lab test"] BicarbonateLab
         where BicarbonateLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and BicarbonateLab.status in { 'final', 'amended', 'corrected' }
           and BicarbonateLab.value is not null
@@ -126,7 +126,7 @@ define "SDE Encounter With First Bicarbonate Lab Test":
 
 define "SDE Encounter With First Creatinine Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstCreatinineLab: First(["LaboratoryResultObservation": "Creatinine lab test"] CreatinineLab
+    let FirstCreatinineLab: First([USQualityCore.LaboratoryResultObservation: "Creatinine lab test"] CreatinineLab
         where CreatinineLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and CreatinineLab.status in { 'final', 'amended', 'corrected' }
           and CreatinineLab.value is not null
@@ -140,7 +140,7 @@ define "SDE Encounter With First Creatinine Lab Test":
 
 define "SDE Encounter With First Hematocrit Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstHematocritLab: First(["LaboratoryResultObservation": "Hematocrit lab test"] HematocritLab
+    let FirstHematocritLab: First([USQualityCore.LaboratoryResultObservation: "Hematocrit lab test"] HematocritLab
         where HematocritLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and HematocritLab.status in { 'final', 'amended', 'corrected' }
           and HematocritLab.value is not null
@@ -154,7 +154,7 @@ define "SDE Encounter With First Hematocrit Lab Test":
 
 define "SDE Encounter With First Platelet Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstPlateletLab: First(["LaboratoryResultObservation": "Platelet count lab test"] PlateletLab
+    let FirstPlateletLab: First([USQualityCore.LaboratoryResultObservation: "Platelet count lab test"] PlateletLab
         where PlateletLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and PlateletLab.status in { 'final', 'amended', 'corrected' }
           and PlateletLab.value is not null
@@ -168,7 +168,7 @@ define "SDE Encounter With First Platelet Lab Test":
 
 define "SDE Encounter With First Sodium Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstSodiumLab: First(["LaboratoryResultObservation": "Sodium lab test"] SodiumLab
+    let FirstSodiumLab: First([USQualityCore.LaboratoryResultObservation: "Sodium lab test"] SodiumLab
         where SodiumLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and SodiumLab.status in { 'final', 'amended', 'corrected' }
           and SodiumLab.value is not null
@@ -182,7 +182,7 @@ define "SDE Encounter With First Sodium Lab Test":
 
 define "SDE Encounter With First White Blood Cells Lab Test":
   "Inpatient Encounters" EncounterInpatient
-    let FirstWhiteBloodCellLab: First(["LaboratoryResultObservation": "White blood cells count lab test"] WhiteBloodCellLab
+    let FirstWhiteBloodCellLab: First([USQualityCore.LaboratoryResultObservation: "White blood cells count lab test"] WhiteBloodCellLab
         where WhiteBloodCellLab.effective.earliest() during EncounterInpatient.hospitalizationWithObservationAndOutpatientSurgeryService()
           and WhiteBloodCellLab.status in { 'final', 'amended', 'corrected' }
           and WhiteBloodCellLab.value is not null
@@ -196,8 +196,8 @@ define "SDE Encounter With First White Blood Cells Lab Test":
 
 define "SDE Encounter With Oxygen 60 Minutes Or Less Prior To ED Admission Or During ED":
   "Initial Population" EncounterInpatient
-    where exists ( ( [ServiceRequest: "Non Invasive Oxygen Therapy by Nasal Cannula or Mask"]
-        union [ServiceRequest: "Non Invasive Oxygen Therapy Device Codes"] ) OxygenTherapyOrder
+    where exists ( ( [USQualityCore.ServiceRequest: "Non Invasive Oxygen Therapy by Nasal Cannula or Mask"]
+        union [USQualityCore.ServiceRequest: "Non Invasive Oxygen Therapy Device Codes"] ) OxygenTherapyOrder
         where ( OxygenTherapyOrder.authoredOn during EncounterInpatient.edVisit ( ).period
             or OxygenTherapyOrder.authoredOn 60 minutes or less before or on start of EncounterInpatient.edVisit ( ).period
         )

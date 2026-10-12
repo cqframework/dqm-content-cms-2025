@@ -57,7 +57,7 @@ define "Inpatient Encounters With An Opioid Or Benzodiazepine At Discharge":
       such that OpioidOrBenzodiazepineAtDischarge.authoredOn during day of InpatientEncounter.period
 
 define "Benzodiazepine At Discharge":
-  ["MedicationRequest": "Schedule IV Benzodiazepines"] BenzoMedications
+  [USQualityCore.MedicationRequest: "Schedule IV Benzodiazepines"] BenzoMedications
     where ( BenzoMedications.isCommunity ( )
         or BenzoMedications.isDischarge ( )
     )
@@ -65,7 +65,7 @@ define "Benzodiazepine At Discharge":
       and BenzoMedications.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 define "Opioid At Discharge":
-  ["MedicationRequest": "Schedule II, III and IV Opioid Medications"] OpioidMedications
+  [USQualityCore.MedicationRequest: "Schedule II, III and IV Opioid Medications"] OpioidMedications
     where ( OpioidMedications.isCommunity ( )
         or OpioidMedications.isDischarge ( )
     )
@@ -103,12 +103,12 @@ define "Inpatient Encounter With Encounter Diagnosis Of Cancer Pain":
 
 define "Denominator Exclusion":
   "Denominator" InpatientEncounter
-    where exists ( ["ConditionProblemsHealthConcerns": "Cancer Related Pain"] CancerPain
+    where exists ( [USQualityCore.ConditionProblemsHealthConcerns: "Cancer Related Pain"] CancerPain
         where CancerPain.prevalenceInterval ( ) overlaps day of InpatientEncounter.period
           and CancerPain.isVerified ( )
     )
       or exists ( "Inpatient Encounter With Encounter Diagnosis Of Cancer Pain" )
-      or exists ( ["ConditionProblemsHealthConcerns": "Sickle Cell Disease with and without Crisis"] SickleCellDisease
+      or exists ( [USQualityCore.ConditionProblemsHealthConcerns: "Sickle Cell Disease with and without Crisis"] SickleCellDisease
           where SickleCellDisease.prevalenceInterval ( ) overlaps day of InpatientEncounter.period
             and SickleCellDisease.isVerified ( )
       )
@@ -132,14 +132,14 @@ define "Treatment For Opioid Use Disorders":
           and MAT.status in { 'completed', 'in-progress' }
   )
     union ( "Medications For Opioid Use Disorder" MedicationTreatment
-        with ["ConditionProblemsHealthConcerns": "Opioid Use Disorder"] OUD
+        with [USQualityCore.ConditionProblemsHealthConcerns: "Opioid Use Disorder"] OUD
           such that MedicationTreatment.authoredOn during day of OUD.prevalenceInterval ( )
             and OUD.prevalenceInterval ( ) overlaps day of "Measurement Period"
             and OUD.isVerified ( )
     )
 
 define "Medications For Opioid Use Disorder":
-  ["MedicationRequest": "Medications for Opioid Use Disorder (MOUD)"] DischargeMedication
+  [USQualityCore.MedicationRequest: "Medications for Opioid Use Disorder (MOUD)"] DischargeMedication
     where ( DischargeMedication.isCommunity ( )
         or DischargeMedication.isDischarge ( )
     )
@@ -147,7 +147,7 @@ define "Medications For Opioid Use Disorder":
       and DischargeMedication.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 define "Intervention Palliative Or Hospice Care":
-  ( ["ServiceRequest": "Palliative or Hospice Care"] PalliativeOrHospiceCareOrder
+  ( [USQualityCore.ServiceRequest: "Palliative or Hospice Care"] PalliativeOrHospiceCareOrder
       where PalliativeOrHospiceCareOrder.status in { 'active', 'completed', 'on-hold' }
   )
     union ( ["Procedure": "Palliative or Hospice Care"] PalliativeOrHospiceCarePerformed

@@ -81,14 +81,14 @@ define "Primary Open Angle Glaucoma Encounter":
         and PrimaryOpenAngleGlaucoma.isVerified ( )
 
 define "Cup to Disc Ratio Performed with Result":
-  ["ObservationClinicalResult": "Cup to Disc Ratio"] CupToDiscExamPerformed
+  [USQualityCore.ObservationClinicalResult: "Cup to Disc Ratio"] CupToDiscExamPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that CupToDiscExamPerformed.effective.toInterval ( ) during day of EncounterWithPOAG.period
     where CupToDiscExamPerformed.value is not null
       and CupToDiscExamPerformed.status in { 'final', 'amended', 'corrected' }
 
 define "Optic Disc Exam Performed with Result":
-  ["ObservationClinicalResult": "Optic Disc Exam for Structural Abnormalities"] OpticDiscExamPerformed
+  [USQualityCore.ObservationClinicalResult: "Optic Disc Exam for Structural Abnormalities"] OpticDiscExamPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that OpticDiscExamPerformed.effective.toInterval ( ) during day of EncounterWithPOAG.period
     where OpticDiscExamPerformed.value is not null
@@ -99,13 +99,13 @@ define "Numerator":
     and exists "Optic Disc Exam Performed with Result"
 
 define "Medical Reason for Not Performing Cup to Disc Ratio":
-  ["ObservationCancelled": "Cup to Disc Ratio"] CupToDiscExamNotPerformed
+  [USQualityCore.ObservationCancelled: "Cup to Disc Ratio"] CupToDiscExamNotPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that CupToDiscExamNotPerformed.issued during day of EncounterWithPOAG.period
     where CupToDiscExamNotPerformed.notDoneReason ( ) in "Medical Reason"
 
 define "Medical Reason for Not Performing Optic Disc Exam":
-  ["ObservationCancelled": "Optic Disc Exam for Structural Abnormalities"] OpticDiscExamNotPerformed
+  [USQualityCore.ObservationCancelled: "Optic Disc Exam for Structural Abnormalities"] OpticDiscExamNotPerformed
     with "Primary Open Angle Glaucoma Encounter" EncounterWithPOAG
       such that OpticDiscExamNotPerformed.issued during day of EncounterWithPOAG.period
     where OpticDiscExamNotPerformed.notDoneReason ( ) in "Medical Reason"

@@ -127,11 +127,11 @@ define "Encounter With Neuromuscular Disorder":
 define "Encounter With PaCO2 Greater Than 50 And Arterial pH Less Than 7.30 Within 48 Hours Prior To Start Of First OR Procedure":
   "Elective Inpatient Encounter With OR Procedure Within 3 Days" EncounterWithSurgery
     let FirstProcedureTime: EncounterWithSurgery.firstAnesthesiaDuringHospitalization ( ).performed.toInterval ( )
-    with ["LaboratoryResultObservation": "Carbon Dioxide Partial Pressure In Arterial Blood"] CarbonDioxide
+    with [USQualityCore.LaboratoryResultObservation: "Carbon Dioxide Partial Pressure In Arterial Blood"] CarbonDioxide
       such that CarbonDioxide.status in { 'final', 'amended', 'corrected' }
         and CarbonDioxide.effective.toInterval ( ) starts 48 hours or less before start of FirstProcedureTime
         and CarbonDioxide.value as Quantity > 50 'mm[Hg]'
-    with ["LaboratoryResultObservation": "Arterial Blood pH"] BloodpH
+    with [USQualityCore.LaboratoryResultObservation: "Arterial Blood pH"] BloodpH
       such that BloodpH.status in { 'final', 'amended', 'corrected' }
         and BloodpH.effective.toInterval ( ) starts 48 hours or less before start of FirstProcedureTime
         and BloodpH.value as Quantity < 7.30 '[pH]'
@@ -139,7 +139,7 @@ define "Encounter With PaCO2 Greater Than 50 And Arterial pH Less Than 7.30 With
 define "Encounter With PaO2 Less Than 50 Within 48 Hours Prior To Start Of First OR Procedure":
   "Elective Inpatient Encounter With OR Procedure Within 3 Days" EncounterWithSurgery
     let FirstProcedure: EncounterWithSurgery.firstAnesthesiaDuringHospitalization ( )
-    with ["LaboratoryResultObservation": "Oxygen Partial Pressure In Arterial Blood"] Oxygen
+    with [USQualityCore.LaboratoryResultObservation: "Oxygen Partial Pressure In Arterial Blood"] Oxygen
       such that Oxygen.status in { 'final', 'amended', 'corrected' }
         and Oxygen.effective.toInterval ( ) starts 48 hours or less before start of FirstProcedure.performed.toInterval ( )
         and Oxygen.value as Quantity < 50 'mm[Hg]'
@@ -249,7 +249,7 @@ define "Noninvasive Oxygen Therapy":
   ( ["Procedure": "Non Invasive Oxygen Therapy By Nasal Cannula Or Mask"] P
       where P.status = 'completed'
   )
-    union ( ["LaboratoryResultObservation": "Non Invasive Oxygen Therapy"] O
+    union ( [USQualityCore.LaboratoryResultObservation: "Non Invasive Oxygen Therapy"] O
         where O.status in { 'final', 'amended', 'corrected' }
     )
 
@@ -293,7 +293,7 @@ define "Risk Variable All Encounter Diagnoses With POA Indication":
     }
 
 define "Risk Variable ASA Physical Status Class":
-  ["ObservationScreeningAssessment": "American society of anesthesiologists morbidity state"] ASAclass
+  [USQualityCore.ObservationScreeningAssessment: "American society of anesthesiologists morbidity state"] ASAclass
     with "Initial Population" QualifyingEncounter
       such that ASAclass.status in { 'final', 'amended', 'corrected' }
         and ASAclass.startsDuringHospitalization ( QualifyingEncounter )
@@ -497,35 +497,35 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define fluent function firstAlbumin(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Albumin Lab Test"] FirstAlbuminTest
+  First([USQualityCore.LaboratoryResultObservation: "Albumin Lab Test"] FirstAlbuminTest
       where FirstAlbuminTest.status in { 'final', 'amended', 'corrected' }
         and FirstAlbuminTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstArterialpH(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Arterial Blood pH"] FirstArterialpHTest
+  First([USQualityCore.LaboratoryResultObservation: "Arterial Blood pH"] FirstArterialpHTest
       where FirstArterialpHTest.status in { 'final', 'amended', 'corrected' }
         and FirstArterialpHTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstAST(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Aspartate transaminase Lab Test"] FirstASTTest
+  First([USQualityCore.LaboratoryResultObservation: "Aspartate transaminase Lab Test"] FirstASTTest
       where FirstASTTest.status in { 'final', 'amended', 'corrected' }
         and FirstASTTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstBicarbonate(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Bicarbonate Lab Test"] FirstBicarbonateTest
+  First([USQualityCore.LaboratoryResultObservation: "Bicarbonate Lab Test"] FirstBicarbonateTest
       where FirstBicarbonateTest.status in { 'final', 'amended', 'corrected' }
         and FirstBicarbonateTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstBilirubin(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Bilirubin Lab Test"] FirstBilirubinTest
+  First([USQualityCore.LaboratoryResultObservation: "Bilirubin Lab Test"] FirstBilirubinTest
       where FirstBilirubinTest.status in { 'final', 'amended', 'corrected' }
         and FirstBilirubinTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
@@ -548,14 +548,14 @@ define fluent function firstBodyTemperature(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstCarbonDioxide(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Carbon Dioxide Partial Pressure In Arterial Blood"] FirstCarbonDioxideTest
+  First([USQualityCore.LaboratoryResultObservation: "Carbon Dioxide Partial Pressure In Arterial Blood"] FirstCarbonDioxideTest
       where FirstCarbonDioxideTest.status in { 'final', 'amended', 'corrected' }
         and FirstCarbonDioxideTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstCreatinine(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Creatinine Lab Test"] FirstCreatinineTest
+  First([USQualityCore.LaboratoryResultObservation: "Creatinine Lab Test"] FirstCreatinineTest
       where FirstCreatinineTest.status in { 'final', 'amended', 'corrected' }
         and FirstCreatinineTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
@@ -570,35 +570,35 @@ define fluent function firstHeartRate(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstHematocrit(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Hematocrit Lab Test"] FirstHematocritTest
+  First([USQualityCore.LaboratoryResultObservation: "Hematocrit Lab Test"] FirstHematocritTest
       where FirstHematocritTest.status in { 'final', 'amended', 'corrected' }
         and FirstHematocritTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstHemoglobin(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Hemoglobin Lab Test"] FirstHemoglobinTest
+  First([USQualityCore.LaboratoryResultObservation: "Hemoglobin Lab Test"] FirstHemoglobinTest
       where FirstHemoglobinTest.status in { 'final', 'amended', 'corrected' }
         and FirstHemoglobinTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstLeukocyte(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Leukocyte Count Lab Test"] FirstLeukocyteCount
+  First([USQualityCore.LaboratoryResultObservation: "Leukocyte Count Lab Test"] FirstLeukocyteCount
       where FirstLeukocyteCount.status in { 'final', 'amended', 'corrected' }
         and FirstLeukocyteCount.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstOxygen(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Oxygen Partial Pressure In Arterial Blood"] FirstOxygenTest
+  First([USQualityCore.LaboratoryResultObservation: "Oxygen Partial Pressure In Arterial Blood"] FirstOxygenTest
       where FirstOxygenTest.status in { 'final', 'amended', 'corrected' }
         and FirstOxygenTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstPlatelet(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Platelet Count Lab Test"] FirstPlateletCount
+  First([USQualityCore.LaboratoryResultObservation: "Platelet Count Lab Test"] FirstPlateletCount
       where FirstPlateletCount.status in { 'final', 'amended', 'corrected' }
         and FirstPlateletCount.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
@@ -613,7 +613,7 @@ define fluent function firstRespiratoryRate(QualifyingEncounter Encounter):
   ).value as Quantity
 
 define fluent function firstSodium(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Sodium Lab Test"] FirstSodiumTest
+  First([USQualityCore.LaboratoryResultObservation: "Sodium Lab Test"] FirstSodiumTest
       where FirstSodiumTest.status in { 'final', 'amended', 'corrected' }
         and FirstSodiumTest.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
@@ -634,14 +634,14 @@ define fluent function "firstSystolicBloodPressure"(QualifyingEncounter Encounte
   )
 
 define fluent function firstWhiteBloodCellCount(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "White Blood Cells Count Lab Test"] FirstWBCCount
+  First([USQualityCore.LaboratoryResultObservation: "White Blood Cells Count Lab Test"] FirstWBCCount
       where FirstWBCCount.status in { 'final', 'amended', 'corrected' }
         and FirstWBCCount.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
   ).value as Quantity
 
 define fluent function firstBloodUreaNitrogen(QualifyingEncounter Encounter):
-  First([LaboratoryResultObservation: "Blood Urea Nitrogen Lab Test"] FirstBUN
+  First([USQualityCore.LaboratoryResultObservation: "Blood Urea Nitrogen Lab Test"] FirstBUN
       where FirstBUN.status in { 'final', 'amended', 'corrected' }
         and FirstBUN.isEarliestDuringHospitalization(QualifyingEncounter)
       sort by effective.earliest()
@@ -760,7 +760,7 @@ define fluent function claimDiagnosesWithPOA(encounter Encounter):
 
 define fluent function encounterReason(Encounter Encounter):
   Encounter.reasonReference D
-    return singleton from ( ( [ConditionEncounterDiagnosis] cA
-        union [ConditionProblemsHealthConcerns] cB ) C
+    return singleton from ( ( [USQualityCore.ConditionEncounterDiagnosis] cA
+        union [USQualityCore.ConditionProblemsHealthConcerns] cB ) C
         where D.references ( C.id )
     )

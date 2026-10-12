@@ -92,7 +92,7 @@ define "Denominator":
 
 define "Denominator Exclusions":
   Hospice."Has Hospice Services"
-    or exists ( ( ( [MedicationRequest: "Antidepressant Medication"] ).isMedicationActive ( ) ) ActiveAntidepressant
+    or exists ( ( ( [USQualityCore.MedicationRequest: "Antidepressant Medication"] ).isMedicationActive ( ) ) ActiveAntidepressant
         where "IPSD" is not null
           and CQMCommon.ToDateInterval ( ActiveAntidepressant.medicationRequestPeriod ( ) ) overlaps Interval["IPSD" - 105 days, "IPSD" )
     )

@@ -60,7 +60,7 @@ define "Numerator":
 
 define "Denominator Exceptions":
   "Qualifying Encounter During Day of Measurement Period" QualifyingEncounter
-    with [ProcedureNotDone: code ~ "Documentation of current medications (procedure)"] MedicationsNotDocumented
+    with [USQualityCore.ProcedureNotDone: code ~ "Documentation of current medications (procedure)"] MedicationsNotDocumented
       such that MedicationsNotDocumented.recorded ( ) during day of QualifyingEncounter.period
         and MedicationsNotDocumented.status = 'not-done'
         and exists ( MedicationsNotDocumented.reasonCode reasonItem

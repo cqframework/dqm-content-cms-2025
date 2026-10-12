@@ -70,8 +70,8 @@ define "Patient Expired":
   Patient.deceased on or before day of end of "Measurement Period"
 
 define "Has HIV Test Performed":
-  exists ( ["LaboratoryResultObservation": "Human Immunodeficiency Virus (HIV) Laboratory Test Codes (Ab and Ag)"]
-    union ["LaboratoryResultObservation": "HIV 1 and 2 tests - Meaningful Use set"] ) HIVTest
+  exists ( [USQualityCore.LaboratoryResultObservation: "Human Immunodeficiency Virus (HIV) Laboratory Test Codes (Ab and Ag)"]
+    union [USQualityCore.LaboratoryResultObservation: "HIV 1 and 2 tests - Meaningful Use set"] ) HIVTest
     where HIVTest.value is not null
       and AgeInYearsAt(date from start of HIVTest.effective.toInterval()) in Interval[15, 65]
       and HIVTest.effective.toInterval ( ) starts before day of end of "Measurement Period"

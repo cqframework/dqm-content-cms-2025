@@ -302,8 +302,8 @@ define "One MMR Vaccination":
     )
 
 define "Measles Indicators":
-  ( ( [ConditionEncounterDiagnosis: "Measles"]
-      union [ConditionEncounterDiagnosis: "Measles"]
+  ( ( [USQualityCore.ConditionEncounterDiagnosis: "Measles"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Measles"]
   ).verified ( ) ) MeaslesDiagnosis
     where date from start of MeaslesDiagnosis.prevalenceInterval ( ) during day of "First Two Years"
 

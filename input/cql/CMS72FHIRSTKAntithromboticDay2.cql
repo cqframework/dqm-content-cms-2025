@@ -87,7 +87,7 @@ define "Encounter With Thrombolytic Therapy Prior To Arrival":
 
 define "Encounter With Thrombolytic Therapy Documented As Already Given":
   ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-      where exists [ConditionProblemsHealthConcerns: "Intravenous or Intraarterial Thrombolytic tPA Therapy Prior to Arrival"] PriorTPA
+      where exists [USQualityCore.ConditionProblemsHealthConcerns: "Intravenous or Intraarterial Thrombolytic tPA Therapy Prior to Arrival"] PriorTPA
         where PriorTPA.recordedDate during IschemicStrokeEncounter.hospitalizationWithObservation ( )
           and PriorTPA.verificationStatus is not null implies ( PriorTPA.verificationStatus !~ Status."refuted"
             and PriorTPA.verificationStatus !~ Status."entered-in-error" 
@@ -122,7 +122,7 @@ define "Documented Reason For No Antithrombotic Ordered Or Administered":
     union "Reason For Not Administering Antithrombotic"
 
 define "Reason For Not Administering Antithrombotic":
-  ["MedicationAdministrationNotDone": "Antithrombotic Therapy for Ischemic Stroke"] MedicationAdm
+  [USQualityCore.MedicationAdministrationNotDone: "Antithrombotic Therapy for Ischemic Stroke"] MedicationAdm
     where ( MedicationAdm.statusReason in "Medical Reason for Not Providing Treatment"
         or MedicationAdm.statusReason in "Patient Refusal"
     )
@@ -133,7 +133,7 @@ define "Reason For Not Administering Antithrombotic":
     }
 
 define "Reason For Not Ordering Antithrombotic":
-  ( ["MedicationNotRequested": "Antithrombotic Therapy for Ischemic Stroke"] NoAntithromboticOrder
+  ( [USQualityCore.MedicationNotRequested: "Antithrombotic Therapy for Ischemic Stroke"] NoAntithromboticOrder
       where ( NoAntithromboticOrder.reasonCode in "Medical Reason for Not Providing Treatment"
           or NoAntithromboticOrder.reasonCode in "Patient Refusal"
       )
@@ -144,8 +144,8 @@ define "Reason For Not Ordering Antithrombotic":
         authoredOn: NoAntithromboticOrder.authoredOn
       }
   )
-    union ( ["MedicationRequest": "Antithrombotic Therapy for Ischemic Stroke"] MedReqAntithrombotic
-        with ["TaskRejected"] TaskReject
+    union ( [USQualityCore.MedicationRequest: "Antithrombotic Therapy for Ischemic Stroke"] MedReqAntithrombotic
+        with [USQualityCore.TaskRejected] TaskReject
           such that TaskReject.focus.references ( MedReqAntithrombotic )
             and ( TaskReject.statusReason in "Medical Reason for Not Providing Treatment"
                 or TaskReject.statusReason in "Patient Refusal"
@@ -167,7 +167,7 @@ define "Encounter With Pharmacological Contraindications For Antithrombotic Ther
 
 define "Encounter With An INR Greater Than 3.5":
   TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-    with ["LaboratoryResultObservation": "INR"] INR
+    with [USQualityCore.LaboratoryResultObservation: "INR"] INR
       such that INR.value as Quantity > 3.5
         and INR.status in { 'final', 'amended', 'corrected' }
         and INR.issued during day of ( start of IschemicStrokeEncounter.hospitalizationWithObservation ( ) ).calendarDayOfOrDayAfter ( )

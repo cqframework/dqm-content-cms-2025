@@ -62,7 +62,7 @@ define "Denominator Exclusions":
     or "Has Mental Health Disorder Diagnoses"
 
 define "Numerator":
-  Last([ObservationScreeningAssessment: "PHQ 9 and PHQ 9M Tools"] DepressionAssessment
+  Last([USQualityCore.ObservationScreeningAssessment: "PHQ 9 and PHQ 9M Tools"] DepressionAssessment
       where start of DepressionAssessment.effective.toInterval() during day of "Measure Assessment Period"
         and DepressionAssessment.status in { 'final', 'amended', 'corrected' }
       sort by start of effective.toInterval()
@@ -84,7 +84,7 @@ define "Denominator Identification Period":
   Interval[start of "Measurement Period" - 14 months, start of "Measurement Period" - 2 months )
 
 define "Depression Assessments Greater Than 9":
-  [ObservationScreeningAssessment: "PHQ 9 and PHQ 9M Tools"] DepressionAssessment
+  [USQualityCore.ObservationScreeningAssessment: "PHQ 9 and PHQ 9M Tools"] DepressionAssessment
     where DepressionAssessment.value > 9
       and DepressionAssessment.status in { 'final', 'amended', 'corrected' }
 
@@ -145,12 +145,12 @@ define "Has Hospice Services prior to or during the Measure Assessment Period":
         where HospiceEncounter.period overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and not ( HospiceEncounter.status in { 'cancelled', 'entered-in-error', 'unknown' } )
     )
-    or exists ( [ObservationScreeningAssessment: "Hospice care [Minimum Data Set]"] HospiceAssessment
+    or exists ( [USQualityCore.ObservationScreeningAssessment: "Hospice care [Minimum Data Set]"] HospiceAssessment
         where HospiceAssessment.value ~ "Yes (qualifier value)"
           and HospiceAssessment.effective.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and HospiceAssessment.status in { 'final', 'amended', 'corrected' }
     )
-    or exists ( [ServiceRequest: "Hospice Care Ambulatory"] HospiceOrder
+    or exists ( [USQualityCore.ServiceRequest: "Hospice Care Ambulatory"] HospiceOrder
         where HospiceOrder.authoredOn during day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
           and HospiceOrder.status in { 'active', 'completed' }
           and HospiceOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
@@ -177,7 +177,7 @@ define "Index Depression Assessment":
   )
 
 define "Has Palliative Care prior to or during the Measure Assessment Period":
-  exists ( [ObservationScreeningAssessment: "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)"] PalliativeAssessment
+  exists ( [USQualityCore.ObservationScreeningAssessment: "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)"] PalliativeAssessment
       where PalliativeAssessment.effective.toInterval ( ) overlaps day of Interval[start of "Denominator Identification Period", end of "Measure Assessment Period"]
         and PalliativeAssessment.status in { 'final', 'amended', 'corrected' }
   )

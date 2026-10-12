@@ -166,8 +166,8 @@ define "Cataract Surgeries in Patients with Significant Ocular Conditions Impact
 
 define "Numerator":
   "Cataract Surgery Between January and September of Measurement Period" CataractSurgeryPerformed
-    with ( [ObservationClinicalResult: "Best corrected visual acuity (observable entity)"]
-      union [ObservationClinicalResult: "Best Corrected Visual Acuity Exam Using Snellen Chart"] ) VisualAcuityExamPerformed
+    with ( [USQualityCore.ObservationClinicalResult: "Best corrected visual acuity (observable entity)"]
+      union [USQualityCore.ObservationClinicalResult: "Best Corrected Visual Acuity Exam Using Snellen Chart"] ) VisualAcuityExamPerformed
       such that VisualAcuityExamPerformed.effective.toInterval ( ) 90 days or less after day of end of CataractSurgeryPerformed.performed.toInterval ( )
         and VisualAcuityExamPerformed.status in { 'final', 'amended', 'corrected' }
         and VisualAcuityExamPerformed.value as CodeableConcept in "Visual Acuity 20/40 or Better"

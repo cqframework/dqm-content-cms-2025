@@ -59,14 +59,14 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Has Baseline DEXA Scan Two Years Prior to the Start of or Less than Three Months After the Start of ADT":
-  exists ( ( [ServiceRequest: "DEXA Bone Density for Urology Care"] DEXAOrdered
+  exists ( ( [USQualityCore.ServiceRequest: "DEXA Bone Density for Urology Care"] DEXAOrdered
         with "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of Measurement Period" OrderTwelveMonthsADT
           such that DEXAOrdered.authoredOn 3 months or less on or after day of OrderTwelveMonthsADT.authoredOn
             or DEXAOrdered.authoredOn 2 years or less before day of OrderTwelveMonthsADT.authoredOn
         where DEXAOrdered.status in { 'active', 'completed' }
           and DEXAOrdered.intent = 'order'
     )
-      union ( [ObservationClinicalResult: "DEXA Bone Density for Urology Care"] DEXAPerformed
+      union ( [USQualityCore.ObservationClinicalResult: "DEXA Bone Density for Urology Care"] DEXAPerformed
           with "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of Measurement Period" OrderTwelveMonthsADT
             such that DEXAPerformed.effective.toInterval ( ) 3 months or less on or after day of OrderTwelveMonthsADT.authoredOn
               or DEXAPerformed.effective.toInterval ( ) 2 years or less before day of OrderTwelveMonthsADT.authoredOn
@@ -75,13 +75,13 @@ define "Has Baseline DEXA Scan Two Years Prior to the Start of or Less than Thre
   )
 
 define "No Bone Density Scan Ordered Due to Patient Refusal":
-  [ServiceNotRequested: "DEXA Bone Density for Urology Care"] DEXANotOrdered
+  [USQualityCore.ServiceNotRequested: "DEXA Bone Density for Urology Care"] DEXANotOrdered
     with "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of Measurement Period" OrderTwelveMonthsADT
       such that DEXANotOrdered.authoredOn 3 months or less on or after day of OrderTwelveMonthsADT.authoredOn
         and DEXANotOrdered.reasonRefused ( ) in "Patient Declined"
 
 define "No Bone Density Scan Performed Due to Patient Refusal":
-  [ObservationCancelled: "DEXA Bone Density for Urology Care"] DEXANotPerformed
+  [USQualityCore.ObservationCancelled: "DEXA Bone Density for Urology Care"] DEXANotPerformed
     with "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of Measurement Period" OrderTwelveMonthsADT
       such that DEXANotPerformed.issued 3 months or less on or after day of OrderTwelveMonthsADT.authoredOn
         and DEXANotPerformed.notDoneReason ( ) in "Patient Declined"
@@ -96,7 +96,7 @@ define "First ADT in 3 Months Before to 9 Months After Start of Measurement Peri
   )
 
 define "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of Measurement Period":
-  [ServiceRequest: "Injection of leuprolide acetate for twelve month period (regime/therapy)"] OrderTwelveMonthADT
+  [USQualityCore.ServiceRequest: "Injection of leuprolide acetate for twelve month period (regime/therapy)"] OrderTwelveMonthADT
     with "First ADT in 3 Months Before to 9 Months After Start of Measurement Period" FirstADTMP
       such that OrderTwelveMonthADT.authoredOn on or after day of FirstADTMP
         and OrderTwelveMonthADT.authoredOn during day of Interval[start of "Measurement Period" - 3 months, start of "Measurement Period" + 9 months]
@@ -104,7 +104,7 @@ define "Order for 12 Months of ADT in 3 Months Before to 9 Months After Start of
         and OrderTwelveMonthADT.intent = 'order'
 
 define "Androgen Deprivation Therapy for Urology Care Medication Active Start Dates":
-  [MedicationRequest: "Androgen Deprivation Therapy for Urology Care"] ADTActive
+  [USQualityCore.MedicationRequest: "Androgen Deprivation Therapy for Urology Care"] ADTActive
     let firstMedicationPeriod: First((collapse(ADTActive.dosageInstruction.timing.repeat.bounds DoseTime
           return DoseTime.toInterval()
       )) DrugPeriods
@@ -129,7 +129,7 @@ define "Androgen Deprivation Therapy for Urology Care Medication Active Start Da
     return medicationDateTime
 
 define "Androgen Deprivation Therapy for Urology Care Medication Order Start Dates":
-  [MedicationRequest: "Androgen Deprivation Therapy for Urology Care"] ADTOrder
+  [USQualityCore.MedicationRequest: "Androgen Deprivation Therapy for Urology Care"] ADTOrder
     let firstMedicationPeriod: First((collapse(ADTOrder.dosageInstruction.timing.repeat.bounds DoseTime
           return DoseTime.toInterval()
       )) DrugPeriods

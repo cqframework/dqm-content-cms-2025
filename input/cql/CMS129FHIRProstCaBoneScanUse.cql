@@ -71,7 +71,7 @@ define "Denominator Exceptions":
     or "Has Bone Scan Study Performed with Documented Reason"
 
 define "Bone Scan Study Performed":
-  [ObservationClinicalResult: "Bone Scan"] BoneScan
+  [USQualityCore.ObservationClinicalResult: "Bone Scan"] BoneScan
     with "Prostate Cancer Diagnosis" ActiveProstateCancer
       such that BoneScan.effective.toInterval ( ) starts after start of ActiveProstateCancer.prevalenceInterval ( )
     where BoneScan.effective.toInterval ( ) ends during day of "Measurement Period"
@@ -100,7 +100,7 @@ define "First Prostate Cancer Treatment during day of Measurement Period":
   )
 
 define "Most Recent PSA Test Result is Low":
-  ( Last([LaboratoryResultObservation: "Prostate Specific Antigen Test"] PSATest
+  ( Last([USQualityCore.LaboratoryResultObservation: "Prostate Specific Antigen Test"] PSATest
       with "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a" MostRecentProstateCancerStaging
         such that PSATest.effective.toInterval ( ) starts before MostRecentProstateCancerStaging.effective.toInterval ( )
           and PSATest.status in { 'final', 'amended', 'corrected' }
@@ -116,7 +116,7 @@ define "Has Salvage Therapy Performed after Prostate Cancer Diagnosis":
   )
 
 define "Most Recent Gleason Score is Low":
-  ( Last([ObservationClinicalResult: "Gleason score in Specimen Qualitative"] GleasonScore
+  ( Last([USQualityCore.ObservationClinicalResult: "Gleason score in Specimen Qualitative"] GleasonScore
       with "First Prostate Cancer Treatment during day of Measurement Period" FirstProstateCancerTreatment
         such that GleasonScore.effective.toInterval ( ) starts before start of FirstProstateCancerTreatment.performed.toInterval ( )
           and GleasonScore.status in { 'final', 'amended', 'corrected' }
@@ -125,7 +125,7 @@ define "Most Recent Gleason Score is Low":
     return LastGleasonScore.value as FHIR.integer <= 6
 
 define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
-  ( Last(([ObservationClinicalResult: "Tumor staging (tumor staging)"] TumorStaging
+  ( Last(([USQualityCore.ObservationClinicalResult: "Tumor staging (tumor staging)"] TumorStaging
     // TODO: determine feasibility of ObservationClinicalResult having basedOn reference to Condition
     // where exists("Prostate Cancer Diagnosis" ActiveProstateCancer where TumorStaging.basedOn.references(ActiveProstateCancer))
     

@@ -82,7 +82,7 @@ define "Encounter With Age 18 And Length Of Stay 48 Hours Or More":
 define "Inpatient Encounter With Creatinine":
   from
     "Encounter With Age 18 And Length Of Stay 48 Hours Or More" Encounter48Hours,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] CreatinineTest
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] CreatinineTest
     let HospitalizationPeriod: Encounter48Hours.hospitalizationWithObservation ( ),
     CreatinineTestStart: CreatinineTest.effective.earliest ( )
     where CreatinineTest.value as Quantity is not null
@@ -121,8 +121,8 @@ define "Encounter With 0.3 mg dL Or More Increase In Creatinine":
 define "Increase Of 0.3 Or More Using Lowest Creatinine Within 24 Hours":
   from
     "Encounter With Creatinine And Without Obstetrical Conditions" QualifyingEncounter,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] IndexCreatinineLabResult,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] SubsequentCreatinineLabResult
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] IndexCreatinineLabResult,
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] SubsequentCreatinineLabResult
     let IndexCreatinineLabResultTime: IndexCreatinineLabResult.effective.earliest ( ),
     SubsequentCreatinineLabResultTime: SubsequentCreatinineLabResult.effective.earliest ( ),
     HospitalWithObservationPeriod: QualifyingEncounter.hospitalizationWithObservation ( )
@@ -141,8 +141,8 @@ define "Increase Of 0.3 Or More Using Lowest Creatinine Within 24 Hours":
 define "Increase Of 0.3 Or More Using First Creatinine Within First 48 Hours":
   from
     "Encounter With Creatinine And Without Obstetrical Conditions" QualifyingEncounter,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] IndexCreatinineLabResult,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] SubsequentCreatinineLabResult
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] IndexCreatinineLabResult,
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] SubsequentCreatinineLabResult
     let IndexCreatinineLabResultTime: IndexCreatinineLabResult.effective.earliest ( ),
     SubsequentCreatinineLabResultTime: SubsequentCreatinineLabResult.effective.earliest ( ),
     HospitalWithObservationPeriod: QualifyingEncounter.hospitalizationWithObservation ( )
@@ -178,8 +178,8 @@ define "Encounter With Kidney Dialysis Started 48 Hours Or Less After Arrival":
 define "Encounter With 2 Times Serum Creatinine Increase":
   from
     "Encounter With 1.5 Times Serum Creatinine Increase" EncounterWithHighCreatinine,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] HighCreatinineTest,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] LowCreatinineTest
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] HighCreatinineTest,
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] LowCreatinineTest
     let LowCreatinineTestTime: LowCreatinineTest.effective.earliest ( ),
     HighCreatinineTestTime: HighCreatinineTest.effective.earliest ( ),
     HospitalWithObservationPeriod: EncounterWithHighCreatinine.hospitalizationWithObservation ( )
@@ -231,7 +231,7 @@ define "Encounter With Kidney Dialysis Started More Than 48 Hours After Arrival"
 define "Qualifying Creatinine Lab Result By Time":
   from
     "Encounter With Creatinine And Without Obstetrical Conditions" QualifyingEncounter,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] CreatinineTestByTime
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] CreatinineTestByTime
     let CrEncId: QualifyingEncounter.id,
     CrHospPeriod: QualifyingEncounter.hospitalizationWithObservation ( ),
     CrLabId: CreatinineTestByTime.id,
@@ -265,8 +265,8 @@ define "Qualifying Creatinine Lab Result By Time":
 define "Encounter With 1.5 Times Serum Creatinine Increase":
   from
     "Encounter With Creatinine And Without Obstetrical Conditions" QualifyingEncounter,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] HighCreatinineTest,
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] LowCreatinineTest
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] HighCreatinineTest,
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] LowCreatinineTest
     let LowCreatinineTestTime: LowCreatinineTest.effective.earliest ( ),
     HighCreatinineTestTime: HighCreatinineTest.effective.earliest ( ),
     HospitalWithObservationPeriod: QualifyingEncounter.hospitalizationWithObservation ( )
@@ -288,7 +288,7 @@ define "Qualifying Blood Pressure Reading":
 
 define fluent function "creatinineLabTestwithResultwithinFirst48Hours"(QualifyingEncounter Encounter):
   from
-    ["LaboratoryResultObservation": "Creatinine Mass Per Volume"] CreatinineTest
+    [USQualityCore.LaboratoryResultObservation: "Creatinine Mass Per Volume"] CreatinineTest
     where CreatinineTest.value as Quantity is not null
       and CreatinineTest.effective.earliest ( ) during Interval[start of QualifyingEncounter.hospitalizationWithObservation ( ), start of QualifyingEncounter.hospitalizationWithObservation ( ) + 48 hours]
       and CreatinineTest.effective.earliest ( ) during QualifyingEncounter.hospitalizationWithObservation ( )

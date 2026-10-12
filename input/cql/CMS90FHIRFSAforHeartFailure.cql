@@ -136,8 +136,8 @@ define "Has Encounter with Initial and Follow Up PROMIS10 Assessments":
 
 define "Date PROMIS10 Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "PROMIS-10 Global Mental Health (GMH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10MentalScore,
-    ( ( [ObservationScreeningAssessment: "PROMIS-10 Global Physical Health (GPH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10PhysicalScore
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-10 Global Mental Health (GMH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10MentalScore,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-10 Global Physical Health (GPH) score T-score"] ).isAssessmentPerformed ( ) ) PROMIS10PhysicalScore
     let PROMIS10MentalScoreDate: date from start of PROMIS10MentalScore.effective.toInterval ( ),
     PROMIS10PhysicalScoreDate: date from start of PROMIS10PhysicalScore.effective.toInterval ( )
     where PROMIS10MentalScoreDate same day as PROMIS10PhysicalScoreDate
@@ -158,13 +158,13 @@ define "Has Encounter with Initial and Follow Up PROMIS29 Assessments":
 
 define "Date PROMIS29 Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Sleep disturbance score T-score"] ).isAssessmentPerformed ( ) ) Promis29Sleep,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Satisfaction with participation in social roles score T-score"] ).isAssessmentPerformed ( ) ) Promis29SocialRoles,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Physical function score T-score"] ).isAssessmentPerformed ( ) ) Promis29Physical,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Pain interference score T-score"] ).isAssessmentPerformed ( ) ) Promis29Pain,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Fatigue score T-score"] ).isAssessmentPerformed ( ) ) Promis29Fatigue,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Depression score T-score"] ).isAssessmentPerformed ( ) ) Promis29Depression,
-    ( ( [ObservationScreeningAssessment: "PROMIS-29 Anxiety score T-score"] ).isAssessmentPerformed ( ) ) Promis29Anxiety
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Sleep disturbance score T-score"] ).isAssessmentPerformed ( ) ) Promis29Sleep,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Satisfaction with participation in social roles score T-score"] ).isAssessmentPerformed ( ) ) Promis29SocialRoles,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Physical function score T-score"] ).isAssessmentPerformed ( ) ) Promis29Physical,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Pain interference score T-score"] ).isAssessmentPerformed ( ) ) Promis29Pain,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Fatigue score T-score"] ).isAssessmentPerformed ( ) ) Promis29Fatigue,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Depression score T-score"] ).isAssessmentPerformed ( ) ) Promis29Depression,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "PROMIS-29 Anxiety score T-score"] ).isAssessmentPerformed ( ) ) Promis29Anxiety
     let Promis29SleepDate: date from start of Promis29Sleep.effective.toInterval ( ),
     Promis29SocialRolesDate: date from start of Promis29SocialRoles.effective.toInterval ( ),
     Promis29PhysicalDate: date from start of Promis29Physical.effective.toInterval ( ),
@@ -200,8 +200,8 @@ define "Has Encounter with Initial and Follow Up VR12 Oblique Assessments":
 
 define "Date VR12 Oblique Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
     let VR12MentalAssessmentDate: date from start of VR12MentalAssessment.effective.toInterval ( ),
     VR12PhysicalAssessmentDate: date from start of VR12PhysicalAssessment.effective.toInterval ( )
     where VR12MentalAssessmentDate same day as VR12PhysicalAssessmentDate
@@ -222,8 +222,8 @@ define "Has Encounter with Initial and Follow Up VR12 Orthogonal Assessments":
 
 define "Date VR12 Orthogonal Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR12PhysicalAssessment
     let VR12MentalAssessmentDate: date from start of VR12MentalAssessment.effective.toInterval ( ),
     VR12PhysicalAssessmentDate: date from start of VR12PhysicalAssessment.effective.toInterval ( )
     where VR12MentalAssessmentDate same day as VR12PhysicalAssessmentDate
@@ -244,8 +244,8 @@ define "Has Encounter with Initial and Follow Up VR36 Oblique Assessments":
 
 define "Date VR36 Oblique Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-36 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR36MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-36 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR36PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-36 Mental component summary (MCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR36MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-36 Physical component summary (PCS) score - oblique method T-score"] ).isAssessmentPerformed ( ) ) VR36PhysicalAssessment
     let VR36MentalAssessmentDate: date from start of VR36MentalAssessment.effective.toInterval ( ),
     VR36PhysicalAssessmentDate: date from start of VR36PhysicalAssessment.effective.toInterval ( )
     where VR36MentalAssessmentDate same day as VR36PhysicalAssessmentDate
@@ -266,8 +266,8 @@ define "Has Encounter with Initial and Follow Up VR36 Orthogonal Assessments":
 
 define "Date VR36 Orthogonal Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "VR-36 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR36MentalAssessment,
-    ( ( [ObservationScreeningAssessment: "VR-36 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR36PhysicalAssessment
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-36 Mental component summary (MCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR36MentalAssessment,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "VR-36 Physical component summary (PCS) score - orthogonal method T-score"] ).isAssessmentPerformed ( ) ) VR36PhysicalAssessment
     let VR36MentalAssessmentDate: date from start of VR36MentalAssessment.effective.toInterval ( ),
     VR36PhysicalAssessmentDate: date from start of VR36PhysicalAssessment.effective.toInterval ( )
     where VR36MentalAssessmentDate same day as VR36PhysicalAssessmentDate
@@ -288,8 +288,8 @@ define "Has Encounter with Initial and Follow Up MLHFQ Assessments":
 
 define "Date MLHFQ Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "Physical score [MLHFQ]"] ).isAssessmentPerformed ( ) ) MLHFQPhysical,
-    ( ( [ObservationScreeningAssessment: "Emotional score [MLHFQ]"] ).isAssessmentPerformed ( ) ) MLHFQEmotional
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Physical score [MLHFQ]"] ).isAssessmentPerformed ( ) ) MLHFQPhysical,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Emotional score [MLHFQ]"] ).isAssessmentPerformed ( ) ) MLHFQEmotional
     let MLHFQPhysicalDate: date from start of MLHFQPhysical.effective.toInterval ( ),
     MLHFQEmotionalDate: date from start of MLHFQEmotional.effective.toInterval ( )
     where MLHFQPhysicalDate same day as MLHFQEmotionalDate
@@ -310,8 +310,8 @@ define "Has Encounter with Initial and Follow Up KCCQ12 Assessments":
 
 define "Date KCCQ12 Total Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "Kansas City Cardiomyopathy Questionnaire - 12 item [KCCQ-12]"] ).isAssessmentPerformed ( ) ) KCCQ12Item,
-    ( ( [ObservationScreeningAssessment: "Overall summary score [KCCQ-12]"] ).isAssessmentPerformed ( ) ) KCCQ12Summary
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Kansas City Cardiomyopathy Questionnaire - 12 item [KCCQ-12]"] ).isAssessmentPerformed ( ) ) KCCQ12Item,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Overall summary score [KCCQ-12]"] ).isAssessmentPerformed ( ) ) KCCQ12Summary
     let KCCQ12ItemDate: date from start of KCCQ12Item.effective.toInterval ( ),
     KCCQ12SummaryDate: date from start of KCCQ12Summary.effective.toInterval ( )
     where KCCQ12ItemDate same day as KCCQ12SummaryDate
@@ -332,12 +332,12 @@ define "Has Encounter with Initial and Follow Up KCCQ Domain Score Assessments":
 
 define "Date KCCQ Domain Assessment Completed":
   from
-    ( ( [ObservationScreeningAssessment: "Quality of life score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQLifeQuality,
-    ( ( [ObservationScreeningAssessment: "Symptom stability score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSymptomStability,
-    ( ( [ObservationScreeningAssessment: "Self-efficacy score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSelfEfficacy,
-    ( ( [ObservationScreeningAssessment: "Total symptom score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSymptoms,
-    ( ( [ObservationScreeningAssessment: "Physical limitation score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQPhysicalLimits,
-    ( ( [ObservationScreeningAssessment: "Social limitation score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSocialLimits
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Quality of life score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQLifeQuality,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Symptom stability score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSymptomStability,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Self-efficacy score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSelfEfficacy,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Total symptom score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSymptoms,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Physical limitation score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQPhysicalLimits,
+    ( ( [USQualityCore.ObservationScreeningAssessment: "Social limitation score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSocialLimits
     let KCCQLifeQualityDate: date from start of KCCQLifeQuality.effective.toInterval ( ),
     KCCQSymptomStabilityDate: date from start of KCCQSymptomStability.effective.toInterval ( ),
     KCCQSelfEfficacyDate: date from start of KCCQSelfEfficacy.effective.toInterval ( ),
@@ -358,7 +358,7 @@ define "Date KCCQ Domain Assessment Completed":
     return KCCQLifeQualityDate
 
 define "Date KCCQ Total Assessment Completed":
-  ( ( [ObservationScreeningAssessment: "Overall summary score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSummaryScore
+  ( ( [USQualityCore.ObservationScreeningAssessment: "Overall summary score [KCCQ]"] ).isAssessmentPerformed ( ) ) KCCQSummaryScore
     where ( KCCQSummaryScore as ObservationScreeningAssessment ).value is not null
     return date from start of KCCQSummaryScore.effective.toInterval ( )
 

@@ -187,8 +187,8 @@ define "Time to Treatment Room Greater Than 60 Minutes":
     where EDEvalManagementInMP.edArrivalTime ( ) 61 minutes or more before EDEvalManagementInMP.edTreatmentRoomTimeArrivalTime ( )
 
 define "Assessment In ED":
-  ["ObservationClinicalResult": "Emergency Department Evaluation"]
-    union ["SimpleObservation": "Emergency Department Evaluation"] ObsInED
+  [USQualityCore.ObservationClinicalResult: "Emergency Department Evaluation"]
+    union [USQualityCore.SimpleObservation: "Emergency Department Evaluation"] ObsInED
       where ObsInED.value as CodeableConcept in "Admit Inpatient"
 
 define fluent function "admitDecisionUsingAssessment"(EncounterInpatient Encounter):
@@ -201,7 +201,7 @@ define fluent function "admitDecisionUsingAssessment"(EncounterInpatient Encount
   )
 
 define "ED To Inpatient Order":
-  [ServiceRequest: "Decision to Admit to Hospital Inpatient"] AdmitIPOrder
+  [USQualityCore.ServiceRequest: "Decision to Admit to Hospital Inpatient"] AdmitIPOrder
     where AdmitIPOrder.status in { 'active', 'completed' }
 
 define fluent function "admitDecisionUsingEncounterOrder"(EncounterInpatient Encounter):
@@ -214,8 +214,8 @@ define fluent function "admitDecisionUsingEncounterOrder"(EncounterInpatient Enc
   )
 
 define "Inpatient Or Bed Assignment Encounter Order":
-  ( [ServiceRequest: "Encounter Inpatient"]
-    union [ServiceRequest: "Patient bed assigned (finding)"] ) IPRequest
+  ( [USQualityCore.ServiceRequest: "Encounter Inpatient"]
+    union [USQualityCore.ServiceRequest: "Patient bed assigned (finding)"] ) IPRequest
     where IPRequest.status in { 'active', 'completed' }
 
 define fluent function "admitInpatientOrBedAssignmentEncounterOrder"(Encounter Encounter):

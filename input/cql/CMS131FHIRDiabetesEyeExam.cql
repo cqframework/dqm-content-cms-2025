@@ -51,7 +51,7 @@ define "Initial Population":
     end of "Measurement Period"
   ) in Interval[18, 75]
     and exists ( "Qualifying Encounters" )
-    and exists ( ( ( [ConditionEncounterDiagnosis: "Diabetes"] ).verified ( ) ) DiabetesDx
+    and exists ( ( ( [USQualityCore.ConditionEncounterDiagnosis: "Diabetes"] ).verified ( ) ) DiabetesDx
         where DiabetesDx.prevalenceInterval ( ) overlaps day of "Measurement Period"
     )
 
@@ -88,7 +88,7 @@ define "Numerator":
     or "Retinal Exam Finding with No Retinopathy Severity Level in Year Prior"
 
 define "Autonomous Eye Exam in Measurement Period":
-  exists ( ( [ObservationClinicalResult: "Eye Diabetic retinopathy screening Autonomous artificial intelligence"] ).isPhysicalExamPerformed ( ) ) AutonomousEyeExam
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Eye Diabetic retinopathy screening Autonomous artificial intelligence"] ).isPhysicalExamPerformed ( ) ) AutonomousEyeExam
     where AutonomousEyeExam.value as CodeableConcept in "Autonomous Eye Exam Result or Finding"
       and AutonomousEyeExam.effective.toInterval ( ) during day of "Measurement Period"
 
@@ -102,11 +102,11 @@ define "Bilateral Absence of Eyes":
     where BilateralAbsenceEyes.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
 
 define "Retinal Exam in Measurement Period":
-  exists ( ( [ObservationClinicalResult: "Retinal or Dilated Eye Exam"] ).isPhysicalExamPerformed ( ) ) RetinalExam
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Retinal or Dilated Eye Exam"] ).isPhysicalExamPerformed ( ) ) RetinalExam
     where RetinalExam.effective.toInterval ( ) during day of "Measurement Period"
 
 define "Retinal Exam in Measurement Period or Year Prior":
-  exists ( ( [ObservationClinicalResult: "Retinal or Dilated Eye Exam"] ).isPhysicalExamPerformed ( ) ) RetinalExam
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Retinal or Dilated Eye Exam"] ).isPhysicalExamPerformed ( ) ) RetinalExam
     where RetinalExam.effective.toInterval ( ) during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
 
 define "Diabetic Retinopathy Overlapping Measurement Period":
@@ -119,22 +119,22 @@ define "Diabetic Retinopathy Overlapping Measurement Period":
     where Retinopathy.prevalenceInterval ( ) overlaps day of "Measurement Period"
 
 define "Has Left Eye No Retinopathy in Year Prior":
-  exists ( ( [ObservationClinicalResult: "Left eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) LeftEyeNoRetinopathy
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Left eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) LeftEyeNoRetinopathy
     where LeftEyeNoRetinopathy.value ~ "No apparent retinopathy"
       and LeftEyeNoRetinopathy.effective.toInterval ( ) during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year]
 
 define "Has Left Eye Retinopathy":
-  exists ( ( [ObservationClinicalResult: "Left eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) LeftEyeRetinopathy
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Left eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) LeftEyeRetinopathy
     where LeftEyeRetinopathy.value as CodeableConcept in "Diabetic Retinopathy Severity Level"
       and LeftEyeRetinopathy.effective.toInterval ( ) during day of "Measurement Period"
 
 define "Has Right Eye No Retinopathy in Year Prior":
-  exists ( ( [ObservationClinicalResult: "Right eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) RightEyeNoRetinopathy
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Right eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) RightEyeNoRetinopathy
     where RightEyeNoRetinopathy.value ~ "No apparent retinopathy"
       and RightEyeNoRetinopathy.effective.toInterval ( ) during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year]
 
 define "Has Right Eye Retinopathy":
-  exists ( ( [ObservationClinicalResult: "Right eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) RightEyeRetinopathy
+  exists ( ( [USQualityCore.ObservationClinicalResult: "Right eye Diabetic retinopathy severity level by Ophthalmoscopy"] ).isPhysicalExamPerformed ( ) ) RightEyeRetinopathy
     where RightEyeRetinopathy.value as CodeableConcept in "Diabetic Retinopathy Severity Level"
       and RightEyeRetinopathy.effective.toInterval ( ) during day of "Measurement Period"
 

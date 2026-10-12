@@ -85,7 +85,7 @@ define "Qualifying Performed PCP Visits":
 define "Qualifying Performed PCP Visits With VTE Symptom":
   "Qualifying Performed PCP Visits" IndexPCPVisit
     where IndexPCPVisit.reasonCode in "VTE Symptoms"
-      or exists ( [ConditionEncounterDiagnosis: "VTE Symptoms"] VTESymptomCondition
+      or exists ( [USQualityCore.ConditionEncounterDiagnosis: "VTE Symptoms"] VTESymptomCondition
           where VTESymptomCondition.isVerified ( )
             and IndexPCPVisit.reasonReference.references ( VTESymptomCondition )
       )
@@ -93,17 +93,17 @@ define "Qualifying Performed PCP Visits With VTE Symptom":
 define "Qualifying Performed VTE Encounters":
   "Qualifying Performed Encounters" VTEEncounter
     where VTEEncounter.reasonCode in "VTE Diagnoses"
-      or exists ( [ConditionEncounterDiagnosis: "VTE Diagnoses"] VTECondition
+      or exists ( [USQualityCore.ConditionEncounterDiagnosis: "VTE Diagnoses"] VTECondition
           where VTECondition.isConfirmedCondition ( )
             and VTEEncounter.reasonReference.references ( VTECondition )
       )
 
 define "Qualifying VTE Imaging Diagnostic Report":
-  ["DiagnosticReportNote": "Imaging Related to VTE"] VTEDiagnosticReport
+  [USQualityCore.DiagnosticReportNote: "Imaging Related to VTE"] VTEDiagnosticReport
     where VTEDiagnosticReport.status in { 'final', 'amended', 'corrected' }
 
 define "AntiCoagulant Therapy Ordered":
-  ["MedicationRequest": "Anticoagulant Medications"] AntiCoagulant
+  [USQualityCore.MedicationRequest: "Anticoagulant Medications"] AntiCoagulant
     where AntiCoagulant.status in { 'active', 'completed' }
       and AntiCoagulant.intent = 'order'
 
@@ -143,22 +143,22 @@ define "Qualified VTE Encounter With Hospice Services Within Previous 90 Days":
       or exists ( ["Encounter": "Hospice Encounter"] HospiceEncounter
           where HospiceEncounter.period overlaps day of NinetyDaysBeforeVTEEncounter
       )
-      or exists ( ( [ObservationScreeningAssessment: "Hospice care [Minimum Data Set]"] ) HospiceAssessment
+      or exists ( ( [USQualityCore.ObservationScreeningAssessment: "Hospice care [Minimum Data Set]"] ) HospiceAssessment
           where HospiceAssessment.value ~ "Yes (qualifier value)"
             and HospiceAssessment.effective.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
       )
-      or exists ( ( [ServiceRequest: "Hospice Care Ambulatory"] ) HospiceOrder
+      or exists ( ( [USQualityCore.ServiceRequest: "Hospice Care Ambulatory"] ) HospiceOrder
           where HospiceOrder.authoredOn during day of NinetyDaysBeforeVTEEncounter
             and HospiceOrder.status in { 'active', 'completed' }
       )
       or exists ( ( [Procedure: "Hospice Care Ambulatory"] ) HospicePerformed
           where HospicePerformed.performed.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
       )
-      or exists ( ( [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
+      or exists ( ( [USQualityCore.ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
           where HospiceCareDiagnosis.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and HospiceCareDiagnosis.isVerified ( )
       )
-      or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"] ) HospiceCareConcern
+      or exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Hospice Diagnosis"] ) HospiceCareConcern
           where HospiceCareConcern.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and HospiceCareConcern.isVerified ( )
       )
@@ -167,15 +167,15 @@ define "Qualified VTE Encounter With Palliative Care Within Previous 90 Days":
   from
     "Qualified VTE Encounters" QualifiedVTEEncounter
     let NinetyDaysBeforeVTEEncounter: Interval[start of QualifiedVTEEncounter.period - 90 days, end of QualifiedVTEEncounter.period]
-    where exists ( ( [ObservationScreeningAssessment: "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)"] ) PalliativeAssessment
+    where exists ( ( [USQualityCore.ObservationScreeningAssessment: "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)"] ) PalliativeAssessment
         where PalliativeAssessment.effective.toInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
           and PalliativeAssessment.status in { 'final', 'amended', 'corrected' }
     )
-      or exists ( ( ( [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) ) PalliativeCareDiagnosis
+      or exists ( ( ( [USQualityCore.ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) ) PalliativeCareDiagnosis
           where PalliativeCareDiagnosis.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and PalliativeCareDiagnosis.isVerified ( )
       )
-      or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"] ) PalliativeCareConcern
+      or exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"] ) PalliativeCareConcern
           where PalliativeCareConcern.prevalenceInterval ( ) overlaps day of NinetyDaysBeforeVTEEncounter
             and PalliativeCareConcern.isVerified ( )
       )

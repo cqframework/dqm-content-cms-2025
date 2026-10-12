@@ -47,7 +47,7 @@ define "Initial Population":
 
 define "First SUD Episode During Measurement Period":
   First(("Qualifying Encounters") ValidEncounters
-      with(([ConditionEncounterDiagnosis: "Substance Use Disorder"]).verified()) SUDDiagnosis
+      with(([USQualityCore.ConditionEncounterDiagnosis: "Substance Use Disorder"]).verified()) SUDDiagnosis
         such that ValidEncounters.period during "Measurement Period"
           and SUDDiagnosis.prevalenceInterval ( ) starts during ValidEncounters.period
           and SUDDiagnosis.prevalenceInterval ( ) starts 47 days or more before day of 
@@ -85,8 +85,8 @@ define "History of SUD Diagnosis or Treatment":
         with "First SUD Episode During Measurement Period" FirstSUDEpisode
           such that SUDEncounterDx.period starts 60 days or less before day of date from start of FirstSUDEpisode.period
     )
-    union ( ( ( [MedicationRequest: "Substance Use Disorder Long Acting Medication"]
-          union [MedicationRequest: "Substance Use Disorder Short Acting Medication"]
+    union ( ( ( [USQualityCore.MedicationRequest: "Substance Use Disorder Long Acting Medication"]
+          union [USQualityCore.MedicationRequest: "Substance Use Disorder Short Acting Medication"]
       ).isMedicationOrder ( ) ) SUDMedication
         with "First SUD Episode During Measurement Period" FirstSUDEpisode
           such that SUDMedication.authoredOn 60 days or less before day of date from start of FirstSUDEpisode.period
@@ -134,8 +134,8 @@ define "Psychosocial Visit":
       where TelehealthEncounter.encounterDiagnosis ( ).code in "Substance Use Disorder"
 
 define "Treatment Initiation With Medication Order Dates":
-  ( ( ( [MedicationRequest: "Substance Use Disorder Short Acting Medication"]
-        union [MedicationRequest: "Substance Use Disorder Long Acting Medication"]
+  ( ( ( [USQualityCore.MedicationRequest: "Substance Use Disorder Short Acting Medication"]
+        union [USQualityCore.MedicationRequest: "Substance Use Disorder Long Acting Medication"]
     ).isMedicationOrder ( ) ) SUDMedication
       let treatmentDate: date from start of SUDMedication.authoredOn.toInterval ( )
       with "First SUD Episode During Measurement Period" FirstSUDEpisode
@@ -161,7 +161,7 @@ define "Has Two or More Treatment Engagements With Short Acting Medication or No
             or date from start of ShortActingTreatment.period 34 days or less after InitiationTreatmentDate
         return all ShortActingTreatment
     )
-      union((([MedicationRequest: "Substance Use Disorder Short Acting Medication"]).isMedicationOrder()) ShortActingMedOrder
+      union((([USQualityCore.MedicationRequest: "Substance Use Disorder Short Acting Medication"]).isMedicationOrder()) ShortActingMedOrder
           with(Min("Treatment Initiation With Non Medication Intervention Dates"
               union "Treatment Initiation With Medication Order Dates"
           )) InitiationTreatmentDate
@@ -175,7 +175,7 @@ define "Numerator 2":
     or "Has Two or More Treatment Engagements With Short Acting Medication or Non Medication Intervention"
 
 define "Has Treatment Engagement With Long Acting Medication":
-  exists ( ( ( ( [MedicationRequest: "Substance Use Disorder Long Acting Medication"] ).isMedicationOrder ( ) ) LongActingMedOrder
+  exists ( ( ( ( [USQualityCore.MedicationRequest: "Substance Use Disorder Long Acting Medication"] ).isMedicationOrder ( ) ) LongActingMedOrder
         with ( Min("Treatment Initiation With Non Medication Intervention Dates"
             union "Treatment Initiation With Medication Order Dates"
         ) ) InitiationTreatmentDate

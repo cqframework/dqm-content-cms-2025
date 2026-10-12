@@ -113,7 +113,7 @@ define "Encounter With Intervention Comfort Measures From Day Of Start Of Hospit
       such that Coalesce(start of ComfortMeasure.performed.toInterval(), ComfortMeasure.authoredOn) during day of QualifyingEncounterICU.fromDayOfStartOfHospitalizationToDayAfterFirstICU ( )
 
 define "Intervention Comfort Measures":
-  ( ["ServiceRequest": "Comfort Measures"] InterventionRequest
+  ( [USQualityCore.ServiceRequest: "Comfort Measures"] InterventionRequest
       where InterventionRequest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and InterventionRequest.status in { 'active', 'completed' }
   )
@@ -199,7 +199,7 @@ define "Encounter With Medication Oral Factor Xa Inhibitor Administered On Day O
 
 define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prior Diagnosis Of VTE":
   ( "Encounter With ICU Location" QualifyingEncounterICU
-      with ["ConditionProblemsHealthConcerns": "Atrial Fibrillation or Flutter"] AtrialFibrillation
+      with [USQualityCore.ConditionProblemsHealthConcerns: "Atrial Fibrillation or Flutter"] AtrialFibrillation
         such that AtrialFibrillation.verificationStatus is not null implies ( AtrialFibrillation.verificationStatus !~ Status."refuted"
             and AtrialFibrillation.verificationStatus !~ Status."entered-in-error"
         )
@@ -209,7 +209,7 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prio
         where QualifyingEncounterICU.hasEncDiagnosisOf ( "Atrial Fibrillation or Flutter" )
     )
     union ( "Encounter With ICU Location" QualifyingEncounterICU
-        with ["ConditionProblemsHealthConcerns": "Venous Thromboembolism"] VTEDiagnosis
+        with [USQualityCore.ConditionProblemsHealthConcerns: "Venous Thromboembolism"] VTEDiagnosis
           such that ( VTEDiagnosis.clinicalStatus ~ Status."inactive"
               or VTEDiagnosis.clinicalStatus ~ Status."remission"
               or VTEDiagnosis.clinicalStatus ~ Status."resolved"
@@ -232,7 +232,7 @@ define "Encounter With Low Risk For VTE Or Anticoagulant Administered":
     union "Low Risk For VTE Or Anticoagulant Administered On Day Of Or Day After Procedure"
 
 define "Low Risk Indicator For VTE":
-  ( ["SimpleObservation": "Risk for venous thromboembolism"] VTERiskAssessment
+  ( [USQualityCore.SimpleObservation: "Risk for venous thromboembolism"] VTERiskAssessment
       where VTERiskAssessment.value as CodeableConcept in "Low Risk"
         and VTERiskAssessment.status in { 'final', 'amended', 'corrected' }
       return {
@@ -240,7 +240,7 @@ define "Low Risk Indicator For VTE":
         LowRiskDatetime: VTERiskAssessment.effective.earliest ( )
       }
   )
-    union ( ["LaboratoryResultObservation": "INR"] INRLabTest
+    union ( [USQualityCore.LaboratoryResultObservation: "INR"] INRLabTest
         where INRLabTest.value as Quantity > 3.0
           and INRLabTest.status in { 'final', 'amended', 'corrected' }
         return {
@@ -302,22 +302,22 @@ define "No VTE Prophylaxis Medication Due To Medical Reason From Day Of Start Of
         and NoVTEMedication.authoredOn during day of QualifyingEncounterICU.fromDayOfStartOfHospitalizationToDayAfterFirstICU ( )
 
 define "No VTE Prophylaxis Medication Administered Or Ordered":
-  ( ( [MedicationAdministrationNotDone: "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
-      union [MedicationAdministrationNotDone: "Low Molecular Weight Heparin for VTE Prophylaxis"]
-      union [MedicationAdministrationNotDone: "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
-      union [MedicationAdministrationNotDone: "Warfarin"]
-      union [MedicationAdministrationNotDone: "Rivaroxaban for VTE Prophylaxis"] ) NoMedicationAdm
+  ( ( [USQualityCore.MedicationAdministrationNotDone: "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
+      union [USQualityCore.MedicationAdministrationNotDone: "Low Molecular Weight Heparin for VTE Prophylaxis"]
+      union [USQualityCore.MedicationAdministrationNotDone: "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
+      union [USQualityCore.MedicationAdministrationNotDone: "Warfarin"]
+      union [USQualityCore.MedicationAdministrationNotDone: "Rivaroxaban for VTE Prophylaxis"] ) NoMedicationAdm
       return {
         id: NoMedicationAdm.id,
         medicationStatusReason: NoMedicationAdm.statusReason,
         authoredOn: NoMedicationAdm.recorded()
       }
   )
-    union ( ( ["MedicationNotRequested": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
-        union ["MedicationNotRequested": "Low Molecular Weight Heparin for VTE Prophylaxis"]
-        union ["MedicationNotRequested": "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
-        union ["MedicationNotRequested": "Warfarin"]
-        union ["MedicationNotRequested": "Rivaroxaban for VTE Prophylaxis"] ) NoMedicationOrder
+    union ( ( [USQualityCore.MedicationNotRequested: "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
+        union [USQualityCore.MedicationNotRequested: "Low Molecular Weight Heparin for VTE Prophylaxis"]
+        union [USQualityCore.MedicationNotRequested: "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
+        union [USQualityCore.MedicationNotRequested: "Warfarin"]
+        union [USQualityCore.MedicationNotRequested: "Rivaroxaban for VTE Prophylaxis"] ) NoMedicationOrder
         where NoMedicationOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
           and NoMedicationOrder.status in { 'active', 'completed' }
         return {
@@ -327,12 +327,12 @@ define "No VTE Prophylaxis Medication Administered Or Ordered":
         }
     )
     union ( from
-        ( ["MedicationRequest": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
-          union ["MedicationRequest": "Low Molecular Weight Heparin for VTE Prophylaxis"]
-          union ["MedicationRequest": "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
-          union ["MedicationRequest": "Warfarin"]
-          union ["MedicationRequest": "Rivaroxaban for VTE Prophylaxis"] ) MedicationOrderReject,
-        [TaskRejected] T
+        ( [USQualityCore.MedicationRequest: "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
+          union [USQualityCore.MedicationRequest: "Low Molecular Weight Heparin for VTE Prophylaxis"]
+          union [USQualityCore.MedicationRequest: "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
+          union [USQualityCore.MedicationRequest: "Warfarin"]
+          union [USQualityCore.MedicationRequest: "Rivaroxaban for VTE Prophylaxis"] ) MedicationOrderReject,
+        [USQualityCore.TaskRejected] T
         where T.focus.references ( MedicationOrderReject )
           and T.code ~ USQualityCoreCommon."Fulfill"
           and MedicationOrderReject.status = 'active'
@@ -350,9 +350,9 @@ define "No Mechanical VTE Prophylaxis Due To Medical Reason From Day Of Start Of
         and NoVTEDevice.authoredOn during day of QualifyingEncounterICU.fromDayOfStartOfHospitalizationToDayAfterFirstICU ( )
 
 define "No Mechanical VTE Prophylaxis Performed Or Ordered":
-  ( ( [ServiceNotRequested: "Venous foot pumps"]
-      union [ServiceNotRequested: "Intermittent pneumatic compression devices"]
-      union [ServiceNotRequested: "Graduated compression stockings"] ) DeviceNotOrder
+  ( ( [USQualityCore.ServiceNotRequested: "Venous foot pumps"]
+      union [USQualityCore.ServiceNotRequested: "Intermittent pneumatic compression devices"]
+      union [USQualityCore.ServiceNotRequested: "Graduated compression stockings"] ) DeviceNotOrder
       where DeviceNotOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
       return {
         id: DeviceNotOrder.id,
@@ -361,10 +361,10 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
       }
   )
     union ( from
-        ( [ServiceRequest: "Venous foot pumps"]
-          union [ServiceRequest: "Intermittent pneumatic compression devices"]
-          union [ServiceRequest: "Graduated compression stockings"] ) DeviceOrderReject,
-        [TaskRejected] T
+        ( [USQualityCore.ServiceRequest: "Venous foot pumps"]
+          union [USQualityCore.ServiceRequest: "Intermittent pneumatic compression devices"]
+          union [USQualityCore.ServiceRequest: "Graduated compression stockings"] ) DeviceOrderReject,
+        [USQualityCore.TaskRejected] T
         where DeviceOrderReject.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
           and DeviceOrderReject.status = 'active'
           and T.focus.references ( DeviceOrderReject )
@@ -375,9 +375,9 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
           authoredOn: DeviceOrderReject.authoredOn
         }
     )
-    union ( ( [ProcedureNotDone: "Application of Intermittent Pneumatic Compression Devices"]
-        union [ProcedureNotDone: "Application of Venous Foot Pumps"]
-        union [ProcedureNotDone: "Application of Graduated Compression Stockings"] ) DeviceNotApplied
+    union ( ( [USQualityCore.ProcedureNotDone: "Application of Intermittent Pneumatic Compression Devices"]
+        union [USQualityCore.ProcedureNotDone: "Application of Venous Foot Pumps"]
+        union [USQualityCore.ProcedureNotDone: "Application of Graduated Compression Stockings"] ) DeviceNotApplied
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,

@@ -70,8 +70,8 @@ define "Encounter With Pharyngitis or Tonsillitis With Antibiotic":
     return VisitWithAntibiotic
 
 define "Pharyngitis or Tonsillitis":
-  ( [ConditionEncounterDiagnosis: "Acute Pharyngitis"]
-      union [ConditionEncounterDiagnosis: "Acute Tonsillitis"]
+  ( [USQualityCore.ConditionEncounterDiagnosis: "Acute Pharyngitis"]
+      union [USQualityCore.ConditionEncounterDiagnosis: "Acute Tonsillitis"]
   ).verified ( )
 
 define "Denominator":
@@ -79,13 +79,13 @@ define "Denominator":
 
 define "Denominator Exclusions":
   "Encounters and Assessments with Hospice Patient"
-    union Antibiotic."Encounter with Comorbid Condition History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [ConditionEncounterDiagnosis: "Comorbid Conditions for Respiratory Conditions"] ).verified ( ) )
-    union Antibiotic."Encounter with Antibiotic Medication History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [MedicationRequest: "Antibiotic Medications for Pharyngitis"] ).isMedicationActive ( ) )
-    union Antibiotic."Encounter with Competing Diagnosis History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [ConditionEncounterDiagnosis: "Competing Conditions for Respiratory Conditions"] ).verified ( ) )
+    union Antibiotic."Encounter with Comorbid Condition History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [USQualityCore.ConditionEncounterDiagnosis: "Comorbid Conditions for Respiratory Conditions"] ).verified ( ) )
+    union Antibiotic."Encounter with Antibiotic Medication History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [USQualityCore.MedicationRequest: "Antibiotic Medications for Pharyngitis"] ).isMedicationActive ( ) )
+    union Antibiotic."Encounter with Competing Diagnosis History" ( "Encounter With Pharyngitis or Tonsillitis With Antibiotic", ( [USQualityCore.ConditionEncounterDiagnosis: "Competing Conditions for Respiratory Conditions"] ).verified ( ) )
 
 define "Encounter With Antibiotic Ordered Within Three Days":
   "Qualifying Encounters" EDOrAmbulatoryVisit
-    with ( ( [MedicationRequest: "Antibiotic Medications for Pharyngitis"] ).isMedicationOrder ( ) ) AntibioticOrdered
+    with ( ( [USQualityCore.MedicationRequest: "Antibiotic Medications for Pharyngitis"] ).isMedicationOrder ( ) ) AntibioticOrdered
       such that EDOrAmbulatoryVisit.period.toInterval ( ) starts 3 days or less on or before day of AntibioticOrdered.authoredOn
 
 define "Encounters and Assessments with Hospice Patient":
@@ -122,7 +122,7 @@ define "Numerator":
     return EncounterWithPharyngitis
 
 define "Group A Streptococcus Lab Test With Result":
-  ( ( [LaboratoryResultObservation: "Group A Streptococcus Test"] ).isLaboratoryTestPerformed ( ) ) GroupAStreptococcusTest
+  ( ( [USQualityCore.LaboratoryResultObservation: "Group A Streptococcus Test"] ).isLaboratoryTestPerformed ( ) ) GroupAStreptococcusTest
     where GroupAStreptococcusTest.value is not null
 
 define "Stratification 1":

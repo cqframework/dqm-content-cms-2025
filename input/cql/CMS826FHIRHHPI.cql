@@ -123,11 +123,11 @@ define "Encounter With New Stage 2, 3, 4 Or Unstageable Pressure Injury By Skin 
       such that SkinExam.effective.toInterval ( ) starts during Interval[start of hospitalizationPeriod + 24 hours, end of hospitalizationPeriod]
 
 define "Clinical Skin Exams With Pressure Injury":
-  ["ObservationClinicalResult": "Physical findings of Skin"] ClinicalSkinExam
+  [USQualityCore.ObservationClinicalResult: "Physical findings of Skin"] ClinicalSkinExam
     where ClinicalSkinExam.isIn ( "Pressure Injury Stage 2, 3, 4 or Unstageable" )
 
 define "Simple Skin Exams With Pressure Injury":
-  ["SimpleObservation": "Physical findings of Skin"] ObsSkinExam
+  [USQualityCore.SimpleObservation: "Physical findings of Skin"] ObsSkinExam
     where ObsSkinExam.isIn ( "Pressure Injury Stage 2, 3, 4 or Unstageable" )
 
 // @description Skin exams may be either a SimpleObservation or an ObservationClinicalResult in QI-Core. The definition below allows both QI-Core resource representations for more comprehensive data capture.

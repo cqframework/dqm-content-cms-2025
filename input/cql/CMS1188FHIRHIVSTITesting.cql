@@ -77,19 +77,19 @@ define "Has HIV Diagnosis Before End of Measurement Period":
       and HIVDx.isVerified ( )
 
 define "Has Chlamydia Testing":
-  exists ["LaboratoryResultObservation": "Chlamydia Screening"] ChlamydiaTest
+  exists [USQualityCore.LaboratoryResultObservation: "Chlamydia Screening"] ChlamydiaTest
     where ChlamydiaTest.value is not null
       and ChlamydiaTest.status in { 'final', 'amended', 'corrected' }
       and ChlamydiaTest.effective.latest ( ) during day of "Measurement Period"
 
 define "Has Gonorrhea Testing":
-  exists ["LaboratoryResultObservation": "Gonorrhea Screening"] GonorrheaTest
+  exists [USQualityCore.LaboratoryResultObservation: "Gonorrhea Screening"] GonorrheaTest
     where GonorrheaTest.value is not null
       and GonorrheaTest.status in { 'final', 'amended', 'corrected' }
       and GonorrheaTest.effective.latest ( ) during day of "Measurement Period"
 
 define "Has Syphilis Testing":
-  exists ["LaboratoryResultObservation": "Syphilis Tests"] SyphilisTest
+  exists [USQualityCore.LaboratoryResultObservation: "Syphilis Tests"] SyphilisTest
     where SyphilisTest.value is not null
       and SyphilisTest.status in { 'final', 'amended', 'corrected' }
       and SyphilisTest.effective.latest ( ) during day of "Measurement Period"

@@ -107,5 +107,5 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Standard Pain Assessment with Result":
-  [ObservationScreeningAssessment: "Standardized Pain Assessment Tool"] AssessedPain
+  [USQualityCore.ObservationScreeningAssessment: "Standardized Pain Assessment Tool"] AssessedPain
     where AssessedPain.value is not null

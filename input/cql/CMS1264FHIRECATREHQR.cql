@@ -205,7 +205,7 @@ define fluent function "edTreatmentRoomTimeArrivalTime"(EDEncounter Encounter):
   )
 
 define fluent function "TransferDecisionUsingOrder"(EDEncounter Encounter):
-  Last([ServiceRequest: "Decision to Transfer"] TransferOrder
+  Last([USQualityCore.ServiceRequest: "Decision to Transfer"] TransferOrder
       where TransferOrder.authoredOn during EDEncounter.period
         and TransferOrder.intent = 'order'
         and TransferOrder.status in { 'active', 'completed' }

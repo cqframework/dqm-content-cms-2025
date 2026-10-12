@@ -82,5 +82,5 @@ define "Denominator Exclusions":
   Hospice."Has Hospice Services"
 
 define "Numerator":
-  exists ( ( [ObservationScreeningAssessment: "Falls Screening"] ).isAssessmentPerformed ( ) ) FallsScreening
+  exists ( ( [USQualityCore.ObservationScreeningAssessment: "Falls Screening"] ).isAssessmentPerformed ( ) ) FallsScreening
     where FallsScreening.effective.toInterval ( ) during day of "Measurement Period"

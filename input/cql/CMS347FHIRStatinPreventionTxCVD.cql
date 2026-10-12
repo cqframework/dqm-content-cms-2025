@@ -122,12 +122,12 @@ define "Numerator":
     or exists "Medication Active during the Measurement Period"
 
 define "ASCVD Diagnosis or Procedure before End of Measurement Period":
-  ( ( [ConditionProblemsHealthConcerns: "Myocardial Infarction"]
-      union [ConditionProblemsHealthConcerns: "Subsequent non-ST elevation (NSTEMI) myocardial infarction"]
-      union [ConditionProblemsHealthConcerns: "Cerebrovascular Disease Stroke or TIA"]
-      union [ConditionProblemsHealthConcerns: "Atherosclerosis and Peripheral Arterial Disease"]
-      union [ConditionProblemsHealthConcerns: "Ischemic Heart Disease or Other Related Diagnoses"]
-      union [ConditionProblemsHealthConcerns: "Stable and Unstable Angina"] ) ASCVDDiagnosis
+  ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Myocardial Infarction"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Subsequent non-ST elevation (NSTEMI) myocardial infarction"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Cerebrovascular Disease Stroke or TIA"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Atherosclerosis and Peripheral Arterial Disease"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Ischemic Heart Disease or Other Related Diagnoses"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Stable and Unstable Angina"] ) ASCVDDiagnosis
       where ASCVDDiagnosis.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
         and ASCVDDiagnosis.isVerified ( )
   )
@@ -151,29 +151,29 @@ define "Has Allergy to Statin":
   )
 
 define "Has Diabetes Diagnosis":
-  exists ( [ConditionProblemsHealthConcerns: "Diabetes"] DiabetesDiagnosis
+  exists ( [USQualityCore.ConditionProblemsHealthConcerns: "Diabetes"] DiabetesDiagnosis
       where DiabetesDiagnosis.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and DiabetesDiagnosis.isVerified ( )
   )
 
 define "Has ESRD Diagnosis":
-  exists ( [ConditionProblemsHealthConcerns: "End Stage Renal Disease"] ESRD
+  exists ( [USQualityCore.ConditionProblemsHealthConcerns: "End Stage Renal Disease"] ESRD
       where ESRD.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and ESRD.isVerified ( )
   )
 
 define "Has Hepatitis or Liver Disease Diagnosis":
-  exists ( ( [ConditionProblemsHealthConcerns: "Hepatitis A"]
-      union [ConditionProblemsHealthConcerns: "Hepatitis B"]
-      union [ConditionProblemsHealthConcerns: "Liver Disease"] ) HepatitisLiverDisease
+  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Hepatitis A"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Hepatitis B"]
+      union [USQualityCore.ConditionProblemsHealthConcerns: "Liver Disease"] ) HepatitisLiverDisease
       where HepatitisLiverDisease.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and HepatitisLiverDisease.isVerified ( )
   )
 
 define "Has Medical Reason for Not Ordering Statin Therapy":
-  exists ( ( [MedicationNotRequested: "Low Intensity Statin Therapy"]
-      union [MedicationNotRequested: "Moderate Intensity Statin Therapy"]
-      union [MedicationNotRequested: "High Intensity Statin Therapy"] ) NoStatinTherapyOrdered
+  exists ( ( [USQualityCore.MedicationNotRequested: "Low Intensity Statin Therapy"]
+      union [USQualityCore.MedicationNotRequested: "Moderate Intensity Statin Therapy"]
+      union [USQualityCore.MedicationNotRequested: "High Intensity Statin Therapy"] ) NoStatinTherapyOrdered
       with "Qualifying Encounter During Day of Measurement Period" QualifyingEncounter
         such that NoStatinTherapyOrdered.authoredOn during day of QualifyingEncounter.period
           and NoStatinTherapyOrdered.status in { 'active', 'completed' }
@@ -181,27 +181,27 @@ define "Has Medical Reason for Not Ordering Statin Therapy":
   )
 
 define "Has Statin Associated Muscle Symptoms":
-  exists ( [ConditionProblemsHealthConcerns: "Statin Associated Muscle Symptoms"] StatinMuscleSymptom
+  exists ( [USQualityCore.ConditionProblemsHealthConcerns: "Statin Associated Muscle Symptoms"] StatinMuscleSymptom
       where StatinMuscleSymptom.prevalenceInterval ( ) overlaps day of "Measurement Period"
         and StatinMuscleSymptom.isVerified ( )
   )
 
 define "Hypercholesterolemia Diagnosis":
-  ( [ConditionProblemsHealthConcerns: "Familial Hypercholesterolemia"] Hypercholesterolemia
+  ( [USQualityCore.ConditionProblemsHealthConcerns: "Familial Hypercholesterolemia"] Hypercholesterolemia
       where Hypercholesterolemia.prevalenceInterval ( ) starts on or before day of end of "Measurement Period"
         and Hypercholesterolemia.isVerified ( )
   )
 
 define "LDL Result Greater Than or Equal To 190":
-  [LaboratoryResultObservation: "LDL Cholesterol"] LDL190
+  [USQualityCore.LaboratoryResultObservation: "LDL Cholesterol"] LDL190
     where LDL190.value as Quantity >= 190 'mg/dL'
       and LDL190.effective.toInterval ( ) starts on or before day of end of "Measurement Period"
       and LDL190.status in { 'final', 'amended', 'corrected', 'appended' }
 
 define "Medication Active during the Measurement Period":
-  ( [MedicationRequest: "Low Intensity Statin Therapy"]
-    union [MedicationRequest: "Moderate Intensity Statin Therapy"]
-    union [MedicationRequest: "High Intensity Statin Therapy"] ) ActiveStatin
+  ( [USQualityCore.MedicationRequest: "Low Intensity Statin Therapy"]
+    union [USQualityCore.MedicationRequest: "Moderate Intensity Statin Therapy"]
+    union [USQualityCore.MedicationRequest: "High Intensity Statin Therapy"] ) ActiveStatin
     where ActiveStatin.medicationRequestPeriod ( ) overlaps day of "Measurement Period"
       and ActiveStatin.status in { 'active', 'completed' }
 
@@ -246,16 +246,16 @@ define "Qualifying Encounter During Day of Measurement Period":
       and QualifyingEncounter.status = 'finished'
 
 define "Statin Therapy Ordered during Measurement Period":
-  ( [MedicationRequest: "Low Intensity Statin Therapy"]
-    union [MedicationRequest: "Moderate Intensity Statin Therapy"]
-    union [MedicationRequest: "High Intensity Statin Therapy"] ) StatinRequest
+  ( [USQualityCore.MedicationRequest: "Low Intensity Statin Therapy"]
+    union [USQualityCore.MedicationRequest: "Moderate Intensity Statin Therapy"]
+    union [USQualityCore.MedicationRequest: "High Intensity Statin Therapy"] ) StatinRequest
     where StatinRequest.authoredOn during day of "Measurement Period"
       and StatinRequest.status in { 'active', 'completed' }
       and StatinRequest.intent in { 'order', 'original-order', 'reflex-order', 'filter-order', 'instance-order' }
 
 define "Ten Year CVD Risk is High":
-  exists ( ( [ObservationScreeningAssessment: "Cardiovascular disease 10Y risk [Likelihood]"]
-      union [ObservationScreeningAssessment: "Cardiovascular disease 10Y risk [Likelihood] ACC-AHA Pooled Cohort by Goff 2013"] ) AtRiskCVD
+  exists ( ( [USQualityCore.ObservationScreeningAssessment: "Cardiovascular disease 10Y risk [Likelihood]"]
+      union [USQualityCore.ObservationScreeningAssessment: "Cardiovascular disease 10Y risk [Likelihood] ACC-AHA Pooled Cohort by Goff 2013"] ) AtRiskCVD
       where AtRiskCVD.value as Quantity >= 20 '%'
         and AtRiskCVD.effective.toInterval ( ) during day of "Measurement Period"
         and AtRiskCVD.status in { 'final', 'amended', 'corrected' }

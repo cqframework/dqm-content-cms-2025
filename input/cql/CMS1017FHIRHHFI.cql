@@ -157,7 +157,7 @@ define "Risk Variable Encounter with Abnormal Weight Loss or Malnutrition Presen
 
 define "Risk Variable Encounter with Anticoagulant Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Anticoagulants for All Indications"] Anticoagulants
+    with [USQualityCore.MedicationRequest: "Anticoagulants for All Indications"] Anticoagulants
       such that Anticoagulants.status in { 'active', 'completed' }
         and ( Anticoagulants.intent = 'order'
             or ( Anticoagulants.intent = 'plan'
@@ -175,7 +175,7 @@ define "Risk Variable Encounter with Anticoagulant Administration During Encount
 
 define "Risk Variable Encounter with Antidepressant Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Antidepressants"] AntidepressantMed
+    with [USQualityCore.MedicationRequest: "Antidepressants"] AntidepressantMed
       such that AntidepressantMed.status in { 'active', 'completed' }
         and ( AntidepressantMed.intent = 'order'
             or ( AntidepressantMed.intent = 'plan'
@@ -187,7 +187,7 @@ define "Risk Variable Encounter with Antidepressant Active at Admission":
 
 define "Risk Variable Encounter with Antihypertensive Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Antihypertensives"] BPMed
+    with [USQualityCore.MedicationRequest: "Antihypertensives"] BPMed
       such that BPMed.status in { 'active', 'completed' }
         and ( BPMed.intent = 'order'
             or ( BPMed.intent = 'plan'
@@ -199,7 +199,7 @@ define "Risk Variable Encounter with Antihypertensive Active at Admission":
 
 define "Risk Variable Encounter with CNS Depressant Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Central Nervous System Depressants"] CNSMed
+    with [USQualityCore.MedicationRequest: "Central Nervous System Depressants"] CNSMed
       such that CNSMed.status in { 'active', 'completed' }
         and ( CNSMed.intent = 'order'
             or ( CNSMed.intent = 'plan'
@@ -211,7 +211,7 @@ define "Risk Variable Encounter with CNS Depressant Active at Admission":
 
 define "Risk Variable Encounter with Diuretic Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Diuretics"] DiureticMed
+    with [USQualityCore.MedicationRequest: "Diuretics"] DiureticMed
       such that DiureticMed.status in { 'active', 'completed' }
         and ( DiureticMed.intent = 'order'
             or ( DiureticMed.intent = 'plan'
@@ -223,7 +223,7 @@ define "Risk Variable Encounter with Diuretic Active at Admission":
 
 define "Risk Variable Encounter with Opioid Medication Active at Admission":
   "Qualifying Encounter" InpatientEncounter
-    with ["MedicationRequest": "Opioids"] OpioidMed
+    with [USQualityCore.MedicationRequest: "Opioids"] OpioidMed
       such that OpioidMed.status in { 'active', 'completed' }
         and ( OpioidMed.intent = 'order'
             or ( OpioidMed.intent = 'plan'
@@ -325,7 +325,7 @@ define fluent function hasDiagnosisNotPresentOnAdmissionOrNull(encounter Encount
 
 define fluent function encountersDiagnosis(Encounter Encounter):
   Encounter.reasonReference EncDiag
-    return singleton from ( ( [ConditionEncounterDiagnosis] ConditionED
-        union [ConditionProblemsHealthConcerns] ConditionPHC ) Cond
+    return singleton from ( ( [USQualityCore.ConditionEncounterDiagnosis] ConditionED
+        union [USQualityCore.ConditionProblemsHealthConcerns] ConditionPHC ) Cond
         where EncDiag.references ( Cond.id )
     )

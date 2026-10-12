@@ -70,7 +70,7 @@ define "Numerator":
     or exists "Colonoscopy Performed"
 
 define "Fecal Occult Blood Test Performed":
-  ( ( [LaboratoryResultObservation: "Fecal Occult Blood Test (FOBT)"] ).isLaboratoryTestPerformed ( ) ) FecalOccultResult
+  ( ( [USQualityCore.LaboratoryResultObservation: "Fecal Occult Blood Test (FOBT)"] ).isLaboratoryTestPerformed ( ) ) FecalOccultResult
     where FecalOccultResult.value is not null
       and FecalOccultResult.effective.latest ( ) during day of "Measurement Period"
 
@@ -101,10 +101,10 @@ define "Flexible Sigmoidoscopy Performed":
     where FlexibleSigmoidoscopy.performed.toInterval ( ) ends during day of Interval[start of "Measurement Period" - 4 years, end of "Measurement Period"]
 
 define "CT Colonography Performed":
-  ( ( [ObservationClinicalResult: "CT Colonography"] ).isDiagnosticStudyPerformed ( ) ) Colonography
+  ( ( [USQualityCore.ObservationClinicalResult: "CT Colonography"] ).isDiagnosticStudyPerformed ( ) ) Colonography
     where Colonography.effective.toInterval ( ) ends during day of Interval[start of "Measurement Period" - 4 years, end of "Measurement Period"]
 
 define "Stool DNA with FIT Test Performed":
-  ( ( [LaboratoryResultObservation: "sDNA FIT Test"] ).isLaboratoryTestPerformed ( ) ) sDNATest
+  ( ( [USQualityCore.LaboratoryResultObservation: "sDNA FIT Test"] ).isLaboratoryTestPerformed ( ) ) sDNATest
     where sDNATest.value is not null
       and sDNATest.effective.latest ( ) during day of Interval[start of "Measurement Period" - 2 years, end of "Measurement Period"]

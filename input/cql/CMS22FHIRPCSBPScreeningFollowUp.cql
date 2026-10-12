@@ -58,7 +58,7 @@ define "Denominator":
 
 define "Denominator Exclusions":
   "Qualifying Encounter during Measurement Period" QualifyingEncounter
-    with [ConditionProblemsHealthConcerns: "Diagnosis of Hypertension"] Hypertension
+    with [USQualityCore.ConditionProblemsHealthConcerns: "Diagnosis of Hypertension"] Hypertension
       such that Hypertension.prevalenceInterval ( ) starts before or on day of QualifyingEncounter.period
         and Hypertension.isVerified ( )
 
@@ -74,21 +74,21 @@ define "Denominator Exceptions":
     union "Encounter with Order for Hypertension Follow Up Declined by Patient"
 
 define "Follow up with Rescreen Within 6 Months":
-  [ServiceRequest: "Follow Up Within 6 Months"] FollowUp
+  [USQualityCore.ServiceRequest: "Follow Up Within 6 Months"] FollowUp
     where FollowUp.intent ~ 'order'
 
 define "Laboratory Test or ECG for Hypertension":
-  ( [ServiceRequest: "12 lead EKG panel"]
-    union [ServiceRequest: "EKG study"]
-    union [ServiceRequest: "Laboratory Tests for Hypertension"] ) EKGLab
+  ( [USQualityCore.ServiceRequest: "12 lead EKG panel"]
+    union [USQualityCore.ServiceRequest: "EKG study"]
+    union [USQualityCore.ServiceRequest: "Laboratory Tests for Hypertension"] ) EKGLab
     where EKGLab.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 define "NonPharmacological Interventions":
-  ( [ServiceRequest: "Lifestyle Recommendation"]
-    union [ServiceRequest: "Weight Reduction Recommended"]
-    union [ServiceRequest: "Dietary Recommendations"]
-    union [ServiceRequest: "Recommendation to Increase Physical Activity"]
-    union [ServiceRequest: "Referral or Counseling for Alcohol Consumption"] ) NonPharmaInterventions
+  ( [USQualityCore.ServiceRequest: "Lifestyle Recommendation"]
+    union [USQualityCore.ServiceRequest: "Weight Reduction Recommended"]
+    union [USQualityCore.ServiceRequest: "Dietary Recommendations"]
+    union [USQualityCore.ServiceRequest: "Recommendation to Increase Physical Activity"]
+    union [USQualityCore.ServiceRequest: "Referral or Counseling for Alcohol Consumption"] ) NonPharmaInterventions
     where NonPharmaInterventions.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 define "Encounter with First Hypertensive Reading SBP Greater than or Equal to 130 OR DBP Greater than or Equal to 80 and Interventions":
@@ -116,7 +116,7 @@ define "Encounter with Second Hypertensive Reading SBP Greater than or Equal to 
         such that ReferralToProfessional.authoredOn during day of SecondHTNEncounterReading140Over90.period
 
 define "First Hypertensive Reading Interventions or Referral to Alternate Professional":
-  ( [ServiceRequest: "Follow Up Within 4 Weeks"] FourWeekRescreen
+  ( [USQualityCore.ServiceRequest: "Follow Up Within 4 Weeks"] FourWeekRescreen
       with "NonPharmacological Interventions" NonPharmInterventionsHTN
         such that FourWeekRescreen.authoredOn during day of "Measurement Period"
           and NonPharmInterventionsHTN.authoredOn during day of "Measurement Period"
@@ -125,12 +125,12 @@ define "First Hypertensive Reading Interventions or Referral to Alternate Profes
     union ( "Referral to Alternate or Primary Healthcare Professional for Hypertensive Reading" )
 
 define "Referral to Alternate or Primary Healthcare Professional for Hypertensive Reading":
-  [ServiceRequest: "Referral to Primary Care or Alternate Provider"] Referral
+  [USQualityCore.ServiceRequest: "Referral to Primary Care or Alternate Provider"] Referral
     where Referral.reasonCode in "Finding of Elevated Blood Pressure or Hypertension"
       and Referral.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 define "Second Hypertensive Reading SBP Greater than or Equal to 140 OR DBP Greater than or Equal to 90 Interventions":
-  ( [ServiceRequest: "Follow Up Within 4 Weeks"] WeeksRescreen
+  ( [USQualityCore.ServiceRequest: "Follow Up Within 4 Weeks"] WeeksRescreen
       with "Laboratory Test or ECG for Hypertension" ECGLabTest
         such that WeeksRescreen.authoredOn during day of "Measurement Period"
           and ECGLabTest.authoredOn during day of "Measurement Period"
@@ -138,7 +138,7 @@ define "Second Hypertensive Reading SBP Greater than or Equal to 140 OR DBP Grea
           and ECGLabTest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
       with "NonPharmacological Interventions" HTNInterventions
         such that HTNInterventions.authoredOn during day of "Measurement Period"
-      with ["MedicationRequest": "Pharmacologic Therapy for Hypertension"] Medications
+      with [USQualityCore.MedicationRequest: "Pharmacologic Therapy for Hypertension"] Medications
         such that Medications.authoredOn during day of "Measurement Period"
           and Medications.status in { 'active', 'completed' }
   )
@@ -318,19 +318,19 @@ define "Encounter with Hypertensive Reading Within Year Prior":
   )
 
 define "NonPharmacological Intervention Not Ordered":
-  ( [ServiceNotRequested: "Lifestyle Recommendation"]
-    union [ServiceNotRequested: "Weight Reduction Recommended"]
-    union [ServiceNotRequested: "Dietary Recommendations"]
-    union [ServiceNotRequested: "Recommendation to Increase Physical Activity"]
-    union [ServiceNotRequested: "Referral or Counseling for Alcohol Consumption"] ) NonPharmIntervention
+  ( [USQualityCore.ServiceNotRequested: "Lifestyle Recommendation"]
+    union [USQualityCore.ServiceNotRequested: "Weight Reduction Recommended"]
+    union [USQualityCore.ServiceNotRequested: "Dietary Recommendations"]
+    union [USQualityCore.ServiceNotRequested: "Recommendation to Increase Physical Activity"]
+    union [USQualityCore.ServiceNotRequested: "Referral or Counseling for Alcohol Consumption"] ) NonPharmIntervention
     where NonPharmIntervention.status in { 'active', 'completed', 'on-hold' }
       and NonPharmIntervention.reasonRefused() in "Patient Declined"
 
 define "Encounter with Medical Reason for Not Obtaining or Patient Declined Blood Pressure Measurement":
   "Qualifying Encounter during Measurement Period" QualifyingEncounter
-    with ( [ObservationCancelled: code ~ "Blood pressure panel with all children optional"]
-      union [ObservationCancelled: code ~ "Systolic blood pressure"]
-      union [ObservationCancelled: code ~ "Diastolic blood pressure"] ) NoBPScreen
+    with ( [USQualityCore.ObservationCancelled: code ~ "Blood pressure panel with all children optional"]
+      union [USQualityCore.ObservationCancelled: code ~ "Systolic blood pressure"]
+      union [USQualityCore.ObservationCancelled: code ~ "Diastolic blood pressure"] ) NoBPScreen
       such that NoBPScreen.issued during day of QualifyingEncounter.period
         and ( NoBPScreen.notDoneReason () in "Patient Declined"
             or NoBPScreen.notDoneReason () in "Medical Reason"
@@ -338,8 +338,8 @@ define "Encounter with Medical Reason for Not Obtaining or Patient Declined Bloo
 
 define "Encounter with Order for Hypertension Follow Up Declined by Patient":
   ( ( "Encounter with Elevated Blood Pressure Reading SBP 120 to 129 AND DBP less than 80" ElevatedBPEncounter
-        with ( [ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
-          union [ServiceNotRequested: "Follow Up Within 6 Months"] ) ElevatedBPDeclinedInterventions
+        with ( [USQualityCore.ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
+          union [USQualityCore.ServiceNotRequested: "Follow Up Within 6 Months"] ) ElevatedBPDeclinedInterventions
           such that ElevatedBPDeclinedInterventions.authoredOn during day of ElevatedBPEncounter.period
             and ElevatedBPDeclinedInterventions.status in { 'active', 'completed', 'on-hold' }
             and ElevatedBPDeclinedInterventions.reasonRefused() in "Patient Declined"
@@ -349,8 +349,8 @@ define "Encounter with Order for Hypertension Follow Up Declined by Patient":
             such that NotOrdered.authoredOn during day of ElevatedBPEncounter.period
       )
       union ( "Encounter with First Hypertensive Reading SBP Greater than or Equal to 130 OR DBP Greater than or Equal to 80" FirstHTNEncounter
-          with ( [ServiceNotRequested: "Follow Up Within 4 Weeks"]
-            union [ServiceNotRequested: "Referral to Primary Care or Alternate Provider"] ) FirstHTNDeclinedInterventions
+          with ( [USQualityCore.ServiceNotRequested: "Follow Up Within 4 Weeks"]
+            union [USQualityCore.ServiceNotRequested: "Referral to Primary Care or Alternate Provider"] ) FirstHTNDeclinedInterventions
             such that FirstHTNDeclinedInterventions.authoredOn during day of FirstHTNEncounter.period
               and FirstHTNDeclinedInterventions.status in { 'active', 'completed', 'on-hold' }
               and FirstHTNDeclinedInterventions.reasonRefused() in "Patient Declined"
@@ -370,8 +370,8 @@ define "Encounter with Order for Hypertension Follow Up Declined by Patient":
   )
 
 define "Second Hypertensive Reading SBP 130 to 139 OR DBP 80 to 89 Interventions Declined":
-  ( ( [ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
-      union [ServiceNotRequested: "Follow Up Within 6 Months"] ) SecondHTNDeclinedReferralAndFollowUp
+  ( ( [USQualityCore.ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
+      union [USQualityCore.ServiceNotRequested: "Follow Up Within 6 Months"] ) SecondHTNDeclinedReferralAndFollowUp
       where SecondHTNDeclinedReferralAndFollowUp.status in { 'active', 'completed', 'on-hold' }
         and SecondHTNDeclinedReferralAndFollowUp.reasonRefused() in "Patient Declined"
   )
@@ -379,12 +379,12 @@ define "Second Hypertensive Reading SBP 130 to 139 OR DBP 80 to 89 Interventions
     union "NonPharmacological Intervention Not Ordered"
 
 define "Second Hypertensive Reading SBP Greater than or Equal to 140 OR DBP Greater than or Equal to 90 Interventions Declined":
-  ( ( ( [ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
-        union [ServiceNotRequested: "Follow Up Within 4 Weeks"] ) SecondHTN140Over90ReferralFollowUpNotDone
+  ( ( ( [USQualityCore.ServiceNotRequested: "Referral to Primary Care or Alternate Provider"]
+        union [USQualityCore.ServiceNotRequested: "Follow Up Within 4 Weeks"] ) SecondHTN140Over90ReferralFollowUpNotDone
         where SecondHTN140Over90ReferralFollowUpNotDone.status in { 'active', 'completed', 'on-hold' }
           and SecondHTN140Over90ReferralFollowUpNotDone.reasonRefused() in "Patient Declined"
     )
-      union ( [MedicationNotRequested: "Pharmacologic Therapy for Hypertension"] MedicationRequestNotOrdered
+      union ( [USQualityCore.MedicationNotRequested: "Pharmacologic Therapy for Hypertension"] MedicationRequestNotOrdered
           where MedicationRequestNotOrdered.status in { 'active', 'completed' }
       )
       union "Laboratory Test or ECG for Hypertension Not Ordered"
@@ -392,9 +392,9 @@ define "Second Hypertensive Reading SBP Greater than or Equal to 140 OR DBP Grea
   )
 
 define "Laboratory Test or ECG for Hypertension Not Ordered":
-  ( [ServiceNotRequested: code = "12 lead EKG panel"]
-    union [ServiceNotRequested: code = "EKG study"]
-    union [ServiceNotRequested: "Laboratory Tests for Hypertension"] ) LabECGNotDone
+  ( [USQualityCore.ServiceNotRequested: code = "12 lead EKG panel"]
+    union [USQualityCore.ServiceNotRequested: code = "EKG study"]
+    union [USQualityCore.ServiceNotRequested: "Laboratory Tests for Hypertension"] ) LabECGNotDone
     where LabECGNotDone.status in { 'active', 'completed', 'on-hold' }
       and LabECGNotDone.reasonRefused() in "Patient Declined"
 

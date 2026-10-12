@@ -59,7 +59,7 @@ define "Qualified Scan Without Inpatient Encounter":
         and QualifiedCTScan.effective.toInterval ( ) starts during InpatientEncounter.period
 
 define "Qualified Scan":
-  [ObservationClinicalResult: "CT dose and image quality category"] CTScanResult
+  [USQualityCore.ObservationClinicalResult: "CT dose and image quality category"] CTScanResult
     where CTScanResult.status in { 'final', 'amended', 'corrected' }
       and CTScanResult.effective.toInterval ( ) ends during day of "Measurement Period"
       and AgeInYearsAt(date from start of "Measurement Period") >= 18

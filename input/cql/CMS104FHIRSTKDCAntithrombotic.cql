@@ -41,14 +41,14 @@ define "Denominator Exclusions":
 
 define "Numerator":
   TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-    with ["MedicationRequest": "Antithrombotic Therapy for Ischemic Stroke"] DischargeAntithrombotic
+    with [USQualityCore.MedicationRequest: "Antithrombotic Therapy for Ischemic Stroke"] DischargeAntithrombotic
       such that DischargeAntithrombotic.status in { 'active', 'completed' }
         and DischargeAntithrombotic.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
         and ( DischargeAntithrombotic.isCommunity ( )
             or DischargeAntithrombotic.isDischarge ( )
         )
         and DischargeAntithrombotic.authoredOn during IschemicStrokeEncounter.period
-        and not exists ( ["TaskRejected"] TaskReject
+        and not exists ( [USQualityCore.TaskRejected] TaskReject
             where TaskReject.focus.references ( DischargeAntithrombotic )
               and TaskReject.code ~ USQualityCoreCommon."Fulfill"
         )
@@ -63,7 +63,7 @@ define "Encounter With Documented Reason For No Antithrombotic At Discharge":
       such that NoDischargeAntithrombotic.authoredOn during IschemicStrokeEncounter.period
 
 define "Reason For Not Giving Antithrombotic At Discharge":
-  ( ["MedicationNotRequested": "Antithrombotic Therapy for Ischemic Stroke"] NoAntithromboticDischarge
+  ( [USQualityCore.MedicationNotRequested: "Antithrombotic Therapy for Ischemic Stroke"] NoAntithromboticDischarge
       where ( NoAntithromboticDischarge.reasonCode in "Medical Reason For Not Providing Treatment"
           or NoAntithromboticDischarge.reasonCode in "Patient Refusal"
       )
@@ -73,8 +73,8 @@ define "Reason For Not Giving Antithrombotic At Discharge":
         and NoAntithromboticDischarge.status in { 'active', 'completed' }
         and NoAntithromboticDischarge.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
   )
-    union ( ["MedicationRequest": "Antithrombotic Therapy for Ischemic Stroke"] MedReqAntithrombotic
-        with ["TaskRejected"] TaskReject
+    union ( [USQualityCore.MedicationRequest: "Antithrombotic Therapy for Ischemic Stroke"] MedReqAntithrombotic
+        with [USQualityCore.TaskRejected] TaskReject
           such that TaskReject.focus.references ( MedReqAntithrombotic )
             and ( TaskReject.statusReason in "Medical Reason For Not Providing Treatment"
                 or TaskReject.statusReason in "Patient Refusal"
@@ -89,7 +89,7 @@ define "Encounter With Pharmacological Contraindications For Antithrombotic Ther
       such that DischargePharmacological.authoredOn during IschemicStrokeEncounter.period
 
 define "Pharmacological Contraindications For Antithrombotic Therapy At Discharge":
-  ["MedicationRequest": "Pharmacological Contraindications For Antithrombotic Therapy"] PharmacologicalContraindications
+  [USQualityCore.MedicationRequest: "Pharmacological Contraindications For Antithrombotic Therapy"] PharmacologicalContraindications
     where ( PharmacologicalContraindications.isCommunity ( )
         or PharmacologicalContraindications.isDischarge ( )
     )

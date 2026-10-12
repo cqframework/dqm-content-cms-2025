@@ -90,26 +90,26 @@ define "First ADHD Medication Prescribed During Intake Period":
   First("ADHD Medication Prescribed During Intake Period and Not Previously on ADHD Medication".startDate)
 
 define "ADHD Medication Prescribed During Intake Period and Not Previously on ADHD Medication":
-  ( ( ( ( [MedicationRequest: "Atomoxetine"]
-      union [MedicationRequest: "Clonidine"]
-      union [MedicationRequest: "Dexmethylphenidate"]
-      union [MedicationRequest: "Dextroamphetamine"]
-      union [MedicationRequest: "Lisdexamfetamine"]
-      union [MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"]
-      union [MedicationRequest: "Methylphenidate"]
-      union [MedicationRequest: "Guanfacine Medications"]
-      union [MedicationRequest: "Viloxazine"]
+  ( ( ( ( [USQualityCore.MedicationRequest: "Atomoxetine"]
+      union [USQualityCore.MedicationRequest: "Clonidine"]
+      union [USQualityCore.MedicationRequest: "Dexmethylphenidate"]
+      union [USQualityCore.MedicationRequest: "Dextroamphetamine"]
+      union [USQualityCore.MedicationRequest: "Lisdexamfetamine"]
+      union [USQualityCore.MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"]
+      union [USQualityCore.MedicationRequest: "Methylphenidate"]
+      union [USQualityCore.MedicationRequest: "Guanfacine Medications"]
+      union [USQualityCore.MedicationRequest: "Viloxazine"]
   ).isMedicationOrder ( ) ) ADHDMedications
     where ADHDMedications.medicationRequestPeriod ( ) starts during "Intake Period" ) ADHDMedicationOrder
-    without ( ( [MedicationRequest: "Atomoxetine"]
-        union [MedicationRequest: "Clonidine"]
-        union [MedicationRequest: "Dexmethylphenidate"]
-        union [MedicationRequest: "Dextroamphetamine"]
-        union [MedicationRequest: "Lisdexamfetamine"]
-        union [MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"]
-        union [MedicationRequest: "Methylphenidate"]
-        union [MedicationRequest: "Guanfacine Medications"]
-        union [MedicationRequest: "Viloxazine"]
+    without ( ( [USQualityCore.MedicationRequest: "Atomoxetine"]
+        union [USQualityCore.MedicationRequest: "Clonidine"]
+        union [USQualityCore.MedicationRequest: "Dexmethylphenidate"]
+        union [USQualityCore.MedicationRequest: "Dextroamphetamine"]
+        union [USQualityCore.MedicationRequest: "Lisdexamfetamine"]
+        union [USQualityCore.MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"]
+        union [USQualityCore.MedicationRequest: "Methylphenidate"]
+        union [USQualityCore.MedicationRequest: "Guanfacine Medications"]
+        union [USQualityCore.MedicationRequest: "Viloxazine"]
     ).isMedicationActive ( ) ) ActiveADHDMedication
       such that ActiveADHDMedication.medicationRequestPeriod ( ) overlaps Interval[date from start of ADHDMedicationOrder.medicationRequestPeriod ( ) - 120 days, date from start of ADHDMedicationOrder.medicationRequestPeriod ( ) ) ) QualifyingMed
     return all {
@@ -186,7 +186,7 @@ define "Inpatient Stay with Qualifying Diagnosis During Continuation and Mainten
     where CQMCommon."ToDateInterval" ( InpatientStay.period ) starts 300 days or less after day of "IPSD"
 
 define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Phase":
-  ( ( ( ( ( ( [MedicationRequest: "Atomoxetine"] ).isMedicationOrder ( ) ) AtomoxetineMed
+  ( ( ( ( ( ( [USQualityCore.MedicationRequest: "Atomoxetine"] ).isMedicationOrder ( ) ) AtomoxetineMed
           return all {
             period: AtomoxetineMed.medicationRequestPeriod ( ),
             periodStart: start of AtomoxetineMed.medicationRequestPeriod ( )
@@ -195,7 +195,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
       ).period
     ).rolloutIntervals ( )
   )
-    union ( ( ( ( ( [MedicationRequest: "Clonidine"] ).isMedicationOrder ( ) ) ClonidineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Clonidine"] ).isMedicationOrder ( ) ) ClonidineMed
             return all {
               period: ClonidineMed.medicationRequestPeriod ( ),
               periodStart: start of ClonidineMed.medicationRequestPeriod ( )
@@ -204,7 +204,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Dexmethylphenidate"] ).isMedicationOrder ( ) ) DexmethylphenidateMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Dexmethylphenidate"] ).isMedicationOrder ( ) ) DexmethylphenidateMed
             return all {
               period: DexmethylphenidateMed.medicationRequestPeriod ( ),
               periodStart: start of DexmethylphenidateMed.medicationRequestPeriod ( )
@@ -213,7 +213,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Dextroamphetamine"] ).isMedicationOrder ( ) ) DextroamphetamineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Dextroamphetamine"] ).isMedicationOrder ( ) ) DextroamphetamineMed
             return all {
               period: DextroamphetamineMed.medicationRequestPeriod ( ),
               periodStart: start of DextroamphetamineMed.medicationRequestPeriod ( )
@@ -222,7 +222,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Lisdexamfetamine"] ).isMedicationOrder ( ) ) LisdexamfetamineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Lisdexamfetamine"] ).isMedicationOrder ( ) ) LisdexamfetamineMed
             return all {
               period: LisdexamfetamineMed.medicationRequestPeriod ( ),
               periodStart: start of LisdexamfetamineMed.medicationRequestPeriod ( )
@@ -231,7 +231,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Methylphenidate"] ).isMedicationOrder ( ) ) MethylphenidateMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Methylphenidate"] ).isMedicationOrder ( ) ) MethylphenidateMed
             return all {
               period: MethylphenidateMed.medicationRequestPeriod ( ),
               periodStart: start of MethylphenidateMed.medicationRequestPeriod ( )
@@ -240,7 +240,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Guanfacine Medications"] ).isMedicationOrder ( ) ) GuanfacineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Guanfacine Medications"] ).isMedicationOrder ( ) ) GuanfacineMed
             return all {
               period: GuanfacineMed.medicationRequestPeriod ( ),
               periodStart: start of GuanfacineMed.medicationRequestPeriod ( )
@@ -249,7 +249,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"] ).isMedicationOrder ( ) ) MethamphetamineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "methamphetamine hydrochloride 5 MG Oral Tablet"] ).isMedicationOrder ( ) ) MethamphetamineMed
             return all {
               period: MethamphetamineMed.medicationRequestPeriod ( ),
               periodStart: start of MethamphetamineMed.medicationRequestPeriod ( )
@@ -258,7 +258,7 @@ define "ADHD Medications Taken on IPSD or During Continuation and Maintenance Ph
         ).period
       ).rolloutIntervals ( )
     )
-    union ( ( ( ( ( [MedicationRequest: "Viloxazine"] ).isMedicationOrder ( ) ) ViloxazineMed
+    union ( ( ( ( ( [USQualityCore.MedicationRequest: "Viloxazine"] ).isMedicationOrder ( ) ) ViloxazineMed
             return all {
               period: ViloxazineMed.medicationRequestPeriod ( ),
               periodStart: start of ViloxazineMed.medicationRequestPeriod ( )

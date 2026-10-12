@@ -154,7 +154,7 @@ define "Get Locations from IP Encounters in Measurement Period":
 
 
 define "SDE Condition Problems HealthConcerns":
-  [ConditionProblemsHealthConcerns] Diagnosis
+  [USQualityCore.ConditionProblemsHealthConcerns] Diagnosis
     where exists ( "Initial Population" IP
         where Diagnosis.prevalenceInterval ( ) overlaps day of IP.period
     )
@@ -176,7 +176,7 @@ define "SDE Condition Problems HealthConcerns":
     }
 
 define "SDE Condition Diagnosis":
-  [ConditionEncounterDiagnosis] Diagnosis
+  [USQualityCore.ConditionEncounterDiagnosis] Diagnosis
     where exists ( "Initial Population" IP
         where Diagnosis.prevalenceInterval ( ) overlaps day of IP.period
     )
@@ -250,13 +250,13 @@ define "SDE Device":
 
 
 define "SDE DiagnosticReport Lab":
-  [DiagnosticReportLab] dr
+  [USQualityCore.DiagnosticReportLab] dr
     where exists ( "Initial Population" IP
         where "Normalize Interval"(dr.effective) overlaps IP.period
     )
 
 define "SDE DiagnosticReport Note":
-  [DiagnosticReportNote] dr
+  [USQualityCore.DiagnosticReportNote] dr
     where ( exists ( dr.category Category
           where Category ~ "Radiology"
       )
@@ -289,7 +289,7 @@ define "SDE DiagnosticReport Note":
     }
 
 define "SDE DiagnosticReport Others":
-  [DiagnosticReportNote] dr
+  [USQualityCore.DiagnosticReportNote] dr
     where not ( exists ( dr.category Category
           where Category ~ "Radiology"
       )
@@ -442,7 +442,7 @@ define "SDE Medication Administration Base":
     }
 
 define "SDE Medication Administration Not Done":
-  [MedicationAdministrationNotDone] MedAdministrations
+  [USQualityCore.MedicationAdministrationNotDone] MedAdministrations
     where exists ( "Initial Population" IP
         where "Normalize Interval"(MedAdministrations.effective) overlaps IP.period
     )
@@ -472,7 +472,7 @@ define "SDE Medication Administration Not Done":
 
 
 define "SDE Medication Request Base":
-  [MedicationRequest] MedRequests
+  [USQualityCore.MedicationRequest] MedRequests
     where exists ( "Initial Population" IP
         where MedRequests.authoredOn during IP.period
     )
@@ -505,7 +505,7 @@ define "SDE Medication Request Base":
 
 
 define "SDE Medication Not Requested":
-  [MedicationNotRequested] MedNotRequests
+  [USQualityCore.MedicationNotRequested] MedNotRequests
     where exists ( "Initial Population" IP
         where MedNotRequests.authoredOn during IP.period
     )
@@ -546,7 +546,7 @@ define function "GetMedication"(reference Reference):
   )
 
 define "SDE Medication":
-  ( [MedicationRequest]
+  ( [FHIR.MedicationRequest]
     union [MedicationAdministration] ) MedReqOrAdmin
     let medication: GetMedication(MedReqOrAdmin.medication as Reference)
     where medication is not null
@@ -570,7 +570,7 @@ define "SDE Medication":
 
 
 define "SDE Observation Lab Category":
-  [LaboratoryResultObservation] Obs
+  [USQualityCore.LaboratoryResultObservation] Obs
     where exists ( "Initial Population" IP
         where "Normalize Interval"(Obs.effective) overlaps IP.period
     )
@@ -599,7 +599,7 @@ define "SDE Observation Lab Category":
     }
 
 define "SDE Observation Simple":
-  [SimpleObservation] Obs
+  [USQualityCore.SimpleObservation] Obs
     where ( exists ( Obs.category Category
           where Category ~ "social-history"
       )
@@ -641,7 +641,7 @@ define "SDE Observation Simple":
 
 
 define "SDE Observation Survey":
-  [ObservationScreeningAssessment] Obs
+  [USQualityCore.ObservationScreeningAssessment] Obs
     where exists ( "Initial Population" IP
         where "Normalize Interval"(Obs.effective) overlaps IP.period
     )
@@ -729,7 +729,7 @@ define "SDE Procedure":
 
 
 define "SDE Service Request Base":
-  [ServiceRequest] ServiceRequests
+  [USQualityCore.ServiceRequest] ServiceRequests
     where exists ( "Initial Population" IP
         where ServiceRequests.authoredOn during IP.period
     )
@@ -771,7 +771,7 @@ define "SDE Service Request Base":
 
 
 define "SDE Service Not Requested":
-  [ServiceNotRequested] ServiceNotReqs
+  [USQualityCore.ServiceNotRequested] ServiceNotReqs
     where exists ( "Initial Population" IP
         where ServiceNotReqs.authoredOn during IP.period
     )

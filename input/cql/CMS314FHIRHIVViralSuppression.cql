@@ -58,7 +58,7 @@ define "Initial Population":
     and "Has Qualifying Encounter During First 240 Days of Measurement Period"
 
 define "Most Recent Viral Load Test During Measurement Period":
-  Last(["LaboratoryResultObservation": "HIV Viral Load Tests"] ViralLoad
+  Last([USQualityCore.LaboratoryResultObservation: "HIV Viral Load Tests"] ViralLoad
       where ViralLoad.status in { 'final', 'amended', 'corrected' }
         and ViralLoad.effective.latest() during day of "Measurement Period"
       sort by effective.earliest()

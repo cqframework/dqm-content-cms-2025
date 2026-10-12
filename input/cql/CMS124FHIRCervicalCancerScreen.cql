@@ -81,12 +81,12 @@ define "Absence of Cervix":
     )
 
 define "Cervical Cytology Within 3 Years":
-  ( ( [LaboratoryResultObservation: "Pap Test"] ).isLaboratoryTestPerformed ( ) ) CervicalCytology
+  ( ( [USQualityCore.LaboratoryResultObservation: "Pap Test"] ).isLaboratoryTestPerformed ( ) ) CervicalCytology
     where CervicalCytology.effective.latest ( ) during day of Interval[start of "Measurement Period" - 2 years, end of "Measurement Period"]
       and CervicalCytology.value is not null
 
 define "HPV Test Within 5 Years for Women Age 30 and Older":
-  ( ( [LaboratoryResultObservation: "HPV Test"] ).isLaboratoryTestPerformed ( ) ) HPVTest
+  ( ( [USQualityCore.LaboratoryResultObservation: "HPV Test"] ).isLaboratoryTestPerformed ( ) ) HPVTest
     where AgeInYearsAt(date from HPVTest.effective.latest()) >= 30
       and HPVTest.effective.latest ( ) during day of Interval[start of "Measurement Period" - 4 years, end of "Measurement Period"]
       and HPVTest.value is not null

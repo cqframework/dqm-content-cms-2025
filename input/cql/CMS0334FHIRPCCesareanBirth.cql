@@ -119,7 +119,7 @@ define "Singleton Delivery Encounters At 37 Plus Weeks Gravida 1 Parity 0, No Pr
 
 define "Encounter With Abnormal Presentation":
   "Singleton Delivery Encounters At 37 Plus Weeks Gravida 1 Parity 0, No Previous Births" ThirtySevenWeeksPlusEncounter
-    let LastAbnormalPresentation: Last(["SimpleObservation": "Abnormal Presentation"] AbnormalPresentation
+    let LastAbnormalPresentation: Last([USQualityCore.SimpleObservation: "Abnormal Presentation"] AbnormalPresentation
         where AbnormalPresentation.effective.earliest() before or on ThirtySevenWeeksPlusEncounter.lastTimeOfDelivery()
           and AbnormalPresentation.status in { 'final', 'amended', 'corrected' }
         sort by effective.earliest()
@@ -134,7 +134,7 @@ define "Encounter With Singleton Delivery":
       or DeliveryEncounter.encounterDiagnosis ( ).code in "Delivery of Singleton"
 
 define fluent function lastGravida(TheEncounter Encounter):
-  Last(["SimpleObservation": "[#] Pregnancies"] Gravida
+  Last([USQualityCore.SimpleObservation: "[#] Pregnancies"] Gravida
       where Gravida.value is not null
         and Gravida.status in { 'final', 'amended', 'corrected' }
         and Gravida.effective.earliest() 42 weeks or less before TheEncounter.lastTimeOfDelivery()
@@ -142,7 +142,7 @@ define fluent function lastGravida(TheEncounter Encounter):
   ).value as FHIR.integer
 
 define fluent function lastHistoryPretermBirth(TheEncounter Encounter):
-  Last(["SimpleObservation": "[#] Births.preterm"] PretermBirth
+  Last([USQualityCore.SimpleObservation: "[#] Births.preterm"] PretermBirth
       where PretermBirth.effective.earliest() 42 weeks or less before TheEncounter.lastTimeOfDelivery()
         and PretermBirth.status in { 'final', 'amended', 'corrected' }
         and PretermBirth.value is not null
@@ -150,7 +150,7 @@ define fluent function lastHistoryPretermBirth(TheEncounter Encounter):
   ).value as FHIR.integer
 
 define fluent function lastHistoryTermBirth(TheEncounter Encounter):
-  Last(["SimpleObservation": "[#] Births.term"] TermBirth
+  Last([USQualityCore.SimpleObservation: "[#] Births.term"] TermBirth
       where TermBirth.effective.earliest() 42 weeks or less before TheEncounter.lastTimeOfDelivery()
         and TermBirth.status in { 'final', 'amended', 'corrected' }
         and TermBirth.value is not null
@@ -158,7 +158,7 @@ define fluent function lastHistoryTermBirth(TheEncounter Encounter):
   ).value as FHIR.integer
 
 define fluent function lastParity(TheEncounter Encounter):
-  Last(["SimpleObservation": "[#] Parity"] Parity
+  Last([USQualityCore.SimpleObservation: "[#] Parity"] Parity
       where Parity.effective.earliest() 42 weeks or less before TheEncounter.lastTimeOfDelivery()
         and Parity.status in { 'final', 'amended', 'corrected' }
         and Parity.value is not null

@@ -73,7 +73,7 @@ define "Denominator":
   "Initial Population"
 
 define "Glycemic Laboratory Test Performed During Measurement Period":
-  [LaboratoryResultObservation: "Glycemic Screening Tests"] LabTestPerformed
+  [USQualityCore.LaboratoryResultObservation: "Glycemic Screening Tests"] LabTestPerformed
     where CQMCommon.ToDateInterval ( LabTestPerformed.effective ) during day of "Measurement Period"
       and LabTestPerformed.status in { 'final', 'amended', 'corrected' }
 
@@ -152,7 +152,7 @@ define "Diabetes Diagnosis Overlaps 2 Year Look Back Period":
     where "PriorDiabetes".prevalenceInterval ( ) overlaps day of "Look Back Period"
 
 define "Has Glycemic Laboratory Test Performed During 2 Year Look Back Period":
-  exists ( [LaboratoryResultObservation: "Glycemic Screening Tests"] LabTestPerformed
+  exists ( [USQualityCore.LaboratoryResultObservation: "Glycemic Screening Tests"] LabTestPerformed
       where CQMCommon.ToDateInterval ( LabTestPerformed.effective ) during day of "Look Back Period"
         and LabTestPerformed.status in { 'final', 'amended', 'corrected' }
   )

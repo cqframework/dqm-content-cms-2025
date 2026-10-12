@@ -70,7 +70,7 @@ define "Qualifying Scan With Values":
       and CTScan.value is not null
 
 define "Qualifying Scan During Inpatient Encounter":
-  [ObservationClinicalResult: "CT dose and image quality category"] CTScan
+  [USQualityCore.ObservationClinicalResult: "CT dose and image quality category"] CTScan
     with "Qualifying Inpatient Encounters" InpatientEncounters
       such that CTScan.status in { 'final', 'amended', 'corrected' }
         and CTScan.effective.toInterval ( ) starts during InpatientEncounters.period

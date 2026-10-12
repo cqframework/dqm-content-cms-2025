@@ -69,8 +69,8 @@ define "Encounter With Procedure For Suicide Risk Assessment":
 
 define "Encounter With Observation For Suicide Risk Assessment":
   "Major Depressive Disorder Encounter" MDDEncounter
-    with ( ["ObservationScreeningAssessment": "Suicide risk assessment (procedure)"]
-      union ["ObservationClinicalResult": "Suicide risk assessment (procedure)"] ) ObservationSuicideRiskAssmt
+    with ( [USQualityCore.ObservationScreeningAssessment: "Suicide risk assessment (procedure)"]
+      union [USQualityCore.ObservationClinicalResult: "Suicide risk assessment (procedure)"] ) ObservationSuicideRiskAssmt
       such that ObservationSuicideRiskAssmt.effective.toInterval ( ) during MDDEncounter.period
         and ObservationSuicideRiskAssmt.status in { 'final', 'corrected', 'amended' }
 
@@ -89,10 +89,10 @@ define "Encounter With Condition Major Depressive Disorder":
     union ["Encounter": "Telephone Visits"] ) ValidEncounter
     where ValidEncounter.status = 'finished'
       and ValidEncounter.period during day of "Measurement Period"
-      and exists ( ( ["ConditionProblemsHealthConcerns": "Major Depressive Disorder Active"] MDDConditionProb
+      and exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Major Depressive Disorder Active"] MDDConditionProb
             where ValidEncounter.reasonReference.references ( MDDConditionProb )
         )
-          union ( ["ConditionEncounterDiagnosis": "Major Depressive Disorder Active"] MDDEncDx
+          union ( [USQualityCore.ConditionEncounterDiagnosis: "Major Depressive Disorder Active"] MDDEncDx
               where ValidEncounter.reasonReference.references ( MDDEncDx )
           )
       )

@@ -109,28 +109,28 @@ define "Has Diagnoses Identifying Sexual Activity":
   )
 
 define "Has Active Contraceptive Medications":
-  exists ( ( [MedicationRequest: "Contraceptive Medications"] ).isMedicationActive ( ) ) ActiveContraceptives
+  exists ( ( [USQualityCore.MedicationRequest: "Contraceptive Medications"] ).isMedicationActive ( ) ) ActiveContraceptives
     where ActiveContraceptives.medicationRequestPeriod ( ) overlaps "Measurement Period"
 
 define "Has Ordered Contraceptive Medications":
-  exists ( ( [MedicationRequest: "Contraceptive Medications"] ).isMedicationOrder ( ) ) OrderedContraceptives
+  exists ( ( [USQualityCore.MedicationRequest: "Contraceptive Medications"] ).isMedicationOrder ( ) ) OrderedContraceptives
     where OrderedContraceptives.authoredOn.toInterval ( ) during day of "Measurement Period"
 
 define "Has Laboratory Tests Identifying Sexual Activity But Not Pregnancy":
-  exists ( ( [ServiceRequest: "Pap Test"]
-      union [ServiceRequest: "Lab Tests During Pregnancy"]
-      union [ServiceRequest: "Lab Tests for Sexually Transmitted Infections"]
+  exists ( ( [USQualityCore.ServiceRequest: "Pap Test"]
+      union [USQualityCore.ServiceRequest: "Lab Tests During Pregnancy"]
+      union [USQualityCore.ServiceRequest: "Lab Tests for Sexually Transmitted Infections"]
   ).isLaboratoryTestOrder ( ) ) LabOrders
     where LabOrders.authoredOn.toInterval ( ) during day of "Measurement Period"
 
 define "Has Laboratory Tests Identifying Sexual Activity":
-  exists ( ( ( [ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTest
+  exists ( ( ( [USQualityCore.ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTest
       where PregnancyTest.authoredOn.toInterval ( ) during day of "Measurement Period"
   )
     or "Has Laboratory Tests Identifying Sexual Activity But Not Pregnancy"
 
 define "Has Diagnostic Studies Identifying Sexual Activity":
-  exists ( ( [ServiceRequest: "Diagnostic Studies During Pregnancy"] ).isDiagnosticStudyOrder ( ) ) SexualActivityDiagnostics
+  exists ( ( [USQualityCore.ServiceRequest: "Diagnostic Studies During Pregnancy"] ).isDiagnosticStudyOrder ( ) ) SexualActivityDiagnostics
     where SexualActivityDiagnostics.authoredOn.toInterval ( ) during day of "Measurement Period"
 
 define "Has Procedures Identifying Sexual Activity":
@@ -153,19 +153,19 @@ define "Denominator Exclusions":
     )
 
 define "Has Pregnancy Test Exclusion":
-  exists ( ( ( ( [ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTest
-        with ( ( [ServiceRequest: "XRay Study"] ).isDiagnosticStudyOrder ( ) ) XrayOrder
+  exists ( ( ( ( [USQualityCore.ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTest
+        with ( ( [USQualityCore.ServiceRequest: "XRay Study"] ).isDiagnosticStudyOrder ( ) ) XrayOrder
           such that XrayOrder.authoredOn.toInterval ( ) occurs 6 days or less on or after day of PregnancyTest.authoredOn.toInterval ( )
         where PregnancyTest.authoredOn.toInterval ( ) during "Measurement Period"
     )
-      union ( ( [ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTestOrder
-        with ( ( [MedicationRequest: "Isotretinoin"] ).isMedicationOrder ( ) ) AccutaneOrder
+      union ( ( [USQualityCore.ServiceRequest: "Pregnancy Test"] ).isLaboratoryTestOrder ( ) ) PregnancyTestOrder
+        with ( ( [USQualityCore.MedicationRequest: "Isotretinoin"] ).isMedicationOrder ( ) ) AccutaneOrder
           such that AccutaneOrder.authoredOn.toInterval ( ) occurs 6 days or less on or after day of PregnancyTestOrder.authoredOn.toInterval ( )
         where PregnancyTestOrder.authoredOn.toInterval ( ) during "Measurement Period"
   )
 
 define "Numerator":
-  exists ( ( ( [LaboratoryResultObservation: "Chlamydia Screening"] ).isLaboratoryTestPerformed ( ) ) ChlamydiaTest
+  exists ( ( ( [USQualityCore.LaboratoryResultObservation: "Chlamydia Screening"] ).isLaboratoryTestPerformed ( ) ) ChlamydiaTest
       where ChlamydiaTest.effective.latest ( ) during day of "Measurement Period"
         and ChlamydiaTest.value is not null
   )
@@ -181,7 +181,7 @@ define "Stratification 2":
   ) in Interval[21, 24]
 
 define "Has Assessments Identifying Sexual Activity":
-  exists ( ( ( [ObservationScreeningAssessment: "Have you ever had vaginal intercourse [PhenX]"] ).isAssessmentPerformed ( ) ) SexualActivityAssessment
+  exists ( ( ( [USQualityCore.ObservationScreeningAssessment: "Have you ever had vaginal intercourse [PhenX]"] ).isAssessmentPerformed ( ) ) SexualActivityAssessment
       where SexualActivityAssessment.value ~ "Yes (qualifier value)"
         and SexualActivityAssessment.effective.toInterval ( ) on or before end of "Measurement Period"
   )

@@ -89,7 +89,7 @@ define "Urinary Symptom Score Improvement Greater Than or Equal To 3":
   ) is not null
 
 define "Documented IPSS Assessment Result":
-  [ObservationScreeningAssessment: "International Prostate Symptom Score [IPSS]"] IPSSAssessment
+  [USQualityCore.ObservationScreeningAssessment: "International Prostate Symptom Score [IPSS]"] IPSSAssessment
     where IPSSAssessment.status in { 'final', 'amended', 'corrected' }
       and IPSSAssessment.value is not null
     return {
@@ -98,8 +98,8 @@ define "Documented IPSS Assessment Result":
     }
 
 define "AUA Symptom Index and Quality of Life Assessment Result":
-  [ObservationScreeningAssessment: "American Urological Association Symptom Index [AUASI]"] AUASIAssessment
-    let LastQOLOnDate: Last([ObservationScreeningAssessment: "If you were to spend the rest of your life with your urinary condition just the way it is now, how would you feel about that [IPSS]"] QOLAssessment
+  [USQualityCore.ObservationScreeningAssessment: "American Urological Association Symptom Index [AUASI]"] AUASIAssessment
+    let LastQOLOnDate: Last([USQualityCore.ObservationScreeningAssessment: "If you were to spend the rest of your life with your urinary condition just the way it is now, how would you feel about that [IPSS]"] QOLAssessment
         where QOLAssessment.effective.earliest() same day as AUASIAssessment.effective.earliest()
           and QOLAssessment.status in { 'final', 'amended', 'corrected' }
           and QOLAssessment.value is not null
