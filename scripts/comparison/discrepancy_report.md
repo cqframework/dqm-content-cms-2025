@@ -1,19 +1,19 @@
 # Discrepancy Report
 | Details | Value |
 | --- | --- |
-| Generated | 2026-10-29 15:40:28.127616 |
+| Generated | 2026-11-13 16:52:07.855655 |
 | Total Measures | 74 |
 | Total Test Cases | 3964 |
-| Measures with Discrepancies | 10 |
-| Pass Count | 3942 (99.45%) |
-| Workaround Count | 8 (0.20%) |
-| &nbsp;&nbsp;— covered by a ticketed known issue | 8 (0.20%) |
+| Measures with Discrepancies | 12 |
+| Pass Count | 3922 (98.94%) |
+| Workaround Count | 28 (0.71%) |
+| &nbsp;&nbsp;— covered by a ticketed known issue | 28 (0.71%) |
 | Implementation Issue Count | 5 (0.13%) |
 | Known Issue Count (ticketed) | 5 (0.13%) |
 | Fail Count | 4 (0.10%) |
 | &nbsp;&nbsp;— known issue, no ticket expected | 4 (0.10%) |
-| Known issues with an upstream ticket | 13 (0.33%) |
-| Resolved (Pass + Implementation + Known Issue) | 3952 (99.70%) |
+| Known issues with an upstream ticket | 33 (0.83%) |
+| Resolved (Pass + Implementation + Known Issue) | 3932 (99.19%) |
 
 
 | Discrepancy Summary | Measure Count | Test Case Count |
@@ -21,7 +21,7 @@
 | Missing Results | 3 | 5 |
 | Missing Populations | 0 | 0 |
 | Mismatched Test Cases | 6 | 9 |
-| Workarounds | 3 | 15 |
+| Workarounds | 5 | 65 |
 | Unattributed Discrepancies | 2 | 4 |
 
 
@@ -59,44 +59,45 @@ _31 measures include the I-28 workaround: the original sibling-profile `[Conditi
 | [ CMS136FHIRChildADHDMedFollowUp ](../../input/cql/CMS136FHIRChildADHDMedFollowUp.cql) | [ CMS347FHIRStatinPreventionTxCVD ](../../input/cql/CMS347FHIRStatinPreventionTxCVD.cql) |  |
 
 
-## Measures with No Discrepancies (64 of 74)
+## Measures with No Discrepancies (62 of 74)
 
 |  |  |  |
 | --- | --- | --- |
-| [ CMS2FHIRPCSDepScreenAndFollowUp ](../../input/cql/CMS2FHIRPCSDepScreenAndFollowUp.cql) | [ CMS137FHIRSUDTxInitEngagement ](../../input/cql/CMS137FHIRSUDTxInitEngagement.cql) | [ CMS816FHIRHHHypo ](../../input/cql/CMS816FHIRHHHypo.cql) |
-| [ CMS22FHIRPCSBPScreeningFollowUp ](../../input/cql/CMS22FHIRPCSBPScreeningFollowUp.cql) | [ CMS138FHIRTobaccoScrnCessation ](../../input/cql/CMS138FHIRTobaccoScrnCessation.cql) | [ CMS819FHIRHHORAE ](../../input/cql/CMS819FHIRHHORAE.cql) |
-| [ CMS50FHIRReceiptofSpecialistReport ](../../input/cql/CMS50FHIRReceiptofSpecialistReport.cql) | [ CMS139FHIRFallRiskScreening ](../../input/cql/CMS139FHIRFallRiskScreening.cql) | [ CMS826FHIRHHPI ](../../input/cql/CMS826FHIRHHPI.cql) |
-| [ CMS56FHIRFuncStatHipReplacement ](../../input/cql/CMS56FHIRFuncStatHipReplacement.cql) | [ CMS142FHIRCommWithDrManagingDiab ](../../input/cql/CMS142FHIRCommWithDrManagingDiab.cql) | [ CMS832FHIRHHAKI ](../../input/cql/CMS832FHIRHHAKI.cql) |
-| [ CMS68FHIRDocumentationCurrentMeds ](../../input/cql/CMS68FHIRDocumentationCurrentMeds.cql) | [ CMS143FHIRPOAGOpticNerveEval ](../../input/cql/CMS143FHIRPOAGOpticNerveEval.cql) | [ CMS951FHIRKidneyHealthEval ](../../input/cql/CMS951FHIRKidneyHealthEval.cql) |
-| [ CMS69FHIRPCSBMIScreenAndFollowUp ](../../input/cql/CMS69FHIRPCSBMIScreenAndFollowUp.cql) | [ CMS144FHIRHFBetaBlockerForLVSD ](../../input/cql/CMS144FHIRHFBetaBlockerForLVSD.cql) | [ CMS986FHIRMalnutritionScore ](../../input/cql/CMS986FHIRMalnutritionScore.cql) |
-| [ CMS71FHIRSTKAnticoagAFFlutter ](../../input/cql/CMS71FHIRSTKAnticoagAFFlutter.cql) | [ CMS146FHIRApproTestPharyngitis ](../../input/cql/CMS146FHIRApproTestPharyngitis.cql) | [ CMS1017FHIRHHFI ](../../input/cql/CMS1017FHIRHHFI.cql) |
-| [ CMS74FHIRDentalCariesPrevention ](../../input/cql/CMS74FHIRDentalCariesPrevention.cql) | [ CMS149FHIRDementiaCognitiveAssess ](../../input/cql/CMS149FHIRDementiaCognitiveAssess.cql) | [ CMS1028FHIRPCSevereOBComps ](../../input/cql/CMS1028FHIRPCSevereOBComps.cql) |
-| [ CMS75FHIRChildrenDentalDecay ](../../input/cql/CMS75FHIRChildrenDentalDecay.cql) | [ CMS153FHIRChlamydiaScreening ](../../input/cql/CMS153FHIRChlamydiaScreening.cql) | [ CMS1056FHIRCTClinical ](../../input/cql/CMS1056FHIRCTClinical.cql) |
-| [ CMS90FHIRFSAforHeartFailure ](../../input/cql/CMS90FHIRFSAforHeartFailure.cql) | [ CMS154FHIRAppropriateTxforURI ](../../input/cql/CMS154FHIRAppropriateTxforURI.cql) | [ CMS1074FHIRCTIQR ](../../input/cql/CMS1074FHIRCTIQR.cql) |
-| [ CMS104FHIRSTKDCAntithrombotic ](../../input/cql/CMS104FHIRSTKDCAntithrombotic.cql) | [ CMS155FHIRWgtAssessCounseling ](../../input/cql/CMS155FHIRWgtAssessCounseling.cql) | [ CMS1154ScreeningPrediabetesFHIR ](../../input/cql/CMS1154ScreeningPrediabetesFHIR.cql) |
-| [ CMS108FHIRVTEProphylaxis ](../../input/cql/CMS108FHIRVTEProphylaxis.cql) | [ CMS157FHIRPainIntensityQuantified ](../../input/cql/CMS157FHIRPainIntensityQuantified.cql) | [ CMS1157FHIRHIVRetention ](../../input/cql/CMS1157FHIRHIVRetention.cql) |
-| [ CMS117FHIRChildImmunStatus ](../../input/cql/CMS117FHIRChildImmunStatus.cql) | [ CMS159FHIRDepRemissionat12Months ](../../input/cql/CMS159FHIRDepRemissionat12Months.cql) | [ CMS1173FHIRDiagnosticDelayVTE ](../../input/cql/CMS1173FHIRDiagnosticDelayVTE.cql) |
-| [ CMS122FHIRDiabetesAssessGT9Pct ](../../input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [ CMS177FHIRChildMDDSuicideAssmt ](../../input/cql/CMS177FHIRChildMDDSuicideAssmt.cql) | [ CMS1188FHIRHIVSTITesting ](../../input/cql/CMS1188FHIRHIVSTITesting.cql) |
-| [ CMS124FHIRCervicalCancerScreen ](../../input/cql/CMS124FHIRCervicalCancerScreen.cql) | [ CMS190FHIRVTEProphylaxisICU ](../../input/cql/CMS190FHIRVTEProphylaxisICU.cql) | [ CMS1206FHIRCTOQR ](../../input/cql/CMS1206FHIRCTOQR.cql) |
-| [ CMS125FHIRBreastCancerScreen ](../../input/cql/CMS125FHIRBreastCancerScreen.cql) | [ CMS314FHIRHIVViralSuppression ](../../input/cql/CMS314FHIRHIVViralSuppression.cql) | [ CMS1218FHIRHHRF ](../../input/cql/CMS1218FHIRHHRF.cql) |
-| [ CMS128FHIRAntidepressantMgmt ](../../input/cql/CMS128FHIRAntidepressantMgmt.cql) | [ CMS0334FHIRPCCesareanBirth ](../../input/cql/CMS0334FHIRPCCesareanBirth.cql) | [ CMS1244FHIRECATHOQR ](../../input/cql/CMS1244FHIRECATHOQR.cql) |
-| [ CMS129FHIRProstCaBoneScanUse ](../../input/cql/CMS129FHIRProstCaBoneScanUse.cql) | [ CMS349FHIRHIVScreening ](../../input/cql/CMS349FHIRHIVScreening.cql) | [ CMS1264FHIRECATREHQR ](../../input/cql/CMS1264FHIRECATREHQR.cql) |
-| [ CMS130FHIRColorectalCancerScrn ](../../input/cql/CMS130FHIRColorectalCancerScrn.cql) | [ CMS506FHIRSafeUseofOpioids ](../../input/cql/CMS506FHIRSafeUseofOpioids.cql) | [ NHSNAcuteCareHospitalMonthlyInitialPopulation1 ](../../input/cql/NHSNAcuteCareHospitalMonthlyInitialPopulation1.cql) |
-| [ CMS131FHIRDiabetesEyeExam ](../../input/cql/CMS131FHIRDiabetesEyeExam.cql) | [ CMSFHIR529HybridHospitalWideReadmission ](../../input/cql/CMSFHIR529HybridHospitalWideReadmission.cql) | [ NHSNGlycemicControlHypoglycemiaInitialPopulation ](../../input/cql/NHSNGlycemicControlHypoglycemiaInitialPopulation.cql) |
-| [ CMS133FHIRCataracts2040BCVA90Days ](../../input/cql/CMS133FHIRCataracts2040BCVA90Days.cql) | [ CMS645FHIRBoneDensityPCADTherapy ](../../input/cql/CMS645FHIRBoneDensityPCADTherapy.cql) |  |
-| [ CMS136FHIRChildADHDMedFollowUp ](../../input/cql/CMS136FHIRChildADHDMedFollowUp.cql) | [ CMS771FHIRUrinarySymptomScoreBPH ](../../input/cql/CMS771FHIRUrinarySymptomScoreBPH.cql) |  |
+| [ CMS2FHIRPCSDepScreenAndFollowUp ](../../input/cql/CMS2FHIRPCSDepScreenAndFollowUp.cql) | [ CMS138FHIRTobaccoScrnCessation ](../../input/cql/CMS138FHIRTobaccoScrnCessation.cql) | [ CMS816FHIRHHHypo ](../../input/cql/CMS816FHIRHHHypo.cql) |
+| [ CMS22FHIRPCSBPScreeningFollowUp ](../../input/cql/CMS22FHIRPCSBPScreeningFollowUp.cql) | [ CMS139FHIRFallRiskScreening ](../../input/cql/CMS139FHIRFallRiskScreening.cql) | [ CMS819FHIRHHORAE ](../../input/cql/CMS819FHIRHHORAE.cql) |
+| [ CMS50FHIRReceiptofSpecialistReport ](../../input/cql/CMS50FHIRReceiptofSpecialistReport.cql) | [ CMS142FHIRCommWithDrManagingDiab ](../../input/cql/CMS142FHIRCommWithDrManagingDiab.cql) | [ CMS826FHIRHHPI ](../../input/cql/CMS826FHIRHHPI.cql) |
+| [ CMS56FHIRFuncStatHipReplacement ](../../input/cql/CMS56FHIRFuncStatHipReplacement.cql) | [ CMS143FHIRPOAGOpticNerveEval ](../../input/cql/CMS143FHIRPOAGOpticNerveEval.cql) | [ CMS832FHIRHHAKI ](../../input/cql/CMS832FHIRHHAKI.cql) |
+| [ CMS68FHIRDocumentationCurrentMeds ](../../input/cql/CMS68FHIRDocumentationCurrentMeds.cql) | [ CMS144FHIRHFBetaBlockerForLVSD ](../../input/cql/CMS144FHIRHFBetaBlockerForLVSD.cql) | [ CMS951FHIRKidneyHealthEval ](../../input/cql/CMS951FHIRKidneyHealthEval.cql) |
+| [ CMS69FHIRPCSBMIScreenAndFollowUp ](../../input/cql/CMS69FHIRPCSBMIScreenAndFollowUp.cql) | [ CMS146FHIRApproTestPharyngitis ](../../input/cql/CMS146FHIRApproTestPharyngitis.cql) | [ CMS986FHIRMalnutritionScore ](../../input/cql/CMS986FHIRMalnutritionScore.cql) |
+| [ CMS74FHIRDentalCariesPrevention ](../../input/cql/CMS74FHIRDentalCariesPrevention.cql) | [ CMS149FHIRDementiaCognitiveAssess ](../../input/cql/CMS149FHIRDementiaCognitiveAssess.cql) | [ CMS1017FHIRHHFI ](../../input/cql/CMS1017FHIRHHFI.cql) |
+| [ CMS75FHIRChildrenDentalDecay ](../../input/cql/CMS75FHIRChildrenDentalDecay.cql) | [ CMS153FHIRChlamydiaScreening ](../../input/cql/CMS153FHIRChlamydiaScreening.cql) | [ CMS1028FHIRPCSevereOBComps ](../../input/cql/CMS1028FHIRPCSevereOBComps.cql) |
+| [ CMS90FHIRFSAforHeartFailure ](../../input/cql/CMS90FHIRFSAforHeartFailure.cql) | [ CMS154FHIRAppropriateTxforURI ](../../input/cql/CMS154FHIRAppropriateTxforURI.cql) | [ CMS1056FHIRCTClinical ](../../input/cql/CMS1056FHIRCTClinical.cql) |
+| [ CMS104FHIRSTKDCAntithrombotic ](../../input/cql/CMS104FHIRSTKDCAntithrombotic.cql) | [ CMS155FHIRWgtAssessCounseling ](../../input/cql/CMS155FHIRWgtAssessCounseling.cql) | [ CMS1074FHIRCTIQR ](../../input/cql/CMS1074FHIRCTIQR.cql) |
+| [ CMS117FHIRChildImmunStatus ](../../input/cql/CMS117FHIRChildImmunStatus.cql) | [ CMS157FHIRPainIntensityQuantified ](../../input/cql/CMS157FHIRPainIntensityQuantified.cql) | [ CMS1154ScreeningPrediabetesFHIR ](../../input/cql/CMS1154ScreeningPrediabetesFHIR.cql) |
+| [ CMS122FHIRDiabetesAssessGT9Pct ](../../input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [ CMS159FHIRDepRemissionat12Months ](../../input/cql/CMS159FHIRDepRemissionat12Months.cql) | [ CMS1157FHIRHIVRetention ](../../input/cql/CMS1157FHIRHIVRetention.cql) |
+| [ CMS124FHIRCervicalCancerScreen ](../../input/cql/CMS124FHIRCervicalCancerScreen.cql) | [ CMS177FHIRChildMDDSuicideAssmt ](../../input/cql/CMS177FHIRChildMDDSuicideAssmt.cql) | [ CMS1173FHIRDiagnosticDelayVTE ](../../input/cql/CMS1173FHIRDiagnosticDelayVTE.cql) |
+| [ CMS125FHIRBreastCancerScreen ](../../input/cql/CMS125FHIRBreastCancerScreen.cql) | [ CMS190FHIRVTEProphylaxisICU ](../../input/cql/CMS190FHIRVTEProphylaxisICU.cql) | [ CMS1188FHIRHIVSTITesting ](../../input/cql/CMS1188FHIRHIVSTITesting.cql) |
+| [ CMS128FHIRAntidepressantMgmt ](../../input/cql/CMS128FHIRAntidepressantMgmt.cql) | [ CMS314FHIRHIVViralSuppression ](../../input/cql/CMS314FHIRHIVViralSuppression.cql) | [ CMS1206FHIRCTOQR ](../../input/cql/CMS1206FHIRCTOQR.cql) |
+| [ CMS129FHIRProstCaBoneScanUse ](../../input/cql/CMS129FHIRProstCaBoneScanUse.cql) | [ CMS0334FHIRPCCesareanBirth ](../../input/cql/CMS0334FHIRPCCesareanBirth.cql) | [ CMS1218FHIRHHRF ](../../input/cql/CMS1218FHIRHHRF.cql) |
+| [ CMS130FHIRColorectalCancerScrn ](../../input/cql/CMS130FHIRColorectalCancerScrn.cql) | [ CMS349FHIRHIVScreening ](../../input/cql/CMS349FHIRHIVScreening.cql) | [ CMS1244FHIRECATHOQR ](../../input/cql/CMS1244FHIRECATHOQR.cql) |
+| [ CMS131FHIRDiabetesEyeExam ](../../input/cql/CMS131FHIRDiabetesEyeExam.cql) | [ CMS506FHIRSafeUseofOpioids ](../../input/cql/CMS506FHIRSafeUseofOpioids.cql) | [ CMS1264FHIRECATREHQR ](../../input/cql/CMS1264FHIRECATREHQR.cql) |
+| [ CMS133FHIRCataracts2040BCVA90Days ](../../input/cql/CMS133FHIRCataracts2040BCVA90Days.cql) | [ CMSFHIR529HybridHospitalWideReadmission ](../../input/cql/CMSFHIR529HybridHospitalWideReadmission.cql) | [ NHSNAcuteCareHospitalMonthlyInitialPopulation1 ](../../input/cql/NHSNAcuteCareHospitalMonthlyInitialPopulation1.cql) |
+| [ CMS136FHIRChildADHDMedFollowUp ](../../input/cql/CMS136FHIRChildADHDMedFollowUp.cql) | [ CMS645FHIRBoneDensityPCADTherapy ](../../input/cql/CMS645FHIRBoneDensityPCADTherapy.cql) | [ NHSNGlycemicControlHypoglycemiaInitialPopulation ](../../input/cql/NHSNGlycemicControlHypoglycemiaInitialPopulation.cql) |
+| [ CMS137FHIRSUDTxInitEngagement ](../../input/cql/CMS137FHIRSUDTxInitEngagement.cql) | [ CMS771FHIRUrinarySymptomScoreBPH ](../../input/cql/CMS771FHIRUrinarySymptomScoreBPH.cql) |  |
 
 
-## Measures with Discrepancies (10 of 74)
+## Measures with Discrepancies (12 of 74)
 
 _Every measure with a test case that doesn't match its fixture MeasureReport, or that matches only because the CQL works around an open issue. The `Issue` column names the issue that explains a test case: `I-XX (implementation)` is the measure steward's test data or expectation (see `defect-tracking/known-issues.md`), and `I-XX (workaround reverted)` means the case is failing again. Any other `I-XX` is a known issue, and the `Ticketed` column beside it says whether a ticket is owed: `N/A` for an implementation issue or a defect in our own content, fixture, or harness (nothing an upstream ticket tracks), `pending` for an engine/translator defect whose ticket is not filed yet, and a link to it once one is. A test case nothing resolves is counted as Unattributed._
 
 | Measure | Total Test Cases | Missing Results | Missing Populations | Mismatched Test Cases | Workarounds | Unattributed |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
+| [CMS71FHIRSTKAnticoagAFFlutter](#cms71fhirstkanticoagafflutter) | 83 | 0 | 0 | 0.00%   (0) | 2 | 0 |
 | [CMS72FHIRSTKAntithromboticDay2](#cms72fhirstkantithromboticday2) | 158 | 0 | 0 | 0.63%   (1) | 0 | 0 |
+| [CMS108FHIRVTEProphylaxis](#cms108fhirvteprophylaxis) | 140 | 0 | 0 | 0.00%   (0) | 3 | 0 |
 | [CMS135FHIRACEIorARBorARNIforHF](#cms135fhiraceiorarborarniforhf) | 40 | 3 | 0 | 0.00%   (0) | 0 | 0 |
 | [CMS145FHIRCADBBlockerTPMIorLVSD](#cms145fhircadbblockertpmiorlvsd) | 106 | 0 | 0 | 0.94%   (1) | 10 | 0 |
-| [CMS156FHIRHighRiskMedsElderly](#cms156fhirhighriskmedselderly) | 177 | 0 | 0 | 0.00%   (0) | 3 | 0 |
+| [CMS156FHIRHighRiskMedsElderly](#cms156fhirhighriskmedselderly) | 177 | 0 | 0 | 0.00%   (0) | 48 | 0 |
 | [CMS165FHIRControllingHighBP](#cms165fhircontrollinghighbp) | 68 | 1 | 0 | 0.00%   (0) | 0 | 0 |
 | [CMS347FHIRStatinPreventionTxCVD](#cms347fhirstatinpreventiontxcvd) | 752 | 0 | 0 | 0.13%   (1) | 0 | 0 |
 | [CMS646FHIRIntravesicalBCGTherapy](#cms646fhirintravesicalbcgtherapy) | 38 | 1 | 0 | 7.89%   (3) | 0 | 2 |
@@ -104,6 +105,24 @@ _Every measure with a test case that doesn't match its fixture MeasureReport, or
 | [CMS871FHIRHHHyper](#cms871fhirhhhyper) | 26 | 0 | 0 | 0.00%   (0) | 2 | 0 |
 | [CMS996FHIRAptTxforSTEMI](#cms996fhirapttxforstemi) | 114 | 0 | 0 | 0.88%   (1) | 0 | 0 |
 
+
+
+#### CMS71FHIRSTKAnticoagAFFlutter
+[ [cql] ](../../input/cql/CMS71FHIRSTKAnticoagAFFlutter.cql) [ [test results] ](../../input/tests/results/CMS71FHIRSTKAnticoagAFFlutter.txt)
+
+Workarounds (2 of 83 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ 0587a75d-0dcc-4c6b-bfc0-f5727342ec1f ](../.././input/tests/measure/CMS71FHIRSTKAnticoagAFFlutter/0587a75d-0dcc-4c6b-bfc0-f5727342ec1f/MeasureReport-c8a99645-6e7a-467b-87aa-456cdc7cafb9.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+| [ 56ae006d-ab1b-428d-8614-2ccd5d962650 ](../.././input/tests/measure/CMS71FHIRSTKAnticoagAFFlutter/56ae006d-ab1b-428d-8614-2ccd5d962650/MeasureReport-71b26a14-7533-4479-82e3-7bc54d9ce0db.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+
+
+Issues
+
+- **I-31** (`vendored`, **workaround applied**): FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround.
 
 
 #### CMS72FHIRSTKAntithromboticDay2
@@ -118,6 +137,25 @@ Mismatched Test Cases (1 of 158)
 Issues
 
 - **I-75** (`implementation`): PENDING SME CONFIRMATION. INR Observation valueQuantity has UCUM unit "0" and no code; UCUM reads "0" as a factor of zero, so INR 100 evaluates as 0 and the INR > 3.5 Denominator Exception can't fire. A dimensionless unit (unit/code "1") makes the case match.
+
+
+#### CMS108FHIRVTEProphylaxis
+[ [cql] ](../../input/cql/CMS108FHIRVTEProphylaxis.cql) [ [test results] ](../../input/tests/results/CMS108FHIRVTEProphylaxis.txt)
+
+Workarounds (3 of 140 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ 33d162ce-3bc7-4b0a-8c04-fec0a42a6263 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/33d162ce-3bc7-4b0a-8c04-fec0a42a6263/MeasureReport-da823951-b92e-4ee9-904f-839f7e8db8df.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+| [ d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1/MeasureReport-43331d8f-cf2d-4a0c-a3a2-e4b8e060a7eb.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+| [ dd5a1e46-1b99-45a3-b4d3-1fde205d8a11 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/dd5a1e46-1b99-45a3-b4d3-1fde205d8a11/MeasureReport-bc945d90-f897-463b-bbc2-f9b922117784.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+
+
+Issues
+
+- **I-31** (`vendored`, **workaround applied**): FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround.
 
 
 #### CMS135FHIRACEIorARBorARNIforHF
@@ -172,20 +210,67 @@ Issues
 #### CMS156FHIRHighRiskMedsElderly
 [ [cql] ](../../input/cql/CMS156FHIRHighRiskMedsElderly.cql) [ [test results] ](../../input/tests/results/CMS156FHIRHighRiskMedsElderly.txt)
 
-Workarounds (3 of 177 test cases)
+Workarounds (48 of 177 test cases)
 _These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_"Values FHIR.dateTime and FHIR.dateTime are not comparable" aborts the case. The FHIRHelpers.ToDateTime() workaround is applied to CMS156 only._
 _Worked around in CMS156 averageDailyDose(); listed for its upstream ticket._
 
 | Test Case | Group | Issue | Ticketed |
 | --- | --- | --- | --- |
+| [ 1789d80d-bc5b-4e15-ab64-399d05e55a19 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/1789d80d-bc5b-4e15-ab64-399d05e55a19/MeasureReport-c5842144-5823-4fe2-93dc-a7cc368968fe.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 1789d80d-bc5b-4e15-ab64-399d05e55a19 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/1789d80d-bc5b-4e15-ab64-399d05e55a19/MeasureReport-c5842144-5823-4fe2-93dc-a7cc368968fe.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 1789d80d-bc5b-4e15-ab64-399d05e55a19 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/1789d80d-bc5b-4e15-ab64-399d05e55a19/MeasureReport-c5842144-5823-4fe2-93dc-a7cc368968fe.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 2389a7bb-16a7-4800-ba4a-2585ebd98a0a ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/2389a7bb-16a7-4800-ba4a-2585ebd98a0a/MeasureReport-5d66494f-0140-46ae-9010-59ed11eae359.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 2389a7bb-16a7-4800-ba4a-2585ebd98a0a ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/2389a7bb-16a7-4800-ba4a-2585ebd98a0a/MeasureReport-5d66494f-0140-46ae-9010-59ed11eae359.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 2389a7bb-16a7-4800-ba4a-2585ebd98a0a ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/2389a7bb-16a7-4800-ba4a-2585ebd98a0a/MeasureReport-5d66494f-0140-46ae-9010-59ed11eae359.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 42125b07-9cb2-44df-ba1f-78237b0d3ebc ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/42125b07-9cb2-44df-ba1f-78237b0d3ebc/MeasureReport-218cb83f-e1c9-45de-a46b-caa45ab68688.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 42125b07-9cb2-44df-ba1f-78237b0d3ebc ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/42125b07-9cb2-44df-ba1f-78237b0d3ebc/MeasureReport-218cb83f-e1c9-45de-a46b-caa45ab68688.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 42125b07-9cb2-44df-ba1f-78237b0d3ebc ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/42125b07-9cb2-44df-ba1f-78237b0d3ebc/MeasureReport-218cb83f-e1c9-45de-a46b-caa45ab68688.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
 | [ 4aa75d19-ac8b-49b0-a686-429fbc033d77 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/4aa75d19-ac8b-49b0-a686-429fbc033d77/MeasureReport-139cc56e-5ffb-46ca-89ce-accd0bb642ab.json) | Group_1 | I-24 (workaround applied) | [1690](https://github.com/cqframework/clinical_quality_language/issues/1690) |
 | [ 4aa75d19-ac8b-49b0-a686-429fbc033d77 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/4aa75d19-ac8b-49b0-a686-429fbc033d77/MeasureReport-139cc56e-5ffb-46ca-89ce-accd0bb642ab.json) | Group_2 | I-24 (workaround applied) | [1690](https://github.com/cqframework/clinical_quality_language/issues/1690) |
 | [ 4aa75d19-ac8b-49b0-a686-429fbc033d77 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/4aa75d19-ac8b-49b0-a686-429fbc033d77/MeasureReport-139cc56e-5ffb-46ca-89ce-accd0bb642ab.json) | Group_3 | I-24 (workaround applied) | [1690](https://github.com/cqframework/clinical_quality_language/issues/1690) |
+| [ 5326ef57-57d6-49b8-bdc5-b3179cdcb82d ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5326ef57-57d6-49b8-bdc5-b3179cdcb82d/MeasureReport-13d2c78d-9ea8-43cb-976a-07636ad51575.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 5326ef57-57d6-49b8-bdc5-b3179cdcb82d ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5326ef57-57d6-49b8-bdc5-b3179cdcb82d/MeasureReport-13d2c78d-9ea8-43cb-976a-07636ad51575.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 5326ef57-57d6-49b8-bdc5-b3179cdcb82d ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5326ef57-57d6-49b8-bdc5-b3179cdcb82d/MeasureReport-13d2c78d-9ea8-43cb-976a-07636ad51575.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 5c33755f-40d8-4409-b699-a3499ddddda0 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5c33755f-40d8-4409-b699-a3499ddddda0/MeasureReport-a8c9543e-2148-48f9-bd4a-0f5ab6ff7b57.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 5c33755f-40d8-4409-b699-a3499ddddda0 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5c33755f-40d8-4409-b699-a3499ddddda0/MeasureReport-a8c9543e-2148-48f9-bd4a-0f5ab6ff7b57.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 5c33755f-40d8-4409-b699-a3499ddddda0 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/5c33755f-40d8-4409-b699-a3499ddddda0/MeasureReport-a8c9543e-2148-48f9-bd4a-0f5ab6ff7b57.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 64c49012-0f98-41da-a00b-9cd673294d16 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/64c49012-0f98-41da-a00b-9cd673294d16/MeasureReport-99a65a2b-e608-4f67-918d-ea3f8ceb03f2.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 64c49012-0f98-41da-a00b-9cd673294d16 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/64c49012-0f98-41da-a00b-9cd673294d16/MeasureReport-99a65a2b-e608-4f67-918d-ea3f8ceb03f2.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 64c49012-0f98-41da-a00b-9cd673294d16 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/64c49012-0f98-41da-a00b-9cd673294d16/MeasureReport-99a65a2b-e608-4f67-918d-ea3f8ceb03f2.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca/MeasureReport-e1513040-9d4e-4b28-9f9d-e6cd97c8e6ec.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca/MeasureReport-e1513040-9d4e-4b28-9f9d-e6cd97c8e6ec.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca/MeasureReport-e1513040-9d4e-4b28-9f9d-e6cd97c8e6ec.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 7f204655-dbf6-47d7-a684-ff1570cf4b05 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/7f204655-dbf6-47d7-a684-ff1570cf4b05/MeasureReport-e3454afe-2c47-48c4-8cfa-8a71eb842a52.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 7f204655-dbf6-47d7-a684-ff1570cf4b05 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/7f204655-dbf6-47d7-a684-ff1570cf4b05/MeasureReport-e3454afe-2c47-48c4-8cfa-8a71eb842a52.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 7f204655-dbf6-47d7-a684-ff1570cf4b05 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/7f204655-dbf6-47d7-a684-ff1570cf4b05/MeasureReport-e3454afe-2c47-48c4-8cfa-8a71eb842a52.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 8e648527-5b7e-430c-b5ca-fe70a4133d55 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/8e648527-5b7e-430c-b5ca-fe70a4133d55/MeasureReport-0dcd49bb-3eb9-41be-b9ec-2d4cbb9469fb.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 8e648527-5b7e-430c-b5ca-fe70a4133d55 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/8e648527-5b7e-430c-b5ca-fe70a4133d55/MeasureReport-0dcd49bb-3eb9-41be-b9ec-2d4cbb9469fb.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ 8e648527-5b7e-430c-b5ca-fe70a4133d55 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/8e648527-5b7e-430c-b5ca-fe70a4133d55/MeasureReport-0dcd49bb-3eb9-41be-b9ec-2d4cbb9469fb.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a550fe5a-03ad-4eb3-9157-dcb64f8b13be ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a550fe5a-03ad-4eb3-9157-dcb64f8b13be/MeasureReport-1ae70be3-8690-4902-aca5-e8048a6c2de1.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a550fe5a-03ad-4eb3-9157-dcb64f8b13be ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a550fe5a-03ad-4eb3-9157-dcb64f8b13be/MeasureReport-1ae70be3-8690-4902-aca5-e8048a6c2de1.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a550fe5a-03ad-4eb3-9157-dcb64f8b13be ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a550fe5a-03ad-4eb3-9157-dcb64f8b13be/MeasureReport-1ae70be3-8690-4902-aca5-e8048a6c2de1.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a6b1d740-d580-4e55-970e-3cb4f1e369c2 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a6b1d740-d580-4e55-970e-3cb4f1e369c2/MeasureReport-12fa7bd7-0c1d-4437-8622-2a219942b2e1.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a6b1d740-d580-4e55-970e-3cb4f1e369c2 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a6b1d740-d580-4e55-970e-3cb4f1e369c2/MeasureReport-12fa7bd7-0c1d-4437-8622-2a219942b2e1.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ a6b1d740-d580-4e55-970e-3cb4f1e369c2 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/a6b1d740-d580-4e55-970e-3cb4f1e369c2/MeasureReport-12fa7bd7-0c1d-4437-8622-2a219942b2e1.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ aeef1eb1-86fa-4af0-b24d-fc7ad8398191 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/aeef1eb1-86fa-4af0-b24d-fc7ad8398191/MeasureReport-28a51e65-13c2-4fde-b103-93fcb80f0903.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ aeef1eb1-86fa-4af0-b24d-fc7ad8398191 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/aeef1eb1-86fa-4af0-b24d-fc7ad8398191/MeasureReport-28a51e65-13c2-4fde-b103-93fcb80f0903.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ aeef1eb1-86fa-4af0-b24d-fc7ad8398191 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/aeef1eb1-86fa-4af0-b24d-fc7ad8398191/MeasureReport-28a51e65-13c2-4fde-b103-93fcb80f0903.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ cb01ddd0-a804-4bbe-8544-d4c753898eca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/cb01ddd0-a804-4bbe-8544-d4c753898eca/MeasureReport-2efd499c-6b01-4fa8-b4e1-80c5e09571f8.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ cb01ddd0-a804-4bbe-8544-d4c753898eca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/cb01ddd0-a804-4bbe-8544-d4c753898eca/MeasureReport-2efd499c-6b01-4fa8-b4e1-80c5e09571f8.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ cb01ddd0-a804-4bbe-8544-d4c753898eca ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/cb01ddd0-a804-4bbe-8544-d4c753898eca/MeasureReport-2efd499c-6b01-4fa8-b4e1-80c5e09571f8.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ e00d1066-19b2-4d59-8829-d90f1e7a1233 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/e00d1066-19b2-4d59-8829-d90f1e7a1233/MeasureReport-5b50ece9-6516-40c2-9c49-d261d06b80d5.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ e00d1066-19b2-4d59-8829-d90f1e7a1233 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/e00d1066-19b2-4d59-8829-d90f1e7a1233/MeasureReport-5b50ece9-6516-40c2-9c49-d261d06b80d5.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ e00d1066-19b2-4d59-8829-d90f1e7a1233 ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/e00d1066-19b2-4d59-8829-d90f1e7a1233/MeasureReport-5b50ece9-6516-40c2-9c49-d261d06b80d5.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ ea9af1dc-c26e-4bc3-947b-6c4bbd65523c ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/ea9af1dc-c26e-4bc3-947b-6c4bbd65523c/MeasureReport-95607d58-bfa1-43fb-8fe9-8a0e479b8885.json) | Group_1 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ ea9af1dc-c26e-4bc3-947b-6c4bbd65523c ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/ea9af1dc-c26e-4bc3-947b-6c4bbd65523c/MeasureReport-95607d58-bfa1-43fb-8fe9-8a0e479b8885.json) | Group_2 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
+| [ ea9af1dc-c26e-4bc3-947b-6c4bbd65523c ](../.././input/tests/measure/CMS156FHIRHighRiskMedsElderly/ea9af1dc-c26e-4bc3-947b-6c4bbd65523c/MeasureReport-95607d58-bfa1-43fb-8fe9-8a0e479b8885.json) | Group_3 | I-33 (workaround applied) | [1878](https://github.com/cqframework/clinical_quality_language/issues/1878) |
 
 
 Issues
 
 - **I-24** (`engine`, **workaround applied**): Worked around in CMS156 averageDailyDose(); listed for its upstream ticket.
+- **I-33** (`engine`, **workaround applied**): "Values FHIR.dateTime and FHIR.dateTime are not comparable" aborts the case. The FHIRHelpers.ToDateTime() workaround is applied to CMS156 only.
 
 
 #### CMS165FHIRControllingHighBP
