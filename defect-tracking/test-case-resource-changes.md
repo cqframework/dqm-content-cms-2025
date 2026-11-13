@@ -18,6 +18,7 @@ This report compiles all FHIR test-case resource changes applied across `dqm-con
 | **Observation Profile Re-Attribution** | [I-40](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-40.md), [I-47](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-47.md), [I-48](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-48.md) | Observations mis-profiled as screening assessments instead of US Core profiles | CMS69, CMS135, CMS165, Repo-wide | 20 |
 | **Non-Canonical UCUM URIs** | [I-43](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-43.md), [I-50](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-50.md) | System URL `https://ucum.org` crashing engine `ToQuantity` conversions | CMS69, CMS347 | 3 |
 | **Measurement Period & Date Alignment** | [I-49](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-49.md), [I-66](file:///Users/raleigh.thompson/projects/smile/dqm/_repo/dqm-content-cms-2025-ai-support/defect-tracking/issues/I-66.md) | Clinical dates authored in 2027 instead of 2026 measurement period | CMS177, CMS1264, NHSN | 56 |
+| **Dangling Encounter Diagnosis Reference** | I-12 | `Encounter.reasonReference` was a malformed id with no matching resource; repointed at the delivery Condition | CMS0334 | 1 |
 
 ---
 
@@ -179,6 +180,18 @@ This report compiles all FHIR test-case resource changes applied across `dqm-con
      * Change: Shifted encounter period start/end from inside the measurement period (`2026-02-11`) to before it (`2025-11-15`), and added missing `meta.profile`.
 3. **NHSNAcuteCareHospitalMonthlyInitialPopulation1**:
    * Updated fixture resource years to 2026.
+
+---
+
+### Category 8: Dangling Encounter Diagnosis Reference (I-12)
+
+* **Mechanism**: The case's Encounter named its delivery diagnosis with `reasonReference` `delivery-of-singleton-0997`. That isn't a valid `Type/id` reference, and no resource in the case carries that id (the Condition was re-identified to a GUID on import). `CQMCommon.encounterDiagnosis()` therefore found nothing.
+* **Remediation**: Repointed the reference at the delivery Condition already present in the case.
+
+#### Affected Measures and Resources:
+1. **CMS0334FHIRPCCesareanBirth** (Commit `2ba4c4ded`):
+   * Case `c58acff5-248b-49c9-b18d-69e4a84a08d9`:
+     * Updated [`Encounter-9d6ea959-0e00-4cd6-bf60-a90e1d6e90c1.json`](../input/tests/measure/CMS0334FHIRPCCesareanBirth/c58acff5-248b-49c9-b18d-69e4a84a08d9/Encounter-9d6ea959-0e00-4cd6-bf60-a90e1d6e90c1.json): `reasonReference[0].reference` `delivery-of-singleton-0997` → `Condition/8f7d2289-fe66-4bde-8ed8-3223de1da063`.
 
 ---
 

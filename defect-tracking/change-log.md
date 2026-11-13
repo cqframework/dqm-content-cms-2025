@@ -4,6 +4,55 @@ Records actual CQL, FHIR resource, valueset, and similar content changes. An
 entry may cite the `I-XX` issue it resolves or relates to when one is known,
 but this is not required — not every change traces back to a tracked issue.
 
+## Record the CMS0334 `c58acff5` fixture repair and remove the stale I-12 comment
+
+**Problem:** CMS0334 case `c58acff5-248b-49c9-b18d-69e4a84a08d9` failed `Group_1:Denominator` and
+`Group_1:Denominator Exclusion`. Its `Encounter-9d6ea959-0e00-4cd6-bf60-a90e1d6e90c1.json` named its
+delivery diagnosis with the malformed, dangling `reasonReference` `delivery-of-singleton-0997`, so
+`CQMCommon.encounterDiagnosis()` found nothing. An earlier entry (below) documented the case as
+deliberately left failing. Commit `2ba4c4ded` (2026-10-20) then repaired the fixture, but this
+log, the resource-change tracker and the `[I-12]` comment above the CMS0334 `Denominator` define
+were not updated. The comment still said the case was expected to keep failing.
+
+**Fix:**
+
+- **Fixture, applied in `2ba4c4ded`:** `reasonReference[0].reference` in
+  `input/tests/measure/CMS0334FHIRPCCesareanBirth/c58acff5-248b-49c9-b18d-69e4a84a08d9/Encounter-9d6ea959-0e00-4cd6-bf60-a90e1d6e90c1.json`
+  changed from `delivery-of-singleton-0997` to `Condition/8f7d2289-fe66-4bde-8ed8-3223de1da063`, the
+  delivery Condition in the same case. `c58acff5` now passes.
+- **CQL, applied 2026-11-13:** removed the eleven-line `[I-12]` comment above `define "Denominator"`
+  in `CMS0334FHIRPCCesareanBirth.cql`. Comment only; no CQL logic changed. I-12 is closed as fixed.
+
+**Measures Affected:** CMS0334
+
+## Record the CMS135 and `AHAOverall` Condition-retrieve widening (I-77, I-56)
+
+**Problem:** The QI-Core → US Quality Core conversion narrowed two CMS135 Denominator Exception
+defines (`Has Diagnosis of Allergy or Intolerance to ACEI or ARB` and `Has Diagnosis of Renal
+Failure Due to ACEI`) to `[USQualityCore.ConditionEncounterDiagnosis: …]`. It also narrowed the
+shared `AHAOverall` fluent functions `overlapsHeartFailureOutpatientEncounter` and
+`overlapsAfterHeartFailureOutpatientEncounter` to a `USQualityCore.ConditionEncounterDiagnosis`
+parameter. As a result, problem-list (`ConditionProblemsHealthConcerns`) diagnoses were ignored.
+CMS135 `5b7e720f` and `d18e37a6` failed their Denominator Exception (I-77), and CMS144's seven
+exclusion diagnoses lost problem-list support (I-56).
+
+**Fix (applied in `6d7b6166`, 2026-10-19; recorded here 2026-11-13):**
+
+- `AHAOverall.cql`: both overlap functions take base `Condition` instead of
+  `USQualityCore.ConditionEncounterDiagnosis`.
+- `CMS135FHIRACEIorARBorARNIforHF.cql`: the three exception retrieves use base `[Condition: …]`.
+
+Together with the CMS144 I-28 base `[FHIR.Condition: …]` retrieves (`e11830a0`), this restores
+problem-list diagnoses:
+
+- CMS135 `5b7e720f` and `d18e37a6` pass.
+- Seven CMS144 cases whose Denominator Exception rests only on a problem-list Condition pass:
+  `a45954f4`, `b7060d53`, `cdcbc425`, `23f874f8`, `a6c8dee0`, `00cd231f` and `8c717fb3`.
+
+I-77 is reclassified from `implementation` to `migration`. I-77 and I-56 are both closed as fixed.
+
+**Measures Affected:** CMS135, CMS144 (and any measure calling the `AHAOverall` overlap functions)
+
 ## Add runtime probe `testProbeCMS71IntervalPrevalence_05` for the 0587a75d eCQM regression (I-82)
 
 **Problem:** The cql-to-elm 5.5.0 upgrade (visible in the running `cqframework.cql-1.0.0`

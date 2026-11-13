@@ -66,17 +66,6 @@ define "Delivery Encounter With Gestational Age Greater Than Or Equal To 37 Week
           or DeliveryEncounter.encounterDiagnosis ( ).code in "37 to 42 Plus Weeks Gestation"
       )
 
-// [I-12] Test case c58acff5 does not reproduce its expected Denominator / Denominator
-// Exclusions (both expect 1, both evaluate to 0). CQMCommon.encounterDiagnosis() finds the
-// qualifying delivery diagnosis through Encounter.reasonReference, and this fixture's
-// reference is the malformed, dangling "delivery-of-singleton-0997": no type prefix, and no
-// resource in the case carries that id (the Condition was re-identified to a GUID on import).
-// encounterDiagnosis() therefore returns nothing, "Encounter With Singleton Delivery" is
-// empty, and both populations collapse to 0. The fixture is deliberately left as-is, so this
-// case is expected to keep failing; it is a test-data defect, not a translator or engine
-// defect.
-// Upstream ticket: N/A (fixture data, not a translator/engine issue)
-// Affected test cases: c58acff5 (GUID prefixes).
 define "Denominator":
   "Singleton Delivery Encounters At 37 Plus Weeks Gravida 1 Parity 0, No Previous Births"
 
