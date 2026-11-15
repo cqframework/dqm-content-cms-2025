@@ -88,7 +88,11 @@ Other failing test cases are explained by an issue in `defect-tracking/known-iss
 - Every row of one issue must carry the same `class`, `status` and `ticket`.
 - `group` and quoting work as in `implementation_issues.csv`. **If the file is absent or empty, nothing changes.**
 
-Both files, and the Open issues table in `defect-tracking/known-issues.md`, are generated from the project's issue catalog, so a hand edit is overwritten on the next update.
+#### Open tickets (optional)
+
+`scripts/comparison/open_tickets.csv`, with columns `ticket,summary,issues`, lists every upstream ticket an open known issue cites: the GitHub or HL7 JIRA URL, a one-line summary, and the citing issue ids separated by spaces. The report lists them in an `Open Tickets` section after the `Measures with Discrepancies` table, whether or not the tickets' cases fail today. It doesn't affect scoring. **If the file is absent or empty, the section is left out.**
+
+These files, and the Open issues table in `defect-tracking/known-issues.md`, are generated from the project's issue catalog, so a hand edit is overwritten on the next update.
 
 How a listed case is scored:
 

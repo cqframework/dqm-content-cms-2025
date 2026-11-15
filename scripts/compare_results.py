@@ -99,6 +99,10 @@ IMPLEMENTATION = "IMPLEMENTATION"
 # JIRA). Absent is fine.
 DEFAULT_KNOWN_ISSUES_FILE = "./scripts/comparison/known_issues.csv"
 
+# Optional fifth input: one row per upstream ticket an open issue cites, with a
+# short summary. Listed in the report's Open Tickets section. Absent is fine.
+DEFAULT_OPEN_TICKETS_FILE = "./scripts/comparison/open_tickets.csv"
+
 # The per-cell and per-test-case verdict for a failure covered by a known issue
 # that has a ticket. Counts as resolved. Without a ticket the cell stays FAIL.
 KNOWN_ISSUE = "KNOWN_ISSUE"
@@ -448,6 +452,52 @@ def load_known_issues(file: Optional[str]) -> List[KnownIssue]:
                 row["issue_id"], row["class"], row.get("status", ""), row["ticket"],
                 row["measure_name"], row["guid"], row.get("group", ""), row.get("note", "")))
     return issues
+
+
+class OpenTicket(NamedTuple):
+    """One row of ``open_tickets.csv``: an upstream ticket, a one-line summary,
+    and the open issues (``I-XX``) that cite it."""
+    ticket: str
+    summary: str
+    issue_ids: Tuple[str, ...]
+
+
+OPEN_TICKET_COLUMNS = ("ticket", "summary", "issues")
+
+
+def load_open_tickets(file: Optional[str]) -> List[OpenTicket]:
+    """Read ``open_tickets.csv``; an absent file means no tickets to list.
+
+    Columns: ``ticket,summary,issues``, with ``issues`` space-separated. Raises
+    ValueError on a missing column, an unquoted comma, or a ``ticket`` that
+    isn't a GitHub issue/PR or HL7 JIRA URL.
+    """
+    if not file or not os.path.exists(file):
+        return []
+    tickets: List[OpenTicket] = []
+    with open(file, newline="") as f:
+        reader = csv.DictReader(f)
+        header = [h.strip() for h in (reader.fieldnames or [])]
+        missing = [c for c in OPEN_TICKET_COLUMNS if c not in header]
+        if missing:
+            raise ValueError(
+                f"{file}: missing column(s) {', '.join(missing)}; expected "
+                f"{','.join(OPEN_TICKET_COLUMNS)}")
+        for raw in reader:
+            if None in raw:
+                raise ValueError(
+                    f"{file}, line {reader.line_num}: more fields than columns; "
+                    "quote any value that contains a comma")
+            row = {(k or "").strip(): (v or "").strip() for k, v in raw.items()}
+            if not any(row.values()):
+                continue
+            if not is_ticket_url(row["ticket"]):
+                raise ValueError(f"{file}, line {reader.line_num}: ticket "
+                                 f"{row['ticket']!r} is neither a GitHub issue or pull "
+                                 "request URL nor an HL7 JIRA URL")
+            tickets.append(OpenTicket(row["ticket"], row["summary"],
+                                      tuple(row["issues"].split())))
+    return tickets
 
 
 def failing_known_issue_keys(expected_results: Dict[ResultKey, Dict[str, str]],
@@ -1006,6 +1056,26 @@ def ticket_link(ticket: str) -> str:
     return f'[{owner}/{repo}#{number}]({ticket})'
 
 
+def render_open_tickets_section(open_tickets: Sequence[OpenTicket]) -> List[str]:
+    """`## Open Tickets`: every upstream ticket an open known issue cites.
+
+    Listed whether or not the ticket's cases fail today: a ticket behind a
+    workaround, or behind an issue with no test case, is still open work
+    upstream.
+    """
+    if not open_tickets:
+        return []
+    lines = [f'## Open Tickets ({len(open_tickets)})\n', '\n',
+             '_Every upstream ticket that an open known issue cites, whether or not '
+             'its test cases fail today. The `Issues` column names the issues in '
+             '`defect-tracking/known-issues.md` that the ticket tracks._\n', '\n']
+    rows = [[ticket_link(t.ticket), t.summary, ', '.join(t.issue_ids)]
+            for t in open_tickets]
+    lines.extend(create_markdown_table(['Ticket', 'Summary', 'Issues'], rows))
+    lines.append('\n')
+    return lines
+
+
 def ticket_number(ticket: str) -> str:
     """`123` from a GitHub issue or pull request URL, `FHIR-59691` from an HL7
     JIRA URL; blank stays blank.
@@ -1138,7 +1208,8 @@ def generate_comparison_report(file: str,
                                known_issue_count: int = 0,
                                workaround_count: int = 0,
                                ticketed_coverage_count: int = 0,
-                               ticketed_workaround_count: int = 0):
+                               ticketed_workaround_count: int = 0,
+                               open_tickets: Sequence[OpenTicket] = ()):
     """Write ``discrepancy_report.md``.
 
     ``pass_count`` / ``fail_count`` / ``implementation_count`` /
@@ -1414,6 +1485,9 @@ def generate_comparison_report(file: str,
                                                summary_separator))
             f.write('\n')
 
+            f.writelines(render_open_tickets_section(open_tickets))
+
+            f.write('## Measure Discrepancy Details\n\n')
             for measure, discrepancy in discrepancies.items():
                 f.write(f'#### {measure}\n')
                 f.write(f'{cql_file_link(measure, "[cql]")} '
@@ -1503,6 +1577,8 @@ def generate_comparison_report(file: str,
                     measure_keys[measure] + list(discrepancy.workarounds),
                     implementation_issues, known_issues))
                 f.write('\n')
+        else:
+            f.writelines(render_open_tickets_section(open_tickets))
 
         f.write('\n_Known issues are listed in '
                 '`defect-tracking/known-issues.md`; the test cases they explain, '
@@ -1513,7 +1589,8 @@ def generate_comparison_report(file: str,
 def main(expected_file: str, actual_file: str, output_file: str,
          comparison_report: str, measure_resource_dir: str = None,
          implementation_file: str = DEFAULT_IMPLEMENTATION_ISSUES_FILE,
-         known_issues_file: str = DEFAULT_KNOWN_ISSUES_FILE):
+         known_issues_file: str = DEFAULT_KNOWN_ISSUES_FILE,
+         open_tickets_file: str = DEFAULT_OPEN_TICKETS_FILE):
     # Exclusions are computed once and applied symmetrically to expected and
     # actual, so a cell is either scored on both sides or neither.
     cqfm_exclusions = load_cqfm_aggregation_exclusions(
@@ -1531,6 +1608,9 @@ def main(expected_file: str, actual_file: str, output_file: str,
           f"({sum(1 for i in known_issues if i.ticketed)} ticketed, "
           f"{sum(1 for i in known_issues if i.workaround_applied)} workaround) "
           f"from {known_issues_file!r}")
+
+    open_tickets = load_open_tickets(open_tickets_file)
+    print(f"Open tickets: {len(open_tickets)} from {open_tickets_file!r}")
 
     pass_count, fail_count = generate_output(output_file, expected_results.rows,
                                              actual_results.rows, implementation_issues,
@@ -1578,7 +1658,8 @@ def main(expected_file: str, actual_file: str, output_file: str,
                                known_issue_count=known_count,
                                workaround_count=workaround_count,
                                ticketed_coverage_count=ticketed_coverage_count,
-                               ticketed_workaround_count=ticketed_workaround_count)
+                               ticketed_workaround_count=ticketed_workaround_count,
+                               open_tickets=open_tickets)
 
 
 def parse_args(argv: List[str]) -> Tuple[str, str, str, str, Optional[str]]:
