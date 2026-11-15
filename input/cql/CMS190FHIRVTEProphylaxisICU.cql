@@ -245,17 +245,15 @@ define "Low Risk Indicator For VTE":
           and INRLabTest.status in { 'final', 'amended', 'corrected' }
         return {
           id: INRLabTest.id,
-          // I-61 (translator defect, corroborated on CMS190 2026-09-17): this union's three
-          // branches return LowRiskDatetime as divergent types (System.DateTime / raw
-          // FHIR.instant / System.DateTime), so the translator emits a ChoiceType for the
-          // tuple element. The translator's choice-compatibility check treats that ChoiceType
-          // as compatible with System.DateTime because ONE branch already matches, so it
-          // skips inserting the FHIRHelpers.ToDateTime conversion it would otherwise apply —
-          // silently emitting a no-op cast instead. At runtime that cast returns null whenever
-          // the actual value is the FHIR.instant branch, breaking the downstream "during day
-          // of" comparison. Same mechanism as CMS108's "Low Risk Indicator For VTE".
-          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug;
-          // see I-61 for the full investigation (translator issue, not fixable at this layer).
+          // I-61 (corroborated on CMS190 2026-09-17, reclassified 2026-11-15): this union's three
+          // branches return LowRiskDatetime as System.DateTime / raw FHIR.instant /
+          // System.DateTime, so the tuple element becomes Choice<FHIR.instant, System.DateTime>.
+          // Where a DateTime is expected, CQL casts a Choice rather than converting it (spec:
+          // Cast outranks Implicit Conversion), and the cast is null for the FHIR.instant
+          // member, breaking the downstream "during day of" comparison. Converting here,
+          // before the union, is the correct fix; the QI-Core original has the same gap.
+          // Same mechanism as CMS108's "Low Risk Indicator For VTE".
+          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug.
           // Original: LowRiskDatetime: INRLabTest.issued
           LowRiskDatetime: INRLabTest.issued.ToDateTime()
         }

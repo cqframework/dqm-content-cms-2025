@@ -4,6 +4,20 @@ Records actual CQL, FHIR resource, valueset, and similar content changes. An
 entry may cite the `I-XX` issue it resolves or relates to when one is known,
 but this is not required — not every change traces back to a tracked issue.
 
+## Reword the I-61 comments in CMS108 and CMS190
+
+**Problem:** the comment above `LowRiskDatetime: INRLabTest.issued.ToDateTime()` in `"Low Risk
+Indicator For VTE"` called I-61 a translator defect "not fixable at this layer". I-61 is now
+classified as a content issue: a union of a raw `FHIR.instant` with `System.DateTime` values is a
+Choice, and where a `DateTime` is expected the CQL spec casts the Choice (null for the
+`FHIR.instant` member) rather than converting it. The QI-Core original has the same unconverted
+value.
+
+**Fix:** reworded the explanation in both comments; kept the "do not remove" warning and the
+`// Original:` line. Comment only — no CQL logic changed.
+
+**Measures Affected:** CMS108, CMS190
+
 ## Remove the retired I-25 comment from CMS156
 
 **Problem:** `medicationRequestPeriodInDays` in `CMS156FHIRHighRiskMedsElderly.cql` carried an
