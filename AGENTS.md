@@ -1,7 +1,9 @@
 # AGENTS.md
 
 For CQL, FHIR, and eCQM debugging tasks (executing CQL libraries, inspecting ELM, stepping through
-defines, comparing persisted test runs), use the cql-debug MCP tools.
+defines, comparing persisted test runs), use the cql-mcp server tools. Pass
+`configPath` = `input/tests/config.json` to `cql_test_run_suite` so the Measurement Period
+parameter is applied.
 
 ## Test-case reporting
 

@@ -59,11 +59,10 @@ while the valueset it needed had never been committed.
 
 <!-- OPEN_ISSUES_BEGIN: generated from the issue catalog; don't edit by hand -->
 
-## Open issues (31)
+## Open issues (30)
 
 | ID | Issue | Class | Status | Ticket | Measures |
 |---|---|---|---|---|---|
-| I-08 | CMS871 HH Hyperglycemia fixture MeasureReport / Denominator authoring mismatch. Needs re-confirmation: since the I-44 fix, every failing CMS871 cell is a missing result explained by I-63, and none matches this symptom | `content` | Open — needs re-confirmation | — | CMS871 |
 | I-14 | CMSFHIR844 fixture MeasureReport hand-authors the Initial Population; the engine computes 0 / 1 where 1 / 2 is expected (2 cases) | `content` | Open — confirmed | — | CMSFHIR844 |
 | I-15 | CMS646 fixture MeasureReport expects Denominator Exclusion 0 for `10cec7db`, but the resources present give 1 | `content` | Open — confirmed | — | CMS646 |
 | I-16 | `Min()` over DateTime throws | `engine` | Worked around | — | CMS1173, CMS871 |

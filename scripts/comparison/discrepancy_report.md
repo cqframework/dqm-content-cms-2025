@@ -1,19 +1,19 @@
 # Discrepancy Report
 | Details | Value |
 | --- | --- |
-| Generated | 2026-11-13 17:53:38.179045 |
+| Generated | 2026-11-14 18:18:09.124247 |
 | Total Measures | 74 |
 | Total Test Cases | 3964 |
-| Measures with Discrepancies | 12 |
-| Pass Count | 3922 (98.94%) |
-| Workaround Count | 28 (0.71%) |
-| &nbsp;&nbsp;— covered by a ticketed known issue | 28 (0.71%) |
+| Measures with Discrepancies | 15 |
+| Pass Count | 3898 (98.34%) |
+| Workaround Count | 52 (1.31%) |
+| &nbsp;&nbsp;— covered by a ticketed known issue | 46 (1.16%) |
 | Implementation Issue Count | 5 (0.13%) |
 | Known Issue Count (ticketed) | 5 (0.13%) |
 | Fail Count | 4 (0.10%) |
 | &nbsp;&nbsp;— known issue, no ticket expected | 4 (0.10%) |
-| Known issues with an upstream ticket | 33 (0.83%) |
-| Resolved (Pass + Implementation + Known Issue) | 3932 (99.19%) |
+| Known issues with an upstream ticket | 51 (1.29%) |
+| Resolved (Pass + Implementation + Known Issue) | 3908 (98.59%) |
 
 
 | Discrepancy Summary | Measure Count | Test Case Count |
@@ -21,7 +21,7 @@
 | Missing Results | 3 | 5 |
 | Missing Populations | 0 | 0 |
 | Mismatched Test Cases | 6 | 9 |
-| Workarounds | 5 | 65 |
+| Workarounds | 9 | 94 |
 | Unattributed Discrepancies | 2 | 4 |
 
 
@@ -30,7 +30,7 @@ _Note: Measures can have multiple discrepancies, so the Measures with Discrepanc
 
 ## Populations Excluded from Automated Scoring (CQFM Aggregation)
 
-_These populations require invoking a parameterized CQL `measure-observation` function once per member of a `cqfm-criteriaReference` population and then applying `cqfm-aggregateMethod` (Sum/Count/Average) -- a computation this harness's CQL-execution path cannot perform (no scriptable/batch CQL runner; see `defect-tracking/known-issues.md`, I-62). They are intentionally excluded from pass/fail scoring rather than reported as FAIL or silently read as 0. Every other population on these measures (Initial Population, Denominator, Numerator, exclusions, etc.) is unaffected and scored normally. Use the `mcp-cql-debug` per-member probe method documented in I-62 to manually verify any of the expected values below._
+_These populations require invoking a parameterized CQL `measure-observation` function once per member of a `cqfm-criteriaReference` population and then applying `cqfm-aggregateMethod` (Sum/Count/Average) -- a computation this harness's CQL-execution path cannot perform (no scriptable/batch CQL runner; see `defect-tracking/known-issues.md`, I-62). They are intentionally excluded from pass/fail scoring rather than reported as FAIL or silently read as 0. Every other population on these measures (Initial Population, Denominator, Numerator, exclusions, etc.) is unaffected and scored normally. Use the cql-mcp `cql_execute` per-member probe method documented in I-62 to manually verify any of the expected values below._
 
 | Measure | Excluded Populations |
 | --- | --- |
@@ -59,7 +59,7 @@ _31 measures include the I-28 workaround: the original sibling-profile `[Conditi
 | [ CMS136FHIRChildADHDMedFollowUp ](../../input/cql/CMS136FHIRChildADHDMedFollowUp.cql) | [ CMS347FHIRStatinPreventionTxCVD ](../../input/cql/CMS347FHIRStatinPreventionTxCVD.cql) |  |
 
 
-## Measures with No Discrepancies (62 of 74)
+## Measures with No Discrepancies (59 of 74)
 
 |  |  |  |
 | --- | --- | --- |
@@ -67,16 +67,15 @@ _31 measures include the I-28 workaround: the original sibling-profile `[Conditi
 | [ CMS22FHIRPCSBPScreeningFollowUp ](../../input/cql/CMS22FHIRPCSBPScreeningFollowUp.cql) | [ CMS139FHIRFallRiskScreening ](../../input/cql/CMS139FHIRFallRiskScreening.cql) | [ CMS819FHIRHHORAE ](../../input/cql/CMS819FHIRHHORAE.cql) |
 | [ CMS50FHIRReceiptofSpecialistReport ](../../input/cql/CMS50FHIRReceiptofSpecialistReport.cql) | [ CMS142FHIRCommWithDrManagingDiab ](../../input/cql/CMS142FHIRCommWithDrManagingDiab.cql) | [ CMS826FHIRHHPI ](../../input/cql/CMS826FHIRHHPI.cql) |
 | [ CMS56FHIRFuncStatHipReplacement ](../../input/cql/CMS56FHIRFuncStatHipReplacement.cql) | [ CMS143FHIRPOAGOpticNerveEval ](../../input/cql/CMS143FHIRPOAGOpticNerveEval.cql) | [ CMS832FHIRHHAKI ](../../input/cql/CMS832FHIRHHAKI.cql) |
-| [ CMS68FHIRDocumentationCurrentMeds ](../../input/cql/CMS68FHIRDocumentationCurrentMeds.cql) | [ CMS144FHIRHFBetaBlockerForLVSD ](../../input/cql/CMS144FHIRHFBetaBlockerForLVSD.cql) | [ CMS951FHIRKidneyHealthEval ](../../input/cql/CMS951FHIRKidneyHealthEval.cql) |
-| [ CMS69FHIRPCSBMIScreenAndFollowUp ](../../input/cql/CMS69FHIRPCSBMIScreenAndFollowUp.cql) | [ CMS146FHIRApproTestPharyngitis ](../../input/cql/CMS146FHIRApproTestPharyngitis.cql) | [ CMS986FHIRMalnutritionScore ](../../input/cql/CMS986FHIRMalnutritionScore.cql) |
-| [ CMS74FHIRDentalCariesPrevention ](../../input/cql/CMS74FHIRDentalCariesPrevention.cql) | [ CMS149FHIRDementiaCognitiveAssess ](../../input/cql/CMS149FHIRDementiaCognitiveAssess.cql) | [ CMS1017FHIRHHFI ](../../input/cql/CMS1017FHIRHHFI.cql) |
-| [ CMS75FHIRChildrenDentalDecay ](../../input/cql/CMS75FHIRChildrenDentalDecay.cql) | [ CMS153FHIRChlamydiaScreening ](../../input/cql/CMS153FHIRChlamydiaScreening.cql) | [ CMS1028FHIRPCSevereOBComps ](../../input/cql/CMS1028FHIRPCSevereOBComps.cql) |
-| [ CMS90FHIRFSAforHeartFailure ](../../input/cql/CMS90FHIRFSAforHeartFailure.cql) | [ CMS154FHIRAppropriateTxforURI ](../../input/cql/CMS154FHIRAppropriateTxforURI.cql) | [ CMS1056FHIRCTClinical ](../../input/cql/CMS1056FHIRCTClinical.cql) |
-| [ CMS104FHIRSTKDCAntithrombotic ](../../input/cql/CMS104FHIRSTKDCAntithrombotic.cql) | [ CMS155FHIRWgtAssessCounseling ](../../input/cql/CMS155FHIRWgtAssessCounseling.cql) | [ CMS1074FHIRCTIQR ](../../input/cql/CMS1074FHIRCTIQR.cql) |
-| [ CMS117FHIRChildImmunStatus ](../../input/cql/CMS117FHIRChildImmunStatus.cql) | [ CMS157FHIRPainIntensityQuantified ](../../input/cql/CMS157FHIRPainIntensityQuantified.cql) | [ CMS1154ScreeningPrediabetesFHIR ](../../input/cql/CMS1154ScreeningPrediabetesFHIR.cql) |
-| [ CMS122FHIRDiabetesAssessGT9Pct ](../../input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [ CMS159FHIRDepRemissionat12Months ](../../input/cql/CMS159FHIRDepRemissionat12Months.cql) | [ CMS1157FHIRHIVRetention ](../../input/cql/CMS1157FHIRHIVRetention.cql) |
-| [ CMS124FHIRCervicalCancerScreen ](../../input/cql/CMS124FHIRCervicalCancerScreen.cql) | [ CMS177FHIRChildMDDSuicideAssmt ](../../input/cql/CMS177FHIRChildMDDSuicideAssmt.cql) | [ CMS1173FHIRDiagnosticDelayVTE ](../../input/cql/CMS1173FHIRDiagnosticDelayVTE.cql) |
-| [ CMS125FHIRBreastCancerScreen ](../../input/cql/CMS125FHIRBreastCancerScreen.cql) | [ CMS190FHIRVTEProphylaxisICU ](../../input/cql/CMS190FHIRVTEProphylaxisICU.cql) | [ CMS1188FHIRHIVSTITesting ](../../input/cql/CMS1188FHIRHIVSTITesting.cql) |
+| [ CMS69FHIRPCSBMIScreenAndFollowUp ](../../input/cql/CMS69FHIRPCSBMIScreenAndFollowUp.cql) | [ CMS144FHIRHFBetaBlockerForLVSD ](../../input/cql/CMS144FHIRHFBetaBlockerForLVSD.cql) | [ CMS951FHIRKidneyHealthEval ](../../input/cql/CMS951FHIRKidneyHealthEval.cql) |
+| [ CMS74FHIRDentalCariesPrevention ](../../input/cql/CMS74FHIRDentalCariesPrevention.cql) | [ CMS146FHIRApproTestPharyngitis ](../../input/cql/CMS146FHIRApproTestPharyngitis.cql) | [ CMS1017FHIRHHFI ](../../input/cql/CMS1017FHIRHHFI.cql) |
+| [ CMS75FHIRChildrenDentalDecay ](../../input/cql/CMS75FHIRChildrenDentalDecay.cql) | [ CMS149FHIRDementiaCognitiveAssess ](../../input/cql/CMS149FHIRDementiaCognitiveAssess.cql) | [ CMS1028FHIRPCSevereOBComps ](../../input/cql/CMS1028FHIRPCSevereOBComps.cql) |
+| [ CMS90FHIRFSAforHeartFailure ](../../input/cql/CMS90FHIRFSAforHeartFailure.cql) | [ CMS153FHIRChlamydiaScreening ](../../input/cql/CMS153FHIRChlamydiaScreening.cql) | [ CMS1056FHIRCTClinical ](../../input/cql/CMS1056FHIRCTClinical.cql) |
+| [ CMS104FHIRSTKDCAntithrombotic ](../../input/cql/CMS104FHIRSTKDCAntithrombotic.cql) | [ CMS154FHIRAppropriateTxforURI ](../../input/cql/CMS154FHIRAppropriateTxforURI.cql) | [ CMS1074FHIRCTIQR ](../../input/cql/CMS1074FHIRCTIQR.cql) |
+| [ CMS117FHIRChildImmunStatus ](../../input/cql/CMS117FHIRChildImmunStatus.cql) | [ CMS155FHIRWgtAssessCounseling ](../../input/cql/CMS155FHIRWgtAssessCounseling.cql) | [ CMS1154ScreeningPrediabetesFHIR ](../../input/cql/CMS1154ScreeningPrediabetesFHIR.cql) |
+| [ CMS122FHIRDiabetesAssessGT9Pct ](../../input/cql/CMS122FHIRDiabetesAssessGT9Pct.cql) | [ CMS157FHIRPainIntensityQuantified ](../../input/cql/CMS157FHIRPainIntensityQuantified.cql) | [ CMS1157FHIRHIVRetention ](../../input/cql/CMS1157FHIRHIVRetention.cql) |
+| [ CMS124FHIRCervicalCancerScreen ](../../input/cql/CMS124FHIRCervicalCancerScreen.cql) | [ CMS159FHIRDepRemissionat12Months ](../../input/cql/CMS159FHIRDepRemissionat12Months.cql) | [ CMS1173FHIRDiagnosticDelayVTE ](../../input/cql/CMS1173FHIRDiagnosticDelayVTE.cql) |
+| [ CMS125FHIRBreastCancerScreen ](../../input/cql/CMS125FHIRBreastCancerScreen.cql) | [ CMS177FHIRChildMDDSuicideAssmt ](../../input/cql/CMS177FHIRChildMDDSuicideAssmt.cql) | [ CMS1188FHIRHIVSTITesting ](../../input/cql/CMS1188FHIRHIVSTITesting.cql) |
 | [ CMS128FHIRAntidepressantMgmt ](../../input/cql/CMS128FHIRAntidepressantMgmt.cql) | [ CMS314FHIRHIVViralSuppression ](../../input/cql/CMS314FHIRHIVViralSuppression.cql) | [ CMS1206FHIRCTOQR ](../../input/cql/CMS1206FHIRCTOQR.cql) |
 | [ CMS129FHIRProstCaBoneScanUse ](../../input/cql/CMS129FHIRProstCaBoneScanUse.cql) | [ CMS0334FHIRPCCesareanBirth ](../../input/cql/CMS0334FHIRPCCesareanBirth.cql) | [ CMS1218FHIRHHRF ](../../input/cql/CMS1218FHIRHHRF.cql) |
 | [ CMS130FHIRColorectalCancerScrn ](../../input/cql/CMS130FHIRColorectalCancerScrn.cql) | [ CMS349FHIRHIVScreening ](../../input/cql/CMS349FHIRHIVScreening.cql) | [ CMS1244FHIRECATHOQR ](../../input/cql/CMS1244FHIRECATHOQR.cql) |
@@ -86,25 +85,45 @@ _31 measures include the I-28 workaround: the original sibling-profile `[Conditi
 | [ CMS137FHIRSUDTxInitEngagement ](../../input/cql/CMS137FHIRSUDTxInitEngagement.cql) | [ CMS771FHIRUrinarySymptomScoreBPH ](../../input/cql/CMS771FHIRUrinarySymptomScoreBPH.cql) |  |
 
 
-## Measures with Discrepancies (12 of 74)
+## Measures with Discrepancies (15 of 74)
 
 _Every measure with a test case that doesn't match its fixture MeasureReport, or that matches only because the CQL works around an open issue. The `Issue` column names the issue that explains a test case: `I-XX (implementation)` is the measure steward's test data or expectation (see `defect-tracking/known-issues.md`), and `I-XX (workaround reverted)` means the case is failing again. Any other `I-XX` is a known issue, and the `Ticketed` column beside it says whether a ticket is owed: `N/A` for an implementation issue or a defect in our own content, fixture, or harness (nothing an upstream ticket tracks), `pending` for an engine/translator defect whose ticket is not filed yet, and a link to it once one is. A test case nothing resolves is counted as Unattributed._
 
 | Measure | Total Test Cases | Missing Results | Missing Populations | Mismatched Test Cases | Workarounds | Unattributed |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
+| [CMS68FHIRDocumentationCurrentMeds](#cms68fhirdocumentationcurrentmeds) | 19 | 0 | 0 | 0.00%   (0) | 1 | 0 |
 | [CMS71FHIRSTKAnticoagAFFlutter](#cms71fhirstkanticoagafflutter) | 83 | 0 | 0 | 0.00%   (0) | 2 | 0 |
 | [CMS72FHIRSTKAntithromboticDay2](#cms72fhirstkantithromboticday2) | 158 | 0 | 0 | 0.63%   (1) | 0 | 0 |
-| [CMS108FHIRVTEProphylaxis](#cms108fhirvteprophylaxis) | 140 | 0 | 0 | 0.00%   (0) | 3 | 0 |
+| [CMS108FHIRVTEProphylaxis](#cms108fhirvteprophylaxis) | 140 | 0 | 0 | 0.00%   (0) | 14 | 0 |
 | [CMS135FHIRACEIorARBorARNIforHF](#cms135fhiraceiorarborarniforhf) | 40 | 3 | 0 | 0.00%   (0) | 0 | 0 |
 | [CMS145FHIRCADBBlockerTPMIorLVSD](#cms145fhircadbblockertpmiorlvsd) | 106 | 0 | 0 | 0.94%   (1) | 10 | 0 |
 | [CMS156FHIRHighRiskMedsElderly](#cms156fhirhighriskmedselderly) | 177 | 0 | 0 | 0.00%   (0) | 48 | 0 |
 | [CMS165FHIRControllingHighBP](#cms165fhircontrollinghighbp) | 68 | 1 | 0 | 0.00%   (0) | 0 | 0 |
+| [CMS190FHIRVTEProphylaxisICU](#cms190fhirvteprophylaxisicu) | 125 | 0 | 0 | 0.00%   (0) | 9 | 0 |
 | [CMS347FHIRStatinPreventionTxCVD](#cms347fhirstatinpreventiontxcvd) | 752 | 0 | 0 | 0.13%   (1) | 0 | 0 |
 | [CMS646FHIRIntravesicalBCGTherapy](#cms646fhirintravesicalbcgtherapy) | 38 | 1 | 0 | 7.89%   (3) | 0 | 2 |
 | [CMSFHIR844HybridHospitalWideMortality](#cmsfhir844hybridhospitalwidemortality) | 10 | 0 | 0 | 20.00%   (2) | 0 | 2 |
 | [CMS871FHIRHHHyper](#cms871fhirhhhyper) | 26 | 0 | 0 | 0.00%   (0) | 2 | 0 |
-| [CMS996FHIRAptTxforSTEMI](#cms996fhirapttxforstemi) | 114 | 0 | 0 | 0.88%   (1) | 0 | 0 |
+| [CMS986FHIRMalnutritionScore](#cms986fhirmalnutritionscore) | 876 | 0 | 0 | 0.00%   (0) | 6 | 0 |
+| [CMS996FHIRAptTxforSTEMI](#cms996fhirapttxforstemi) | 114 | 0 | 0 | 0.88%   (1) | 2 | 0 |
 
+
+
+#### CMS68FHIRDocumentationCurrentMeds
+[ [cql] ](../../input/cql/CMS68FHIRDocumentationCurrentMeds.cql) [ [test results] ](../../input/tests/results/CMS68FHIRDocumentationCurrentMeds.txt)
+
+Workarounds (1 of 19 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ f2e2e1c0-9e35-4592-9579-72a236cb2f56 ](../.././input/tests/measure/CMS68FHIRDocumentationCurrentMeds/f2e2e1c0-9e35-4592-9579-72a236cb2f56/MeasureReport-7384d607-6a08-487a-9129-d90036bae37e.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+
+
+Issues
+
+- **I-55** (`migration`, **workaround applied**): ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty.
 
 
 #### CMS71FHIRSTKAnticoagAFFlutter
@@ -142,20 +161,35 @@ Issues
 #### CMS108FHIRVTEProphylaxis
 [ [cql] ](../../input/cql/CMS108FHIRVTEProphylaxis.cql) [ [test results] ](../../input/tests/results/CMS108FHIRVTEProphylaxis.txt)
 
-Workarounds (3 of 140 test cases)
+Workarounds (14 of 140 test cases)
 _These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty._
 _FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround._
+_A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty._
 
 | Test Case | Group | Issue | Ticketed |
 | --- | --- | --- | --- |
+| [ 068814f1-4270-4e10-b470-9a5433bceb3e ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/068814f1-4270-4e10-b470-9a5433bceb3e/MeasureReport-22ae9d87-29d1-42c3-9908-93eff318d7b1.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
 | [ 33d162ce-3bc7-4b0a-8c04-fec0a42a6263 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/33d162ce-3bc7-4b0a-8c04-fec0a42a6263/MeasureReport-da823951-b92e-4ee9-904f-839f7e8db8df.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+| [ 3db5c5a1-2eec-4e01-8e59-ac389a0a2179 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/3db5c5a1-2eec-4e01-8e59-ac389a0a2179/MeasureReport-384a4771-57ba-472a-9ffd-17eeba8f39d7.json) | Group_1 | I-61 (workaround applied) | pending |
+| [ 541ccffb-c1be-4c94-ab24-168d52e3a36b ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/541ccffb-c1be-4c94-ab24-168d52e3a36b/MeasureReport-4b90a8ef-2db7-4e28-aba4-d5404f17eb18.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ 5741c41a-04ec-4967-83b2-b0d746bd0ed5 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/5741c41a-04ec-4967-83b2-b0d746bd0ed5/MeasureReport-10dddf5e-f066-457d-b056-01329b17c73e.json) | Group_1 | I-61 (workaround applied) | pending |
+| [ 575f2da0-c890-47a3-b17f-f9e134a1096e ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/575f2da0-c890-47a3-b17f-f9e134a1096e/MeasureReport-1f13d7d0-55ce-47e5-8a23-cb74963fc616.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ 8bb999a1-696a-497b-a5f4-aa55e146a16e ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/8bb999a1-696a-497b-a5f4-aa55e146a16e/MeasureReport-f1938984-85bf-4eff-b9b8-e89a556b2f35.json) | Group_1 | I-61 (workaround applied) | pending |
+| [ 8e2cfc29-0925-45b9-857f-b9ee9b9fa248 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/8e2cfc29-0925-45b9-857f-b9ee9b9fa248/MeasureReport-b86669af-57ea-48d3-af7b-87c11d0e94b9.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ b7783b8c-ba46-4509-a75e-203659abab3d ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/b7783b8c-ba46-4509-a75e-203659abab3d/MeasureReport-097d962a-0304-47fe-9c77-8fd8bd4b48ac.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ ccd7f9d7-35e8-4623-9f2e-f229cf7d829c ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/ccd7f9d7-35e8-4623-9f2e-f229cf7d829c/MeasureReport-c8c8144b-3bac-4663-aac9-9a786e5c1810.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
 | [ d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1/MeasureReport-43331d8f-cf2d-4a0c-a3a2-e4b8e060a7eb.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
+| [ dba7c9af-eb6f-4836-ba24-650a5acc87e7 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/dba7c9af-eb6f-4836-ba24-650a5acc87e7/MeasureReport-7c3e8a2e-61ff-4a73-b3e6-d6b168cb4cc6.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ dc0dcb01-87f0-4e65-9c36-8cf6174abef1 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/dc0dcb01-87f0-4e65-9c36-8cf6174abef1/MeasureReport-7bc64137-ecc6-421a-bb2f-0177667a25b7.json) | Group_1 | I-61 (workaround applied) | pending |
 | [ dd5a1e46-1b99-45a3-b4d3-1fde205d8a11 ](../.././input/tests/measure/CMS108FHIRVTEProphylaxis/dd5a1e46-1b99-45a3-b4d3-1fde205d8a11/MeasureReport-bc945d90-f897-463b-bbc2-f9b922117784.json) | Group_1 | I-31 (workaround applied) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) |
 
 
 Issues
 
 - **I-31** (`vendored`, **workaround applied**): FHIRCommon prevalenceInterval() returns null for a non-active Condition with no abatement end. These cases evaluate correctly only because of the measure-local localPrevalenceInterval() workaround.
+- **I-55** (`migration`, **workaround applied**): ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty.
+- **I-61** (`translator`, **workaround applied**): A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty.
 
 
 #### CMS135FHIRACEIorARBorARNIforHF
@@ -287,6 +321,33 @@ Issues
 - **I-26** (`engine`, [cqframework/clinical_quality_language#1868](https://github.com/cqframework/clinical_quality_language/issues/1868)): MedicationRequest.medication is a Reference(Medication); the engine's code extraction throws before any define runs.
 
 
+#### CMS190FHIRVTEProphylaxisICU
+[ [cql] ](../../input/cql/CMS190FHIRVTEProphylaxisICU.cql) [ [test results] ](../../input/tests/results/CMS190FHIRVTEProphylaxisICU.txt)
+
+Workarounds (9 of 125 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty._
+_A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ 4c32b73b-abba-431b-a352-f0f454e7c9dd ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/4c32b73b-abba-431b-a352-f0f454e7c9dd/MeasureReport-e9ac894c-9f4c-47d8-8325-7750b25036e0.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ 4fc421c7-e490-4d4e-a326-53d08635efb9 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/4fc421c7-e490-4d4e-a326-53d08635efb9/MeasureReport-c206bcec-44ba-493e-8114-8ae57bf6b7e6.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ 632831b0-1ebf-47b5-b439-3a124cd77c37 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/632831b0-1ebf-47b5-b439-3a124cd77c37/MeasureReport-dff9d9bd-b0cc-400f-815b-9255b426e828.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ 9ddea16c-55d3-4dda-a1d8-a256fbff0b64 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/9ddea16c-55d3-4dda-a1d8-a256fbff0b64/MeasureReport-90c1518e-8e3a-4f2a-b266-9210baffdcbf.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ a9c75661-be1c-41b2-aa15-222cc7d2ca81 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/a9c75661-be1c-41b2-aa15-222cc7d2ca81/MeasureReport-21816bad-859d-416f-883b-24246a1db64c.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ e8931859-4ad8-49c8-9cdd-8697293456a2 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/e8931859-4ad8-49c8-9cdd-8697293456a2/MeasureReport-cfc06289-ff74-4caa-ba81-3647f98e3646.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ f035a977-30d0-487c-b542-a596e718420c ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/f035a977-30d0-487c-b542-a596e718420c/MeasureReport-2318030c-b923-45ed-988f-5925f46200e9.json) | Group_1 | I-61 (workaround applied) | pending |
+| [ f82746cf-f6cd-4fcc-bc9e-7e569ae26211 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/f82746cf-f6cd-4fcc-bc9e-7e569ae26211/MeasureReport-ecd1d81f-c8df-4d19-b85f-5bb0d5c9f771.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ f859dd94-f201-4517-a368-32b98dd486c9 ](../.././input/tests/measure/CMS190FHIRVTEProphylaxisICU/f859dd94-f201-4517-a368-32b98dd486c9/MeasureReport-da236e59-3d0a-46c4-a352-3eec5846dbe6.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+
+
+Issues
+
+- **I-55** (`migration`, **workaround applied**): ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty.
+- **I-61** (`translator`, **workaround applied**): A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty.
+
+
 #### CMS347FHIRStatinPreventionTxCVD
 [ [cql] ](../../input/cql/CMS347FHIRStatinPreventionTxCVD.cql) [ [test results] ](../../input/tests/results/CMS347FHIRStatinPreventionTxCVD.txt)
 
@@ -359,6 +420,28 @@ Issues
 - **I-63** (`vendored`, **workaround applied**): Both cases fail with the original FHIRCommon functions and evaluate only because the workaround is applied. Upstream tickets: FHIR-59691, FHIR-59689.
 
 
+#### CMS986FHIRMalnutritionScore
+[ [cql] ](../../input/cql/CMS986FHIRMalnutritionScore.cql) [ [test results] ](../../input/tests/results/CMS986FHIRMalnutritionScore.txt)
+
+Workarounds (6 of 876 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_1 | I-61 (workaround applied) | pending |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_2 | I-61 (workaround applied) | pending |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_3 | I-61 (workaround applied) | pending |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_4 | I-61 (workaround applied) | pending |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_5 | I-61 (workaround applied) | pending |
+| [ a4f53b12-e0e3-4faf-8e66-6ce8193a6477 ](../.././input/tests/measure/CMS986FHIRMalnutritionScore/a4f53b12-e0e3-4faf-8e66-6ce8193a6477/MeasureReport-05d8c44d-2e5e-4b80-ab4e-3f5651bbd93c.json) | Group_6 | I-61 (workaround applied) | pending |
+
+
+Issues
+
+- **I-61** (`translator`, **workaround applied**): A raw FHIR.instant or FHIR.dateTime in a union with converted System.DateTime branches loses its value without the explicit .ToDateTime() workaround, so the Numerator (CMS108, CMS190) or Measure Population Exclusion (CMS986) comes back empty.
+
+
 #### CMS996FHIRAptTxforSTEMI
 [ [cql] ](../../input/cql/CMS996FHIRAptTxforSTEMI.cql) [ [test results] ](../../input/tests/results/CMS996FHIRAptTxforSTEMI.txt)
 
@@ -368,8 +451,19 @@ Mismatched Test Cases (1 of 114)
 | [ f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847 ](../.././input/tests/measure/CMS996FHIRAptTxforSTEMI/f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847/MeasureReport-f2a63299-25e1-4d91-8e5c-1bdf3b60e9cb.json) | Group_1 | Denominator Exclusion | 0 | 1 | I-71 (implementation) | N/A |
 
 
+Workarounds (2 of 114 test cases)
+_These cases match their fixture only because the measure's CQL works around an open issue. Removing the workaround makes them fail again, so they count as neither a pass nor a failure._
+_ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty._
+
+| Test Case | Group | Issue | Ticketed |
+| --- | --- | --- | --- |
+| [ 7edab122-3af3-4172-9231-7c1470ecc1e0 ](../.././input/tests/measure/CMS996FHIRAptTxforSTEMI/7edab122-3af3-4172-9231-7c1470ecc1e0/MeasureReport-9d0666d5-6e19-4f7f-b284-1af640b254f3.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+| [ ccc7deaf-98b7-4dad-b190-8fee10f2cf77 ](../.././input/tests/measure/CMS996FHIRAptTxforSTEMI/ccc7deaf-98b7-4dad-b190-8fee10f2cf77/MeasureReport-9d6a333f-3243-42df-9063-031aa80e74ff.json) | Group_1 | I-55 (workaround applied) | [1855](https://github.com/cqframework/clinical_quality_language/issues/1855) |
+
+
 Issues
 
+- **I-55** (`migration`, **workaround applied**): ProcedureNotDone timing reads the us-quality-core-recorded extension via .ext() (CMS108, CMS190, CMS996) or a measure-local recordedProcedureNotDone() (CMS68), because .recorded() on a ProcedureNotDone does not resolve while the ambiguous recorded(ProcedureNotDone) overload stays commented out (I-18). Without the bypass the Numerator (CMS108, CMS190) or Denominator Exception (CMS68, CMS996) comes back empty.
 - **I-71** (`implementation`): Active thrombolytic allergy uses onsetPeriod.end to mean it ended before the ED visit; with no abatement, prevalenceInterval() correctly runs to end of time and overlaps the encounter. The steward should mark it resolved with an allergyintolerance-abatement extension, or expect Denominator Exclusion 1.
 
 

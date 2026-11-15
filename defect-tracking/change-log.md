@@ -4,6 +4,17 @@ Records actual CQL, FHIR resource, valueset, and similar content changes. An
 entry may cite the `I-XX` issue it resolves or relates to when one is known,
 but this is not required — not every change traces back to a tracked issue.
 
+## Correct the commented original lines in CMS71's I-31 workaround
+
+**Problem:** At all three I-31 workaround sites in `CMS71FHIRSTKAnticoagAFFlutter.cql`, the
+commented `// original` line read `.prevalenceInteral ( )`. The original call on `main` is
+`.prevalenceInterval ( )`, so the comment misrecorded the code it replaced.
+
+**Fix:** corrected the three commented lines to `.prevalenceInterval ( )`. Comment only — no CQL
+logic changed.
+
+**Measures Affected:** CMS71
+
 ## Record the CMS0334 `c58acff5` fixture repair and remove the stale I-12 comment
 
 **Problem:** CMS0334 case `c58acff5-248b-49c9-b18d-69e4a84a08d9` failed `Group_1:Denominator` and
@@ -1503,7 +1514,7 @@ valueset under `input/vocabulary/valueset/external/` containing CPT codes exceed
 entries, and (b) `2.16.840.1.113762.1.4.1196.394` is present with a complete, CPT-free expansion.
 Test (b) would have caught I-44's phantom "Fixed" status. Full suite: 37 passing.
 
-**Verified 2026-09-18.** The CQL language server's `CQL_DEBUG_MCP_WORKSPACE` was first corrected
+**Verified 2026-09-18.** The CQL MCP server's workspace setting was first corrected
 (it still pointed at the pre-repo-split `_repo/dqm-content-cms-2025`, which no longer exists),
 then the CMS871 suite was re-run from the VS Code extension and the harness re-run
 (`extract_population_actual.py`, `compare_results.py`):
@@ -1582,7 +1593,7 @@ return HospiceStatusOrder.authoredOn.ToDateTime()  // I-61: do not remove as "re
 The identical change was applied to `"Intervention Dietitian Referral"`'s
 `DietitianReferralOrder.authoredOn`.
 
-**Verified 2026-09-18** via `mcp__mcp-cql-debug__cql_execute` against fixture
+**Verified 2026-09-18** via `cql_execute` against fixture
 `a4f53b12-e0e3-4faf-8e66-6ce8193a6477`: `"Intervention Hospice Care"` now resolves to
 `[2026-02-04T00:00:00.000+00:00]` (plain `System.DateTime`, no more raw-type tag) and
 `"Encounters with Hospice during Eligible Encounter"` to `[Encounter(id=f23b0d3c-...)]`, feeding

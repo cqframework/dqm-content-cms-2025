@@ -605,7 +605,7 @@ def render_cqfm_exclusions_section(
         "intentionally excluded from pass/fail scoring rather than reported "
         "as FAIL or silently read as 0. Every other population on these "
         "measures (Initial Population, Denominator, Numerator, exclusions, "
-        "etc.) is unaffected and scored normally. Use the `mcp-cql-debug` "
+        "etc.) is unaffected and scored normally. Use the cql-mcp `cql_execute` "
         "per-member probe method documented in I-62 to manually verify any "
         "of the expected values below._\n")
     out.append("\n")

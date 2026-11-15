@@ -59,7 +59,7 @@ define "Encounter With A History Of Atrial Ablation":
             // Upstream ticket: https://jira.hl7.org/browse/FHIR-59708
             // Affected test cases: 0587a75d, 56ae006d
             // original
-            // and AtrialAblationDiagnosis.prevalenceInteral ( ) starts before start of IschemicStrokeEncounter.period
+            // and AtrialAblationDiagnosis.prevalenceInterval ( ) starts before start of IschemicStrokeEncounter.period
             and AtrialAblationDiagnosis.localPrevalenceInterval ( ) starts before start of IschemicStrokeEncounter.period
     )
     union ( TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
@@ -76,7 +76,7 @@ define "Encounter With A History Of Atrial Ablation":
             // Upstream ticket: https://jira.hl7.org/browse/FHIR-59708
             // Affected test cases: 0587a75d, 56ae006d
             // original
-            // and AtrialAblationEncDiagnosis.prevalenceInteral ( ) starts before start of IschemicStrokeEncounter.period
+            // and AtrialAblationEncDiagnosis.prevalenceInterval ( ) starts before start of IschemicStrokeEncounter.period
             and AtrialAblationEncDiagnosis.localPrevalenceInterval ( ) starts before start of IschemicStrokeEncounter.period
     )
 
@@ -90,7 +90,7 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Flut
           // Upstream ticket: https://jira.hl7.org/browse/FHIR-59708
           // Affected test cases: 0587a75d, 56ae006d
           // original
-          // and AtrialFibrillationFlutter.prevalenceInteral ( ) starts on or before end of IschemicStrokeEncounter.period
+          // and AtrialFibrillationFlutter.prevalenceInterval ( ) starts on or before end of IschemicStrokeEncounter.period
           and AtrialFibrillationFlutter.localPrevalenceInterval ( ) starts on or before end of IschemicStrokeEncounter.period
   )
     union TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
