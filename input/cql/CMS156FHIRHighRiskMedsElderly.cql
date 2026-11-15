@@ -312,9 +312,6 @@ define fluent function medicationStrengthPerUnit(Strength Concept):
 
 define fluent function medicationRequestPeriodInDays(Request MedicationRequest):
   Request R
-    // [I-25] `singleton from` on an empty list throws instead of returning null - no CQL workaround (fixture-side enrichment only)
-    // Upstream ticket: (pending)
-    // Affected test cases: c409fbc9, 07f11229 (GUID prefixes)
     let dosage: singleton from R.dosageInstruction,
     doseAndRate: singleton from dosage.doseAndRate,
     timing: dosage.timing,

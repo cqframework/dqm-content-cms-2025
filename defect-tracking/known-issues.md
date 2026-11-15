@@ -59,7 +59,7 @@ while the valueset it needed had never been committed.
 
 <!-- OPEN_ISSUES_BEGIN: generated from the issue catalog; don't edit by hand -->
 
-## Open issues (30)
+## Open issues (29)
 
 | ID | Issue | Class | Status | Ticket | Measures |
 |---|---|---|---|---|---|
@@ -72,7 +72,6 @@ while the valueset it needed had never been committed.
 | I-20 | Sibling overloads ambiguous at runtime (same Java class) | `engine` | Worked around | — | CMS90, CMS133, CMS142 +6 more |
 | I-21 | `as` cannot widen Choice to ancestor type | `engine` | Worked around | — | — |
 | I-24 | Quantity division across dimensions rounds to zero (`mg / d` normalizes to g/s and rounds to `0E-8`). Worked around in CMS156 `averageDailyDose()` (see `change-log.md`); spec question HL7 Jira FHIR-58137 | `engine` | Worked around | [cqframework/clinical_quality_language#1690](https://github.com/cqframework/clinical_quality_language/issues/1690) | CMS156 |
-| I-25 | `singleton from empty list` throws instead of returning null | `engine` | Worked around | — | CMS156 |
 | I-26 | `Unable to extract codes from fhirType Reference`: a terminology-filtered medication retrieve throws when `MedicationRequest.medication` is a `Reference(Medication)`, so the case produces no results | `engine` | Open — confirmed | [cqframework/clinical_quality_language#1868](https://github.com/cqframework/clinical_quality_language/issues/1868) | CMS135, CMS165 |
 | I-28 | Sibling-profile Condition union fed to `prevalenceInterval(Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>)` will not resolve — `FHIRCommon.cql` declares no Choice overload for those two profiles (only base `FHIR.Condition`) and the translator will not widen the Choice | `translator` | Worked around | [cqframework/clinical_quality_language#1872](https://github.com/cqframework/clinical_quality_language/issues/1872) | CMS347, CMS117, CMS138 +28 more |
 | I-31 | FHIRCommon prevalenceInterval() returns null for a non-active or no-status Condition with no abatement end because its non-active branch queries a null source; spec-mandated CQL semantics return null. Worked around with measure-local if/else in CMS108 and CMS71; the vendored-library fix lives at HL7 JIRA FHIR-59708 (GitHub #1879 closed 2026-10-29, #1880 withdrawn) and the workaround stays in place until that fix lands | `vendored` | Worked around (CMS108, CMS71) | [FHIR-59708](https://jira.hl7.org/browse/FHIR-59708) | CMS108, CMS71 |

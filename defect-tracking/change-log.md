@@ -4,6 +4,17 @@ Records actual CQL, FHIR resource, valueset, and similar content changes. An
 entry may cite the `I-XX` issue it resolves or relates to when one is known,
 but this is not required — not every change traces back to a tracked issue.
 
+## Remove the retired I-25 comment from CMS156
+
+**Problem:** `medicationRequestPeriodInDays` in `CMS156FHIRHighRiskMedsElderly.cql` carried an
+`[I-25]` comment saying `singleton from` on an empty list throws. I-25 is retired: on engine 5.5.0
+`singleton from` an empty list returns null, and the cited cases `c409fbc9` and `07f11229` pass
+with no `doseAndRate` in their MedicationRequests.
+
+**Fix:** removed the three-line `[I-25]` comment. Comment only — no CQL logic changed.
+
+**Measures Affected:** CMS156
+
 ## Correct the commented original lines in CMS71's I-31 workaround
 
 **Problem:** At all three I-31 workaround sites in `CMS71FHIRSTKAnticoagAFFlutter.cql`, the
