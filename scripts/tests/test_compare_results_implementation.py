@@ -257,7 +257,7 @@ class ImplementationReportTest(unittest.TestCase):
         self.assertIn("| Pass Count | 1 (50.00%) |", text)
         self.assertIn("| Implementation Issue Count | 1 (50.00%) |", text)
         self.assertIn("| Fail Count | 0 (0.00%) |", text)
-        self.assertIn("| Resolved (Pass + Implementation) | 2 (100.00%) |", text)
+        self.assertIn("| Resolved without workaround (Pass + Implementation) | 2 (100.00%) |", text)
         self.assertIn("| Unattributed Discrepancies | 0 | 0 |", text)
         self.assertNotIn("## Implementation Issues", text)
         # Still listed, labelled as resolved by its issue, with nothing unattributed.

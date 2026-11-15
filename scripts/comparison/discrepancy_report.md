@@ -1,7 +1,7 @@
 # Discrepancy Report
 | Details | Value |
 | --- | --- |
-| Generated | 2026-11-15 10:52:35.976686 |
+| Generated | 2026-11-15 11:07:18.645185 |
 | Total Measures | 74 |
 | Total Test Cases | 3964 |
 | Measures with Discrepancies | 15 |
@@ -12,8 +12,10 @@
 | Known Issue Count (ticketed) | 5 (0.13%) |
 | Fail Count | 0 (0.00%) |
 | Known issues with an upstream ticket | 51 (1.29%) |
-| Resolved (Pass + Implementation + Known Issue) | 3912 (98.69%) |
+| Resolved without workaround (Pass + Implementation + Known Issue) | 3912 (98.69%) |
 
+
+_Every test case is in exactly one bucket: 3898 Pass + 9 Implementation + 5 Known Issue + 52 Workaround + 0 Fail = 3964. Resolved without workaround counts Pass, Implementation (the steward's test case is wrong; the CQL is right) and Known Issue (an engine or translator defect with an upstream ticket). Workaround cases are left out because they match only through CQL that works around an open issue, so each needs re-checking once its workaround is removed._
 
 | Discrepancy Summary | Measure Count | Test Case Count |
 |---|:---:|:---:|

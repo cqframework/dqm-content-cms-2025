@@ -287,7 +287,9 @@ class KnownIssueReportTest(unittest.TestCase):
             KNOWN_HEADER + f"I-18,translator,{TICKET},{MEASURE},{GUID_A},,Overload ambiguity.\n")
         self.assertIn("| Known Issue Count (ticketed) | 1 (50.00%) |", text)
         self.assertIn("| Fail Count | 0 (0.00%) |", text)
-        self.assertIn("| Resolved (Pass + Known Issue) | 2 (100.00%) |", text)
+        self.assertIn("| Resolved without workaround (Pass + Known Issue) | 2 (100.00%) |", text)
+        self.assertIn("_Every test case is in exactly one bucket: "
+                      "1 Pass + 1 Known Issue + 0 Fail = 2.", text)
         self.assertNotIn("(needs ticket)", text)
         self.assertNotIn("## Known Issues", text)
         # Still listed, labelled as resolved by its ticketed issue.
@@ -313,7 +315,7 @@ class KnownIssueReportTest(unittest.TestCase):
         self.assertIn("| Fail Count | 3 (100.00%) |", text)
         self.assertIn("| &nbsp;&nbsp;— known issue, needs ticket | 2 (66.67%) |", text)
         self.assertNotIn("Known Issue Count (ticketed)", text)
-        self.assertNotIn("Resolved (", text)
+        self.assertNotIn("| Resolved without workaround", text)
         self.assertIn("| Unattributed Discrepancies | 1 | 3 |", text)
         self.assertIn("- **I-26** (`engine`)\n", text)
         # In the discrepancy tables, with the issue named; GUID_C has none.
@@ -490,6 +492,10 @@ class WorkaroundReportTest(unittest.TestCase):
         self.assertIn("| Pass Count | 1 (50.00%) |", text)
         self.assertIn("| Workaround Count | 1 (50.00%) |", text)
         self.assertIn("| Fail Count | 0 (0.00%) |", text)
+        # Resolved leaves the workaround out, and the bucket line shows the sum.
+        self.assertIn("| Resolved without workaround (Pass) | 1 (50.00%) |", text)
+        self.assertIn("_Every test case is in exactly one bucket: "
+                      "1 Pass + 1 Workaround + 0 Fail = 2.", text)
         # It is also a ticketed known issue, and the header says so rather than
         # reporting only the workaround half of the story.
         self.assertIn("| &nbsp;&nbsp;— covered by a ticketed known issue | 1 (50.00%) |",

@@ -1307,11 +1307,24 @@ def generate_comparison_report(file: str,
         resolved_parts = [name for name, count in (('Implementation', implementation_count),
                                                     ('Known Issue', known_issue_count))
                           if count]
-        if resolved_parts:
-            detail_rows.append([f'Resolved (Pass + {" + ".join(resolved_parts)})',
+        if resolved_parts or workaround_count:
+            detail_rows.append([f'Resolved without workaround ({" + ".join(["Pass"] + resolved_parts)})',
                                 count_with_pct(pass_count + implementation_count
                                                + known_issue_count)])
         f.writelines(create_markdown_table(['Details', 'Value'], detail_rows))
+        # Spell out the buckets so "Resolved" is not misread as "everything but Fail".
+        buckets = [f'{pass_count} Pass']
+        buckets += [f'{count} {name}' for name, count in (
+            ('Implementation', implementation_count),
+            ('Known Issue', known_issue_count),
+            ('Workaround', workaround_count)) if count]
+        buckets.append(f'{fail_count} Fail')
+        f.write(f'_Every test case is in exactly one bucket: {" + ".join(buckets)} = '
+                f'{total_cases}. Resolved without workaround counts Pass, Implementation '
+                '(the steward\'s test case is wrong; the CQL is right) and Known Issue (an '
+                'engine or translator defect with an upstream ticket). Workaround cases are '
+                'left out because they match only through CQL that works around an open '
+                'issue, so each needs re-checking once its workaround is removed._\n\n')
         f.writelines(create_markdown_table(
             ['Discrepancy Summary', 'Measure Count', 'Test Case Count'],
             [
