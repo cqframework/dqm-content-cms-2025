@@ -1,19 +1,18 @@
 # Discrepancy Report
 | Details | Value |
 | --- | --- |
-| Generated | 2026-11-14 21:57:35.181722 |
+| Generated | 2026-11-15 10:52:35.976686 |
 | Total Measures | 74 |
 | Total Test Cases | 3964 |
 | Measures with Discrepancies | 15 |
 | Pass Count | 3898 (98.34%) |
 | Workaround Count | 52 (1.31%) |
 | &nbsp;&nbsp;— covered by a ticketed known issue | 46 (1.16%) |
-| Implementation Issue Count | 5 (0.13%) |
+| Implementation Issue Count | 9 (0.23%) |
 | Known Issue Count (ticketed) | 5 (0.13%) |
-| Fail Count | 4 (0.10%) |
-| &nbsp;&nbsp;— known issue, no ticket expected | 4 (0.10%) |
+| Fail Count | 0 (0.00%) |
 | Known issues with an upstream ticket | 51 (1.29%) |
-| Resolved (Pass + Implementation + Known Issue) | 3908 (98.59%) |
+| Resolved (Pass + Implementation + Known Issue) | 3912 (98.69%) |
 
 
 | Discrepancy Summary | Measure Count | Test Case Count |
@@ -22,7 +21,7 @@
 | Missing Populations | 0 | 0 |
 | Mismatched Test Cases | 6 | 9 |
 | Workarounds | 9 | 94 |
-| Unattributed Discrepancies | 2 | 4 |
+| Unattributed Discrepancies | 0 | 0 |
 
 
 
@@ -101,8 +100,8 @@ _Every measure with a test case that doesn't match its fixture MeasureReport, or
 | [CMS165FHIRControllingHighBP](#cms165fhircontrollinghighbp) | 68 | 1 | 0 | 0.00%   (0) | 0 | 0 |
 | [CMS190FHIRVTEProphylaxisICU](#cms190fhirvteprophylaxisicu) | 125 | 0 | 0 | 0.00%   (0) | 9 | 0 |
 | [CMS347FHIRStatinPreventionTxCVD](#cms347fhirstatinpreventiontxcvd) | 752 | 0 | 0 | 0.13%   (1) | 0 | 0 |
-| [CMS646FHIRIntravesicalBCGTherapy](#cms646fhirintravesicalbcgtherapy) | 38 | 1 | 0 | 7.89%   (3) | 0 | 2 |
-| [CMSFHIR844HybridHospitalWideMortality](#cmsfhir844hybridhospitalwidemortality) | 10 | 0 | 0 | 20.00%   (2) | 0 | 2 |
+| [CMS646FHIRIntravesicalBCGTherapy](#cms646fhirintravesicalbcgtherapy) | 38 | 1 | 0 | 7.89%   (3) | 0 | 0 |
+| [CMSFHIR844HybridHospitalWideMortality](#cmsfhir844hybridhospitalwidemortality) | 10 | 0 | 0 | 20.00%   (2) | 0 | 0 |
 | [CMS871FHIRHHHyper](#cms871fhirhhhyper) | 26 | 0 | 0 | 0.00%   (0) | 2 | 0 |
 | [CMS986FHIRMalnutritionScore](#cms986fhirmalnutritionscore) | 876 | 0 | 0 | 0.00%   (0) | 6 | 0 |
 | [CMS996FHIRAptTxforSTEMI](#cms996fhirapttxforstemi) | 114 | 0 | 0 | 0.88%   (1) | 2 | 0 |
@@ -374,17 +373,16 @@ Missing Results (1 of 38 test cases)
 Mismatched Test Cases (3 of 38)
 | Test Case | Group | Population | Expected | Actual | Issue | Ticketed |
 |---|---|---|:---:|:---:|---|---|
-| [ 10cec7db-41ae-49ad-b883-022f19d92a8b ](../.././input/tests/measure/CMS646FHIRIntravesicalBCGTherapy/10cec7db-41ae-49ad-b883-022f19d92a8b/MeasureReport-b8b4961d-450b-4980-ac8f-95500c6393d4.json) | Group_1 | Denominator Exclusion | 0 | 1 | I-15 | N/A |
-| [ 6e9a1974-7334-4c41-b8dd-8413ae0caa29 ](../.././input/tests/measure/CMS646FHIRIntravesicalBCGTherapy/6e9a1974-7334-4c41-b8dd-8413ae0caa29/MeasureReport-82d2900a-e69c-4b3c-a6f9-c173759b3f1d.json) | Group_1 | Numerator | 0 | 1 | I-79 | N/A |
+| [ 10cec7db-41ae-49ad-b883-022f19d92a8b ](../.././input/tests/measure/CMS646FHIRIntravesicalBCGTherapy/10cec7db-41ae-49ad-b883-022f19d92a8b/MeasureReport-b8b4961d-450b-4980-ac8f-95500c6393d4.json) | Group_1 | Denominator Exclusion | 0 | 1 | I-15 (implementation) | N/A |
+| [ 6e9a1974-7334-4c41-b8dd-8413ae0caa29 ](../.././input/tests/measure/CMS646FHIRIntravesicalBCGTherapy/6e9a1974-7334-4c41-b8dd-8413ae0caa29/MeasureReport-82d2900a-e69c-4b3c-a6f9-c173759b3f1d.json) | Group_1 | Numerator | 0 | 1 | I-70 (implementation) | N/A |
 | [ ab48e0c0-6543-4537-8f00-bfcdcba7a81b ](../.././input/tests/measure/CMS646FHIRIntravesicalBCGTherapy/ab48e0c0-6543-4537-8f00-bfcdcba7a81b/MeasureReport-ea6cfef5-54d2-4d6d-a7aa-48cf8e749eaf.json) | Group_1 | Numerator | 0 | 1 | I-70 (implementation) | N/A |
 
 
 Issues
 
-- **I-15** (`content`): Fixture MeasureReport expects a value the resources present can't produce.
+- **I-15** (`implementation`): Fixture MeasureReport expects a value the resources present can't produce.
 - **I-33** (`engine`, **workaround applied**): "Values FHIR.dateTime and FHIR.dateTime are not comparable" aborts the case. The FHIRHelpers.ToDateTime() workaround is applied to CMS156 only.
-- **I-70** (`implementation`): Test expects Numerator 0 because BCG was given before staging results came back, but the CQL measures from the start of the staging Procedure and the BCG dose starts at the same moment (2026-04-02T08:00), so the case can't fail the Numerator.
-- **I-79** (`content`): Correcting the wrong-patient reference (I-11 sweep) made the BCG administration visible to the measure, and the CQL counts it: an in-progress BCG recorded at the same instant as the staging procedure satisfies the measure's "6 months or less after day of staging" rule, while the test case is written to expect no BCG counted. Open question is whether the CQL rule, the fixture timestamps, or the expected value is wrong — the case itself says the BCG "should fail".
+- **I-70** (`implementation`): Test expects Numerator 0 because BCG was given before staging results came back, but the CQL measures from the start of the staging Procedure and the BCG dose starts at the same moment (2026-04-02T08:00 in ab48e0c0, 2026-04-06T08:00 in 6e9a1974), so neither case can fail the Numerator.
 
 
 #### CMSFHIR844HybridHospitalWideMortality
@@ -393,13 +391,13 @@ Issues
 Mismatched Test Cases (2 of 10)
 | Test Case | Group | Population | Expected | Actual | Issue | Ticketed |
 |---|---|---|:---:|:---:|---|---|
-| [ 6f22a06f-7186-4db1-9310-4f907dc49ff3 ](../.././input/tests/measure/CMSFHIR844HybridHospitalWideMortality/6f22a06f-7186-4db1-9310-4f907dc49ff3/MeasureReport-a02a261f-1274-4f8b-b1f3-5496f7885cbe.json) | Group_1 | Initial Population | 1 | 0 | I-14 | N/A |
-| [ af1b9448-3e7a-4b7f-8934-15bb63258b75 ](../.././input/tests/measure/CMSFHIR844HybridHospitalWideMortality/af1b9448-3e7a-4b7f-8934-15bb63258b75/MeasureReport-7afefb0f-3075-4fb8-8d56-474ba1112c38.json) | Group_1 | Initial Population | 2 | 1 | I-14 | N/A |
+| [ 6f22a06f-7186-4db1-9310-4f907dc49ff3 ](../.././input/tests/measure/CMSFHIR844HybridHospitalWideMortality/6f22a06f-7186-4db1-9310-4f907dc49ff3/MeasureReport-a02a261f-1274-4f8b-b1f3-5496f7885cbe.json) | Group_1 | Initial Population | 1 | 0 | I-14 (implementation) | N/A |
+| [ af1b9448-3e7a-4b7f-8934-15bb63258b75 ](../.././input/tests/measure/CMSFHIR844HybridHospitalWideMortality/af1b9448-3e7a-4b7f-8934-15bb63258b75/MeasureReport-7afefb0f-3075-4fb8-8d56-474ba1112c38.json) | Group_1 | Initial Population | 2 | 1 | I-14 (implementation) | N/A |
 
 
 Issues
 
-- **I-14** (`content`): Fixture MeasureReport hand-authors the Initial Population; the test data supports the computed value.
+- **I-14** (`implementation`): Fixture MeasureReport hand-authors the Initial Population; the test data supports the computed value.
 
 
 #### CMS871FHIRHHHyper
