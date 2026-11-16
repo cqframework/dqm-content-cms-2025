@@ -72,16 +72,12 @@ define "Numerator":
     )
 
 define "Denominator Exceptions":
-  false
-/*
-TODO: Need to reassess how we are representing given no ObservationCancelled profile
   ( exists "Medical or Patient Reason for Not Screening Adolescent for Depression"
       and not "Has Adolescent Depression Screening"
   )
     or ( exists "Medical or Patient Reason for Not Screening Adult for Depression"
         and not "Has Adult Depression Screening"
     )
-*/
 
 define "Follow Up Intervention for Positive Adolescent Depression Screening":
   ( ( [USQualityCore.MedicationRequest: "Adolescent Depression Medications"] AdolescentMed
@@ -148,24 +144,21 @@ define "History of Bipolar Diagnosis Before Qualifying Encounter":
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that BipolarDiagnosis.prevalenceInterval ( ) starts before day of start of QualifyingEncounter.period
 
-/*
-TODO: Needs to be reassessed given the pattern change for ObservationCancelled, this should really be a ServiceRequest with a TaskRejected, yes?
 define "Medical or Patient Reason for Not Screening Adolescent for Depression":
   [USQualityCore.ObservationCancelled: code ~ "Adolescent depression screening assessment"] NoAdolescentScreen
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that NoAdolescentScreen.issued during day of QualifyingEncounter.period
-    where ( NoAdolescentScreen.notDoneReason ~ "Depression screening declined (situation)"
-        or NoAdolescentScreen.notDoneReason in "Medical Reason"
+    where ( NoAdolescentScreen.notDoneReason() ~ "Depression screening declined (situation)"
+        or NoAdolescentScreen.notDoneReason() in "Medical Reason"
     )
 
 define "Medical or Patient Reason for Not Screening Adult for Depression":
   [USQualityCore.ObservationCancelled: code ~ "Adult depression screening assessment"] NoAdultScreen
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that NoAdultScreen.issued during day of QualifyingEncounter.period
-    where ( NoAdultScreen.notDoneReason ~ "Depression screening declined (situation)"
-        or NoAdultScreen.notDoneReason in "Medical Reason"
+    where ( NoAdultScreen.notDoneReason() ~ "Depression screening declined (situation)"
+        or NoAdultScreen.notDoneReason() in "Medical Reason"
     )
-*/
 
 define "Most Recent Adolescent Depression Screening":
   Last([USQualityCore.ObservationScreeningAssessment: "Adolescent depression screening assessment"] AdolescentDepressionScreening

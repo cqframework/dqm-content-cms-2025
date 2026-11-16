@@ -46,6 +46,8 @@ define "Numerator":
 
 define "Denominator Exclusions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 36 CMS349 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "HIV"]
   //       union [ConditionEncounterDiagnosis: "HIV"] ) HIVDiagnosis

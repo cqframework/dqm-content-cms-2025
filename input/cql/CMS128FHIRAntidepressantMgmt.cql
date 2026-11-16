@@ -47,6 +47,8 @@ define "April 30 of the Measurement Period":
 
 define "Has IPSD and Major Depression Diagnosis":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 29 CMS128 cases (library-wide translate failure)
   // Original:
   //   exists ( ( ( [ConditionProblemsHealthConcerns: "Major Depression"]
   //         union [ConditionEncounterDiagnosis: "Major Depression"]

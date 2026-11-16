@@ -575,10 +575,10 @@ PASS,CMS165FHIRControllingHighBP,1905549a-1783-4195-95b9-b0879cb81d96,Group_1:In
 PASS,CMS165FHIRControllingHighBP,1905549a-1783-4195-95b9-b0879cb81d96,Group_1:Denominator,1,1
 PASS,CMS165FHIRControllingHighBP,1905549a-1783-4195-95b9-b0879cb81d96,Group_1:Denominator Exclusion,1,1
 PASS,CMS165FHIRControllingHighBP,1905549a-1783-4195-95b9-b0879cb81d96,Group_1:Numerator,0,0
-FAIL,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Initial Population,1,MISSING
-FAIL,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Denominator,1,MISSING
-FAIL,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Denominator Exclusion,1,MISSING
-FAIL,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Numerator,0,MISSING
+KNOWN_ISSUE,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Initial Population,1,MISSING
+KNOWN_ISSUE,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Denominator,1,MISSING
+KNOWN_ISSUE,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Denominator Exclusion,1,MISSING
+KNOWN_ISSUE,CMS165FHIRControllingHighBP,45e01fed-56bb-483d-a860-af3d566bda11,Group_1:Numerator,0,MISSING
 PASS,CMS165FHIRControllingHighBP,0b9cb569-149a-4b47-a535-66b59a77bceb,Group_1:Initial Population,1,1
 PASS,CMS165FHIRControllingHighBP,0b9cb569-149a-4b47-a535-66b59a77bceb,Group_1:Denominator,1,1
 PASS,CMS165FHIRControllingHighBP,0b9cb569-149a-4b47-a535-66b59a77bceb,Group_1:Denominator Exclusion,1,1
@@ -1312,11 +1312,11 @@ PASS,CMS71FHIRSTKAnticoagAFFlutter,12f5363d-fa3f-4a61-aad9-defc8583ca12,Group_1:
 PASS,CMS71FHIRSTKAnticoagAFFlutter,12f5363d-fa3f-4a61-aad9-defc8583ca12,Group_1:Denominator Exclusion,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,12f5363d-fa3f-4a61-aad9-defc8583ca12,Group_1:Numerator,0,0
 PASS,CMS71FHIRSTKAnticoagAFFlutter,12f5363d-fa3f-4a61-aad9-defc8583ca12,Group_1:Denominator Exception,0,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Initial Population,1,1
-FAIL,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator,1,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator Exclusion,0,0
-FAIL,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Numerator,1,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator Exception,0,0
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Initial Population,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Numerator,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,56ae006d-ab1b-428d-8614-2ccd5d962650,Group_1:Denominator Exception,0,0
 PASS,CMS71FHIRSTKAnticoagAFFlutter,4151585a-f621-4de5-91df-4e4227e2165e,Group_1:Initial Population,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,4151585a-f621-4de5-91df-4e4227e2165e,Group_1:Denominator,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,4151585a-f621-4de5-91df-4e4227e2165e,Group_1:Denominator Exclusion,0,0
@@ -1412,11 +1412,11 @@ PASS,CMS71FHIRSTKAnticoagAFFlutter,f0d3eb0e-a93c-4caf-8233-499a105906de,Group_1:
 PASS,CMS71FHIRSTKAnticoagAFFlutter,f0d3eb0e-a93c-4caf-8233-499a105906de,Group_1:Denominator Exclusion,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,f0d3eb0e-a93c-4caf-8233-499a105906de,Group_1:Numerator,0,0
 PASS,CMS71FHIRSTKAnticoagAFFlutter,f0d3eb0e-a93c-4caf-8233-499a105906de,Group_1:Denominator Exception,0,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Initial Population,1,1
-FAIL,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator,1,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator Exclusion,0,0
-FAIL,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Numerator,1,0
-PASS,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator Exception,0,0
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Initial Population,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Numerator,1,1
+WORKAROUND,CMS71FHIRSTKAnticoagAFFlutter,0587a75d-0dcc-4c6b-bfc0-f5727342ec1f,Group_1:Denominator Exception,0,0
 PASS,CMS71FHIRSTKAnticoagAFFlutter,86d68293-66ae-425b-bc4a-9ce429f4621e,Group_1:Initial Population,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,86d68293-66ae-425b-bc4a-9ce429f4621e,Group_1:Denominator,1,1
 PASS,CMS71FHIRSTKAnticoagAFFlutter,86d68293-66ae-425b-bc4a-9ce429f4621e,Group_1:Denominator Exclusion,1,1
@@ -1565,9 +1565,9 @@ PASS,CMS71FHIRSTKAnticoagAFFlutter,f916d085-e8dc-4e8d-97ae-07952c1062b9,Group_1:
 PASS,CMSFHIR844HybridHospitalWideMortality,569ebc6b-4bc4-4b1e-9e40-c3942190d446,Group_1:Initial Population,1,1
 PASS,CMSFHIR844HybridHospitalWideMortality,dbb82192-d268-4e50-be41-8e371d33bacd,Group_1:Initial Population,1,1
 PASS,CMSFHIR844HybridHospitalWideMortality,c25ff376-c6dd-4f49-8d4a-953a70341e4f,Group_1:Initial Population,1,1
-FAIL,CMSFHIR844HybridHospitalWideMortality,6f22a06f-7186-4db1-9310-4f907dc49ff3,Group_1:Initial Population,1,0
+IMPLEMENTATION,CMSFHIR844HybridHospitalWideMortality,6f22a06f-7186-4db1-9310-4f907dc49ff3,Group_1:Initial Population,1,0
 PASS,CMSFHIR844HybridHospitalWideMortality,443783af-53ae-46ed-a129-690aa58433d8,Group_1:Initial Population,1,1
-FAIL,CMSFHIR844HybridHospitalWideMortality,af1b9448-3e7a-4b7f-8934-15bb63258b75,Group_1:Initial Population,2,1
+IMPLEMENTATION,CMSFHIR844HybridHospitalWideMortality,af1b9448-3e7a-4b7f-8934-15bb63258b75,Group_1:Initial Population,2,1
 PASS,CMSFHIR844HybridHospitalWideMortality,73b803bf-207c-411d-8db3-01908e5d9dda,Group_1:Initial Population,1,1
 PASS,CMSFHIR844HybridHospitalWideMortality,dbc046b4-83e5-41d8-8e5a-e3b9a5022a79,Group_1:Initial Population,1,1
 PASS,CMSFHIR844HybridHospitalWideMortality,bd0c87d4-b1d8-470b-beba-df7f7b9af87e,Group_1:Initial Population,1,1
@@ -1599,7 +1599,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,6552cc29-c4e2-441f-9ae5-41d3a2f5aea4,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bf0f8968-c2c0-4416-88db-11ea3e3da968,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bf0f8968-c2c0-4416-88db-11ea3e3da968,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bf0f8968-c2c0-4416-88db-11ea3e3da968,Group_1:Denominator Exclusion,0,0
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,bf0f8968-c2c0-4416-88db-11ea3e3da968,Group_1:Numerator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,bf0f8968-c2c0-4416-88db-11ea3e3da968,Group_1:Numerator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4d7a04b3-91ed-4035-85ef-0728bdf818ef,Group_1:Initial Population,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4d7a04b3-91ed-4035-85ef-0728bdf818ef,Group_1:Denominator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4d7a04b3-91ed-4035-85ef-0728bdf818ef,Group_1:Denominator Exclusion,0,0
@@ -1607,7 +1607,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,4d7a04b3-91ed-4035-85ef-0728bdf818ef,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bc79e5bc-237e-44be-b5fc-c5c4efb50286,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bc79e5bc-237e-44be-b5fc-c5c4efb50286,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,bc79e5bc-237e-44be-b5fc-c5c4efb50286,Group_1:Denominator Exclusion,0,0
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,bc79e5bc-237e-44be-b5fc-c5c4efb50286,Group_1:Numerator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,bc79e5bc-237e-44be-b5fc-c5c4efb50286,Group_1:Numerator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,fe0276a2-44c2-4c7b-9773-3d8189631604,Group_1:Initial Population,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,fe0276a2-44c2-4c7b-9773-3d8189631604,Group_1:Denominator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,fe0276a2-44c2-4c7b-9773-3d8189631604,Group_1:Denominator Exclusion,0,0
@@ -1623,7 +1623,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,d2b4a14a-a53d-44e8-aacf-baadd8865f63,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,9be591a0-517b-4be2-b652-a29be0c75c15,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,9be591a0-517b-4be2-b652-a29be0c75c15,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,9be591a0-517b-4be2-b652-a29be0c75c15,Group_1:Denominator Exclusion,0,0
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,9be591a0-517b-4be2-b652-a29be0c75c15,Group_1:Numerator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,9be591a0-517b-4be2-b652-a29be0c75c15,Group_1:Numerator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,5339dd62-76a1-43b3-9965-d8b61478236a,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,5339dd62-76a1-43b3-9965-d8b61478236a,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,5339dd62-76a1-43b3-9965-d8b61478236a,Group_1:Denominator Exclusion,1,1
@@ -1637,7 +1637,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,6f3d7b20-08da-459f-9d12-db2f6caa2177,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,6f3d7b20-08da-459f-9d12-db2f6caa2177,Group_1:Denominator Exclusion,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,6f3d7b20-08da-459f-9d12-db2f6caa2177,Group_1:Numerator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,051c5977-9f2c-4e8b-8e02-ac3ec0c718d6,Group_1:Initial Population,1,1
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,051c5977-9f2c-4e8b-8e02-ac3ec0c718d6,Group_1:Denominator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,051c5977-9f2c-4e8b-8e02-ac3ec0c718d6,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,051c5977-9f2c-4e8b-8e02-ac3ec0c718d6,Group_1:Denominator Exclusion,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,051c5977-9f2c-4e8b-8e02-ac3ec0c718d6,Group_1:Numerator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,7f62a1c0-a39c-41b7-98b6-5877db9755b0,Group_1:Initial Population,1,1
@@ -1653,7 +1653,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,71846c52-343b-4e31-95e1-b1f44cca0128,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,71846c52-343b-4e31-95e1-b1f44cca0128,Group_1:Denominator Exclusion,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,71846c52-343b-4e31-95e1-b1f44cca0128,Group_1:Numerator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,3ab3ac1d-9b5e-4087-8862-dcb2562fb90f,Group_1:Initial Population,1,1
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,3ab3ac1d-9b5e-4087-8862-dcb2562fb90f,Group_1:Denominator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,3ab3ac1d-9b5e-4087-8862-dcb2562fb90f,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,3ab3ac1d-9b5e-4087-8862-dcb2562fb90f,Group_1:Denominator Exclusion,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,3ab3ac1d-9b5e-4087-8862-dcb2562fb90f,Group_1:Numerator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,8bb45bbf-4685-45ed-ab5d-004f87214748,Group_1:Initial Population,1,1
@@ -1663,7 +1663,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,8bb45bbf-4685-45ed-ab5d-004f87214748,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,e90d90a7-3071-44de-8089-ad7b6f5f3e5d,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,e90d90a7-3071-44de-8089-ad7b6f5f3e5d,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,e90d90a7-3071-44de-8089-ad7b6f5f3e5d,Group_1:Denominator Exclusion,0,0
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,e90d90a7-3071-44de-8089-ad7b6f5f3e5d,Group_1:Numerator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,e90d90a7-3071-44de-8089-ad7b6f5f3e5d,Group_1:Numerator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,dfe54ab6-e271-47e0-b8eb-5f74a8d08dce,Group_1:Initial Population,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,dfe54ab6-e271-47e0-b8eb-5f74a8d08dce,Group_1:Denominator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,dfe54ab6-e271-47e0-b8eb-5f74a8d08dce,Group_1:Denominator Exclusion,0,0
@@ -1675,7 +1675,7 @@ PASS,CMS771FHIRUrinarySymptomScoreBPH,2105cba2-6e61-487d-a737-3efe876028e8,Group
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4c234ec0-3f89-4d55-b767-219d1130f634,Group_1:Initial Population,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4c234ec0-3f89-4d55-b767-219d1130f634,Group_1:Denominator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,4c234ec0-3f89-4d55-b767-219d1130f634,Group_1:Denominator Exclusion,0,0
-FAIL,CMS771FHIRUrinarySymptomScoreBPH,4c234ec0-3f89-4d55-b767-219d1130f634,Group_1:Numerator,1,0
+PASS,CMS771FHIRUrinarySymptomScoreBPH,4c234ec0-3f89-4d55-b767-219d1130f634,Group_1:Numerator,1,1
 PASS,CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Initial Population,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Denominator,0,0
 PASS,CMS771FHIRUrinarySymptomScoreBPH,ff1c0120-5339-4ec2-8a7e-8c03fb63fd3c,Group_1:Denominator Exclusion,0,0
@@ -2108,8 +2108,8 @@ PASS,CMS819FHIRHHORAE,ba6e76f8-573d-48c3-b106-8f91fa02b1a9,Group_1:Numerator,0,0
 PASS,CMS819FHIRHHORAE,98100d78-c85e-4574-8213-bd06bf45b581,Group_1:Initial Population,1,1
 PASS,CMS819FHIRHHORAE,98100d78-c85e-4574-8213-bd06bf45b581,Group_1:Denominator,1,1
 PASS,CMS819FHIRHHORAE,98100d78-c85e-4574-8213-bd06bf45b581,Group_1:Numerator,0,0
-FAIL,CMS819FHIRHHORAE,31b40acc-ca5f-4d1d-bd83-4b1a14eb822e,Group_1:Initial Population,2,1
-FAIL,CMS819FHIRHHORAE,31b40acc-ca5f-4d1d-bd83-4b1a14eb822e,Group_1:Denominator,2,1
+PASS,CMS819FHIRHHORAE,31b40acc-ca5f-4d1d-bd83-4b1a14eb822e,Group_1:Initial Population,2,2
+PASS,CMS819FHIRHHORAE,31b40acc-ca5f-4d1d-bd83-4b1a14eb822e,Group_1:Denominator,2,2
 PASS,CMS819FHIRHHORAE,31b40acc-ca5f-4d1d-bd83-4b1a14eb822e,Group_1:Numerator,1,1
 PASS,CMS819FHIRHHORAE,47e2c410-9c00-4f05-96b4-b925e0c158b1,Group_1:Initial Population,0,0
 PASS,CMS819FHIRHHORAE,47e2c410-9c00-4f05-96b4-b925e0c158b1,Group_1:Denominator,0,0
@@ -2152,7 +2152,7 @@ PASS,CMS819FHIRHHORAE,67f1ba74-5f3c-4729-9085-69bc55f49225,Group_1:Denominator,1
 PASS,CMS819FHIRHHORAE,67f1ba74-5f3c-4729-9085-69bc55f49225,Group_1:Numerator,0,0
 PASS,CMS819FHIRHHORAE,73b0c1fe-874b-4982-8cb2-3c30520441de,Group_1:Initial Population,1,1
 PASS,CMS819FHIRHHORAE,73b0c1fe-874b-4982-8cb2-3c30520441de,Group_1:Denominator,1,1
-FAIL,CMS819FHIRHHORAE,73b0c1fe-874b-4982-8cb2-3c30520441de,Group_1:Numerator,1,0
+PASS,CMS819FHIRHHORAE,73b0c1fe-874b-4982-8cb2-3c30520441de,Group_1:Numerator,1,1
 PASS,CMS819FHIRHHORAE,b88740a3-5143-4b36-ae0d-75a6b95db7e2,Group_1:Initial Population,1,1
 PASS,CMS819FHIRHHORAE,b88740a3-5143-4b36-ae0d-75a6b95db7e2,Group_1:Denominator,1,1
 PASS,CMS819FHIRHHORAE,b88740a3-5143-4b36-ae0d-75a6b95db7e2,Group_1:Numerator,0,0
@@ -2396,8 +2396,8 @@ PASS,CMS159FHIRDepRemissionat12Months,393ab9f4-1c36-4462-8de5-726ab95d95a2,Group
 PASS,CMS159FHIRDepRemissionat12Months,393ab9f4-1c36-4462-8de5-726ab95d95a2,Group_1:Numerator,0,0
 PASS,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Initial Population,1,1
 PASS,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Denominator,1,1
-FAIL,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Denominator Exclusion,1,0
-FAIL,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Numerator,0,1
+PASS,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Denominator Exclusion,1,1
+PASS,CMS159FHIRDepRemissionat12Months,491f554e-e897-40c5-ad2b-0983923df4e8,Group_1:Numerator,0,0
 PASS,CMS159FHIRDepRemissionat12Months,879bf9f1-3681-4e7e-bb6a-d140b0e94077,Group_1:Initial Population,1,1
 PASS,CMS159FHIRDepRemissionat12Months,879bf9f1-3681-4e7e-bb6a-d140b0e94077,Group_1:Denominator,1,1
 PASS,CMS159FHIRDepRemissionat12Months,879bf9f1-3681-4e7e-bb6a-d140b0e94077,Group_1:Denominator Exclusion,1,1
@@ -2488,8 +2488,8 @@ PASS,CMS159FHIRDepRemissionat12Months,7b76e67e-89ec-4ce8-a6e0-2d16b9e4e45b,Group
 PASS,CMS159FHIRDepRemissionat12Months,7b76e67e-89ec-4ce8-a6e0-2d16b9e4e45b,Group_1:Numerator,0,0
 PASS,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Initial Population,1,1
 PASS,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Denominator,1,1
-FAIL,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Denominator Exclusion,1,0
-FAIL,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Numerator,0,1
+PASS,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Denominator Exclusion,1,1
+PASS,CMS159FHIRDepRemissionat12Months,96b6579c-1cee-423f-9433-a72db6fb8a0a,Group_1:Numerator,0,0
 PASS,CMS159FHIRDepRemissionat12Months,0604cc6e-338a-44bf-a89a-d8de53669314,Group_1:Initial Population,1,1
 PASS,CMS159FHIRDepRemissionat12Months,0604cc6e-338a-44bf-a89a-d8de53669314,Group_1:Denominator,1,1
 PASS,CMS159FHIRDepRemissionat12Months,0604cc6e-338a-44bf-a89a-d8de53669314,Group_1:Denominator Exclusion,0,0
@@ -2928,9 +2928,9 @@ PASS,CMS72FHIRSTKAntithromboticDay2,624c0305-d8a4-41eb-bbc9-30aea2c53304,Group_1
 PASS,CMS72FHIRSTKAntithromboticDay2,624c0305-d8a4-41eb-bbc9-30aea2c53304,Group_1:Denominator Exclusion,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,624c0305-d8a4-41eb-bbc9-30aea2c53304,Group_1:Numerator,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,624c0305-d8a4-41eb-bbc9-30aea2c53304,Group_1:Denominator Exception,0,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Initial Population,1,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Denominator,1,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Denominator Exclusion,1,0
+PASS,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Initial Population,1,1
+PASS,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Denominator,1,1
+PASS,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Denominator Exclusion,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Numerator,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,e126cdec-dbc8-4ee8-964f-e88e46c04f88,Group_1:Denominator Exception,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,25317020-6a54-490b-a479-0da6b5d1f355,Group_1:Initial Population,1,1
@@ -2963,10 +2963,10 @@ PASS,CMS72FHIRSTKAntithromboticDay2,c075959b-dafd-4dfd-a310-23bd9c53fe68,Group_1
 PASS,CMS72FHIRSTKAntithromboticDay2,c075959b-dafd-4dfd-a310-23bd9c53fe68,Group_1:Denominator Exclusion,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,c075959b-dafd-4dfd-a310-23bd9c53fe68,Group_1:Numerator,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,c075959b-dafd-4dfd-a310-23bd9c53fe68,Group_1:Denominator Exception,0,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Initial Population,2,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Denominator,2,1
+PASS,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Initial Population,2,2
+PASS,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Denominator,2,2
 PASS,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Denominator Exclusion,1,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Numerator,1,0
+PASS,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Numerator,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,5a329008-fcc1-4168-ab9c-89cb5dd6ff32,Group_1:Denominator Exception,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,6bbc3f38-7f5f-4da9-9beb-eb32874fd1ed,Group_1:Initial Population,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,6bbc3f38-7f5f-4da9-9beb-eb32874fd1ed,Group_1:Denominator,1,1
@@ -3108,20 +3108,20 @@ PASS,CMS72FHIRSTKAntithromboticDay2,0c8a299c-b082-4383-b0b4-aebbb0fa9fb4,Group_1
 PASS,CMS72FHIRSTKAntithromboticDay2,0c8a299c-b082-4383-b0b4-aebbb0fa9fb4,Group_1:Denominator Exclusion,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,0c8a299c-b082-4383-b0b4-aebbb0fa9fb4,Group_1:Numerator,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,0c8a299c-b082-4383-b0b4-aebbb0fa9fb4,Group_1:Denominator Exception,0,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Initial Population,4,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Denominator,4,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Denominator Exclusion,2,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Numerator,2,1
+PASS,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Initial Population,4,4
+PASS,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Denominator,4,4
+PASS,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Denominator Exclusion,2,2
+PASS,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Numerator,2,2
 PASS,CMS72FHIRSTKAntithromboticDay2,febd4b3e-99bc-4c55-bba9-3b2136c2160b,Group_1:Denominator Exception,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,9bfee327-99be-48de-ba09-5b64e4435f8d,Group_1:Initial Population,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,9bfee327-99be-48de-ba09-5b64e4435f8d,Group_1:Denominator,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,9bfee327-99be-48de-ba09-5b64e4435f8d,Group_1:Denominator Exclusion,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,9bfee327-99be-48de-ba09-5b64e4435f8d,Group_1:Numerator,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,9bfee327-99be-48de-ba09-5b64e4435f8d,Group_1:Denominator Exception,0,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Initial Population,3,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Denominator,3,1
+PASS,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Initial Population,3,3
+PASS,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Denominator,3,3
 PASS,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Denominator Exclusion,1,1
-FAIL,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Numerator,2,0
+PASS,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Numerator,2,2
 PASS,CMS72FHIRSTKAntithromboticDay2,cb7c95fc-6d6b-4e07-81e8-a79385142b94,Group_1:Denominator Exception,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,82399522-ba6c-4997-afc9-23f55bb7da89,Group_1:Initial Population,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,82399522-ba6c-4997-afc9-23f55bb7da89,Group_1:Denominator,1,1
@@ -3382,7 +3382,7 @@ PASS,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1
 PASS,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1:Denominator,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1:Denominator Exclusion,0,0
 PASS,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1:Numerator,0,0
-FAIL,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1:Denominator Exception,1,0
+IMPLEMENTATION,CMS72FHIRSTKAntithromboticDay2,be5c4068-2639-4b0c-bea3-5b7c80a6fe3b,Group_1:Denominator Exception,1,0
 PASS,CMS72FHIRSTKAntithromboticDay2,7ce35cc8-ed8f-46f0-9ba1-8421a760bdc8,Group_1:Initial Population,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,7ce35cc8-ed8f-46f0-9ba1-8421a760bdc8,Group_1:Denominator,1,1
 PASS,CMS72FHIRSTKAntithromboticDay2,7ce35cc8-ed8f-46f0-9ba1-8421a760bdc8,Group_1:Denominator Exclusion,0,0
@@ -3488,9 +3488,9 @@ PASS,CMS104FHIRSTKDCAntithrombotic,48952352-d74c-491c-9420-6e999e60f52a,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,48952352-d74c-491c-9420-6e999e60f52a,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,48952352-d74c-491c-9420-6e999e60f52a,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,48952352-d74c-491c-9420-6e999e60f52a,Group_1:Denominator Exception,1,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Initial Population,1,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Denominator,1,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Denominator Exclusion,1,0
+PASS,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Initial Population,1,1
+PASS,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Denominator,1,1
+PASS,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Denominator Exclusion,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,0b1aa8ee-e8bf-49f5-b968-48c5a9702843,Group_1:Denominator Exception,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,2d54a94c-edf1-4f92-baf8-3813a8ef452d,Group_1:Initial Population,1,1
@@ -3513,11 +3513,11 @@ PASS,CMS104FHIRSTKDCAntithrombotic,7b1ac1a8-b7be-41ec-a77f-db545af22263,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,7b1ac1a8-b7be-41ec-a77f-db545af22263,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,7b1ac1a8-b7be-41ec-a77f-db545af22263,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,7b1ac1a8-b7be-41ec-a77f-db545af22263,Group_1:Denominator Exception,1,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Initial Population,1,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Denominator,1,0
+PASS,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Initial Population,1,1
+PASS,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Denominator,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Numerator,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Denominator Exception,1,0
+PASS,CMS104FHIRSTKDCAntithrombotic,e84c89f7-3c9e-4ee9-b71a-5025aadb5990,Group_1:Denominator Exception,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,db5afa02-02e2-4c0d-88c8-d3c0682333a1,Group_1:Initial Population,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,db5afa02-02e2-4c0d-88c8-d3c0682333a1,Group_1:Denominator,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,db5afa02-02e2-4c0d-88c8-d3c0682333a1,Group_1:Denominator Exclusion,0,0
@@ -3563,10 +3563,10 @@ PASS,CMS104FHIRSTKDCAntithrombotic,ac56c496-c5d6-4c23-be20-130ee8327fd2,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,ac56c496-c5d6-4c23-be20-130ee8327fd2,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,ac56c496-c5d6-4c23-be20-130ee8327fd2,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,ac56c496-c5d6-4c23-be20-130ee8327fd2,Group_1:Denominator Exception,1,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Initial Population,3,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Denominator,3,1
+PASS,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Initial Population,3,3
+PASS,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Denominator,3,3
 PASS,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Denominator Exclusion,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Numerator,2,0
+PASS,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Numerator,2,2
 PASS,CMS104FHIRSTKDCAntithrombotic,c15bee15-84c1-494a-ac82-2159b06da175,Group_1:Denominator Exception,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,65ef54b4-48ea-4fc0-a9a7-79b3be807393,Group_1:Initial Population,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,65ef54b4-48ea-4fc0-a9a7-79b3be807393,Group_1:Denominator,1,1
@@ -3608,10 +3608,10 @@ PASS,CMS104FHIRSTKDCAntithrombotic,b9d52b97-7602-457d-a96d-a1950a01b42a,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,b9d52b97-7602-457d-a96d-a1950a01b42a,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,b9d52b97-7602-457d-a96d-a1950a01b42a,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,b9d52b97-7602-457d-a96d-a1950a01b42a,Group_1:Denominator Exception,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Initial Population,3,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Denominator,3,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Denominator Exclusion,1,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Numerator,1,0
+PASS,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Initial Population,3,3
+PASS,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Denominator,3,3
+PASS,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Denominator Exclusion,1,1
+PASS,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Numerator,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,348471db-5aaa-4bf3-a280-75222f20d599,Group_1:Denominator Exception,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,1ec7f3ad-fe6d-486b-829b-101ebb721824,Group_1:Initial Population,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,1ec7f3ad-fe6d-486b-829b-101ebb721824,Group_1:Denominator,1,1
@@ -3653,10 +3653,10 @@ PASS,CMS104FHIRSTKDCAntithrombotic,a86dcf01-3c5f-43ca-a426-c118d5974332,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,a86dcf01-3c5f-43ca-a426-c118d5974332,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,a86dcf01-3c5f-43ca-a426-c118d5974332,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,a86dcf01-3c5f-43ca-a426-c118d5974332,Group_1:Denominator Exception,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Initial Population,3,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Denominator,3,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Denominator Exclusion,2,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Numerator,1,0
+PASS,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Initial Population,3,3
+PASS,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Denominator,3,3
+PASS,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Denominator Exclusion,2,2
+PASS,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Numerator,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,451b6853-3734-4c1c-b37e-5904629e0350,Group_1:Denominator Exception,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,87b7df35-0de4-4c6a-a030-8afac02454f2,Group_1:Initial Population,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,87b7df35-0de4-4c6a-a030-8afac02454f2,Group_1:Denominator,1,1
@@ -3683,10 +3683,10 @@ PASS,CMS104FHIRSTKDCAntithrombotic,3f52eee2-8cec-45d5-a0c2-0e843e108dc3,Group_1:
 PASS,CMS104FHIRSTKDCAntithrombotic,3f52eee2-8cec-45d5-a0c2-0e843e108dc3,Group_1:Denominator Exclusion,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,3f52eee2-8cec-45d5-a0c2-0e843e108dc3,Group_1:Numerator,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,3f52eee2-8cec-45d5-a0c2-0e843e108dc3,Group_1:Denominator Exception,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Initial Population,2,1
-FAIL,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Denominator,2,1
+PASS,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Initial Population,2,2
+PASS,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Denominator,2,2
 PASS,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Denominator Exclusion,0,0
-FAIL,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Numerator,2,1
+PASS,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Numerator,2,2
 PASS,CMS104FHIRSTKDCAntithrombotic,a2b8327c-eaf4-4552-863e-851426e729d4,Group_1:Denominator Exception,0,0
 PASS,CMS104FHIRSTKDCAntithrombotic,cfe6d907-c9fa-4d4c-9889-803315e8f707,Group_1:Initial Population,1,1
 PASS,CMS104FHIRSTKDCAntithrombotic,cfe6d907-c9fa-4d4c-9889-803315e8f707,Group_1:Denominator,1,1
@@ -4223,11 +4223,11 @@ PASS,CMS871FHIRHHHyper,cb54c026-6ec9-4db5-b8ac-7cb713138ca8,Group_1:Denominator,
 PASS,CMS871FHIRHHHyper,cb54c026-6ec9-4db5-b8ac-7cb713138ca8,Group_1:Denominator Exclusion,0,0
 PASS,CMS871FHIRHHHyper,cb54c026-6ec9-4db5-b8ac-7cb713138ca8,Group_1:Numerator,0,0
 PASS,CMS871FHIRHHHyper,cb54c026-6ec9-4db5-b8ac-7cb713138ca8,Group_1:Numerator Exclusion,0,0
-FAIL,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Initial Population,1,MISSING
-FAIL,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Denominator,1,MISSING
-FAIL,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Numerator,0,MISSING
-FAIL,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Numerator Exclusion,0,MISSING
+WORKAROUND,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Initial Population,1,1
+WORKAROUND,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Denominator,1,1
+WORKAROUND,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Numerator,0,0
+WORKAROUND,CMS871FHIRHHHyper,fd579f44-757b-4c98-9b09-27b17b935650,Group_1:Numerator Exclusion,0,0
 PASS,CMS871FHIRHHHyper,4c12355d-2548-471a-a98f-b9a58c2cbfe0,Group_1:Initial Population,1,1
 PASS,CMS871FHIRHHHyper,4c12355d-2548-471a-a98f-b9a58c2cbfe0,Group_1:Denominator,1,1
 PASS,CMS871FHIRHHHyper,4c12355d-2548-471a-a98f-b9a58c2cbfe0,Group_1:Denominator Exclusion,0,0
@@ -4258,11 +4258,11 @@ PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator,
 PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Denominator Exclusion,0,0
 PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator,0,0
 PASS,CMS871FHIRHHHyper,35719b1a-85bd-4072-b8d5-7218309358c6,Group_1:Numerator Exclusion,0,0
-FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Initial Population,1,MISSING
-FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator,1,MISSING
-FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator Exclusion,1,MISSING
-FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Numerator,0,MISSING
-FAIL,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Numerator Exclusion,0,MISSING
+WORKAROUND,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Initial Population,1,1
+WORKAROUND,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator,1,1
+WORKAROUND,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Denominator Exclusion,1,1
+WORKAROUND,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Numerator,0,0
+WORKAROUND,CMS871FHIRHHHyper,98533ccd-24ee-41b3-aab2-ef6cbf89e00d,Group_1:Numerator Exclusion,0,0
 PASS,CMS871FHIRHHHyper,41217ce4-1628-4779-a9ab-4134c5901715,Group_1:Initial Population,1,1
 PASS,CMS871FHIRHHHyper,41217ce4-1628-4779-a9ab-4134c5901715,Group_1:Denominator,1,1
 PASS,CMS871FHIRHHHyper,41217ce4-1628-4779-a9ab-4134c5901715,Group_1:Denominator Exclusion,1,1
@@ -4951,10 +4951,10 @@ PASS,CMS68FHIRDocumentationCurrentMeds,db7bf97d-edaf-41c9-bf02-81a3f31db686,Grou
 PASS,CMS68FHIRDocumentationCurrentMeds,db7bf97d-edaf-41c9-bf02-81a3f31db686,Group_1:Denominator,0,0
 PASS,CMS68FHIRDocumentationCurrentMeds,db7bf97d-edaf-41c9-bf02-81a3f31db686,Group_1:Numerator,0,0
 PASS,CMS68FHIRDocumentationCurrentMeds,db7bf97d-edaf-41c9-bf02-81a3f31db686,Group_1:Denominator Exception,0,0
-FAIL,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Initial Population,1,MISSING
-FAIL,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Denominator,1,MISSING
-FAIL,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Numerator,0,MISSING
-FAIL,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Denominator Exception,1,MISSING
+WORKAROUND,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Initial Population,1,1
+WORKAROUND,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Denominator,1,1
+WORKAROUND,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Numerator,0,0
+WORKAROUND,CMS68FHIRDocumentationCurrentMeds,f2e2e1c0-9e35-4592-9579-72a236cb2f56,Group_1:Denominator Exception,1,1
 PASS,CMS68FHIRDocumentationCurrentMeds,6f04cfd6-8557-4eff-84cb-9d3ed094dc4b,Group_1:Initial Population,1,1
 PASS,CMS68FHIRDocumentationCurrentMeds,6f04cfd6-8557-4eff-84cb-9d3ed094dc4b,Group_1:Denominator,1,1
 PASS,CMS68FHIRDocumentationCurrentMeds,6f04cfd6-8557-4eff-84cb-9d3ed094dc4b,Group_1:Numerator,0,0
@@ -5206,11 +5206,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,f981eba4-4aac-45ce-8c52-f0bc02c9a0dc,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,f981eba4-4aac-45ce-8c52-f0bc02c9a0dc,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,f981eba4-4aac-45ce-8c52-f0bc02c9a0dc,Group_1:Numerator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,f981eba4-4aac-45ce-8c52-f0bc02c9a0dc,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f82746cf-f6cd-4fcc-bc9e-7e569ae26211,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,ee2d3d5b-7bda-4fae-b893-aff7f4ac163b,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,ee2d3d5b-7bda-4fae-b893-aff7f4ac163b,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,ee2d3d5b-7bda-4fae-b893-aff7f4ac163b,Group_1:Denominator Exclusion,0,0
@@ -5256,16 +5256,16 @@ PASS,CMS190FHIRVTEProphylaxisICU,efad4991-4382-4ceb-8bc4-32e8ac088e47,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,efad4991-4382-4ceb-8bc4-32e8ac088e47,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,efad4991-4382-4ceb-8bc4-32e8ac088e47,Group_1:Numerator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,efad4991-4382-4ceb-8bc4-32e8ac088e47,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator Exception,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4fc421c7-e490-4d4e-a326-53d08635efb9,Group_1:Denominator Exception,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,9ddea16c-55d3-4dda-a1d8-a256fbff0b64,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,f8f09c1f-37fc-4088-a39d-710971b626b7,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,f8f09c1f-37fc-4088-a39d-710971b626b7,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,f8f09c1f-37fc-4088-a39d-710971b626b7,Group_1:Denominator Exclusion,1,1
@@ -5391,11 +5391,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,06b5bb95-e5d2-42aa-ab7c-6bfa4ae302c6,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,06b5bb95-e5d2-42aa-ab7c-6bfa4ae302c6,Group_1:Denominator Exclusion,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,06b5bb95-e5d2-42aa-ab7c-6bfa4ae302c6,Group_1:Numerator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,06b5bb95-e5d2-42aa-ab7c-6bfa4ae302c6,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Numerator,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator Exception,0,MISSING
+PASS,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Initial Population,1,1
+PASS,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator,1,1
+PASS,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator Exclusion,0,0
+PASS,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Numerator,0,0
+PASS,CMS190FHIRVTEProphylaxisICU,ec88b695-15b1-4ba3-b032-b04e191b97a4,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,8bc6fd51-97ab-4227-9934-0b232fef8f71,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,8bc6fd51-97ab-4227-9934-0b232fef8f71,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,8bc6fd51-97ab-4227-9934-0b232fef8f71,Group_1:Denominator Exclusion,0,0
@@ -5421,11 +5421,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,2a49e02a-3b3c-4c0c-940f-6ed02318dac3,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,2a49e02a-3b3c-4c0c-940f-6ed02318dac3,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,2a49e02a-3b3c-4c0c-940f-6ed02318dac3,Group_1:Numerator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,2a49e02a-3b3c-4c0c-940f-6ed02318dac3,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,4c32b73b-abba-431b-a352-f0f454e7c9dd,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,39215b49-af59-45a7-a773-65e8353dfafd,Group_1:Initial Population,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,39215b49-af59-45a7-a773-65e8353dfafd,Group_1:Denominator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,39215b49-af59-45a7-a773-65e8353dfafd,Group_1:Denominator Exclusion,0,0
@@ -5481,11 +5481,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,64353924-37ba-4a43-b651-ceb3a0fa7f29,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,64353924-37ba-4a43-b651-ceb3a0fa7f29,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,64353924-37ba-4a43-b651-ceb3a0fa7f29,Group_1:Numerator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,64353924-37ba-4a43-b651-ceb3a0fa7f29,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,a9c75661-be1c-41b2-aa15-222cc7d2ca81,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,b8e41837-b85a-46d3-b92c-77c24952c52a,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,b8e41837-b85a-46d3-b92c-77c24952c52a,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,b8e41837-b85a-46d3-b92c-77c24952c52a,Group_1:Denominator Exclusion,1,1
@@ -5506,11 +5506,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,28424502-1b12-461c-937e-d16c3c4716b7,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,28424502-1b12-461c-937e-d16c3c4716b7,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,28424502-1b12-461c-937e-d16c3c4716b7,Group_1:Numerator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,28424502-1b12-461c-937e-d16c3c4716b7,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,f859dd94-f201-4517-a368-32b98dd486c9,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,eea9698a-bf0d-4128-afc2-a646062acbef,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,eea9698a-bf0d-4128-afc2-a646062acbef,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,eea9698a-bf0d-4128-afc2-a646062acbef,Group_1:Denominator Exclusion,1,1
@@ -5531,21 +5531,21 @@ PASS,CMS190FHIRVTEProphylaxisICU,3b38035c-7918-4d8e-8a8f-935b406d65b8,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,3b38035c-7918-4d8e-8a8f-935b406d65b8,Group_1:Denominator Exclusion,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,3b38035c-7918-4d8e-8a8f-935b406d65b8,Group_1:Numerator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,3b38035c-7918-4d8e-8a8f-935b406d65b8,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,e8931859-4ad8-49c8-9cdd-8697293456a2,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,a1a991db-e4b4-46d4-bb51-befa8e7feaad,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,a1a991db-e4b4-46d4-bb51-befa8e7feaad,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,a1a991db-e4b4-46d4-bb51-befa8e7feaad,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,a1a991db-e4b4-46d4-bb51-befa8e7feaad,Group_1:Numerator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,a1a991db-e4b4-46d4-bb51-befa8e7feaad,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Numerator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator Exception,0,MISSING
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Initial Population,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Numerator,1,1
+WORKAROUND,CMS190FHIRVTEProphylaxisICU,632831b0-1ebf-47b5-b439-3a124cd77c37,Group_1:Denominator Exception,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,1a51a056-fa89-4986-8580-f727a402a441,Group_1:Initial Population,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,1a51a056-fa89-4986-8580-f727a402a441,Group_1:Denominator,1,1
 PASS,CMS190FHIRVTEProphylaxisICU,1a51a056-fa89-4986-8580-f727a402a441,Group_1:Denominator Exclusion,0,0
@@ -5591,11 +5591,11 @@ PASS,CMS190FHIRVTEProphylaxisICU,b1affe12-1051-4c43-8b32-23db10550f20,Group_1:De
 PASS,CMS190FHIRVTEProphylaxisICU,b1affe12-1051-4c43-8b32-23db10550f20,Group_1:Denominator Exclusion,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,b1affe12-1051-4c43-8b32-23db10550f20,Group_1:Numerator,0,0
 PASS,CMS190FHIRVTEProphylaxisICU,b1affe12-1051-4c43-8b32-23db10550f20,Group_1:Denominator Exception,0,0
-FAIL,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Initial Population,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator,1,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Numerator,0,MISSING
-FAIL,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator Exception,0,MISSING
+PASS,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Initial Population,1,1
+PASS,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator,1,1
+PASS,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator Exclusion,0,0
+PASS,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Numerator,0,0
+PASS,CMS190FHIRVTEProphylaxisICU,a76285c9-54cb-4389-8596-874dbdb998db,Group_1:Denominator Exception,0,0
 PASS,CMS133FHIRCataracts2040BCVA90Days,b765067f-d81a-4d58-87c1-3cad1044e007,Group_1:Initial Population,1,1
 PASS,CMS133FHIRCataracts2040BCVA90Days,b765067f-d81a-4d58-87c1-3cad1044e007,Group_1:Denominator,1,1
 PASS,CMS133FHIRCataracts2040BCVA90Days,b765067f-d81a-4d58-87c1-3cad1044e007,Group_1:Denominator Exclusion,1,1
@@ -6348,7 +6348,7 @@ PASS,CMS142FHIRCommWithDrManagingDiab,15b275f0-8540-4c32-8ab6-29e535dcea64,Group
 PASS,CMS142FHIRCommWithDrManagingDiab,b85440e4-b902-49cd-b3d6-363ba7a99bce,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,b85440e4-b902-49cd-b3d6-363ba7a99bce,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,b85440e4-b902-49cd-b3d6-363ba7a99bce,Group_1:Numerator,0,0
-FAIL,CMS142FHIRCommWithDrManagingDiab,b85440e4-b902-49cd-b3d6-363ba7a99bce,Group_1:Denominator Exception,1,0
+PASS,CMS142FHIRCommWithDrManagingDiab,b85440e4-b902-49cd-b3d6-363ba7a99bce,Group_1:Denominator Exception,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,03b74242-d93e-438e-ac6a-f46b41548209,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,03b74242-d93e-438e-ac6a-f46b41548209,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,03b74242-d93e-438e-ac6a-f46b41548209,Group_1:Numerator,0,0
@@ -6364,7 +6364,7 @@ PASS,CMS142FHIRCommWithDrManagingDiab,3783189c-3c29-4687-9f89-c3306c6d28fd,Group
 PASS,CMS142FHIRCommWithDrManagingDiab,05f1e2a6-b317-42bb-827f-993ca3995f5b,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,05f1e2a6-b317-42bb-827f-993ca3995f5b,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,05f1e2a6-b317-42bb-827f-993ca3995f5b,Group_1:Numerator,0,0
-FAIL,CMS142FHIRCommWithDrManagingDiab,05f1e2a6-b317-42bb-827f-993ca3995f5b,Group_1:Denominator Exception,1,0
+PASS,CMS142FHIRCommWithDrManagingDiab,05f1e2a6-b317-42bb-827f-993ca3995f5b,Group_1:Denominator Exception,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,f4b75f60-a150-404c-b139-e85b84b04bfe,Group_1:Initial Population,0,0
 PASS,CMS142FHIRCommWithDrManagingDiab,f4b75f60-a150-404c-b139-e85b84b04bfe,Group_1:Denominator,0,0
 PASS,CMS142FHIRCommWithDrManagingDiab,f4b75f60-a150-404c-b139-e85b84b04bfe,Group_1:Numerator,0,0
@@ -6376,7 +6376,7 @@ PASS,CMS142FHIRCommWithDrManagingDiab,73734a3e-0dc8-44ce-a5a2-070b1ab48aaf,Group
 PASS,CMS142FHIRCommWithDrManagingDiab,6aef5a18-59bd-4a47-80bc-2bd44636e41f,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,6aef5a18-59bd-4a47-80bc-2bd44636e41f,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,6aef5a18-59bd-4a47-80bc-2bd44636e41f,Group_1:Numerator,0,0
-FAIL,CMS142FHIRCommWithDrManagingDiab,6aef5a18-59bd-4a47-80bc-2bd44636e41f,Group_1:Denominator Exception,1,0
+PASS,CMS142FHIRCommWithDrManagingDiab,6aef5a18-59bd-4a47-80bc-2bd44636e41f,Group_1:Denominator Exception,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,eb6c9df0-6dc7-4940-8785-0863f01b6e42,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,eb6c9df0-6dc7-4940-8785-0863f01b6e42,Group_1:Denominator,0,0
 PASS,CMS142FHIRCommWithDrManagingDiab,eb6c9df0-6dc7-4940-8785-0863f01b6e42,Group_1:Numerator,0,0
@@ -6416,7 +6416,7 @@ PASS,CMS142FHIRCommWithDrManagingDiab,dea40dde-9674-4a89-987f-0617a78a5e94,Group
 PASS,CMS142FHIRCommWithDrManagingDiab,41ae0086-ac99-4a31-9546-21b054bbf7d8,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,41ae0086-ac99-4a31-9546-21b054bbf7d8,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,41ae0086-ac99-4a31-9546-21b054bbf7d8,Group_1:Numerator,0,0
-FAIL,CMS142FHIRCommWithDrManagingDiab,41ae0086-ac99-4a31-9546-21b054bbf7d8,Group_1:Denominator Exception,1,0
+PASS,CMS142FHIRCommWithDrManagingDiab,41ae0086-ac99-4a31-9546-21b054bbf7d8,Group_1:Denominator Exception,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,3835c33d-b335-44d7-a7b6-c8a0d5420290,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,3835c33d-b335-44d7-a7b6-c8a0d5420290,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,3835c33d-b335-44d7-a7b6-c8a0d5420290,Group_1:Numerator,1,1
@@ -6436,7 +6436,7 @@ PASS,CMS142FHIRCommWithDrManagingDiab,9a9e1543-79a1-47a0-a3dd-5ac008bbea65,Group
 PASS,CMS142FHIRCommWithDrManagingDiab,d9840e8c-3359-42c2-b354-4b236c3c1b15,Group_1:Initial Population,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,d9840e8c-3359-42c2-b354-4b236c3c1b15,Group_1:Denominator,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,d9840e8c-3359-42c2-b354-4b236c3c1b15,Group_1:Numerator,0,0
-FAIL,CMS142FHIRCommWithDrManagingDiab,d9840e8c-3359-42c2-b354-4b236c3c1b15,Group_1:Denominator Exception,1,0
+PASS,CMS142FHIRCommWithDrManagingDiab,d9840e8c-3359-42c2-b354-4b236c3c1b15,Group_1:Denominator Exception,1,1
 PASS,CMS142FHIRCommWithDrManagingDiab,fa93e3b9-fe40-4a1c-be89-536969a54f2c,Group_1:Initial Population,0,0
 PASS,CMS142FHIRCommWithDrManagingDiab,fa93e3b9-fe40-4a1c-be89-536969a54f2c,Group_1:Denominator,0,0
 PASS,CMS142FHIRCommWithDrManagingDiab,fa93e3b9-fe40-4a1c-be89-536969a54f2c,Group_1:Numerator,0,0
@@ -6527,7 +6527,7 @@ PASS,CMS646FHIRIntravesicalBCGTherapy,f40eb08c-b994-45b9-b907-d25e2fff2618,Group
 PASS,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Denominator,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Denominator Exclusion,0,0
-FAIL,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Numerator,0,1
+IMPLEMENTATION,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Numerator,0,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,ab48e0c0-6543-4537-8f00-bfcdcba7a81b,Group_1:Denominator Exception,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,362e32e9-4f68-4917-811d-7a39eedb4b66,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,362e32e9-4f68-4917-811d-7a39eedb4b66,Group_1:Denominator,1,1
@@ -6598,7 +6598,7 @@ PASS,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group
 PASS,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group_1:Denominator,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group_1:Denominator Exclusion,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group_1:Numerator,0,0
-FAIL,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group_1:Denominator Exception,1,0
+PASS,CMS646FHIRIntravesicalBCGTherapy,e648fa70-0532-49b0-92f6-dfb5a6d28d94,Group_1:Denominator Exception,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,767d95ff-7723-4059-aed9-410c57143fa9,Group_1:Initial Population,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,767d95ff-7723-4059-aed9-410c57143fa9,Group_1:Denominator,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,767d95ff-7723-4059-aed9-410c57143fa9,Group_1:Denominator Exclusion,0,0
@@ -6617,18 +6617,18 @@ PASS,CMS646FHIRIntravesicalBCGTherapy,e2117038-2163-4031-a25d-18ed7d8e277b,Group
 PASS,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Denominator,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Denominator Exclusion,0,0
-PASS,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Numerator,0,0
+IMPLEMENTATION,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Numerator,0,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,6e9a1974-7334-4c41-b8dd-8413ae0caa29,Group_1:Denominator Exception,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,c7e0560f-ae7b-44c7-af10-e2f1b2f3ec3d,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,c7e0560f-ae7b-44c7-af10-e2f1b2f3ec3d,Group_1:Denominator,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,c7e0560f-ae7b-44c7-af10-e2f1b2f3ec3d,Group_1:Denominator Exclusion,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,c7e0560f-ae7b-44c7-af10-e2f1b2f3ec3d,Group_1:Numerator,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,c7e0560f-ae7b-44c7-af10-e2f1b2f3ec3d,Group_1:Denominator Exception,0,0
-FAIL,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Initial Population,1,MISSING
-FAIL,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator,1,MISSING
-FAIL,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator Exclusion,1,MISSING
-FAIL,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Numerator,0,MISSING
-FAIL,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator Exception,0,MISSING
+KNOWN_ISSUE,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Initial Population,1,MISSING
+KNOWN_ISSUE,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator,1,MISSING
+KNOWN_ISSUE,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator Exclusion,1,MISSING
+KNOWN_ISSUE,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Numerator,0,MISSING
+KNOWN_ISSUE,CMS646FHIRIntravesicalBCGTherapy,342d2bec-0acc-43e5-aaf7-3c9a65b09f91,Group_1:Denominator Exception,0,MISSING
 PASS,CMS646FHIRIntravesicalBCGTherapy,06c71e6e-18fd-4cef-a68d-960ef84a56f7,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,06c71e6e-18fd-4cef-a68d-960ef84a56f7,Group_1:Denominator,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,06c71e6e-18fd-4cef-a68d-960ef84a56f7,Group_1:Denominator Exclusion,0,0
@@ -6636,7 +6636,7 @@ PASS,CMS646FHIRIntravesicalBCGTherapy,06c71e6e-18fd-4cef-a68d-960ef84a56f7,Group
 PASS,CMS646FHIRIntravesicalBCGTherapy,06c71e6e-18fd-4cef-a68d-960ef84a56f7,Group_1:Denominator Exception,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Initial Population,1,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Denominator,1,1
-FAIL,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Denominator Exclusion,0,1
+IMPLEMENTATION,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Denominator Exclusion,0,1
 PASS,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Numerator,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,10cec7db-41ae-49ad-b883-022f19d92a8b,Group_1:Denominator Exception,0,0
 PASS,CMS646FHIRIntravesicalBCGTherapy,b487e8da-c244-4cb8-9575-48eab7d7c28d,Group_1:Initial Population,1,1
@@ -7319,14 +7319,14 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,9377a6c4-cb7a-4e87-a8b2-c598a5b0e2df,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,9377a6c4-cb7a-4e87-a8b2-c598a5b0e2df,Group_2:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,9377a6c4-cb7a-4e87-a8b2-c598a5b0e2df,Group_2:Numerator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,9377a6c4-cb7a-4e87-a8b2-c598a5b0e2df,Group_2:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Denominator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Numerator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Denominator,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Denominator Exception,1,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Denominator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_1:Denominator Exception,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Denominator,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,4f4a65f4-a4c6-47e7-b37e-3ad9a9c9342e,Group_2:Denominator Exception,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,75fc7993-6b07-49f8-a8aa-747dfcbb3d8f,Group_1:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,75fc7993-6b07-49f8-a8aa-747dfcbb3d8f,Group_1:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,75fc7993-6b07-49f8-a8aa-747dfcbb3d8f,Group_1:Numerator,0,0
@@ -7390,7 +7390,7 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_2:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_2:Denominator,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_2:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_2:Denominator Exception,0,1
+IMPLEMENTATION,CMS145FHIRCADBBlockerTPMIorLVSD,1f70822b-c513-4c3a-8162-49f0bb9c914b,Group_2:Denominator Exception,0,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,3a8ee66b-5016-4a12-8f1c-df6201cbd6e3,Group_1:Initial Population,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,3a8ee66b-5016-4a12-8f1c-df6201cbd6e3,Group_1:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,3a8ee66b-5016-4a12-8f1c-df6201cbd6e3,Group_1:Numerator,0,0
@@ -7551,14 +7551,14 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,68c4dacc-cb3c-423b-9fde-899dfd05b5f6,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,68c4dacc-cb3c-423b-9fde-899dfd05b5f6,Group_2:Denominator,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,68c4dacc-cb3c-423b-9fde-899dfd05b5f6,Group_2:Numerator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,68c4dacc-cb3c-423b-9fde-899dfd05b5f6,Group_2:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Denominator,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Denominator Exception,1,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Denominator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Numerator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Denominator Exception,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Denominator,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_1:Denominator Exception,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Denominator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,5fd0d626-e9c5-4e6c-a10d-1a1183fa7702,Group_2:Denominator Exception,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_1:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_1:Denominator,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_1:Numerator,0,0
@@ -7567,14 +7567,14 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_2:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_2:Numerator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7111ea79-9b4a-4452-86cf-22b8852bc5eb,Group_2:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Denominator,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Denominator Exception,1,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Denominator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Numerator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Denominator Exception,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Denominator,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_1:Denominator Exception,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Denominator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,61306767-0e74-44b8-ac06-1339c3783355,Group_2:Denominator Exception,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7fb4cb03-569b-4c0a-8898-abe49d609c0e,Group_1:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7fb4cb03-569b-4c0a-8898-abe49d609c0e,Group_1:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,7fb4cb03-569b-4c0a-8898-abe49d609c0e,Group_1:Numerator,0,0
@@ -7591,14 +7591,14 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,72845b60-dc5c-4a93-8b86-2caca155cd9c,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,72845b60-dc5c-4a93-8b86-2caca155cd9c,Group_2:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,72845b60-dc5c-4a93-8b86-2caca155cd9c,Group_2:Numerator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,72845b60-dc5c-4a93-8b86-2caca155cd9c,Group_2:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Denominator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Numerator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Denominator,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Denominator Exception,1,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Denominator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_1:Denominator Exception,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Denominator,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,b65680a0-9768-4ce4-b08d-972fcd84e28e,Group_2:Denominator Exception,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,bfacfb96-e784-4346-bf29-a20359dc0ba5,Group_1:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,bfacfb96-e784-4346-bf29-a20359dc0ba5,Group_1:Denominator,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,bfacfb96-e784-4346-bf29-a20359dc0ba5,Group_1:Numerator,0,0
@@ -7655,14 +7655,14 @@ PASS,CMS145FHIRCADBBlockerTPMIorLVSD,dd4e465a-3796-4d5d-af53-3e2ab1e4041b,Group_
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,dd4e465a-3796-4d5d-af53-3e2ab1e4041b,Group_2:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,dd4e465a-3796-4d5d-af53-3e2ab1e4041b,Group_2:Numerator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,dd4e465a-3796-4d5d-af53-3e2ab1e4041b,Group_2:Denominator Exception,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Denominator,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Numerator,0,0
-FAIL,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Denominator Exception,1,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Initial Population,1,1
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Denominator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Numerator,0,0
-PASS,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Denominator Exception,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Denominator,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_1:Denominator Exception,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Initial Population,1,1
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Denominator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Numerator,0,0
+WORKAROUND,CMS145FHIRCADBBlockerTPMIorLVSD,fd5fb311-a466-4c59-966d-48fa7aa88931,Group_2:Denominator Exception,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b19af44d-fb1c-4e78-a0dd-170c6b61718f,Group_1:Initial Population,1,1
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b19af44d-fb1c-4e78-a0dd-170c6b61718f,Group_1:Denominator,0,0
 PASS,CMS145FHIRCADBBlockerTPMIorLVSD,b19af44d-fb1c-4e78-a0dd-170c6b61718f,Group_1:Numerator,0,0
@@ -9102,7 +9102,7 @@ PASS,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_
 PASS,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_4:Denominator,1,1
 PASS,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_4:Denominator Exclusion,0,0
 PASS,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_4:Numerator,0,0
-FAIL,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_4:Denominator Exception,0,1
+IMPLEMENTATION,CMS347FHIRStatinPreventionTxCVD,1ba7b147-b701-424c-bade-4e8270547030,Group_4:Denominator Exception,0,1
 PASS,CMS347FHIRStatinPreventionTxCVD,5b37b5a5-0e28-4b28-9889-8878d41ff9cf,Group_1:Initial Population,0,0
 PASS,CMS347FHIRStatinPreventionTxCVD,5b37b5a5-0e28-4b28-9889-8878d41ff9cf,Group_1:Denominator,0,0
 PASS,CMS347FHIRStatinPreventionTxCVD,5b37b5a5-0e28-4b28-9889-8878d41ff9cf,Group_1:Denominator Exclusion,0,0
@@ -11805,11 +11805,11 @@ PASS,CMS1028FHIRPCSevereOBComps,b2d27ac4-8709-4296-85a4-598d9ef02fe7,Group_2:Num
 PASS,CMS1028FHIRPCSevereOBComps,b2d27ac4-8709-4296-85a4-598d9ef02fe7,Group_2:Numerator Exclusion,0,0
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_1:Initial Population,2,2
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_1:Denominator,2,2
-FAIL,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_1:Numerator,2,1
+PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_1:Numerator,2,2
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_1:Numerator Exclusion,0,0
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_2:Initial Population,2,2
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_2:Denominator,2,2
-FAIL,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_2:Numerator,2,1
+PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_2:Numerator,2,2
 PASS,CMS1028FHIRPCSevereOBComps,763d86f9-d93f-4873-8b64-8439566b242e,Group_2:Numerator Exclusion,0,0
 PASS,CMS1028FHIRPCSevereOBComps,83db4135-8018-4a54-8059-cc0f9f785a82,Group_1:Initial Population,1,1
 PASS,CMS1028FHIRPCSevereOBComps,83db4135-8018-4a54-8059-cc0f9f785a82,Group_1:Denominator,1,1
@@ -13256,7 +13256,7 @@ PASS,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Initial Popula
 PASS,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Denominator,2,2
 PASS,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Denominator Exclusion,1,1
 PASS,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Numerator,1,1
-FAIL,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Numerator Exclusion,0,1
+PASS,CMS1017FHIRHHFI,5ff2713d-ca89-42ae-91bb-cba3e1d9a487,Group_1:Numerator Exclusion,0,0
 PASS,CMS1017FHIRHHFI,21d7f7e1-3977-4227-8792-2e316460326f,Group_1:Initial Population,1,1
 PASS,CMS1017FHIRHHFI,21d7f7e1-3977-4227-8792-2e316460326f,Group_1:Denominator,1,1
 PASS,CMS1017FHIRHHFI,21d7f7e1-3977-4227-8792-2e316460326f,Group_1:Denominator Exclusion,1,1
@@ -13291,7 +13291,7 @@ PASS,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Initial Popula
 PASS,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Denominator,2,2
 PASS,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Denominator Exclusion,1,1
 PASS,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Numerator,1,1
-FAIL,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Numerator Exclusion,0,1
+PASS,CMS1017FHIRHHFI,0dfafc1a-cf94-4ca1-becf-c1b843896810,Group_1:Numerator Exclusion,0,0
 PASS,CMS1017FHIRHHFI,a2630a47-3cd8-470c-9fe2-8f4e1066a2d0,Group_1:Initial Population,1,1
 PASS,CMS1017FHIRHHFI,a2630a47-3cd8-470c-9fe2-8f4e1066a2d0,Group_1:Denominator,1,1
 PASS,CMS1017FHIRHHFI,a2630a47-3cd8-470c-9fe2-8f4e1066a2d0,Group_1:Denominator Exclusion,1,1
@@ -18113,11 +18113,11 @@ PASS,CMS996FHIRAptTxforSTEMI,83e7cc74-5ae5-4fb9-922f-15faa555890a,Group_1:Denomi
 PASS,CMS996FHIRAptTxforSTEMI,83e7cc74-5ae5-4fb9-922f-15faa555890a,Group_1:Denominator Exclusion,1,1
 PASS,CMS996FHIRAptTxforSTEMI,83e7cc74-5ae5-4fb9-922f-15faa555890a,Group_1:Numerator,0,0
 PASS,CMS996FHIRAptTxforSTEMI,83e7cc74-5ae5-4fb9-922f-15faa555890a,Group_1:Denominator Exception,0,0
-PASS,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Initial Population,1,1
-PASS,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator,1,1
-PASS,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator Exclusion,0,0
-PASS,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Numerator,0,0
-FAIL,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator Exception,1,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Initial Population,1,1
+WORKAROUND,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator,1,1
+WORKAROUND,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Numerator,0,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,ccc7deaf-98b7-4dad-b190-8fee10f2cf77,Group_1:Denominator Exception,1,1
 PASS,CMS996FHIRAptTxforSTEMI,5230ea22-66f1-4132-9acf-0e810f578472,Group_1:Initial Population,1,1
 PASS,CMS996FHIRAptTxforSTEMI,5230ea22-66f1-4132-9acf-0e810f578472,Group_1:Denominator,1,1
 PASS,CMS996FHIRAptTxforSTEMI,5230ea22-66f1-4132-9acf-0e810f578472,Group_1:Denominator Exclusion,1,1
@@ -18145,7 +18145,7 @@ PASS,CMS996FHIRAptTxforSTEMI,7398c01f-d745-4013-80e7-1a8a549650db,Group_1:Numera
 PASS,CMS996FHIRAptTxforSTEMI,7398c01f-d745-4013-80e7-1a8a549650db,Group_1:Denominator Exception,0,0
 PASS,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Initial Population,1,1
 PASS,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Denominator,1,1
-FAIL,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Denominator Exclusion,0,1
+IMPLEMENTATION,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Denominator Exclusion,0,1
 PASS,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Numerator,0,0
 PASS,CMS996FHIRAptTxforSTEMI,f6c7dbc1-9ca7-46cd-bcbe-29d8fae4e847,Group_1:Denominator Exception,0,0
 PASS,CMS996FHIRAptTxforSTEMI,88d99809-90d6-4cbc-a4bb-d5d73375fc81,Group_1:Initial Population,1,1
@@ -18277,7 +18277,7 @@ PASS,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Initia
 PASS,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Denominator,1,1
 PASS,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Denominator Exclusion,0,0
 PASS,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Numerator,0,0
-FAIL,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Denominator Exception,1,0
+PASS,CMS996FHIRAptTxforSTEMI,60823d79-b37f-4358-819f-f39b4e885c6d,Group_1:Denominator Exception,1,1
 PASS,CMS996FHIRAptTxforSTEMI,6484a0f5-3f9c-4df9-94b3-2f5c9b95638a,Group_1:Initial Population,1,1
 PASS,CMS996FHIRAptTxforSTEMI,6484a0f5-3f9c-4df9-94b3-2f5c9b95638a,Group_1:Denominator,1,1
 PASS,CMS996FHIRAptTxforSTEMI,6484a0f5-3f9c-4df9-94b3-2f5c9b95638a,Group_1:Denominator Exclusion,0,0
@@ -18333,11 +18333,11 @@ PASS,CMS996FHIRAptTxforSTEMI,08dd0cf8-1ee9-4f75-909d-ea482cec75c5,Group_1:Denomi
 PASS,CMS996FHIRAptTxforSTEMI,08dd0cf8-1ee9-4f75-909d-ea482cec75c5,Group_1:Denominator Exclusion,1,1
 PASS,CMS996FHIRAptTxforSTEMI,08dd0cf8-1ee9-4f75-909d-ea482cec75c5,Group_1:Numerator,0,0
 PASS,CMS996FHIRAptTxforSTEMI,08dd0cf8-1ee9-4f75-909d-ea482cec75c5,Group_1:Denominator Exception,0,0
-PASS,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Initial Population,1,1
-PASS,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator,1,1
-PASS,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator Exclusion,0,0
-PASS,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Numerator,0,0
-FAIL,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator Exception,1,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Initial Population,1,1
+WORKAROUND,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator,1,1
+WORKAROUND,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Numerator,0,0
+WORKAROUND,CMS996FHIRAptTxforSTEMI,7edab122-3af3-4172-9231-7c1470ecc1e0,Group_1:Denominator Exception,1,1
 PASS,CMS996FHIRAptTxforSTEMI,de428bd5-59d6-4d0f-a8ee-c581cf94b5e4,Group_1:Initial Population,0,0
 PASS,CMS996FHIRAptTxforSTEMI,de428bd5-59d6-4d0f-a8ee-c581cf94b5e4,Group_1:Denominator,0,0
 PASS,CMS996FHIRAptTxforSTEMI,de428bd5-59d6-4d0f-a8ee-c581cf94b5e4,Group_1:Denominator Exclusion,0,0
@@ -18367,7 +18367,7 @@ PASS,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Initia
 PASS,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Denominator,1,1
 PASS,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Denominator Exclusion,0,0
 PASS,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Numerator,0,0
-FAIL,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Denominator Exception,1,0
+PASS,CMS996FHIRAptTxforSTEMI,8bb7c40b-7447-42ca-b662-161a7026ed8f,Group_1:Denominator Exception,1,1
 PASS,CMS996FHIRAptTxforSTEMI,64c8c187-6a67-49c4-b6cc-bb4f746fbc51,Group_1:Initial Population,1,1
 PASS,CMS996FHIRAptTxforSTEMI,64c8c187-6a67-49c4-b6cc-bb4f746fbc51,Group_1:Denominator,1,1
 PASS,CMS996FHIRAptTxforSTEMI,64c8c187-6a67-49c4-b6cc-bb4f746fbc51,Group_1:Denominator Exclusion,1,1
@@ -18905,7 +18905,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,12786a64-c20e-4542-a4c0-bf3129d6a9e0,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41664f5f-5280-4b5b-a9f1-289a412dbc18,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41664f5f-5280-4b5b-a9f1-289a412dbc18,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41664f5f-5280-4b5b-a9f1-289a412dbc18,Group_1:Denominator Exclusion,0,0
@@ -18920,12 +18920,12 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,0e463fc3-d1bf-4e19-882b-fad6342aa668,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,41df0dbe-ae84-4496-b355-320ff8707a85,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6f17c306-5df4-431a-8364-d44ab5bad34a,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6f17c306-5df4-431a-8364-d44ab5bad34a,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6f17c306-5df4-431a-8364-d44ab5bad34a,Group_1:Denominator Exclusion,0,0
@@ -18935,7 +18935,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,6078e73e-3265-4022-ae63-216c096b6246,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d1fc6b6d-025e-446b-a941-e62a76217e28,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d1fc6b6d-025e-446b-a941-e62a76217e28,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d1fc6b6d-025e-446b-a941-e62a76217e28,Group_1:Denominator Exclusion,0,0
@@ -18965,7 +18965,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,6aaff09e-4a7b-4efa-93f8-13033e95c230,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,be498e62-5ef2-47fa-8127-dfc5a7eb6ac9,Group_1:Initial Population,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,be498e62-5ef2-47fa-8127-dfc5a7eb6ac9,Group_1:Denominator,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,be498e62-5ef2-47fa-8127-dfc5a7eb6ac9,Group_1:Denominator Exclusion,0,0
@@ -18985,7 +18985,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,f29e2786-fade-4dca-b14d-7037a34ef498,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,7009a1c3-93a8-4028-b42a-0bd9953f6ebb,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,7009a1c3-93a8-4028-b42a-0bd9953f6ebb,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,7009a1c3-93a8-4028-b42a-0bd9953f6ebb,Group_1:Denominator Exclusion,1,1
@@ -19010,7 +19010,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,d0ba1182-26fa-4cfa-9f91-960503b7fe53,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,4149c02e-ee5c-4b8d-a4ee-425dfa2460e7,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,4149c02e-ee5c-4b8d-a4ee-425dfa2460e7,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,4149c02e-ee5c-4b8d-a4ee-425dfa2460e7,Group_1:Denominator Exclusion,0,0
@@ -19030,7 +19030,7 @@ PASS,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_1:Denominator Exclusion,0,0
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_1:Numerator,0,0
-FAIL,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_1:Denominator Exception,1,0
+PASS,CMS2FHIRPCSDepScreenAndFollowUp,86ca7528-efcb-44ed-9203-6f21f37f4332,Group_1:Denominator Exception,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,3ce2c72d-d347-4fde-82cf-dc9992c73aad,Group_1:Initial Population,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,3ce2c72d-d347-4fde-82cf-dc9992c73aad,Group_1:Denominator,1,1
 PASS,CMS2FHIRPCSDepScreenAndFollowUp,3ce2c72d-d347-4fde-82cf-dc9992c73aad,Group_1:Denominator Exclusion,0,0
@@ -19324,10 +19324,10 @@ PASS,CMS108FHIRVTEProphylaxis,543248c8-b6af-407d-b435-7e867c4770b4,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,543248c8-b6af-407d-b435-7e867c4770b4,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,543248c8-b6af-407d-b435-7e867c4770b4,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,543248c8-b6af-407d-b435-7e867c4770b4,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Denominator Exclusion,0,0
-FAIL,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Numerator,1,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,d9b7ffa9-ed78-484c-8880-b4cbf2b4b6a1,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,a6abc191-21b3-4a69-9555-9c2cdff6feef,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,a6abc191-21b3-4a69-9555-9c2cdff6feef,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,a6abc191-21b3-4a69-9555-9c2cdff6feef,Group_1:Denominator Exclusion,0,0
@@ -19440,10 +19440,10 @@ PASS,CMS108FHIRVTEProphylaxis,d205878e-b861-43a8-92e8-47f680987e4d,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,d205878e-b861-43a8-92e8-47f680987e4d,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,d205878e-b861-43a8-92e8-47f680987e4d,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,d205878e-b861-43a8-92e8-47f680987e4d,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Denominator Exclusion,0,0
-FAIL,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Numerator,1,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,dd5a1e46-1b99-45a3-b4d3-1fde205d8a11,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,e9b691aa-5cdd-4f8b-9030-67b151285461,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,e9b691aa-5cdd-4f8b-9030-67b151285461,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,e9b691aa-5cdd-4f8b-9030-67b151285461,Group_1:Denominator Exclusion,1,1
@@ -19488,10 +19488,10 @@ PASS,CMS108FHIRVTEProphylaxis,d04c2856-3708-4809-b4e3-4d1746ff274b,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,d04c2856-3708-4809-b4e3-4d1746ff274b,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,d04c2856-3708-4809-b4e3-4d1746ff274b,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,d04c2856-3708-4809-b4e3-4d1746ff274b,Group_1:Numerator,0,0
-PASS,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,8e2cfc29-0925-45b9-857f-b9ee9b9fa248,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,9ee0f965-4287-41db-bd8e-5631e408c116,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,9ee0f965-4287-41db-bd8e-5631e408c116,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,9ee0f965-4287-41db-bd8e-5631e408c116,Group_1:Denominator Exclusion,1,1
@@ -19544,10 +19544,10 @@ PASS,CMS108FHIRVTEProphylaxis,1b7603d3-81d1-45be-8b6f-a483827e9eb8,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,1b7603d3-81d1-45be-8b6f-a483827e9eb8,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,1b7603d3-81d1-45be-8b6f-a483827e9eb8,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,1b7603d3-81d1-45be-8b6f-a483827e9eb8,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,541ccffb-c1be-4c94-ab24-168d52e3a36b,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,3ca65cc7-2f5b-4d0b-987f-dfd9a26fd0ea,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,3ca65cc7-2f5b-4d0b-987f-dfd9a26fd0ea,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,3ca65cc7-2f5b-4d0b-987f-dfd9a26fd0ea,Group_1:Denominator Exclusion,1,1
@@ -19568,10 +19568,10 @@ PASS,CMS108FHIRVTEProphylaxis,e6416748-51e0-4103-b9dd-680aa0b0ccdb,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,e6416748-51e0-4103-b9dd-680aa0b0ccdb,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,e6416748-51e0-4103-b9dd-680aa0b0ccdb,Group_1:Denominator Exclusion,1,1
 PASS,CMS108FHIRVTEProphylaxis,e6416748-51e0-4103-b9dd-680aa0b0ccdb,Group_1:Numerator,0,0
-PASS,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,ccd7f9d7-35e8-4623-9f2e-f229cf7d829c,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,d2d1c27e-28f2-4536-a398-27d60f83bf54,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,d2d1c27e-28f2-4536-a398-27d60f83bf54,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,d2d1c27e-28f2-4536-a398-27d60f83bf54,Group_1:Denominator Exclusion,0,0
@@ -19632,10 +19632,10 @@ PASS,CMS108FHIRVTEProphylaxis,73673965-9b35-446e-bad7-1701991e6906,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,73673965-9b35-446e-bad7-1701991e6906,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,73673965-9b35-446e-bad7-1701991e6906,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,73673965-9b35-446e-bad7-1701991e6906,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,dba7c9af-eb6f-4836-ba24-650a5acc87e7,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,316da95d-60f2-4a74-9a28-7a4adb7c0098,Group_1:Initial Population,0,0
 PASS,CMS108FHIRVTEProphylaxis,316da95d-60f2-4a74-9a28-7a4adb7c0098,Group_1:Denominator,0,0
 PASS,CMS108FHIRVTEProphylaxis,316da95d-60f2-4a74-9a28-7a4adb7c0098,Group_1:Denominator Exclusion,0,0
@@ -19664,10 +19664,10 @@ PASS,CMS108FHIRVTEProphylaxis,610c90c9-f387-40f8-9bd7-710d20dfd6f0,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,610c90c9-f387-40f8-9bd7-710d20dfd6f0,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,610c90c9-f387-40f8-9bd7-710d20dfd6f0,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,610c90c9-f387-40f8-9bd7-710d20dfd6f0,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,575f2da0-c890-47a3-b17f-f9e134a1096e,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,61e522ed-d51b-4398-bb65-6cf7fefe179f,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,61e522ed-d51b-4398-bb65-6cf7fefe179f,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,61e522ed-d51b-4398-bb65-6cf7fefe179f,Group_1:Denominator Exclusion,0,0
@@ -19724,10 +19724,10 @@ PASS,CMS108FHIRVTEProphylaxis,9f11ba0f-2fd8-4f45-87c8-98fd7f81e42b,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,9f11ba0f-2fd8-4f45-87c8-98fd7f81e42b,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,9f11ba0f-2fd8-4f45-87c8-98fd7f81e42b,Group_1:Denominator Exclusion,1,1
 PASS,CMS108FHIRVTEProphylaxis,9f11ba0f-2fd8-4f45-87c8-98fd7f81e42b,Group_1:Numerator,0,0
-PASS,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,068814f1-4270-4e10-b470-9a5433bceb3e,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,1701c7fe-de21-4bb9-8404-92cb1ef4e638,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,1701c7fe-de21-4bb9-8404-92cb1ef4e638,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,1701c7fe-de21-4bb9-8404-92cb1ef4e638,Group_1:Denominator Exclusion,0,0
@@ -19788,10 +19788,10 @@ PASS,CMS108FHIRVTEProphylaxis,b621464f-6e8d-4a28-b5a9-ec0178cf33ae,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,b621464f-6e8d-4a28-b5a9-ec0178cf33ae,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,b621464f-6e8d-4a28-b5a9-ec0178cf33ae,Group_1:Denominator Exclusion,0,0
 PASS,CMS108FHIRVTEProphylaxis,b621464f-6e8d-4a28-b5a9-ec0178cf33ae,Group_1:Numerator,1,1
-PASS,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Denominator Exclusion,0,0
-FAIL,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Numerator,1,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,33d162ce-3bc7-4b0a-8c04-fec0a42a6263,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,1b450176-8caa-4133-bc9a-c066969f72ce,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,1b450176-8caa-4133-bc9a-c066969f72ce,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,1b450176-8caa-4133-bc9a-c066969f72ce,Group_1:Denominator Exclusion,1,1
@@ -19816,10 +19816,10 @@ PASS,CMS108FHIRVTEProphylaxis,b0932ba4-4dfc-43ad-aa67-fbaee9638d3b,Group_1:Initi
 PASS,CMS108FHIRVTEProphylaxis,b0932ba4-4dfc-43ad-aa67-fbaee9638d3b,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,b0932ba4-4dfc-43ad-aa67-fbaee9638d3b,Group_1:Denominator Exclusion,1,1
 PASS,CMS108FHIRVTEProphylaxis,b0932ba4-4dfc-43ad-aa67-fbaee9638d3b,Group_1:Numerator,0,0
-PASS,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Initial Population,1,1
-PASS,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Denominator,1,1
-PASS,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Denominator Exclusion,0,0
-PASS,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Numerator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Initial Population,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Denominator,1,1
+WORKAROUND,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS108FHIRVTEProphylaxis,b7783b8c-ba46-4509-a75e-203659abab3d,Group_1:Numerator,1,1
 PASS,CMS108FHIRVTEProphylaxis,5e4231e6-dc8e-423e-9107-003da9d26548,Group_1:Initial Population,1,1
 PASS,CMS108FHIRVTEProphylaxis,5e4231e6-dc8e-423e-9107-003da9d26548,Group_1:Denominator,1,1
 PASS,CMS108FHIRVTEProphylaxis,5e4231e6-dc8e-423e-9107-003da9d26548,Group_1:Denominator Exclusion,0,0
@@ -20097,8 +20097,8 @@ PASS,CMS0334FHIRPCCesareanBirth,f2b2fe3f-ad3c-42ae-b262-73345ec66e07,Group_1:Den
 PASS,CMS0334FHIRPCCesareanBirth,f2b2fe3f-ad3c-42ae-b262-73345ec66e07,Group_1:Denominator Exclusion,0,0
 PASS,CMS0334FHIRPCCesareanBirth,f2b2fe3f-ad3c-42ae-b262-73345ec66e07,Group_1:Numerator,0,0
 PASS,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Initial Population,1,1
-FAIL,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Denominator,1,0
-FAIL,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Denominator Exclusion,1,0
+PASS,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Denominator,1,1
+PASS,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Denominator Exclusion,1,1
 PASS,CMS0334FHIRPCCesareanBirth,c58acff5-248b-49c9-b18d-69e4a84a08d9,Group_1:Numerator,0,0
 PASS,CMS0334FHIRPCCesareanBirth,cb800af9-771b-4850-a175-8e3b9ffbbfc3,Group_1:Initial Population,0,0
 PASS,CMS0334FHIRPCCesareanBirth,cb800af9-771b-4850-a175-8e3b9ffbbfc3,Group_1:Denominator,0,0
@@ -21462,8 +21462,8 @@ PASS,CMS177FHIRChildMDDSuicideAssmt,96926d5c-5103-41f5-87d5-33ffb8924cf1,Group_1
 PASS,CMS177FHIRChildMDDSuicideAssmt,a4f7a37c-6c3e-499f-b474-56598165dee8,Group_1:Initial Population,0,0
 PASS,CMS177FHIRChildMDDSuicideAssmt,a4f7a37c-6c3e-499f-b474-56598165dee8,Group_1:Denominator,0,0
 PASS,CMS177FHIRChildMDDSuicideAssmt,a4f7a37c-6c3e-499f-b474-56598165dee8,Group_1:Numerator,0,0
-FAIL,CMS177FHIRChildMDDSuicideAssmt,85e6225c-a9bb-4338-a228-297564e38c4d,Group_1:Initial Population,0,1
-FAIL,CMS177FHIRChildMDDSuicideAssmt,85e6225c-a9bb-4338-a228-297564e38c4d,Group_1:Denominator,0,1
+PASS,CMS177FHIRChildMDDSuicideAssmt,85e6225c-a9bb-4338-a228-297564e38c4d,Group_1:Initial Population,0,0
+PASS,CMS177FHIRChildMDDSuicideAssmt,85e6225c-a9bb-4338-a228-297564e38c4d,Group_1:Denominator,0,0
 PASS,CMS177FHIRChildMDDSuicideAssmt,85e6225c-a9bb-4338-a228-297564e38c4d,Group_1:Numerator,0,0
 PASS,CMS177FHIRChildMDDSuicideAssmt,687a47c1-978c-4774-ba5d-2a585d1e78be,Group_1:Initial Population,1,1
 PASS,CMS177FHIRChildMDDSuicideAssmt,687a47c1-978c-4774-ba5d-2a585d1e78be,Group_1:Denominator,1,1
@@ -21699,18 +21699,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,35b521b6-1fdd-4742-8137-36213864b0fb,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,35b521b6-1fdd-4742-8137-36213864b0fb,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,35b521b6-1fdd-4742-8137-36213864b0fb,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,35b521b6-1fdd-4742-8137-36213864b0fb,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a550fe5a-03ad-4eb3-9157-dcb64f8b13be,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,00da3e6b-9ab1-48b6-8b34-a0f08754fb3c,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,00da3e6b-9ab1-48b6-8b34-a0f08754fb3c,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,00da3e6b-9ab1-48b6-8b34-a0f08754fb3c,Group_1:Denominator Exclusion,0,0
@@ -21771,18 +21771,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,c0af145d-bf0c-4b3d-8f65-d446c9f93b15,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,c0af145d-bf0c-4b3d-8f65-d446c9f93b15,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c0af145d-bf0c-4b3d-8f65-d446c9f93b15,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,c0af145d-bf0c-4b3d-8f65-d446c9f93b15,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_2:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5c33755f-40d8-4409-b699-a3499ddddda0,Group_3:Numerator,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_1:Denominator Exclusion,0,0
@@ -21795,18 +21795,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,1968ff78-9027-4ea9-99c8-42282743bfc3,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Denominator Exclusion,0,0
-FAIL,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Numerator,1,0
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Denominator Exclusion,0,0
-FAIL,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Numerator,1,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_1:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_2:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,4aa75d19-ac8b-49b0-a686-429fbc033d77,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_1:Denominator Exclusion,0,0
@@ -21819,18 +21819,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,c409fbc9-a31f-4d53-9aa7-9e443e87812a,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,a6b1d740-d580-4e55-970e-3cb4f1e369c2,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,688e8e1b-8054-4c30-83e8-ab99fdd7ccfb,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,688e8e1b-8054-4c30-83e8-ab99fdd7ccfb,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,688e8e1b-8054-4c30-83e8-ab99fdd7ccfb,Group_1:Denominator Exclusion,1,1
@@ -21915,18 +21915,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,0440a9c0-f299-43a6-bfef-cb2cf326ee85,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,0440a9c0-f299-43a6-bfef-cb2cf326ee85,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,0440a9c0-f299-43a6-bfef-cb2cf326ee85,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,0440a9c0-f299-43a6-bfef-cb2cf326ee85,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,68ccf96b-cdd0-4bd7-b0d5-9ed33ec895ca,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,5f200044-e0b1-4e20-8ee7-b9e735d3086c,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,5f200044-e0b1-4e20-8ee7-b9e735d3086c,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,5f200044-e0b1-4e20-8ee7-b9e735d3086c,Group_1:Denominator Exclusion,0,0
@@ -21975,18 +21975,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,8f713481-66ba-4a58-be92-91b8c7212959,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,8f713481-66ba-4a58-be92-91b8c7212959,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8f713481-66ba-4a58-be92-91b8c7212959,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,8f713481-66ba-4a58-be92-91b8c7212959,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,7f204655-dbf6-47d7-a684-ff1570cf4b05,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_1:Denominator Exclusion,1,1
@@ -21999,30 +21999,30 @@ PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,8b33d091-6e1e-4992-9ae6-63adc9401862,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,42125b07-9cb2-44df-ba1f-78237b0d3ebc,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,aeef1eb1-86fa-4af0-b24d-fc7ad8398191,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,9f9302aa-f988-4131-a265-3996467aeed7,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,9f9302aa-f988-4131-a265-3996467aeed7,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,9f9302aa-f988-4131-a265-3996467aeed7,Group_1:Denominator Exclusion,1,1
@@ -22047,18 +22047,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,eac1ad4e-e4cb-49c8-a9b1-6ddf5eec85a1,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,eac1ad4e-e4cb-49c8-a9b1-6ddf5eec85a1,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,eac1ad4e-e4cb-49c8-a9b1-6ddf5eec85a1,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,eac1ad4e-e4cb-49c8-a9b1-6ddf5eec85a1,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,8e648527-5b7e-430c-b5ca-fe70a4133d55,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,d641333e-031e-40e1-9552-11d4bbe7cd33,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,d641333e-031e-40e1-9552-11d4bbe7cd33,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,d641333e-031e-40e1-9552-11d4bbe7cd33,Group_1:Denominator Exclusion,0,0
@@ -22083,18 +22083,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,c5c6788b-16f3-4c11-badf-5739989be2f6,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,c5c6788b-16f3-4c11-badf-5739989be2f6,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,c5c6788b-16f3-4c11-badf-5739989be2f6,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,c5c6788b-16f3-4c11-badf-5739989be2f6,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,e00d1066-19b2-4d59-8829-d90f1e7a1233,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,bc0146d2-5deb-46bc-b7a8-657d4f3ed031,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,bc0146d2-5deb-46bc-b7a8-657d4f3ed031,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,bc0146d2-5deb-46bc-b7a8-657d4f3ed031,Group_1:Denominator Exclusion,0,0
@@ -22167,18 +22167,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,28da77ab-fe4d-44f2-a2fe-9c260e941cfb,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,28da77ab-fe4d-44f2-a2fe-9c260e941cfb,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,28da77ab-fe4d-44f2-a2fe-9c260e941cfb,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,28da77ab-fe4d-44f2-a2fe-9c260e941cfb,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,cb01ddd0-a804-4bbe-8544-d4c753898eca,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,385599b5-a1e9-4b7a-8e9f-281c58fed95e,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,385599b5-a1e9-4b7a-8e9f-281c58fed95e,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,385599b5-a1e9-4b7a-8e9f-281c58fed95e,Group_1:Denominator Exclusion,0,0
@@ -22215,30 +22215,30 @@ PASS,CMS156FHIRHighRiskMedsElderly,07f11229-6e8f-42bf-9905-3d319460fb33,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,07f11229-6e8f-42bf-9905-3d319460fb33,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,07f11229-6e8f-42bf-9905-3d319460fb33,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,07f11229-6e8f-42bf-9905-3d319460fb33,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,5326ef57-57d6-49b8-bdc5-b3179cdcb82d,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_2:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,ea9af1dc-c26e-4bc3-947b-6c4bbd65523c,Group_3:Numerator,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,e4cdfed0-16f0-46cd-a45c-95714744758b,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,e4cdfed0-16f0-46cd-a45c-95714744758b,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,e4cdfed0-16f0-46cd-a45c-95714744758b,Group_1:Denominator Exclusion,0,0
@@ -22287,18 +22287,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,ad4aced6-dec9-4309-86a1-246b7c0dd6d9,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,ad4aced6-dec9-4309-86a1-246b7c0dd6d9,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,ad4aced6-dec9-4309-86a1-246b7c0dd6d9,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,ad4aced6-dec9-4309-86a1-246b7c0dd6d9,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_2:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,1789d80d-bc5b-4e15-ab64-399d05e55a19,Group_3:Numerator,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_1:Denominator Exclusion,1,1
@@ -22311,18 +22311,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_3:Denominator Exclusion,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,32186189-fe9c-41d5-9654-68c0c60aaac6,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_2:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,2389a7bb-16a7-4800-ba4a-2585ebd98a0a,Group_3:Numerator,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,bb83b7f0-6542-4105-b2f0-5d2018167a9e,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,bb83b7f0-6542-4105-b2f0-5d2018167a9e,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,bb83b7f0-6542-4105-b2f0-5d2018167a9e,Group_1:Denominator Exclusion,1,1
@@ -22347,18 +22347,18 @@ PASS,CMS156FHIRHighRiskMedsElderly,79c12ad7-f7de-4b87-93c3-ef85e0a644f0,Group_3:
 PASS,CMS156FHIRHighRiskMedsElderly,79c12ad7-f7de-4b87-93c3-ef85e0a644f0,Group_3:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,79c12ad7-f7de-4b87-93c3-ef85e0a644f0,Group_3:Denominator Exclusion,0,0
 PASS,CMS156FHIRHighRiskMedsElderly,79c12ad7-f7de-4b87-93c3-ef85e0a644f0,Group_3:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Numerator,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Numerator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Initial Population,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Denominator,1,1
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Denominator Exclusion,0,0
-PASS,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_1:Numerator,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_2:Numerator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Initial Population,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Denominator,1,1
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Denominator Exclusion,0,0
+WORKAROUND,CMS156FHIRHighRiskMedsElderly,64c49012-0f98-41da-a00b-9cd673294d16,Group_3:Numerator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,2dfe5252-0eb7-4519-9f4c-d7f95a7acaae,Group_1:Initial Population,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,2dfe5252-0eb7-4519-9f4c-d7f95a7acaae,Group_1:Denominator,1,1
 PASS,CMS156FHIRHighRiskMedsElderly,2dfe5252-0eb7-4519-9f4c-d7f95a7acaae,Group_1:Denominator Exclusion,0,0
@@ -22413,7 +22413,7 @@ PASS,CMS1154ScreeningPrediabetesFHIR,b4eff700-1f2c-4bc6-9c1e-eb11baa3b125,Group_
 PASS,CMS1154ScreeningPrediabetesFHIR,b4eff700-1f2c-4bc6-9c1e-eb11baa3b125,Group_1:Numerator,0,0
 PASS,CMS1154ScreeningPrediabetesFHIR,bc9c82ca-72b5-41c4-a9a3-7e3860a9ac2d,Group_1:Initial Population,1,1
 PASS,CMS1154ScreeningPrediabetesFHIR,bc9c82ca-72b5-41c4-a9a3-7e3860a9ac2d,Group_1:Denominator,1,1
-FAIL,CMS1154ScreeningPrediabetesFHIR,bc9c82ca-72b5-41c4-a9a3-7e3860a9ac2d,Group_1:Denominator Exclusion,1,0
+PASS,CMS1154ScreeningPrediabetesFHIR,bc9c82ca-72b5-41c4-a9a3-7e3860a9ac2d,Group_1:Denominator Exclusion,1,1
 PASS,CMS1154ScreeningPrediabetesFHIR,bc9c82ca-72b5-41c4-a9a3-7e3860a9ac2d,Group_1:Numerator,0,0
 PASS,CMS1154ScreeningPrediabetesFHIR,22778fb6-6e45-40cf-9d3f-4deb60464fcd,Group_1:Initial Population,1,1
 PASS,CMS1154ScreeningPrediabetesFHIR,22778fb6-6e45-40cf-9d3f-4deb60464fcd,Group_1:Denominator,1,1
@@ -23556,16 +23556,16 @@ PASS,CMS135FHIRACEIorARBorARNIforHF,ab7f5ace-9ac6-4077-bee9-444abeac4f51,Group_1
 PASS,CMS135FHIRACEIorARBorARNIforHF,ab7f5ace-9ac6-4077-bee9-444abeac4f51,Group_1:Denominator Exclusion,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,ab7f5ace-9ac6-4077-bee9-444abeac4f51,Group_1:Numerator,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,ab7f5ace-9ac6-4077-bee9-444abeac4f51,Group_1:Denominator Exception,1,1
-FAIL,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Initial Population,1,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator,1,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Numerator,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator Exception,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Initial Population,1,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator,1,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Numerator,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator Exception,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Initial Population,1,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator,1,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator Exclusion,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Numerator,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,cba5a449-1c45-4e11-ae0b-ba3974b410f7,Group_1:Denominator Exception,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Initial Population,1,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator,1,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator Exclusion,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Numerator,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,ec508dbb-76f6-4878-b8a2-114ea8e82297,Group_1:Denominator Exception,0,MISSING
 PASS,CMS135FHIRACEIorARBorARNIforHF,d297e68e-3f02-42a8-a59f-a5a4cecbd47d,Group_1:Initial Population,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,d297e68e-3f02-42a8-a59f-a5a4cecbd47d,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,d297e68e-3f02-42a8-a59f-a5a4cecbd47d,Group_1:Denominator Exclusion,0,0
@@ -23611,11 +23611,11 @@ PASS,CMS135FHIRACEIorARBorARNIforHF,a40966e2-5640-409f-9596-65c03db31424,Group_1
 PASS,CMS135FHIRACEIorARBorARNIforHF,a40966e2-5640-409f-9596-65c03db31424,Group_1:Denominator Exclusion,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,a40966e2-5640-409f-9596-65c03db31424,Group_1:Numerator,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,a40966e2-5640-409f-9596-65c03db31424,Group_1:Denominator Exception,0,0
-FAIL,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Initial Population,1,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator Exclusion,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Numerator,0,MISSING
-FAIL,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator Exception,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Initial Population,1,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator Exclusion,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Numerator,0,MISSING
+KNOWN_ISSUE,CMS135FHIRACEIorARBorARNIforHF,c095195c-8893-4bf1-aa7d-ad2bfd9bafa5,Group_1:Denominator Exception,0,MISSING
 PASS,CMS135FHIRACEIorARBorARNIforHF,ef395d2c-85a3-41a2-b6cb-37c4ff5217dc,Group_1:Initial Population,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,ef395d2c-85a3-41a2-b6cb-37c4ff5217dc,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,ef395d2c-85a3-41a2-b6cb-37c4ff5217dc,Group_1:Denominator Exclusion,1,1
@@ -23635,7 +23635,7 @@ PASS,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1
 PASS,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1:Denominator Exclusion,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1:Numerator,0,0
-FAIL,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1:Denominator Exception,1,0
+PASS,CMS135FHIRACEIorARBorARNIforHF,d18e37a6-7b66-4e7c-b305-692872c13f8d,Group_1:Denominator Exception,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,fb38d345-4723-46b4-a269-8b4fd8982bc7,Group_1:Initial Population,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,fb38d345-4723-46b4-a269-8b4fd8982bc7,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,fb38d345-4723-46b4-a269-8b4fd8982bc7,Group_1:Denominator Exclusion,0,0
@@ -23645,7 +23645,7 @@ PASS,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1
 PASS,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1:Denominator Exclusion,0,0
 PASS,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1:Numerator,0,0
-FAIL,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1:Denominator Exception,1,0
+PASS,CMS135FHIRACEIorARBorARNIforHF,5b7e720f-e2fc-4779-9b1c-3f34a0241482,Group_1:Denominator Exception,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,b7d36e19-a42e-4b09-a83f-4525cd7de100,Group_1:Initial Population,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,b7d36e19-a42e-4b09-a83f-4525cd7de100,Group_1:Denominator,1,1
 PASS,CMS135FHIRACEIorARBorARNIforHF,b7d36e19-a42e-4b09-a83f-4525cd7de100,Group_1:Denominator Exclusion,1,1

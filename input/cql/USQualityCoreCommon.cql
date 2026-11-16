@@ -172,10 +172,15 @@ define fluent function recorded(procedure Procedure):
   procedure.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
 
 /*
-@description: Returns the value of the recorded extension for a Medication Administration Not Done
+@description: Returns the value of the recorded extension for a Procedure Not Done
 */
-define fluent function recorded(procedureNotDone ProcedureNotDone):
-  procedureNotDone.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
+// [I-18] Ambiguous fluent overload - recorded(procedure Procedure) and recorded(procedureNotDone ProcedureNotDone)
+// share one runtime signature (the engine dispatches on model types, not profiles), so the overload below stays commented out
+// Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+// Affected test cases: n/a (shared library; per-measure impact tracked under I-18)
+// original
+// define fluent function recorded(procedureNotDone ProcedureNotDone):
+//   procedureNotDone.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
 
 /*
 @description: Returns the negated activity extent for a Procedure Not Done
@@ -185,7 +190,7 @@ define fluent function code(procedureNotDone ProcedureNotDone):
   procedureNotDone.code.toActivityExtent()
 
 /*
-@description: Returns the value of the recorded extension for a Medication Administration Not Done
+@description: Returns the value of the reasonRefused extension for a Service Not Requested
 */
 define fluent function reasonRefused(serviceNotRequested ServiceNotRequested):
   serviceNotRequested.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-doNotPerformReason').value as FHIR.CodeableConcept

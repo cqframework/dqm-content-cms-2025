@@ -18,7 +18,7 @@
     } ]
   },
   "subject": {
-    "reference": "http://GoodHealthcare.com/fhir/Patient/46464646"
+    "reference": "Patient/6e9a1974-7334-4c41-b8dd-8413ae0caa29"
   },
   "effectivePeriod": {
     "start": "2026-04-06T08:00:00.000+00:00",

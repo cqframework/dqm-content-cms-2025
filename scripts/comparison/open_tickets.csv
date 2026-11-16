@@ -1,0 +1,11 @@
+ticket,summary,issues
+https://github.com/cqframework/clinical_quality_language/issues/1690,Quantity division across dimensions (`mg / d`) normalizes the units and rounds the result to zero,I-24
+https://github.com/cqframework/clinical_quality_language/issues/1850,"`Interval[null, null]` evaluates to null instead of an interval with unknown bounds",I-68
+https://github.com/cqframework/clinical_quality_language/issues/1855,Fluent overloads on sibling profiles are ambiguous because the translator types both operands as the base resource,I-18 I-20 I-37 I-55
+https://github.com/cqframework/clinical_quality_language/pull/1857,"`is Interval<T>` returns false for an interval with a null boundary (fix merged 2026-10-08, not yet released)",I-69
+https://github.com/cqframework/clinical_quality_language/issues/1868,A terminology-filtered medication retrieve throws `Unable to extract codes from fhirType Reference` when `MedicationRequest.medication` is a Reference,I-26
+https://github.com/cqframework/clinical_quality_language/issues/1872,Overload resolution and casts ignore subtypes when the argument is a Choice of sibling profiles,I-21 I-28 I-78
+https://github.com/cqframework/clinical_quality_language/issues/1875,"`is` / `as` of a list whose tuple has a null element, or of an empty list, returns null and drops union branches",I-80
+https://github.com/cqframework/clinical_quality_language/issues/1877,Raw `FHIR.dateTime` values in `sort` or a comparison abort with `not comparable`,I-33
+https://jira.hl7.org/browse/FHIR-59691,FHIRCommon `toDayNumbers` / `daysInPeriod` build an invalid interval for a period shorter than 24 hours,I-63 I-81
+https://jira.hl7.org/browse/FHIR-59708,FHIRCommon `prevalenceInterval()` returns null for an inactive Condition with no abatement end,I-31

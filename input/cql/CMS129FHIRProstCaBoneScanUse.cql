@@ -83,6 +83,8 @@ define "Has Bone Scan Study Performed with Documented Reason":
 
 define "Has Diagnosis of Pain related to Prostate Cancer":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 51 CMS129 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "Pain Warranting Further Investigation for Prostate Cancer"]
   //       union [ConditionEncounterDiagnosis: "Pain Warranting Further Investigation for Prostate Cancer"] ) ProstateCancerPain
@@ -143,6 +145,8 @@ define "Most Recent Prostate Cancer Staging Tumor Size T1a to T2a":
 
 define "Prostate Cancer Diagnosis":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 51 CMS129 cases (library-wide translate failure)
   // Original:
   //   [ConditionProblemsHealthConcerns: "Prostate Cancer"] ProstateCancer
   [FHIR.Condition: "Prostate Cancer"] ProstateCancer

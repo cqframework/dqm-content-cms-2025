@@ -232,9 +232,14 @@ define "Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prio
             and VTEDiagnosis.verificationStatus is not null implies ( VTEDiagnosis.verificationStatus !~ FHIRCommon."refuted"
               and VTEDiagnosis.verificationStatus !~ FHIRCommon."entered-in-error"
           )
-            and VTEDiagnosis.prevalenceInterval ( ) before start of QualifyingEncounter.period
+            // [I-31] FHIRCommon prevalenceInterval() returns null for non-active Condition with null abatement end
+            // Upstream ticket: https://jira.hl7.org/browse/FHIR-59708
+            // Affected test cases: d9b7ffa9, dd5a1e46, 33d162ce
+            // original
+            // and VTEDiagnosis.prevalenceInterval ( ) before start of QualifyingEncounter.period
+            and VTEDiagnosis.localPrevalenceInterval() starts before start of QualifyingEncounter.period
     )
-
+        
 define "Encounter With Prior Or Present Procedure Of Hip Or Knee Replacement Surgery":
   VTE."Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions" QualifyingEncounter
     with ( ["Procedure": "Hip Replacement Surgery"]
@@ -260,16 +265,14 @@ define "Low Risk Indicator For VTE":
           and INRLabTest.status in { 'final', 'amended', 'corrected' }
         return {
           id: INRLabTest.id,
-          // I-61 (translator defect, root-caused 2026-09-17): this union's three branches
-          // return LowRiskDatetime as divergent types (System.DateTime / raw FHIR.instant /
-          // System.DateTime), so the translator emits a ChoiceType for the tuple element.
-          // The translator's choice-compatibility check treats that ChoiceType as compatible
-          // with System.DateTime because ONE branch already matches, so it skips inserting
-          // the FHIRHelpers.ToDateTime conversion it would otherwise apply — silently emitting
-          // a no-op cast instead. At runtime that cast returns null whenever the actual value
-          // is the FHIR.instant branch, breaking the downstream "during day of" comparison.
-          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug;
-          // see I-61 for the full investigation (translator issue, not fixable at this layer).
+          // I-61 (root-caused 2026-09-17, reclassified 2026-11-15): this union's three
+          // branches return LowRiskDatetime as System.DateTime / raw FHIR.instant /
+          // System.DateTime, so the tuple element becomes Choice<FHIR.instant, System.DateTime>.
+          // Where a DateTime is expected, CQL casts a Choice rather than converting it (spec:
+          // Cast outranks Implicit Conversion), and the cast is null for the FHIR.instant
+          // member, breaking the downstream "during day of" comparison. Converting here,
+          // before the union, is the correct fix; the QI-Core original has the same gap.
+          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug.
           // Original: LowRiskDatetime: INRLabTest.issued
           LowRiskDatetime: INRLabTest.issued.ToDateTime()
         }
@@ -417,12 +420,13 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,
-          // [I-18 / I-55] .performed is null on a ProcedureNotDone (data-absent-reason: not-performed);
-          // read the us-quality-core-recorded extension directly instead of .recorded() (ambiguous overload).
-          // Original: authoredOn: DeviceNotApplied.performed
-          // 2026-09-10
-          //  The preferred fix is to use the recorded() fluent function from USQualityCoreCommon but dispatching isn't working
-          // authoredOn: DeviceNotApplied.recorded()
+          // [I-55] `.ext()` instead of `.recorded()`: recorded(ProcedureNotDone) is ambiguous with recorded(Procedure) - dodges the I-18 overload ambiguity
+          // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+          // Affected test cases: all 140 CMS108 cases (library-wide .ext() bypass)
+          // original
+          //   authoredOn: DeviceNotApplied.performed
+          // proposed (not applied - ambiguous overload)
+          //   authoredOn: DeviceNotApplied.recorded()
           authoredOn: DeviceNotApplied.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
         }
     )
@@ -458,3 +462,17 @@ define "No VTE Prophylaxis Due To Patient Refusal On Day Of Or Day After Procedu
 
 define fluent function "fromDayOfStartOfHospitalizationToDayAfterAdmission"(Encounter Encounter):
   Interval[date from ( start of Encounter.hospitalizationWithObservation ( ) ), date from ( start of Encounter.period ) + 1 days]
+
+// [I-31] Measure-local workaround for FHIRCommon.prevalenceInterval() null return on non-active Conditions
+// Upstream ticket: https://jira.hl7.org/browse/FHIR-59708
+// Affected test cases: d9b7ffa9, dd5a1e46, 33d162ce
+define fluent function localPrevalenceInterval(condition Condition):
+  if condition.clinicalStatus ~ FHIRCommon."active"
+    or condition.clinicalStatus ~ FHIRCommon."recurrence"
+    or condition.clinicalStatus ~ FHIRCommon."relapse" then
+    Interval[start of condition.onset.toInterval(), end of condition.abatementInterval()]
+  else if end of condition.abatementInterval() is null then
+    Interval[start of condition.onset.toInterval(), null)
+  else
+    Interval[start of condition.onset.toInterval(), end of condition.abatementInterval()]
+  

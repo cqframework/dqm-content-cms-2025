@@ -122,6 +122,8 @@ define "Denominator Exclusions":
 
 define "Has Severe Combined Immunodeficiency":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Severe Combined Immunodeficiency"]
   //     union [ConditionProblemsHealthConcerns: "Severe Combined Immunodeficiency"]
@@ -131,6 +133,8 @@ define "Has Severe Combined Immunodeficiency":
 
 define "Has Immunodeficiency":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Disorders of the Immune System"]
   //     union [ConditionProblemsHealthConcerns: "Disorders of the Immune System"]
@@ -140,6 +144,8 @@ define "Has Immunodeficiency":
 
 define "Has HIV":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "HIV"]
   //     union [ConditionProblemsHealthConcerns: "HIV"]
@@ -149,6 +155,8 @@ define "Has HIV":
 
 define "Has Lymphoreticular Cancer, Multiple Myeloma or Leukemia":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
   //     union [ConditionProblemsHealthConcerns: "Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"]
@@ -158,6 +166,8 @@ define "Has Lymphoreticular Cancer, Multiple Myeloma or Leukemia":
 
 define "Has Intussusception":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Intussusception"]
   //     union [ConditionProblemsHealthConcerns: "Intussusception"]
@@ -238,6 +248,8 @@ define "Four DTaP Vaccinations":
 
 define "DTaP Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylactic Reaction to DTaP Vaccine"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylactic Reaction to DTaP Vaccine"]
@@ -282,6 +294,8 @@ define "Three Polio Vaccinations":
 
 define "Polio Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing human poliovirus antigen (disorder)"]
@@ -309,6 +323,8 @@ define "Measles Indicators":
 
 define "Mumps Indicators":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Mumps"]
   //     union [ConditionProblemsHealthConcerns: "Mumps"]
@@ -317,6 +333,8 @@ define "Mumps Indicators":
 
 define "Rubella Indicators":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Rubella"]
   //     union [ConditionProblemsHealthConcerns: "Rubella"]
@@ -325,6 +343,8 @@ define "Rubella Indicators":
 
 define "MMR Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (disorder)"]
@@ -358,6 +378,8 @@ define "Has Appropriate Number of Hib Immunizations":
 
 define "Hib Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing only Haemophilus influenzae type b antigen (disorder)"]
@@ -393,6 +415,8 @@ define "Hib 4 Dose Immunizations or Procedures":
 
 define "Hepatitis B Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Hepatitis B virus antigen (disorder)"]
@@ -452,6 +476,8 @@ define "One Chicken Pox Vaccination":
 
 define "Varicella Zoster Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Varicella Zoster"]
   //     union [ConditionProblemsHealthConcerns: "Varicella Zoster"]
@@ -488,6 +514,8 @@ define "Pneumococcal Conjugate Immunizations or Procedures":
 
 define "Pneumococcal Conjugate Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Streptococcus pneumoniae antigen (disorder)"]
@@ -509,6 +537,8 @@ define "One Hepatitis A Vaccinations":
 
 define "Hepatitis A Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Hepatitis A"]
   //     union [ConditionProblemsHealthConcerns: "Hepatitis A"]
@@ -555,6 +585,8 @@ define "Rotavirus 2 or 3 Dose Immunizations":
 
 define "Rotavirus Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by rotavirus vaccine (disorder)"]
@@ -593,6 +625,8 @@ define "Two Influenza Vaccinations":
 
 define "Influenza Numerator Inclusion Conditions":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 45 CMS117 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]
   //     union [ConditionProblemsHealthConcerns: "Anaphylaxis caused by vaccine product containing Influenza virus antigen (disorder)"]

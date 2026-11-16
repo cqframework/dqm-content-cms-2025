@@ -124,7 +124,10 @@ define "Tobacco Cessation Counseling Given":
   ( ( ( [Procedure: "Tobacco Use Cessation Counseling"] ).isInterventionPerformed ( ) ) TobaccoCessationCounseling
       where TobaccoCessationCounseling.performed.toInterval ( ) during day of Interval[start of "Measurement Period" - 6 months, end of "Measurement Period"]
   )
-    union ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 47 CMS138 cases (library-wide translate failure)
+    union (
         // Original:
         //   [ConditionProblemsHealthConcerns: "Tobacco abuse counseling"]
         //     union [ConditionEncounterDiagnosis: "Tobacco abuse counseling"]

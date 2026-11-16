@@ -73,6 +73,8 @@ define "Primary Open Angle Glaucoma Encounter":
   "Qualifying Encounter During Measurement Period" ValidQualifyingEncounter
     with (
       // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 32 CMS143 cases (library-wide translate failure)
       // Original:
       //   ( ["ConditionProblemsHealthConcerns": "Primary Open-Angle Glaucoma"]
       //     union ["ConditionEncounterDiagnosis": "Primary Open-Angle Glaucoma"] )

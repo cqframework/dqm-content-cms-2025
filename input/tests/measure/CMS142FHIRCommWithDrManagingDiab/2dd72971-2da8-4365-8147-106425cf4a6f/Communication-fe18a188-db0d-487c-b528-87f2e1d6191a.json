@@ -9,6 +9,9 @@
     "valueDateTime": "2026-07-30T15:00:00.000+00:00"
   } ],
   "status": "not-done",
+  "subject": {
+    "reference": "Patient/2dd72971-2da8-4365-8147-106425cf4a6f"
+  },
   "statusReason": {
     "coding": [ {
       "system": "http://snomed.info/sct",

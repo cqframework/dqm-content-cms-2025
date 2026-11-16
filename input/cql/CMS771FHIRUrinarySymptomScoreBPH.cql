@@ -94,7 +94,7 @@ define "Documented IPSS Assessment Result":
       and IPSSAssessment.value is not null
     return {
       effectiveDatetime: IPSSAssessment.effective.earliest ( ),
-      valueInteger: IPSSAssessment.value as FHIR.integer
+      valueInteger: FHIRHelpers.ToInteger(IPSSAssessment.value)
     }
 
 define "AUA Symptom Index and Quality of Life Assessment Result":
@@ -125,6 +125,8 @@ define "Morbid Obesity Diagnosis or BMI Exam Result Greater Than or Equal to 40 
 
 define "Urinary Retention Diagnosis Starts Within 1 Year After Initial BPH Diagnosis":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 31 CMS771 cases (library-wide translate failure)
   // Original:
   //   ( [ConditionProblemsHealthConcerns: "Urinary Retention"]
   //     union [ConditionEncounterDiagnosis: "Urinary Retention"] )
@@ -155,6 +157,8 @@ define "Has Initial BPH Diagnosis Starts During or Within 30 Days After End of H
 
 define "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 31 CMS771 cases (library-wide translate failure)
   // Original:
   //   First(([ConditionProblemsHealthConcerns: "Benign prostatic hyperplasia with lower urinary tract symptoms"]
   //       union [ConditionEncounterDiagnosis: "Benign prostatic hyperplasia with lower urinary tract symptoms"]) NewBPHDiagnosis
@@ -166,6 +170,8 @@ define "Initial BPH Diagnosis Starts Within 6 Months Before the Measurement Peri
 
 define "Morbid Obesity Diagnosis On or Before Follow Up USS Assessment":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 31 CMS771 cases (library-wide translate failure)
   // Original:
   //   ( [ConditionProblemsHealthConcerns: "Morbid Obesity"]
   //     union [ConditionEncounterDiagnosis: "Morbid Obesity"] )

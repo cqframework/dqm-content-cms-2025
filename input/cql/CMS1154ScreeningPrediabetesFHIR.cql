@@ -58,6 +58,8 @@ define fluent function verified(conditions List<Choice<ConditionProblemsHealthCo
 
 define "Has Advanced Illness or Limited Life Expectancy":
   // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 10 CMS1154 cases (library-wide translate failure)
   // Original:
   //   ( ( ["ConditionProblemsHealthConcerns": "Advanced Illness"]
   //       union ["ConditionEncounterDiagnosis": "Advanced Illness"]
@@ -88,6 +90,8 @@ define "Has Pregnancy Observation During Measurement Period":
 
 define "Has Pregnancy Diagnosis During Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 10 CMS1154 cases (library-wide translate failure)
   // Original:
   //   ( ( [ConditionProblemsHealthConcerns: "Pregnancy"]
   //       union [ConditionEncounterDiagnosis: "Pregnancy"]
@@ -127,6 +131,8 @@ define "Patients Aged 35 to 70 with an Office Visit During the Measurement Perio
 
 define "Prediabetes Diagnosis Overlaps 2 Year Look Back Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 10 CMS1154 cases (library-wide translate failure)
   // Original:
   //   ( ( ["ConditionProblemsHealthConcerns": "Prediabetes (Borderline Diabetes)"]
   //       union ["ConditionEncounterDiagnosis": "Prediabetes (Borderline Diabetes)"]
@@ -144,6 +150,8 @@ define "Denominator Exclusions":
 
 define "Diabetes Diagnosis Overlaps 2 Year Look Back Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 10 CMS1154 cases (library-wide translate failure)
   // Original:
   //   ( ( ["ConditionProblemsHealthConcerns": "Diabetes"]
   //       union ["ConditionEncounterDiagnosis": "Diabetes"]

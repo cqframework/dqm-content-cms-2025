@@ -86,6 +86,8 @@ define "June 30 of the Measurement Period":
 
 define "Acute Tuberculosis Diagnosis":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 38 CMS646 cases (library-wide translate failure)
   // Original:
   //   ( [ConditionProblemsHealthConcerns: "Tuberculosis for Urology Care"]
   //     union [ConditionEncounterDiagnosis: "Tuberculosis for Urology Care"] )
@@ -108,6 +110,8 @@ define "Cystectomy Done":
 
 define "Has Excluding HIV, Immunocompromised Conditions or Mixed Histology Before Staging":
   // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 38 CMS646 cases (library-wide translate failure)
   // Original:
   //   exists ( ( ( [ConditionProblemsHealthConcerns: "HIV"]
   //         union [ConditionEncounterDiagnosis: "HIV"]
@@ -167,6 +171,8 @@ define "Has Qualifying Encounter":
 
 define "Bladder Cancer Diagnosis":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 38 CMS646 cases (library-wide translate failure)
   // Original:
   //   ( [ConditionProblemsHealthConcerns: "Bladder Cancer for Urology Care"]
   //     union [ConditionEncounterDiagnosis: "Bladder Cancer for Urology Care"] )
@@ -179,7 +185,12 @@ define "Bladder Cancer Diagnosis":
 define "BCG Not Available Within 6 Months After Bladder Cancer Staging":
   [USQualityCore.MedicationAdministrationNotDone: "Bacillus Calmette Guerin for Urology Care"] BCGNotGiven
     with "First Bladder Cancer Staging Procedure" FirstBladderCancerStaging
-      such that BCGNotGiven.effective 6 months or less after day of start of FirstBladderCancerStaging.performed.toInterval ( )
+      // [I-55] recorded extension, not effective (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+      // Affected test cases: all 38 CMS646 cases (library-wide .ext() bypass)
+      // Original:
+      // such that BCGNotGiven.effective 6 months or less after day of start of FirstBladderCancerStaging.performed.toInterval ( )
+      such that BCGNotGiven.recorded() 6 months or less after day of start of FirstBladderCancerStaging.performed.toInterval ( )
     where BCGNotGiven.statusReason in "Unavailability of Bacillus Calmette Guerin for Urology Care"
 
 define "First Bladder Cancer Staging Procedure during 6 Months Prior to Measurement Period through the First 6 Months of Measurement Period":

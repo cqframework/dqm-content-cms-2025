@@ -35,20 +35,29 @@
 #   CMS125 pattern). The FAILING defines below reproduce the translator error; the
 #   PASSING defines are the equivalent, working replacement the team should ship.
 #
-# CHOICE-OVERLOAD EXPERIMENT (ANSWERED, NEGATIVE — REMOVED FROM THIS LIBRARY)
+# CHOICE-OVERLOAD EXPERIMENT (ANSWERED, NEGATIVE — REMOVED FROM THIS LIBRARY;
+#   CORRECTED 2026-10-19 — the original reasons below were wrong, see I-28)
 #   A library-level `define fluent function prevalenceInterval(condition
 #   Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>)` was tried to
-#   make the failing union resolve WITHOUT a base-type retrieve. Result: NOT viable.
-#     - Translator 5.2.0 threw `<internal translator error>` / `could not determine result
-#       type` on the Choice-typed fluent parameter (a Choice is not accepted as a fluent
-#       function parameter type).
-#     - Even the body depends on `abatementInterval()`, itself a Condition-typed fluent, so
-#       it re-fails with the SAME widening error on the Choice. The widening limitation is
-#       recursive, so no finite set of Choice overloads can fix it locally.
+#   make the failing union resolve WITHOUT a base-type retrieve. Result: NOT viable —
+#   but for different reasons than first recorded here:
+#     - CORRECTION: a Choice-typed fluent parameter is legal and translates cleanly.
+#       FHIRCommon-2.0.0 declares `toInterval(choice Choice<dateTime, Period, Timing,
+#       instant, string, Age, Range>)`, and the 24 measure-local `isVerified(...
+#       Choice<...>)` functions compile. The 5.2.0 `<internal translator error>` /
+#       `could not determine result type` seen when this was first tried is not evidence
+#       that a Choice parameter type is rejected.
+#     - A shared Choice overload still cannot be delegated to: an unqualified call from
+#       its own body rebinds to the local overload and reports `circular reference`
+#       (I-19), and a qualified `FHIRCommon.prevalenceInterval(x)` is rejected with
+#       "is a fluent function and can only be invoked with fluent syntax".
+#     - The only viable Choice-overload shape inlines FHIRCommon's body with `is`/`as`
+#       narrowing (testI28ChoiceArgumentProbeC.cql translates clean) — a per-call-site
+#       workaround, not a shared fix.
 #     - These errors contaminated the whole library (spurious `Syntax error at PregnancyDx`)
 #       and hid attribution of the `.verified()` List<Choice> behaviour, so the overload was
-#       removed. The shared-FHIRCommon-library fix therefore is NOT a workable alternative;
-#       the base `[FHIR.Condition: ...]` retrieve (PASSING defines) is the fix.
+#       removed. The base `[FHIR.Condition: ...]` retrieve (PASSING defines) is the fix and
+#       stays in force (I-28 remains workaround-applied, not fixed).
 #
 # SELF-CONTAINED
 #   Uses only inline codes (no external value sets) so it runs standalone.

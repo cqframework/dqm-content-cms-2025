@@ -74,6 +74,9 @@ exists ((([Condition: "Advanced Illness"]).verified()) AdvancedIllnessDiagnosis
 where AdvancedIllnessDiagnosis.prevalenceInterval() starts during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"])
 
 define "Has Dementia Medications in Year Before or During Measurement Period":
+  // [I-26] Terminology-filtered retrieve throws "Unable to extract codes from fhirType Reference" when MedicationRequest.medication is a Reference - no CQL workaround (fixture-side deflection only)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1868
+  // Affected test cases: 45e01fed (GUID prefixes)
   exists (( ([FHIR.MedicationRequest: "Dementia Medications"]).isMedicationActive()) DementiaMedication
       where DementiaMedication.medicationRequestPeriod() overlaps day of Interval[start of "Measurement Period" - 1 year, 
         end of "Measurement Period"]

@@ -52,6 +52,8 @@ property-level datatypes so the Choice operand never needs to widen to FHIR.Cond
 and the String branch throws a run-time exception when used with a String abatement value.
 */
 // [I-28] DISABLED: Choice-overload convenience functions not viable on Translator 5.2.0 / Engine 5.2.0
+// Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+// Affected test cases: n/a (probe library, no test-case suite)
 // (see defect-tracking/known-issues.md and testE15ConditionUnionPrevalence.cql). Re-enabled if
 // the engine adds support for Choice-typed fluent parameters / Choice overload resolution.
 // define function abatementInterval(condition Choice<ConditionEncounterDiagnosis, ConditionProblemsHealthConcerns>):

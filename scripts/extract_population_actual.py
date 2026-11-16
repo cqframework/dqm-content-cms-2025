@@ -47,6 +47,16 @@ def log(message: str):
     if VERBOSE:
         print(message)
 
+def is_scaffold_measure(measure_name: str) -> bool:
+    """True for the `test*` repro libraries, which are excluded from scoring.
+
+    Mirrors the skip in compare_results.py: any measure whose name starts with
+    "test", case-insensitively. These libraries exist to reproduce a defect in
+    isolation, so they are scaffolding rather than measures under test and
+    never belong in the extracted results.
+    """
+    return bool(measure_name) and measure_name.lower().startswith("test")
+
 def find_all_groups_by_expression(measure_criteria: Dict[str, Dict[str, str]], expression: str) -> Dict[str, str]:
     return {group: criteria_map[expression] for group, criteria_map in measure_criteria.items() if expression in criteria_map}
 
@@ -137,11 +147,22 @@ def validate_measure_population_counts(measurename: str, populations: Dict[str, 
             numer_count = 0
         if not numer and numex:
             numex_count = 0
+        elif isinstance(numex, list) and isinstance(numer, list):
+            numex_count = len([item for item in numex if item in numer])
+        elif numex and isinstance(numex_count, int) and isinstance(numer_count, int):
+            numex_count = min(numex_count, numer_count)
         if not denom and denex:
             denex_count = 0
         if not numer and not denom:
             denexc_count = 0
         if numer and denom:
+            denexc_count = 0
+        # A Denominator Exception can't be scored against an empty Denominator,
+        # whatever the Numerator holds -- the same rule the `or not denom`
+        # clause applies to the Numerator above. Without it, a shared define
+        # that fires in every group leaves Denominator Exception at 1 in a
+        # group whose Denominator is 0 (I-64).
+        if not denom:
             denexc_count = 0
     else:
         if numer and not numex:
@@ -152,6 +173,14 @@ def validate_measure_population_counts(measurename: str, populations: Dict[str, 
             else:
                 if denex >= 1 and numer > 1:
                     numer_count = numer_count - denex_count
+        if numex:
+            if isinstance(numex, list) and isinstance(numer, list):
+                numex_count = len([item for item in numex if item in numer])
+            elif not numer:
+                numex_count = 0
+            elif isinstance(numex_count, int) and isinstance(numer_count, int):
+                # Fallback for mixed list/scalar shapes: numex cannot exceed numer
+                numex_count = min(numex_count, numer_count)
 
     # save updated scoring back to population, but only if the value already existed in the population
     if 'Numerator'in populations:
@@ -176,11 +205,13 @@ def measures_in_results_dir(dir_path: str, results_format: str) -> set:
 
     Used only for diagnostics: comparing this against the measures that
     actually produced rows is what turns "this measure silently contributed
-    nothing" into a visible warning.
+    nothing" into a visible warning. `test*` scaffolds are omitted here too,
+    so that skipping them in capture_results() does not resurface as a
+    spurious "produced NO population rows" warning.
     """
     names = set()
     for entry in sorted(os.listdir(dir_path)):
-        if entry.startswith('.'):
+        if entry.startswith('.') or is_scaffold_measure(entry):
             continue
         entry_path = os.path.join(dir_path, entry)
         if results_format == 'json':
@@ -382,6 +413,8 @@ def capture_results(measure_sections: Generator['MeasureSection', None, None], a
     results = {}
     for measure_section in measure_sections:
         measure_name = measure_section.measure
+        if is_scaffold_measure(measure_name):
+            continue
         section_data = measure_section.section
         if isinstance(section_data, dict):
             results.update(capture_json_results(measure_name, section_data, all_measure_criteria))

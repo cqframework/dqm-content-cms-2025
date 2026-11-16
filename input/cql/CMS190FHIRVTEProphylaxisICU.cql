@@ -245,17 +245,15 @@ define "Low Risk Indicator For VTE":
           and INRLabTest.status in { 'final', 'amended', 'corrected' }
         return {
           id: INRLabTest.id,
-          // I-61 (translator defect, corroborated on CMS190 2026-09-17): this union's three
-          // branches return LowRiskDatetime as divergent types (System.DateTime / raw
-          // FHIR.instant / System.DateTime), so the translator emits a ChoiceType for the
-          // tuple element. The translator's choice-compatibility check treats that ChoiceType
-          // as compatible with System.DateTime because ONE branch already matches, so it
-          // skips inserting the FHIRHelpers.ToDateTime conversion it would otherwise apply —
-          // silently emitting a no-op cast instead. At runtime that cast returns null whenever
-          // the actual value is the FHIR.instant branch, breaking the downstream "during day
-          // of" comparison. Same mechanism as CMS108's "Low Risk Indicator For VTE".
-          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug;
-          // see I-61 for the full investigation (translator issue, not fixable at this layer).
+          // I-61 (corroborated on CMS190 2026-09-17, reclassified 2026-11-15): this union's three
+          // branches return LowRiskDatetime as System.DateTime / raw FHIR.instant /
+          // System.DateTime, so the tuple element becomes Choice<FHIR.instant, System.DateTime>.
+          // Where a DateTime is expected, CQL casts a Choice rather than converting it (spec:
+          // Cast outranks Implicit Conversion), and the cast is null for the FHIR.instant
+          // member, breaking the downstream "during day of" comparison. Converting here,
+          // before the union, is the correct fix; the QI-Core original has the same gap.
+          // Same mechanism as CMS108's "Low Risk Indicator For VTE".
+          // DO NOT REMOVE THIS CONVERSION AS "REDUNDANT" — removing it reintroduces the bug.
           // Original: LowRiskDatetime: INRLabTest.issued
           LowRiskDatetime: INRLabTest.issued.ToDateTime()
         }
@@ -381,11 +379,14 @@ define "No Mechanical VTE Prophylaxis Performed Or Ordered":
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,
-          // [I-18 / I-55] .performed is null/unbounded on a ProcedureNotDone (data-absent-reason: not-performed);
-          // read the us-quality-core-recorded extension directly instead of .recorded() (ambiguous overload).
-          // Original: let DeviceNotDoneTiming: DeviceNotApplied.performed; authoredOn: DeviceNotDoneTiming
-          // authoredOn: DeviceNotApplied.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
-          authoredOn: DeviceNotApplied.recorded()
+          // [I-55] `.ext()` instead of `.recorded()`: recorded(ProcedureNotDone) is ambiguous with recorded(Procedure) - dodges the I-18 overload ambiguity
+          // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+          // Affected test cases: all 125 CMS190 cases (library-wide .ext() bypass)
+          // original
+          //   let DeviceNotDoneTiming: DeviceNotApplied.performed; authoredOn: DeviceNotDoneTiming
+          // proposed (not applied - ambiguous overload)
+          //   authoredOn: DeviceNotApplied.recorded()
+          authoredOn: DeviceNotApplied.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime
         }
     )
 

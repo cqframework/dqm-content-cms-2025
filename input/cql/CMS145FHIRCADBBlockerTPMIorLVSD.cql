@@ -386,8 +386,14 @@ define fluent function overlapsAfterDayOfEncounter(Event Choice<AllergyIntoleran
           and(Event.verificationStatus is null
               or Event.verificationStatus ~ FHIRCommon."allergy-confirmed"
           )
-        when Event is ConditionProblemsHealthConcerns then Event.isVerified()
-          and Event.prevalenceInterval() overlaps after day of Visit.period 
+        // [I-78] Choice-typed parameter binds Condition-branch calls to the AllergyIntolerance overload
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+        // Affected test cases: 5fd0d626, 61306767, fd5fb311, 4f4a65f4, b65680a0 (GUID prefixes)
+        // original
+        // when Event is ConditionProblemsHealthConcerns then Event.isVerified()
+        //   and Event.prevalenceInterval() overlaps after day of Visit.period 
+        when Event is ConditionProblemsHealthConcerns then (Event as ConditionProblemsHealthConcerns).isVerified()
+          and (Event as ConditionProblemsHealthConcerns).prevalenceInterval() overlaps after day of Visit.period 
         else false 
       end
   )

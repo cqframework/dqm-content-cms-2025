@@ -98,7 +98,10 @@ define "High BMI Interventions Ordered":
       union [USQualityCore.ServiceRequest: "Referrals Where Weight Assessment May Occur"]
       union [USQualityCore.MedicationRequest: "Medications for Above Normal BMI"] ) HighInterventionsOrdered
       where HighInterventionsOrdered.reasonCode in "Overweight or Obese"
-        or ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+        // Affected test cases: all 63 CMS69 cases (library-wide translate failure)
+        or (
             // Original:
             //   exists ( [ConditionProblemsHealthConcerns: "Overweight or Obese"]
             //       union [ConditionEncounterDiagnosis: "Overweight or Obese"] ) OverweightObese
@@ -129,7 +132,10 @@ define "Low BMI Interventions Ordered":
       union [USQualityCore.ServiceRequest: "Referrals Where Weight Assessment May Occur"]
       union [USQualityCore.MedicationRequest: "Medications for Below Normal BMI"] ) LowInterventionsOrdered
       where LowInterventionsOrdered.reasonCode in "Underweight"
-        or ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+        // Affected test cases: all 63 CMS69 cases (library-wide translate failure)
+        or (
             // Original:
             //   exists ( [ConditionProblemsHealthConcerns: "Underweight"]
             //       union [ConditionEncounterDiagnosis: "Underweight"] ) UnderweightDiagnosis
@@ -176,7 +182,10 @@ define "Medical Reason For Not Documenting A Follow Up Plan For Low Or High BMI"
     )
 
 define "Is Pregnant During Measurement Period":
-  exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 63 CMS69 cases (library-wide translate failure)
+  exists (
       // Original:
       //   [ConditionProblemsHealthConcerns: "Pregnancy or Other Related Diagnoses"]
       //     union [ConditionEncounterDiagnosis: "Pregnancy or Other Related Diagnoses"]

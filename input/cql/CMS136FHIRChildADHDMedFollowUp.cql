@@ -134,6 +134,8 @@ define "Denominator Exclusions":
 
 define "Narcolepsy Exclusion":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 64 CMS136 cases (library-wide translate failure)
   // Original:
   //   [ConditionProblemsHealthConcerns: "Narcolepsy"]
   //     union [ConditionEncounterDiagnosis: "Narcolepsy"]

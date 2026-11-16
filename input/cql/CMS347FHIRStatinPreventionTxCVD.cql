@@ -95,6 +95,8 @@ define "Denominator 4":
 
 define "Denominator Exclusions":
   // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 188 CMS347 cases (library-wide translate failure)
   // FHIR.Condition for .prevalenceInterval()/.isVerified() (defect-tracking/known-issues.md).
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "Breastfeeding"]

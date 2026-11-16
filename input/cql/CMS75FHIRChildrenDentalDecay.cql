@@ -42,6 +42,8 @@ define "Denominator Exclusions":
 define "Numerator":
   exists (
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 20 CMS75 cases (library-wide translate failure)
     // Original:
     //   ( [ConditionProblemsHealthConcerns: "Dental Caries"]
     //     union [ConditionEncounterDiagnosis: "Dental Caries"] )

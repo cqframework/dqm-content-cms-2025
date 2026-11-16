@@ -46,6 +46,8 @@ define "Denominator":
 
 define "Has Active HIV Diagnosis Before or in First 90 Days of Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 43 CMS314 cases (library-wide translate failure)
   // Original:
   //   ( ["ConditionProblemsHealthConcerns": "HIV"]
   //     union ["ConditionEncounterDiagnosis": "HIV"] )

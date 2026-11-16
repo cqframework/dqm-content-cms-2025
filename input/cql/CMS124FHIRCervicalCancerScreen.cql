@@ -71,7 +71,10 @@ define "Absence of Cervix":
   ( ( ( [Procedure: "Hysterectomy with No Residual Cervix"] ).isProcedurePerformed ( ) ) NoCervixProcedure
       where NoCervixProcedure.performed.toInterval ( ) ends on or before end of "Measurement Period"
   )
-    union ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 34 CMS124 cases (library-wide translate failure)
+    union (
       // Original:
       //   ( ( [ConditionProblemsHealthConcerns: "Congenital or Acquired Absence of Cervix"]
       //       union [ConditionEncounterDiagnosis: "Congenital or Acquired Absence of Cervix"]
