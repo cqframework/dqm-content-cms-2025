@@ -12,6 +12,9 @@
     }
   } ],
   "status": "cancelled",
+  "subject": {
+    "reference": "Patient/9e1ffb55-7663-4cd5-a2bf-6f29fccbc70e"
+  },
   "category": [ {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/observation-category",

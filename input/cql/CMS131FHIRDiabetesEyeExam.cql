@@ -94,6 +94,8 @@ define "Autonomous Eye Exam in Measurement Period":
 
 define "Bilateral Absence of Eyes":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 63 CMS131 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "Anophthalmos of bilateral eyes (disorder)"]
   //       union [ConditionEncounterDiagnosis: "Anophthalmos of bilateral eyes (disorder)"] ) BilateralAbsenceEyes
@@ -111,6 +113,8 @@ define "Retinal Exam in Measurement Period or Year Prior":
 
 define "Diabetic Retinopathy Overlapping Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 63 CMS131 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "Diabetic Retinopathy"]
   //       union [ConditionEncounterDiagnosis: "Diabetic Retinopathy"] ) Retinopathy

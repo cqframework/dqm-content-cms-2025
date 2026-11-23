@@ -61,6 +61,8 @@ define "Encounter During Measurement Period With HIV":
       union ["Encounter": "Preventive Care Services Other"] ) ValidEncounter
       with (
         // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+        // Affected test cases: all 27 CMS1157 cases (library-wide translate failure)
         // Original:
         //   ( ["ConditionProblemsHealthConcerns": "HIV"]
         //     union ["ConditionEncounterDiagnosis": "HIV"] )
@@ -74,6 +76,8 @@ define "Encounter During Measurement Period With HIV":
 define "Has Active HIV Diagnosis Starts On or Before First 240 Days of Measurement Period":
   exists ( (
       // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 27 CMS1157 cases (library-wide translate failure)
       // Original:
       //   ( ["ConditionProblemsHealthConcerns": "HIV"]
       //     union ["ConditionEncounterDiagnosis": "HIV"] )

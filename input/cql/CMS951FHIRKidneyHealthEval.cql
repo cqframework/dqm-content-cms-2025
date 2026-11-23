@@ -70,6 +70,8 @@ define "Numerator":
 
 define "Has Active Diabetes Overlaps Start Of Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 55 CMS951 cases (library-wide translate failure)
   // Original:
   //   exists ( ["ConditionProblemsHealthConcerns": "Diabetes"]
   //     union ["ConditionEncounterDiagnosis": "Diabetes"] ) DiabetesDiagnosis
@@ -82,6 +84,8 @@ define "Has Active Diabetes Overlaps Start Of Measurement Period":
 
 define "Has CKD Stage 5 Or ESRD Diagnosis Overlaps Measurement Period":
   // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 55 CMS951 cases (library-wide translate failure)
   // Original:
   //   exists ( ( ["ConditionProblemsHealthConcerns": "Chronic Kidney Disease, Stage 5"]
   //       union ["ConditionEncounterDiagnosis": "Chronic Kidney Disease, Stage 5"]

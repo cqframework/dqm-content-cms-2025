@@ -94,6 +94,8 @@ define "Qualifying Encounters":
 
 define "Has Diagnoses Identifying Sexual Activity":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 32 CMS153 cases (library-wide translate failure)
   // Original:
   //   [ConditionEncounterDiagnosis: "Diagnoses Used to Indicate Sexual Activity"]
   //     union [ConditionProblemsHealthConcerns: "Diagnoses Used to Indicate Sexual Activity"]

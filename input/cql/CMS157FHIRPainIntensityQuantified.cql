@@ -57,6 +57,8 @@ define "Face to Face or Telehealth Encounter with Ongoing Chemotherapy":
     "Chemotherapy Within 31 Days Prior and During Measurement Period" ChemoBeforeEncounter,
     "Chemotherapy Within 31 Days Prior and During Measurement Period" ChemoAfterEncounter,
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 63 CMS157 cases (library-wide translate failure)
     // Original:
     // ( [ConditionProblemsHealthConcerns: "Cancer"]
     //   union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx
@@ -77,6 +79,8 @@ define "Numerator 1":
 define "Radiation Treatment Management During Measurement Period with Cancer Diagnosis":
   ( [Encounter: "Radiation Treatment Management"] ) RadiationTreatmentManagement
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 63 CMS157 cases (library-wide translate failure)
     // Original:
     // with ( [ConditionProblemsHealthConcerns: "Cancer"]
     //   union [ConditionEncounterDiagnosis: "Cancer"] ) CancerDx

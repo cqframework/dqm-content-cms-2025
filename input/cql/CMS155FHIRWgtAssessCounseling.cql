@@ -61,6 +61,8 @@ define "Denominator Exclusions":
 
 define "Pregnancy Diagnosis Which Overlaps Measurement Period":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 34 CMS155 cases (library-wide translate failure)
   // Original:
   //   [ConditionProblemsHealthConcerns: "Pregnancy"]
   //     union [ConditionEncounterDiagnosis: "Pregnancy"]

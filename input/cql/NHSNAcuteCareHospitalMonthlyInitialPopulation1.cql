@@ -868,6 +868,10 @@ define function "CheckIP"(encounter Encounter):
 // Former NHSNHelpers functions, adapted for QI Core
 
 
+// [I-69] `is Interval<DateTime>` returns false for an interval with a null boundary, so an
+// open-ended period passed here arrives as null through the call-site `As` cast
+// Upstream ticket: https://github.com/cqframework/clinical_quality_language/pull/1857
+// Affected test cases: none — no NHSN fixture has an open-ended period today
 define function "Normalize Interval"(choice Choice<DateTime, Interval<DateTime>>):
   case
     when choice is DateTime then Interval[choice as DateTime, choice as DateTime]

@@ -9,8 +9,8 @@ they are produced by different extractors:
     ``code.coding[0].display``, except for two hardcoded MeasureObservation ids
     (see ``extract_population_expected.py``). CMS986 therefore says
     "Measure Population Observation".
-  * ``actual_results.csv`` / ``qicore-2025-actual-results.csv`` say
-    "Measure Observation" for that same population.
+  * ``actual_results.csv`` says "Measure Observation" for that same
+    population.
 
 Comparison keys include the population name, so without a single canonical form
 the CMS986 expected rows can never match their actual rows.
@@ -54,7 +54,7 @@ CANONICAL_POPULATIONS: FrozenSet[str] = frozenset({
 # Non-canonical spellings seen in real inputs -> canonical form.
 #
 # "Measure Population Observation" is the load-bearing one: it is what the
-# expected-results extractor emits for CMS986 while both engines emit
+# expected-results extractor emits for CMS986 while the engine emits
 # "Measure Observation". The rest are defensive -- older exports and the
 # hyphenated lowercase variants that were carried in the previous allowlist.
 POPULATION_ALIASES: Dict[str, str] = {

@@ -113,6 +113,8 @@ define "Denominator Exclusions":
 
 define "Has Severe Cognitive Impairment":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 58 CMS56 cases (library-wide translate failure)
   // Original:
   //   exists ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
   //     union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"] ) Dementia
@@ -122,7 +124,10 @@ define "Has Severe Cognitive Impairment":
 
 define "Has Total Hip Arthroplasty with 1 or More Lower Body Fractures":
   exists ( "Total Hip Arthroplasty Procedure" THAProcedure
-      with ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 58 CMS56 cases (library-wide translate failure)
+      with (
         // Original:
         //   ( [ConditionEncounterDiagnosis: "Lower Body Fractures Excluding Ankle and Foot"]
         //     union [ConditionProblemsHealthConcerns: "Lower Body Fractures Excluding Ankle and Foot"] )
@@ -145,6 +150,8 @@ define "Has Revision Hip Arthroplasty Procedure or Implanted Device or Prosthesi
 
 define "Has Malignant Neoplasm of Lower and Unspecified Limbs":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 58 CMS56 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionProblemsHealthConcerns: "Malignant Neoplasms of Lower and Unspecified Limbs"]
   //       union [ConditionEncounterDiagnosis: "Malignant Neoplasms of Lower and Unspecified Limbs"] ) MalignantNeoplasm
@@ -156,6 +163,8 @@ define "Has Malignant Neoplasm of Lower and Unspecified Limbs":
 
 define "Has Mechanical Complication":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 58 CMS56 cases (library-wide translate failure)
   // Original:
   //   exists ( ( [ConditionEncounterDiagnosis: "Mechanical Complications Excluding Upper Body"]
   //       union [ConditionProblemsHealthConcerns: "Mechanical Complications Excluding Upper Body"] ) MechanicalComplications

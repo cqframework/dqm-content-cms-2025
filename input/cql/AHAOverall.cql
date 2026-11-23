@@ -199,7 +199,7 @@ define fluent function isMedicationNotRequestedOrderedDuringHeartFailureOutpatie
 /*
 @description: Returns true if the given Condition overlaps the heart failure outpatient encounter with history of moderate or severe LVSD at any point
 */
-define fluent function overlapsHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
+define fluent function overlapsHeartFailureOutpatientEncounter(Condition Condition):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )
@@ -209,7 +209,7 @@ define fluent function overlapsHeartFailureOutpatientEncounter(Condition USQuali
 @overloaded
 @description: Returns true if the given Condition overlaps after the day of the heart failure outpatient encounter with history of moderate or severe LVSD
 */
-define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition USQualityCore.ConditionEncounterDiagnosis):
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(Condition Condition):
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
       where Condition.prevalenceInterval ( ) overlaps after day of ModerateOrSevereLVSDHFOutpatientEncounter.period
         and Condition.isVerified ( )

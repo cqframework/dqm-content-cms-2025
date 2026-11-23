@@ -5,6 +5,9 @@
     "profile": [ "http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-communication" ]
   },
   "status": "completed",
+  "subject": {
+    "reference": "Patient/28492651-41c3-4e9e-a68f-9b7836e3eca9"
+  },
   "statusReason": {
     "coding": [ {
       "system": "http://snomed.info/sct",

@@ -10,6 +10,8 @@ header = ["measure_name", "guid", "population", "count"]
 rows = []
 
 for measure_name in os.listdir(base_dir):
+    if measure_name.lower().startswith("test"):
+        continue
     measure_path = os.path.join(base_dir, measure_name)
     if os.path.isdir(measure_path):
         for root, _, files in os.walk(measure_path):

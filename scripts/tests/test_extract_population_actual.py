@@ -96,6 +96,113 @@ class TestExtractPopulationActual(unittest.TestCase):
         self.assertEqual(populations['Numerator'], 1)
         self.assertEqual(populations['Denominator Exception'], 0)
 
+    # Denominator Exception is zeroed whenever the group's Denominator is 0,
+    # whatever the Numerator holds (I-64).
+
+    def test_validate_scoring_denom_zero_numer_one_denexc_one_then_denexc_zeroed(self):
+        populations = {
+            'Denominator': 0,
+            'Denominator Exception': 1,
+            'Numerator': 1,
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 0)
+        self.assertEqual(populations['Numerator'], 0)
+        self.assertEqual(populations['Denominator Exception'], 0)
+
+    def test_validate_scoring_denom_zero_numer_list_denexc_one_then_denexc_zeroed(self):
+        """The same rule when the Numerator is a resource list, not a count.
+
+        A patient-resource Numerator arrives as a one-element list, which is
+        truthy, so the older `not numer and not denom` rule doesn't fire.
+        """
+        populations = {
+            'Denominator': 0,
+            'Denominator Exception': 1,
+            'Numerator': '[MedicationRequest(id=95a99210-094e-44ef-ad57-365001396272)]',
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 0)
+        self.assertEqual(populations['Numerator'], 0)
+        self.assertEqual(populations['Denominator Exception'], 0)
+
+    def test_validate_scoring_denom_one_numer_zero_denexc_one_denexc_unchanged(self):
+        """The rule is gated on an empty Denominator; a real exception survives."""
+        populations = {
+            'Denominator': 1,
+            'Denominator Exception': 1,
+            'Numerator': 0,
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 1)
+        self.assertEqual(populations['Numerator'], 0)
+        self.assertEqual(populations['Denominator Exception'], 1)
+
+    def test_validate_scoring_denom_two_or_more_path_unchanged(self):
+        """Multi-episode groups (Denominator >= 2) take the other branch, untouched."""
+        populations = {
+            'Denominator': 2,
+            'Denominator Exception': 1,
+            'Numerator': 2,
+            'Numerator Exclusion': 0,
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 2)
+        self.assertEqual(populations['Numerator'], 2)
+        self.assertEqual(populations['Denominator Exception'], 1)
+
+    def test_validate_scoring_denom_two_or_more_numex_disjoint_from_numer_then_numex_zeroed(self):
+        """Multi-episode Numerator Exclusion disjoint from Numerator is zeroed (I-05)."""
+        populations = {
+            'Denominator': 2,
+            'Denominator Exclusion': 1,
+            'Numerator': ['Encounter(id=e2)'],
+            'Numerator Exclusion': ['Encounter(id=e1)'],
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 2)
+        self.assertEqual(populations['Denominator Exclusion'], 1)
+        self.assertEqual(populations['Numerator'], 1)
+        self.assertEqual(populations['Numerator Exclusion'], 0)
+
+    def test_validate_scoring_denom_two_or_more_numex_in_numer_preserved(self):
+        """Multi-episode Numerator Exclusion present in Numerator is preserved."""
+        populations = {
+            'Denominator': 2,
+            'Denominator Exclusion': 1,
+            'Numerator': ['Encounter(id=e1)'],
+            'Numerator Exclusion': ['Encounter(id=e1)'],
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 2)
+        self.assertEqual(populations['Denominator Exclusion'], 1)
+        self.assertEqual(populations['Numerator'], 1)
+        self.assertEqual(populations['Numerator Exclusion'], 1)
+
+    def test_validate_scoring_denom_two_or_more_numex_with_zero_numer_then_numex_zeroed(self):
+        """Multi-episode Numerator Exclusion with empty Numerator is zeroed."""
+        populations = {
+            'Denominator': 2,
+            'Numerator': 0,
+            'Numerator Exclusion': 1,
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 2)
+        self.assertEqual(populations['Numerator'], 0)
+        self.assertEqual(populations['Numerator Exclusion'], 0)
+
+    def test_validate_scoring_denom_two_or_more_mixed_numex_list_scalar_numer_bounded(self):
+        """Multi-episode Numerator Exclusion bounded when scalar shapes occur."""
+        populations = {
+            'Denominator': 2,
+            'Numerator': 1,
+            'Numerator Exclusion': 2,
+        }
+        validate_measure_population_counts('CMS-test', populations)
+        self.assertEqual(populations['Denominator'], 2)
+        self.assertEqual(populations['Numerator'], 1)
+        self.assertEqual(populations['Numerator Exclusion'], 1)
+
     def test_convert_results_to_rows(self):
         results = {
             MeasureResultId('measureA', 'guidA', 'groupA'): {
@@ -148,6 +255,32 @@ class TestExtractPopulationActual(unittest.TestCase):
         actual_results_as_dict = {f'{measure_id.Measure}:{measure_id.PatientGUID}:{measure_id.GroupId}': population_count for measure_id, population_count in actual_results.items()}
         self.assertDictEqual(test_case_data['expected_results'], actual_results_as_dict)
     
+    def test_capture_results_skips_test_measures(self):
+        """`test*` repro libraries never reach the extracted results.
+
+        Decided by the same case-insensitive prefix rule compare_results.py
+        applies when reading the CSVs, so the two stay consistent.
+        """
+        criteria = {'realMeasure': {'Group_1': {}}}
+        json_section = MeasureSection('testJson', {
+            'testCaseName': 'guid-1',
+            'errors': [],
+            'results': [{'name': 'Initial Population', 'value': 'true'}],
+        })
+        txt_section = MeasureSection(
+            'testTxt', 'Patient = Patient(id=335cae91-96fc-4337-88f6-b8d9f06ade01)')
+        real_section = MeasureSection('realMeasure', {
+            'testCaseName': 'guid-2',
+            'errors': [],
+            'results': [{'name': 'Initial Population', 'value': 'true'}],
+        })
+
+        results = capture_results(iter([json_section, txt_section, real_section]),
+                                  criteria)
+
+        self.assertEqual({measure_id.Measure for measure_id in results},
+                         {'realMeasure'})
+
     def test_create_empty_populations(self):
         measure_criteria = {
             'Group_1': {
@@ -267,6 +400,20 @@ class ResultsFormatDetectionTest(unittest.TestCase):
         self.assertTrue(has_txt_results(self.tmp))
 
     def test_measures_in_results_dir_sees_both_shapes(self):
+        self._write_txt("MeasureA")
+        self._write_json("MeasureB")
+        self.assertEqual(measures_in_results_dir(self.tmp, "txt"), {"MeasureA"})
+        self.assertEqual(measures_in_results_dir(self.tmp, "json"), {"MeasureB"})
+
+    def test_measures_in_results_dir_excludes_test_measures(self):
+        """`test*` scaffolds are hidden so the health check doesn't warn on them.
+
+        capture_results() drops their rows, so if they were still counted as
+        "claimed" here, report_extraction_health() would report each of them as
+        producing no rows -- a spurious warning.
+        """
+        self._write_txt("testScaffold")
+        self._write_json("testE123Repro")
         self._write_txt("MeasureA")
         self._write_json("MeasureB")
         self.assertEqual(measures_in_results_dir(self.tmp, "txt"), {"MeasureA"})

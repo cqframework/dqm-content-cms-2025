@@ -88,6 +88,8 @@ define "Diabetic Retinopathy Encounter":
   "Qualifying Encounter During Day of Measurement Period" ValidQualifyingEncounter
     with (
       // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 32 CMS142 cases (library-wide translate failure)
       // Original:
       //   ( ["ConditionProblemsHealthConcerns": "Diabetic Retinopathy"]
       //     union ["ConditionEncounterDiagnosis": "Diabetic Retinopathy"] )

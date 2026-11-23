@@ -90,6 +90,8 @@ define "Depression Assessments Greater Than 9":
 
 define "Depression Diagnoses":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 67 CMS159 cases (library-wide translate failure)
   // Original:
   // ( [ConditionProblemsHealthConcerns: "Major Depression Including Remission"]
   //   union [ConditionEncounterDiagnosis: "Major Depression Including Remission"]
@@ -108,6 +110,8 @@ define "Depression Encounter":
 
 define "Has Mental Health Disorder Diagnoses":
   // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 67 CMS159 cases (library-wide translate failure)
   // Original:
   // exists ( ( [ConditionProblemsHealthConcerns: "Bipolar Disorder"]
   //     union [ConditionEncounterDiagnosis: "Bipolar Disorder"]
@@ -160,6 +164,8 @@ define "Has Hospice Services prior to or during the Measure Assessment Period":
           and not ( HospicePerformed.status in { 'not-done', 'entered-in-error', 'unknown' } )
     )
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 67 CMS159 cases (library-wide translate failure)
     // Original:
     // or exists ( ( [ConditionProblemsHealthConcerns: "Hospice Diagnosis"]
     //     union [ConditionEncounterDiagnosis: "Hospice Diagnosis"] ) HospiceCareDiagnosis
@@ -182,6 +188,8 @@ define "Has Palliative Care prior to or during the Measure Assessment Period":
         and PalliativeAssessment.status in { 'final', 'amended', 'corrected' }
   )
       // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 67 CMS159 cases (library-wide translate failure)
       // Original:
       // or exists ( ( [ConditionProblemsHealthConcerns: "Palliative Care Diagnosis"]
       //   union [ConditionEncounterDiagnosis: "Palliative Care Diagnosis"] ) PalliativeDiagnosis

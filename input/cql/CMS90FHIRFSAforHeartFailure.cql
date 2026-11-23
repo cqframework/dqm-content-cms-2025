@@ -74,7 +74,10 @@ define "SDE Sex":
 
 define "Initial Population":
   AgeInYearsAt(date from start of "Measurement Period") >= 18
-    and exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 37 CMS90 cases (library-wide translate failure)
+    and exists (
       // Original:
       //   ( ( [ConditionProblemsHealthConcerns: "Heart Failure"]
       //       union [ConditionEncounterDiagnosis: "Heart Failure"]
@@ -89,7 +92,10 @@ define "Denominator":
 
 define "Denominator Exclusions":
   Hospice."Has Hospice Services"
-    or exists ( // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 37 CMS90 cases (library-wide translate failure)
+    or exists (
       // Original:
       //   ( ( [ConditionProblemsHealthConcerns: "Severe cognitive impairment (finding)"]
       //       union [ConditionEncounterDiagnosis: "Severe cognitive impairment (finding)"]

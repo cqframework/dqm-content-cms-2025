@@ -34,13 +34,25 @@
 #       ACE/ARB fixtures use `medicationReference` only -> crash.
 #   (The other 10 CMS165 test cases use `medicationCodeableConcept` and pass.)
 #
-# REPRO vs PASSING
-#   The FAILING define below retrieves by `medicationReference`-only data and
-#   reproduces the `Unable to extract codes from fhirType Reference` error. The
-#   PASSING define retrieves the identical medication carried as
-#   `medicationCodeableConcept` and evaluates cleanly. This isolates the defect
-#   to the Reference branch of the choice path (no translate error, no other
-#   CQL in the way).
+# REPRO vs CONTROL
+#   The control is a second PATIENT, not a second define. The crash aborts the
+#   whole library, so two defines over the same patient can't differ. Run the
+#   one define for both patients:
+#     - 62577993-8c88-440d-ba30-d4a0a72990f9 (repro): one MedicationRequest with
+#       `medicationReference` -> Medication/89f079aa, plus one with
+#       `medicationCodeableConcept`. Result: `Unable to extract codes from
+#       fhirType Reference`. A single Reference-form request anywhere in the
+#       patient's data aborts every define.
+#     - 7998aa53-f2dc-4cb6-b0f7-8dc726506601 (control): only the
+#       `medicationCodeableConcept` request. Result: one MedicationRequest
+#       (d8716091), no error.
+#   Same CQL, same code, same engine; only the choice-type form differs.
+#
+#   Run each patient with the data path scoped to that patient's own folder
+#   (`cql_execute` modelUri = .../testE11MedicationReference/<patient-id>).
+#   With the data path at the measure folder, the control crashes too: the
+#   terminology filter reaches the repro patient's Reference-form request even
+#   though the retrieve is in Patient context.
 #
 # WHY NO CQL WORKAROUND (see conversion-notes "Tried and reverted")
 #   Two independent rewrites on CMS135 (explicit Reference branch; valueset
@@ -65,7 +77,8 @@
 #   id/version):
 #     - input/resources/library/testE11MedicationReference.json   (id/version 0.0.000)
 #     - input/resources/measure/testE11MedicationReference.json   (measure + library ref)
-#   fixture: input/tests/measure/testE11MedicationReference/<patient-id>/
+#   fixtures: input/tests/measure/testE11MedicationReference/<patient-id>/
+#     (62577993-... repro, 7998aa53-... control)
 #
 # Build/engine: VSCode-extension CQL engine + translator (see defect-tracking/known-issues.md).
 ###############################################################################
@@ -89,27 +102,12 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 /*
-############################  FAILING (I-26)  ################################
-# Terminology-filtered retrieve over `MedicationRequest.medication` where the
-# fixture carries the medication as `medicationReference` (no
-# `medicationCodeableConcept`). The Reference branch of the choice path reaches
-# `CodeExtractor.getCodesFromBase`, which throws:
-#   Unable to extract codes from fhirType Reference
-# This reproduces the CMS165 `AdvancedIllnessandFrailty.cql:77` /
-# CMS135 `[MedicationRequest: medication in ...]` crash in isolation — the error
-# aborts before this `define` (or any other) body evaluates.
-###############################################################################
+# Terminology-filtered retrieve over `MedicationRequest.medication`.
+#   repro patient   -> throws `Unable to extract codes from fhirType Reference`
+#                      (CodeExtractor.getCodesFromBase on the Reference branch)
+#   control patient -> [MedicationRequest(id=d8716091-...)]
+# Same shape as CMS165 `AdvancedIllnessandFrailty.cql:77` and the CMS135
+# ACE/ARB retrieve.
 */
-define "FAILING Reference-Only Medication":
-  [FHIR.MedicationRequest: "Rivastigmine"]
-
-/*
-#############################  PASSING (FIX)  ################################
-# The identical medication carried as `medicationCodeableConcept` (the 10
-# working CMS165 fixtures). The choice path resolves to a `CodeableConcept`,
-# so `CodeExtractor.getCodesFromBase` extracts RxNorm 312836 successfully and
-# the retrieve returns the resource (no crash).
-###############################################################################
-*/
-define "PASSING CodeableConcept Medication":
+define "Rivastigmine MedicationRequests":
   [FHIR.MedicationRequest: "Rivastigmine"]

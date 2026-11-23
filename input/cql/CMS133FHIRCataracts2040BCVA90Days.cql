@@ -104,6 +104,8 @@ define "Cataract Surgeries in Patients with Significant Ocular Conditions Impact
   "Cataract Surgery Between January and September of Measurement Period" CataractSurgeryPerformed
     with (
       // [I-28] base FHIR.Condition retrieves (defect-tracking/known-issues.md)
+      // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+      // Affected test cases: all 73 CMS133 cases (library-wide translate failure)
       // Original: 55 x ( ["ConditionProblemsHealthConcerns": X] union ["ConditionEncounterDiagnosis": X] ) pairs — replaced with base FHIR.Condition retrieves
       [FHIR.Condition: "Acute and Subacute Iridocyclitis"]
         union [FHIR.Condition: "Amblyopia"]

@@ -46,7 +46,12 @@ define "Days in Hospitalization":
       encounter: EligibleInpatientHospitalization,
       hospitalizationPeriod: period,
       relevantPeriod: relevantPeriod,
-      relevantDays: relevantPeriod.daysInPeriod ( )
+      // [I-63] FHIRCommon v2.0.0 daysInPeriod/toDayNumbers build an invalid Interval[1, 0] for stays shorter than 24 hours (root cause: I-81)
+      // Upstream ticket: https://jira.hl7.org/browse/FHIR-59691 (companion: https://jira.hl7.org/browse/FHIR-59689)
+      // Affected test cases: 98533ccd, fd579f44 (GUID prefixes)
+      // original
+      // relevantDays: relevantPeriod.daysInPeriod ( )
+      relevantDays: relevantPeriod.localDaysInPeriod ( )
     }
 
 define "Days with Glucose Results":
@@ -261,3 +266,35 @@ define function "Numerator Observations"(QualifyingEncounter Encounter):
           where EligibleEventDay.hasHyperglycemicEvent
       )
   )
+
+define fluent function localDaysInPeriod(period Interval<DateTime>):
+  ( period.localToDayNumbers() ) DayIndex
+    let 
+      startPeriod: start of period + (24 hours * (DayIndex - 1)),
+      nextDayStart: start of period + (24 hours * DayIndex),
+      isLastSegment: end of period is not null and end of period <= nextDayStart,
+      endPeriod: if isLastSegment then end of period else nextDayStart
+    return Tuple {
+      dayIndex: DayIndex,
+      dayPeriod: 
+        if startPeriod = endPeriod then
+          Interval[startPeriod, endPeriod]
+        else if isLastSegment then
+          Interval[startPeriod, endPeriod]
+        else
+          Interval[startPeriod, endPeriod)
+    }
+
+define fluent function localToDayNumbers(period Interval<DateTime>):
+  case
+    when period is null or start of period is null or end of period is null then
+      null
+    else
+      ( expand {
+          Interval[
+            1,
+            Max({ 1, duration in days between start of period and end of period })
+          ]
+      } ) DayNumber
+        return end of DayNumber
+  end

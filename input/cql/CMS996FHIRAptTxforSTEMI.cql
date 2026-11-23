@@ -146,6 +146,8 @@ define "Active Oral Anticoagulant Medication at the Start of ED Encounter":
 define "Active Long Term use of Anticoagulants":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 114 CMS996 cases (library-wide translate failure)
     // Original:
     // with ( ( ["ConditionProblemsHealthConcerns": "Long term (current) use of anticoagulants"]
     //     union ["ConditionEncounterDiagnosis": "Long term (current) use of anticoagulants"]
@@ -192,6 +194,8 @@ define "ED Encounter with STEMI Diagnosis":
   "ED Encounter During MP" EDEncounterinMP
     where ( EDEncounterinMP.reasonCode in "STEMI"
         // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+        // Affected test cases: all 114 CMS996 cases (library-wide translate failure)
         // Original:
         // or exists ( ( ( [ConditionProblemsHealthConcerns: "STEMI"]
         //       union [ConditionEncounterDiagnosis: "STEMI"]
@@ -261,6 +265,8 @@ define "Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encount
 define "Received tPA in Another Facility within 24 hours Prior to Admission":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI
     // [I-28] base FHIR.Condition retrieve (defect-tracking/known-issues.md)
+    // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+    // Affected test cases: all 114 CMS996 cases (library-wide translate failure)
     // Original:
     // with ( ( ["ConditionProblemsHealthConcerns": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
     //     union ["ConditionEncounterDiagnosis": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"]
@@ -274,7 +280,12 @@ define "ED Encounter with a Documented Reason for No PCI Performed":
       such that ( PCINotDone.statusReason in "Patient Refusal"
           or PCINotDone.statusReason in "Procedure Not Indicated/Contraindicated"
       )
-        and PCINotDone.performed during EDwSTEMI.period
+        // [I-55] `.ext()` instead of `.recorded()`: recorded(ProcedureNotDone) is ambiguous with recorded(Procedure) - dodges the I-18 overload ambiguity
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+        // Affected test cases: all 114 CMS996 cases (library-wide .ext() bypass)
+        // Original:
+        // and PCINotDone.performed during EDwSTEMI.period
+        and ( PCINotDone.ext('http://fhir.org/guides/astp/us-quality-core/StructureDefinition/us-quality-core-recorded').value as FHIR.dateTime ) during EDwSTEMI.period
 
 define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic Therapy":
   "ED Encounter with STEMI Diagnosis" EDwSTEMI
@@ -282,7 +293,12 @@ define "ED Encounter with a Documented Reason for Not Administering Fibrinolytic
       such that ( FibrinolyticNoMed.statusReason in "Patient Refusal"
           or FibrinolyticNoMed.statusReason in "Drug Intervention Not Indicated/Contraindicated"
       )
-        and FibrinolyticNoMed.effective during EDwSTEMI.period
+        // [I-55] recorded extension, not effective (defect-tracking/known-issues.md)
+        // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1855
+        // Affected test cases: all 114 CMS996 cases (library-wide .ext() bypass)
+        // Original:
+        // and FibrinolyticNoMed.effective during EDwSTEMI.period
+        and FibrinolyticNoMed.recorded() during EDwSTEMI.period
 
 define "Fibrinolytic Therapy Administration within 30 Minutes of Arrival":
   "ED Encounter with STEMI Diagnosis" EDwithSTEMI

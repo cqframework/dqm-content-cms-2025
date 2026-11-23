@@ -99,32 +99,57 @@ define "Is Currently Taking Beta Blocker Therapy for LVSD":
   )
 
 define "Has Hypotension Diagnosis":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Hypotension"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Hypotension"] ) HypotensionAlias
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Hypotension"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Hypotension"] ) HypotensionAlias
+  exists ( [FHIR.Condition: "Hypotension"] HypotensionAlias
       where HypotensionAlias.overlapsHeartFailureOutpatientEncounter ( )
         and HypotensionAlias.isVerified ( )
   )
 
 define "Has Diagnosis of Cardiac Pacer in Situ":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Cardiac Pacer in Situ"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Cardiac Pacer in Situ"] ) CardiacPacerDiagnosis
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Cardiac Pacer in Situ"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Cardiac Pacer in Situ"] ) CardiacPacerDiagnosis
+  exists ( [FHIR.Condition: "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
       where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
         and CardiacPacerDiagnosis.isVerified ( )
   )
 
 define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
-  exists ( ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Allergy to Beta Blocker Therapy"]
-        union [USQualityCore.ConditionEncounterDiagnosis: "Allergy to Beta Blocker Therapy"]
-    )
-      union ( [USQualityCore.ConditionProblemsHealthConcerns: "Intolerance to Beta Blocker Therapy"] )
-      union [USQualityCore.ConditionEncounterDiagnosis: "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Allergy to Beta Blocker Therapy"]
+  //         union [USQualityCore.ConditionEncounterDiagnosis: "Allergy to Beta Blocker Therapy"]
+  //     )
+  //       union ( [USQualityCore.ConditionProblemsHealthConcerns: "Intolerance to Beta Blocker Therapy"] )
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+  exists ( ( [FHIR.Condition: "Allergy to Beta Blocker Therapy"]
+      union [FHIR.Condition: "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
       where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter ( )
         and BetaBlockerAllergyOrIntoleranceDiagnosis.isVerified ( )
   )
 
 define "Has Bradycardia Diagnosis":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Bradycardia"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Bradycardia"] ) BradycardiaAlias
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Bradycardia"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Bradycardia"] ) BradycardiaAlias
+  exists ( [FHIR.Condition: "Bradycardia"] BradycardiaAlias
       where BradycardiaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and BradycardiaAlias.isVerified ( )
   )
@@ -153,22 +178,40 @@ define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient":
   )
 
 define "Has Arrhythmia Diagnosis":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Arrhythmia"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Arrhythmia"] ) ArrhythmiaAlias
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Arrhythmia"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Arrhythmia"] ) ArrhythmiaAlias
+  exists ( [FHIR.Condition: "Arrhythmia"] ArrhythmiaAlias
       where ArrhythmiaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and ArrhythmiaAlias.isVerified ( )
   )
 
 define "Has Asthma Diagnosis":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Asthma"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Asthma"] ) AsthmaAlias
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Asthma"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Asthma"] ) AsthmaAlias
+  exists ( [FHIR.Condition: "Asthma"] AsthmaAlias
       where AsthmaAlias.overlapsHeartFailureOutpatientEncounter ( )
         and AsthmaAlias.isVerified ( )
   )
 
 define "Has Atrioventricular Block Diagnosis":
-  exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Atrioventricular Block"]
-      union [USQualityCore.ConditionEncounterDiagnosis: "Atrioventricular Block"] ) AtrioventricularBlockAlias
+  // [I-28] base FHIR.Condition retrieve: sibling-profile union -> Choice<...> cannot widen to
+  // FHIR.Condition for the AHA overlap fluent and .isVerified() (defect-tracking/known-issues.md)
+  // Upstream ticket: https://github.com/cqframework/clinical_quality_language/issues/1872
+  // Affected test cases: all 48 CMS144 cases (library-wide translate failure)
+  // Original:
+  //   exists ( ( [USQualityCore.ConditionProblemsHealthConcerns: "Atrioventricular Block"]
+  //       union [USQualityCore.ConditionEncounterDiagnosis: "Atrioventricular Block"] ) AtrioventricularBlockAlias
+  exists ( [FHIR.Condition: "Atrioventricular Block"] AtrioventricularBlockAlias
       where AtrioventricularBlockAlias.overlapsHeartFailureOutpatientEncounter ( )
         and AtrioventricularBlockAlias.isVerified ( )
   )
